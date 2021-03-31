@@ -1,0 +1,181 @@
+---
+layout: post
+title:  "jekyllのhome.html"
+date:   2021-03-31 22:38:04 +0900
+type:   tech
+categories: jekyll update
+---
+
+## homeを見た
+　記事と言っても種類が欲しい。今回はカテゴリーよりも一つ上位の部分で分けたい。
+
+　その場合、home では各種類毎に新着記事が出てたらいいなぁと思ったので、それをやる。
+
+## before( home.html )
+{% highlight html linenos %}{% raw %}
+---
+layout: default
+---
+ 
+<div class="home">
+    {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endif -%}
+ 
+    {{ content }}
+ 
+    <!-- 今回はここから --------------------------------------------------------->
+    {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <ul class="post-list">
+        {%- for post in site.posts -%}
+        <li>
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+            {%- for category in post.categories -%}
+            <span class="post-meta">/{{ category }}</span>
+            {%- endfor -%}
+            <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+            </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+            {%- endif -%}
+        </li>
+        {%- endfor -%}
+    </ul>
+ 
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+    {%- endif -%}
+    <!-- ここまで --------------------------------------------------------------->
+</div>
+{%- endif -%}
+{% endraw %}{% endhighlight %}
+
+## after( home.html )
+{% highlight html linenos %}{% raw %}
+---
+layout: default
+---
+ 
+<div class="home">
+    {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endif -%}
+ 
+    {{ content }}
+ 
+    <!-- 今回はここから --------------------------------------------------------->
+    {%- assign posts_diary = site.posts | where: "type", "diary" -%}
+    {%- assign posts_tech  = site.posts | where: "type", "tech"  -%}
+    {%- assign posts_novel = site.posts | where: "type", "novel" -%}
+
+    {% include home/parts.html posts=posts_diary type="diary" limit=2 %}
+    {% include home/parts.html posts=posts_tech  type="tech"  limit=2 %}
+    {% include home/parts.html posts=posts_novel type="novel" limit=2 %}
+    <!-- ここまで --------------------------------------------------------------->
+</div>
+{%- endif -%}
+{% endraw %}{% endhighlight %}
+
+## include 機能
+　インクルードという機能が Liquid にあった。元の部分は `home/parts.html` に抜き出して、渡された変数に応じて表示する記事を変更するという実装にした。
+
+## _includes/home/parts.html
+　`include.xxxx` の部分が変数に置き換えたところ。
+
+{% highlight liquid linenos %}{% raw %}
+{%- if include.posts.size > 0 -%}
+<h2 class="post-list-heading">{{ page.list_title | default: include.type | capitalize }}</h2>
+<ul class="post-list">
+ 
+    {%- for post in include.posts limit: include.limit -%}
+    <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+ 
+        <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+            </a>
+        </h3>
+ 
+        {%- if site.show_excerpts -%}
+        {{ post.excerpt }}
+        {%- endif -%}
+    </li>
+    {%- endfor -%}
+ 
+    <a class="post-moreread-link" href="/{{ include.type }}">
+        もっと見る
+    </a>
+ 
+</ul>
+{%- endif -%}
+{% endraw %}{% endhighlight %}
+
+## もっと見るボタン
+　ついでに、 `もっと見る` ボタンも実装した。現在は `limit=2` としており、即ち新着記事を最大2つまでしか表示しないようにしている。3つ以上過去の記事を見たい場合は、各種類の一覧ページへ飛ぶようにした。
+
+　これは、[jekyllのヘッダー]({% link contents/tech/_posts/2021-03-30-hello3.markdown %})の話の続きであるが、ヘッダーに各種類の一覧ページへ飛べるリンクを用意したので、 `もっと見る` を押した時のリンク先はそこである。
+
+　`post-moreread-link` というスタイルを新たに追加しているが、中央寄せしている程度で特筆すべき点はない。
+
+
+
+## 一覧ページ daiary の例( header/diary.markdown )
+　先ほどと同じように、 `header/parts.html` を作成して、それをインクルードする形式とした。マークダウンファイルに直接 Liquid の記法を入れてしまうのは少し気持ち悪いのだが、個人の範疇でかつ複雑ではないということでここでは見過ごすことにした。
+
+{% highlight html linenos %}{% raw %}
+---
+layout: post
+title:  "Diary"
+permalink: /diary/
+fix: header
+order: 1
+---
+　
+{%- assign posts_diary = site.posts | where: "type", "diary" -%}
+　
+{% include header/parts.html posts=posts_diary type="diary" %}
+{% endraw %}{% endhighlight %}
+
+## _includes/header/parts.html
+{% highlight html linenos %}{% raw %}
+{%- if include.posts.size > 0 -%}
+<ul class="post-yp-list">
+
+    {%- for post in include.posts -%}
+    <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    </li>
+    {%- endfor -%}
+
+</ul>
+{%- endif -%}
+{% endraw %}{% endhighlight %}
+
+## はい。
+　新しく `post-yp-list` というスタイルを作ったが、これも別に特筆すべきことはない。
+
+　以上で、記事の種類を分けて、新着記事出し・専用の一覧ページを用意することが出来た。
+
+　もう少し融通が効かないと思っていたのだが、結構やりたいことが出来ることに気づいて楽しくなってきた。
+
+## プラグインは……
+　github pages だとプラグインが使えないのだそうだが、むしろ私にとっては好都合である。余りにも複雑なことなら頼りたいが、出来ることなら拙い知識でもいいから自分で組み立てたい。仮にプラグインを使える github pages だった場合、どうしてプラグインを使わないんだって周りに言われることだろう。そのことを考慮する必要もないのも非常に良い。プラグインを使った方が楽とか安全だとか効率的だとかそういうのには、少なくともこのブログを立てた時の私の心境から見ると、何の価値もない。助かる。
+
+## こういう記録を残しているのは
+　ちなみに、こうして記録を残しているのは未来の自分に対してであり、皆にも経験があるだろう黒板を書き写したのに一度も開かれないノートのような位置付けである。
+
+　ともかく、文章としてアウトプット出来る領域というのが、私にとっては非常に重要であり、楽しくもあり、続けられることなのである。
+
+　というわけで、前回は header を。今回は home を見てみました。実は home にあった RSS を footer に移したのだが、別段気になることはなかった。
+
+　さあ。あとは記事を書くだけだ！　という気分ではあるのだが、カテゴリ分けの部分も可視化して行きたい。次回がそれになるかは分からないが、いずれそれもやりたい。ただし、カテゴリが多様化したり、記事の数が増えた時に恩恵があるわけで、いまやってもなぁというのが正直なところではある。でも、気になるからやりたいのはやりたい。
+
+　それでは。この辺で。

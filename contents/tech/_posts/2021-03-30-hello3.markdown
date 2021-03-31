@@ -1,0 +1,137 @@
+---
+layout: post
+title:  "jekyllのヘッダー"
+date:   2021-03-30 21:38:04 +0900
+type:   tech
+categories: jekyll update
+---
+
+## header を見てみた
+　`_includes/header.html` に項目を増やそうかと思って、増やしてみました。
+
+　いくつかテスト用にファイルを作っているので、それを踏まえてみてくださいますよう。
+
+## header(default)
+　デフォルトの状態。下記部分はサイト全体のメタデータ（`site.pages`）のうち`path`のハッシュ値だけを取り出したものの配列を示している。
+{% raw %}
+```html
+    {%- assign default_paths = site.pages | map: "path" -%}
+```
+{% endraw %}
+
+{% comment %}
+<h5>
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+    {%- for path in page_paths -%}
+        - {{ path }}<br>
+    {%- endfor -%}
+</h5>
+{% endcomment %}
+
+- header/2021-03-27-episord_2.markdown
+- 404.html
+- header/about.markdown
+- index.markdown
+- assets/main.scss
+- header/nya.markdown
+- header/test.markdown
+- feed.xml
+
+　pagesには見ての通り、headerに含めたいもの以外のページも含まれている。jekyll には `site.pages` と `site.posts` の2種類のうちどちらかに振り分けられて格納されている。記事（`posts`）以外（ = `pages` ）でもヘッダーだけの処理にしたいですね、せっかくなので。
+
+## header(original: fix変数を持たせる)
+　headerページに `fix` 変数を持たせてそれで判断させてみます。
+
+```
+---
+layout: page
+title: About
+permalink: /about/
+fix: header
+---
+```
+
+　上記のように fix 変数を追加します。おー。
+
+　そして、以下の `where` でフィルターをかける一手間を追加して、あとはデフォルトと同じ。
+　
+{% raw %}
+```html
+    {%- assign default_paths = site.pages | where: "fix", "header" | map: "path"  -%}
+```
+{% endraw %}
+
+{% comment %}
+<h5>
+    {%- assign default_paths = site.pages | where: "fix", "header" | map: "path"  -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+    {%- for path in page_paths -%}
+        - {{ path }}<br>
+    {%- endfor -%}
+</h5>
+{% endcomment %}
+
+- header/2021-03-27-episord_2.markdown
+- header/about.markdown
+- header/nya.markdown
+- header/test.markdown
+  
+　良い感じですね。
+
+## header(original_2: ディレクトリ名の文字列一致で)
+
+　変数を持たせるという独自ルールを追加するのは簡単ですが、ディレクトリ構造を以下のようにしているならば、それを利用しても良さそうです。
+
+```html
+    header
+        - 2021-03-27-episord_2.markdown
+        - about.markdown
+        - nya.markdown
+        - test.markdown
+```
+
+　ただし、フィルターのような機能はないようなので、for文のところで header を含むのかを判定する形で対応するしかなさそうです（見落としている可能性はあるが）
+
+{% raw %}
+```html
+    {%- for path in page_paths -%}
+        {%- if path contains "header" -%}
+            - {{ path }}<br>
+        {% endif %}
+    {%- endfor -%}
+```
+{% endraw %}
+
+{% comment %}
+<h5>
+    {%- assign default_paths = site.pages| map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+    {%- for path in page_paths -%}
+        {%- if path contains "header" -%}
+            - {{ path }}<br>
+        {% endif %}
+    {%- endfor -%}
+</h5>
+{% endcomment %}
+
+- header/2021-03-27-episord_2.markdown
+- header/about.markdown
+- header/nya.markdown
+- header/test.markdown
+
+　はい。これでもまあいいでしょう。
+
+## 結局ふぃるたー
+　変数でフィルターするのが無駄がない気がします。
+
+　ディレクトリ構造でもいいですが、構造を整理のために変える可能性は十分にあるわけで。あと if文 を追加しないといけないのもなんだか嫌ですね。一番初めにフィルターで利用する変数を絞り込む方が安心します。
+
+## どうやら
+　jekyll のテンプレートエンジン `Liquid` の構文を直接マークダウンファイルに記述しても反映されるみたい。超便利。
+
+## 収穫
+　where と組み合わせれば、任意の変数を持つページ一覧を作れる。よーしうれしいーぞー。
+
+## はい
+　そんなわけで。はい。またお会いしましょう。

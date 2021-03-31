@@ -207,6 +207,20 @@
   @include relative-font-size(1.5);
 }
 
+.post-moreread-link {
+  width: 160px;
+  margin: 0 auto;
+  display: block;
+  @include relative-font-size(1.0);
+}
+
+.post-yp-list {
+  margin-left: 0;
+  list-style: none;
+
+  > li {
+  }
+}
 
 
 /**

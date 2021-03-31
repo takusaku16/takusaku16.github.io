@@ -9,29 +9,12 @@ layout: default
 
   {{ content }}
 
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        {%- for category in post.categories -%}
-          <span class="post-meta">/{{ category }}</span>
-        {%- endfor -%}
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+  {%- assign posts_diary = site.posts | where: "type", "diary" -%}
+  {%- assign posts_tech  = site.posts | where: "type", "tech"  -%}
+  {%- assign posts_novel = site.posts | where: "type", "novel" -%}
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
+  {% include home/parts.html posts=posts_diary type="diary" limit=2 %}
+  {% include home/parts.html posts=posts_tech  type="tech"  limit=2 %}
+  {% include home/parts.html posts=posts_novel type="novel" limit=2 %}
 
 </div>
