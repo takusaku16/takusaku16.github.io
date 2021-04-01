@@ -13,8 +13,8 @@ layout: default
   {%- assign posts_tech  = site.posts | where: "type", "tech"  -%}
   {%- assign posts_novel = site.posts | where: "type", "novel" -%}
 
-  {% include home/parts.html posts=posts_diary type="diary" limit=2 %}
-  {% include home/parts.html posts=posts_tech  type="tech"  limit=2 %}
-  {% include home/parts.html posts=posts_novel type="novel" limit=2 %}
+  {% include home/parts.html posts=posts_diary type="diary" limit=2 showCategory=false %}
+  {% include home/parts.html posts=posts_tech  type="tech"  limit=2 showCategory=true  %}
+  {% include home/parts.html posts=posts_novel type="novel" limit=2 showCategory=true  %}
 
 </div>

@@ -1,11 +1,16 @@
 ---
-layout: post
+layout: page
 title:  "Diary"
 permalink: /diary/
 fix: header
 order: 1
 ---
 
-{%- assign posts_diary = site.posts | where: "type", "diary" -%}
+{%- assign _str = "" -%}
+{%- assign _str = _str | append: ", 2021/04" -%}
+{%- assign _str = _str | append: ", 2021/03" -%}
 
-{% include header/parts.html posts=posts_diary type="diary" %}
+{%- assign _posts = site.posts | where: "type", "diary" -%}
+{%- assign _categories = _str | split: ", " -%}
+
+{% include header/parts.html posts=_posts categories=_categories %}

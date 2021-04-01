@@ -1,9 +1,9 @@
 ---
-layout: post
-title:  "はじまりはいつも突然に"
-date:   2021-03-27 06:38:04 +0900
-type:   diary
-categories: jekyll update
+layout:   post
+title:    "はじまりはいつも突然に"
+date:     2021-03-27 06:38:04 +0900
+type:     diary
+category: 2021/03
 ---
 
 ## はじめに

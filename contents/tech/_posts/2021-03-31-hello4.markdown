@@ -1,9 +1,9 @@
 ---
-layout: post
-title:  "jekyllのhome.html"
-date:   2021-03-31 22:38:04 +0900
-type:   tech
-categories: jekyll update
+layout:   post
+title:    "jekyllのhome.html"
+date:     2021-03-31 22:38:04 +0900
+type:     tech
+category: jekyll
 ---
 
 ## homeを見た
@@ -12,7 +12,7 @@ categories: jekyll update
 　その場合、home では各種類毎に新着記事が出てたらいいなぁと思ったので、それをやる。
 
 ## before( home.html )
-{% highlight html linenos %}{% raw %}
+{% highlight html %}{% raw %}
 ---
 layout: default
 ---
@@ -55,7 +55,7 @@ layout: default
 {% endraw %}{% endhighlight %}
 
 ## after( home.html )
-{% highlight html linenos %}{% raw %}
+{% highlight html %}{% raw %}
 ---
 layout: default
 ---
@@ -86,7 +86,7 @@ layout: default
 ## _includes/home/parts.html
 　`include.xxxx` の部分が変数に置き換えたところ。
 
-{% highlight liquid linenos %}{% raw %}
+{% highlight liquid %}{% raw %}
 {%- if include.posts.size > 0 -%}
 <h2 class="post-list-heading">{{ page.list_title | default: include.type | capitalize }}</h2>
 <ul class="post-list">
@@ -128,7 +128,7 @@ layout: default
 ## 一覧ページ daiary の例( header/diary.markdown )
 　先ほどと同じように、 `header/parts.html` を作成して、それをインクルードする形式とした。マークダウンファイルに直接 Liquid の記法を入れてしまうのは少し気持ち悪いのだが、個人の範疇でかつ複雑ではないということでここでは見過ごすことにした。
 
-{% highlight html linenos %}{% raw %}
+{% highlight html %}{% raw %}
 ---
 layout: post
 title:  "Diary"
@@ -143,7 +143,7 @@ order: 1
 {% endraw %}{% endhighlight %}
 
 ## _includes/header/parts.html
-{% highlight html linenos %}{% raw %}
+{% highlight html %}{% raw %}
 {%- if include.posts.size > 0 -%}
 <ul class="post-yp-list">
 

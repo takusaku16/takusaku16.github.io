@@ -1,0 +1,128 @@
+---
+layout:   post
+title:    "category と 目次"
+date:     2021-04-01 22:38:04 +0900
+type:     tech
+category: jekyll
+---
+
+## category の導入
+　jekyll には元々 `category` という項目がある。標準（ theme: `minima` ）だと出し分けたりのデザインになっていない。というわけで、出し分けられるようにします。
+
+　現状だと、 `Diary` `Tech` `Novel` の3つの記事タイプが存在し、カテゴリーはその各タイプの下に広がる分類をに位置付けたいと思います。 本来はタイプなんて作らないでカテゴリーで対応するのかは分からないですが、必要な概念があれば自由に付けたり外したり出来るのが `jekyll` なんですね。え？　他のでも出来るって？　さ、やっていきましょう。
+
+## _includes/header/parts.html (before)
+{% highlight html %}{% raw %}
+{%- if include.posts.size > 0 -%}
+<ul class="post-yp-list">
+
+    {%- for post in include.posts -%}
+    <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    </li>
+    {%- endfor -%}
+
+</ul>
+{%- endif -%}
+{% endraw %}{% endhighlight %}
+
+## _includes/header/parts.html (after)
+{% highlight html %}{% raw %}
+{%- if include.posts.size > 0 -%}
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+<ul class="post-yp-list">
+    {%- for category in include.categories -%}
+        {%- assign posts_cateogry = include.posts | where: "category", category -%}
+        {%- if posts_cateogry == empty -%}
+            {%- continue -%}
+        {%- endif -%}
+
+        <h4>
+            {{ category }}
+        </h4>
+
+        {%- for post in posts_cateogry -%}
+        <li>
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </li>
+        {%- endfor -%}
+        
+        <br>
+
+    {%- endfor -%}
+</ul>
+{%- endif -%}
+{% endraw %}{% endhighlight %}
+
+## 見ての通り
+　渡されるカテゴリー配列を一つずつ回す。一致するカテゴリーの記事だけにフィルターをかける。適合した記事を表示。
+
+　基本的に、 `category は1つの記事につき1つという仕様` で組みます。複数付けることも出来ますが、良い表示形式が浮かばないので。
+
+　記事の要素を加えたい場合は `tag` の概念を導入しようかと思います。今はまだ記事が少ないこともあって `tag` がなくても問題ないと思っています。
+
+　ということで、各記事と、カテゴリを渡すところを。
+
+
+## 記事例
+{% highlight html %}{% raw %}
+---
+layout:   post
+title:    "jekyllのhome.html"
+date:     2021-03-31 22:38:04 +0900
+type:     tech
+category: jekyll
+---
+{% endraw %}{% endhighlight %}
+
+## header/tech.markdown （カテゴリー配列を渡すところ）
+{% highlight html %}{% raw %}
+---
+layout: page
+title:  "Tech"
+permalink: /tech/
+fix: header
+order: 2
+---
+
+{%- assign _str = "" -%}
+{%- assign _str = _str | append: ", jekyll" -%}
+{%- assign _str = _str | append: ", 麻雀" -%}
+
+{%- assign _posts = site.posts | where: "type", "tech" -%}
+{%- assign _categories = _str | split: ", " -%}
+
+{% include header/parts.html posts=_posts categories=_categories %}
+{% endraw %}{% endhighlight %}
+
+## 見ての通りり
+　各記事には `category` を1つ指定。
+
+　配列を渡すところでは、カテゴリー配列を作って、渡しているだけですね。
+
+　ディレクトリ構造から自動で `category` を判別してやる方法も考えましたが、 `contains` で全記事を比較しないといけないので、それならフィルターかなぁと結局なってしまいました。いちいち指定するのは大変ですね。大変だけど、まあいいか。
+
+　カテゴリー配列の部分ですが、 `append` で作ってます。 `"jekyll, 麻雀"` という風に初期化代入も出来ますが、カテゴリーの順番を行を入れ替えるだけで替えられた方が嬉しかったので、 `append` を使っています。
+
+　そんなわけでカテゴリーの表示は完了しました。これで記事のタイプ毎にたくさんのカテゴリーを作っていけますね。
+
+## ところで、目次。
+　話は変わって、目次機能が欲しいと思ったので調べてみました。さすがに作り方が思いつかなかった。調べてみると、 `toc.html` をDLしてインクルードしたら使えるよっていう素晴らしいのがありました。プラグインではないらしい。
+
+　中をのぞいてみると、 `Liquid` で見出しタグを拾って目次を生成しているみたい。こういうことが出来るとは。可能性は無限大。
+
+　気が向いた時に中を覗いてみようかなぁと思ってますが、結構読むのは大変かもしれない。まだこの構文に慣れてない。
+
+　目次については特筆しません。私の作ったものではないので。
+
+## はい。
+　ということでカテゴリーの概念の導入と目次の導入をしました。
+
+　ここまで出来たらブログで欲しい機能は大体できた気もします。タイプに応じて好きなカテゴリーで記事を書ける状態。デザインを整えるとか、途中で書きましたが、 `tag` の概念を導入するとかですかね。
+
+　いずれにせよ。 `jekyll` はマークダウンファイルで記事を管理できるのがやっぱり良いですね。助かる。
+
+　ではこの辺で。

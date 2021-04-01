@@ -17,6 +17,10 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary>
+        {% include toc.html html=content %}
+    </details>
     {{ content }}
   </div>
 

@@ -1,26 +1,23 @@
 <header class="site-header" role="banner">
 
   <div class="wrapper">
+    {% comment %}
     <!-- before(default) -->
-    <!-- {% comment %} -->
-    <!-- {%- assign default_paths = site.pages | map: "path" -%} -->
-    <!-- {% endcomment %} -->
-    <!-- after(original) : fix タグが header のページ の path を抜き出し -->
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {% endcomment %}
+    <!-- after(original) : fix タグが header のページ の path を抜き出し（order 昇順） -->
     {%- assign default_paths = site.pages | where: "fix", "header" | sort_natural: "order" | map: "path" -%}
     <!--  -->
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-    <!--  -->
-    <!-- {% comment %} -->
-
-    <!-- <div>{{ page_paths }}</div>
+    
+    {% comment %}
+    <div>{{ page_paths }}</div>
     <div>-------</div>
     {%- for path in page_paths -%}
-    <div>{{ path }}</div>
-    {%- endfor -%} -->
-    
-    <!-- {% endcomment %} -->
-    <!--  -->
+      <div>{{ path }}</div>
+    {%- endfor -%}
+    {% endcomment %}    
 
     {%- if page_paths -%}
       <nav class="site-nav">
@@ -34,16 +31,16 @@
         </label>
 
         <div class="trigger">
-          <!--  -->
-          <!-- <div>{{ page_paths }} : あ</div> -->
-          <!--  -->
-
+          {% comment %}
+          <div>{{ page_paths }} : あ</div>
+          {% endcomment %}    
+          
           {%- for path in page_paths -%}
-            {%- assign my_page = site.pages | where: "path", path | first -%}
-            <!--  -->
-            <!-- <div>{{ path }} : い</div> -->
-            <!-- <div>{{ my_page }} : う</div> -->
-            <!--  -->
+          {%- assign my_page = site.pages | where: "path", path | first -%}
+            {% comment %}
+            <div>{{ path }} : い</div>
+            <div>{{ my_page }} : う</div>            
+            {% endcomment %}    
 
             {%- if my_page.title -%}
             <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
