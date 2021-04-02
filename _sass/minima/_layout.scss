@@ -184,6 +184,24 @@
   @include relative-font-size(2);
 }
 
+.home-post-type {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 40%);
+  margin: 1em;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.home-post-list-heading {
+  margin: 20px auto;
+  @include relative-font-size(1.75);
+}
+
+.home-post-moreread-link {
+  @include relative-font-size(1.0);
+}
+
+
 .post-list-heading {
   @include relative-font-size(1.75);
 }
@@ -207,13 +225,6 @@
   @include relative-font-size(1.5);
 }
 
-.post-moreread-link {
-  width: 160px;
-  margin: 0 auto;
-  display: block;
-  @include relative-font-size(1.0);
-}
-
 .post-yp-list {
   margin-left: 0;
   list-style: none;
@@ -234,6 +245,7 @@
   @include relative-font-size(2.625);
   letter-spacing: -1px;
   line-height: 1;
+  font-weight: bold;
 
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
@@ -245,7 +257,9 @@
 
   h2 {
     @include relative-font-size(2);
-
+    
+    border-bottom: solid 1px #ddd;
+    
     @include media-query($on-laptop) {
       @include relative-font-size(1.75);
     }
@@ -272,6 +286,7 @@ details {
   border: 1px solid #aaa;
   border-radius: 4px;
   padding: .5em .5em 0;
+  margin: 1em;
 }
 
 summary {
