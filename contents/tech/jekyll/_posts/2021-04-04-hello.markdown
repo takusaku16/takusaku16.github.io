@@ -1,0 +1,177 @@
+---
+layout:   post
+title:    "data 導入, where_exp"
+date:     2021-04-04 22:38:04 +0900
+---
+
+## _data/navigation.yml導入
+　jekyll で生成されたページをいくつか知っていて、github pages だから中身も見れるのだが、どうも `_data/navigation.yml` を使ってヘッダーの並び順やリンク先を定義するのが一般的らしい。調べてみると、jekyll のチュートリアルに載っていてなるほどとなった。
+
+　標準テーマである `minima` はこの方式ではなく、posts以外のページ全てを対象としている。数回前の記事で、ヘッダーに並べるページを指定できる形にしたのだが、今回はそれをさらに改善するという話だ。
+
+　というわけで、さっそく私のサイトでも導入してみようと思う。
+
+### 導入前
+　現在のヘッダーは各ページに `order` , `header` という属性を持たせて、それで並び順とヘッダーページを判断して表示している。
+
+{% highlight yaml %}{% raw %}
+---
+layout: page
+title: About
+permalink: /about/
+fix: header
+order: 5
+---
+{% endraw %}{% endhighlight %}
+
+{% highlight liquid %}{% raw %}
+{%- assign default_paths = site.pages | where: "fix", "header" | sort_natural: "order" | map: "path" -%}
+{% endraw %}{% endhighlight %}
+
+### 導入後
+　yml で並び順とリンクを管理して、各ページから並び順とヘッダー判断を削除。表示処理では `navigation.yml` を呼び出して使う。
+
+{% highlight html %}{% raw %}
+---
+layout: page
+title: About
+permalink: /about/
+---
+{% endraw %}{% endhighlight %}
+
+{% highlight liquid %}{% raw %}
+    {% for item in site.data.navigation %}
+        <a class="page-link" href="{{ item.link | relative_url }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+            {{ item.name | escape }}
+        </a>
+    {% endfor %}
+{% endraw %}{% endhighlight %}
+
+{% highlight yaml %}{% raw %}
+- name: Diary
+  link: /diary/
+- name: Tech
+  link: /tech/
+- name: Novel
+  link: /novel/
+- name: Memo
+  link: /memo/
+- name: About
+  link: /about/
+{% endraw %}{% endhighlight %}
+
+### 変化
+　元々は `site.pages` を参照していたのに対し、 `navigation.yml` を参照するようになったので、少しばかり速度が上がったんじゃないかと思っている。導入の効果はあると言えそうだ。
+
+　良かった。
+
+## _data/typeCategory.yml導入
+　私のページは `posts` の中でも `diary` `tech` `novel` という風にタイプを分けている。これらもデータで管理してしまおうと思った。
+
+　というのも、前の記事では各ページに持たせた属性との一致によってタイプを判断していたが、今回はディレクトリ構造との連動を密にした実装にしようと思う。 `contains` を使って、元々考えていたのがこの方式だったのだが、`contains` の使い勝手が良くなくて属性との一致式で対応していたのだ。
+
+　調べていたら、 `where_exp` という記法が存在して、試してみたら想定通りだったので、これで行こうと思う。
+
+### 導入前
+　各ページには `type` と `category` を持たせている。
+
+　また、ここでは Diary ページでの一覧表示を見てみる。append を使って行を上下に移動してカテゴリーを簡単に移動できるとかなんとか言ってましたが、ymlにしたら同じ効果を得ながら、簡潔になりますね。
+
+{% highlight yaml %}{% raw %}
+---
+layout:   post
+title:    "jekyllのhome.html"
+date:     2021-03-31 22:38:04 +0900
+type:     tech
+category: jekyll
+---
+{% endraw %}{% endhighlight %}
+
+{% highlight liquid %}{% raw %}
+---
+layout: page
+title:  "Diary"
+permalink: /diary/
+---
+
+{%- assign _str = "" -%}
+{%- assign _str = _str | append: ", 2021/04" -%}
+{%- assign _str = _str | append: ", 2021/03" -%}
+
+{%- assign _posts = site.posts | where: "type", "diary" -%}
+{%- assign _categories = _str | split: ", " -%}
+
+{% include header/parts.html posts=_posts categories=_categories %}
+{% endraw %}{% endhighlight %}
+
+### 導入後
+　ymlで `type` と `category` を管理。各ページからは `type` と `category` を消去。
+
+　※ `category` であるが、ディレクトリ構造に委ねている。ymlの記述はディレクトリ構造と一致させる必要がある。
+
+　ついでに、Diary, Tech, Novel では共通となるので、 `page_postList` というレイアウトを作成してそれを使うことにした。これで3つのページがまったく同じ処理になる。
+
+{% highlight yaml %}{% raw %}
+---
+layout:   post
+title:    "jekyllのhome.html"
+date:     2021-03-31 22:38:04 +0900
+---
+{% endraw %}{% endhighlight %}
+
+{% highlight yaml %}{% raw %}
+---
+layout: page_postList
+title:  "Diary"
+permalink: /diary/
+---
+{% endraw %}{% endhighlight %}
+
+{% highlight liquid %}{% raw %}
+---
+layout: page
+---
+{{ content }}
+
+{% for item in site.data.typeCategory %}
+  {% if page.url contains item.type %}
+    {%- assign _posts = site.posts | where_exp: "post", "post.id contains item.type" -%}
+    {% include page/parts.html posts=_posts categories=item.categories %}
+  {% endif %}
+{% endfor %}
+{% endraw %}{% endhighlight %}
+
+{% highlight yaml %}{% raw %}
+- type: diary
+  categories: 
+    - 2021/04
+    - 2021/03
+  showCategory: false
+- type: tech
+  categories: 
+    - jekyll
+    - 麻雀
+  showCategory: true
+- type: novel
+  categories: 
+    - test
+  showCategory: true
+{% endraw %}{% endhighlight %}
+
+### 変化
+　元々は属性一致だったのに対して、 `contains` での判定に切り替えたので、1記事ずつの判定は遅くなっていると思われる。
+
+　とはいえ、誤差の範囲だろうという思う。記事が増えたら気になるのかもしれない。が、その時がきたらだ。
+
+　マークダウンに `Liquid` の記述をしていたのも `layout` に移行できたのも気持ちが良い。
+
+## 終わり
+　正直言えば、ヘッダーとかpostの一覧ページとかは殆ど触る必要がないから整えてもそれほど意味はない。
+
+　しかし、記事を書く上で、余計な情報（ `type` `category` など）を省けるというのは良い。知らず知らずのうちに余計な情報を拾って集中力に影響が出てしまうと良くない。
+
+　快適に執筆が出来るように環境を整えるのは大事なことなのだ。
+
+　ただし、dataを使ってみたかったという思いも今回はあったのだが。
+
+　そういうわけで。この辺で。
