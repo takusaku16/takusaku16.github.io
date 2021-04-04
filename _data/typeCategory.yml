@@ -1,0 +1,14 @@
+- type: diary
+  categories: 
+    - 2021/04
+    - 2021/03
+  showCategory: false
+- type: tech
+  categories: 
+    - jekyll
+    - 麻雀
+  showCategory: true
+- type: novel
+  categories: 
+    - test
+  showCategory: true

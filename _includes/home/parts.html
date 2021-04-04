@@ -8,7 +8,15 @@
         <li>
             <span class="post-meta">{{ post.date | date: date_format }}</span>
             {%- if include.showCategory -%}
-                <span class="post-meta"> [ {{ post.category }} ]</span>
+                <span class="post-meta">
+                    [
+                    {%- for category in include.categories -%}
+                        {% if post.url contains category %}
+                            {{ category }}
+                        {% endif %}
+                    {%- endfor -%}
+                    ]
+                </span>
             {%- endif -%}
 
             <h3>

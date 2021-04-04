@@ -1,0 +1,10 @@
+- name: Diary
+  link: /diary/
+- name: Tech
+  link: /tech/
+- name: Novel
+  link: /novel/
+- name: Memo
+  link: /memo/
+- name: About
+  link: /about/

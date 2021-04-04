@@ -2,9 +2,6 @@
 layout: page
 title: Memo
 permalink: /memo/
-fix: header
-order: 4
-category: test ddd
 ---
 
 ```

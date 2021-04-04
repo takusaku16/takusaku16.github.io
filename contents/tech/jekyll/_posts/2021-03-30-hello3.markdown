@@ -2,8 +2,6 @@
 layout:   post
 title:    "jekyllのヘッダー"
 date:     2021-03-30 21:38:04 +0900
-type:     tech
-category: jekyll
 ---
 
 ## header を見てみた

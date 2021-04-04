@@ -2,8 +2,6 @@
 layout:   post
 title:    "刹那的"
 date:     2021-03-28 21:38:04 +0900
-type:     diary
-category: 2021/03
 ---
 
 ## 麻雀簡単だった

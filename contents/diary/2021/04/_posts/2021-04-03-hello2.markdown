@@ -2,8 +2,6 @@
 layout:   post
 title:    "良いノベルゲーム"
 date:     2021-04-03 21:38:04 +0900
-type:     diary
-category: 2021/04
 ---
 
 ## 良し悪し

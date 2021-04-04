@@ -2,8 +2,6 @@
 layout:   post
 title:    "幸福なのに"
 date:     2021-04-04 21:38:04 +0900
-type:     diary
-category: 2021/04
 ---
 
 ## 幸福なのに

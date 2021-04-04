@@ -2,8 +2,6 @@
 layout:   post
 title:    "見えぬ聞こえぬ"
 date:     2021-04-01 21:38:04 +0900
-type:     diary
-category: 2021/04
 ---
 
 ## 見える聞こえる
