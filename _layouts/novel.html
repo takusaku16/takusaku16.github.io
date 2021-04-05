@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+{% include novel/ui-header.html %}
+
+<article id="book">
+    <div id="book-header">
+        <div id="book-pageNum"></div>
+    </div>
+    <div id="book-middle">
+        <div id="book-left"></div>
+        <div id="book-text-cover">
+          <div id="book-text">{{ content }}</div>
+        </div>
+        <div id="book-right"></div>
+    </div>
+    <div id="book-footer"></div>
+    <div id="book-overlay"></div>
+</article>
+
+{% include novel/ui-middle-footer.html %}
+
+<!-- JQuery : animate -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- novel.js -->
+<script type="text/javascript" src="/assets/js/novel.js"></script>

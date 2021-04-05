@@ -1,0 +1,128 @@
+
+/**
+ * Book
+ */
+ $book-header-height: 56px !default;
+ $book-middle-height: 508px !default;
+ $book-footer-height: 56px !default;
+ $book-middle-text-width: 594px !default;
+ $book-middle-LR-width: 36px !default;
+ $book-background-color: #f7f2df !default;
+ #book {
+   width: $book-middle-text-width + $book-middle-LR-width * 2;
+   margin: auto;
+   font-family: serif;
+   background-color: $book-background-color;
+   position:relative
+ }
+ #book-header {
+   height: $book-header-height;
+   color: #555;
+   font-size: 10px;
+   margin-right: 54px;
+   text-align: right;
+   line-height: 70px;
+ 
+   #book-pageNum.left {
+     animation: leftMove 0.5s 1 ease-in;
+   }
+   #book-pageNum.right {
+     animation: rightMove 0.5s 1 ease-in;
+   }
+ }
+ #book-middle {
+   height: $book-middle-height;
+   position: relative;
+   
+   #book-text-cover {
+     width: $book-middle-text-width;
+     margin-right: $book-middle-LR-width;
+     writing-mode: vertical-rl;
+     overflow-x: hidden;
+     position: absolute;
+     right: 0px;
+     
+     #book-text {
+       font-size: 12px;
+       white-space: pre-wrap;
+
+        h2 {
+          @include relative-font-size(2.25);
+                    
+          @include media-query($on-laptop) {
+            @include relative-font-size(1.75);
+          }
+        }
+      
+        h3 {
+          @include relative-font-size(1.625);
+      
+          @include media-query($on-laptop) {
+            @include relative-font-size(1.375);
+          }
+        }
+      
+        h4 {
+          @include relative-font-size(1.25);
+      
+          @include media-query($on-laptop) {
+            @include relative-font-size(1.125);
+          }
+        }
+      }
+   }
+   #book-left {
+     left: 0px;
+     height: $book-middle-height;
+     width: $book-middle-LR-width;
+     position: absolute;
+   }
+   #book-right {
+     right: 0px;
+     height: $book-middle-height;
+     width: $book-middle-LR-width;
+     position: absolute;
+   }
+ }
+ #book-footer {
+   height: $book-footer-height;
+ }
+ #book-overlay {
+   height: $book-header-height + $book-middle-height + $book-footer-height;
+   width: $book-middle-text-width + $book-middle-LR-width * 2;
+   position: absolute;
+   top: 0px;
+   left: 0px;
+ }
+ #book-ui-header {
+   text-align: center;
+ }
+ #book-ui-middle {
+   margin-top: 10px;
+   text-align: center;
+ }
+ #book-ui-footer {
+   margin-top: 10px;
+   text-align: left;
+ }
+ .book-ui-group {
+   display: inline-block;
+   margin-left: 4px;
+   margin-bottom: 4px;
+   border: 1px solid #777;
+   padding: 4px;
+   border-radius: 5px;
+ }
+ 
+ @keyframes leftMove {
+   0%   { opacity: 1; transform: translateX(0px);   }
+   29%  { opacity: 0; transform: translateX(10px);  }
+   30%  { opacity: 0; transform: translateX(-5px); }
+   100% { opacity: 1; transform: translateX(0px);   }
+ }
+ @keyframes rightMove {
+   0%   { opacity: 1; transform: translateX(0px);   }
+   29%  { opacity: 0; transform: translateX(-10px); }
+   30%  { opacity: 0; transform: translateX(5px);  }
+   100% { opacity: 1; transform: translateX(0px);   }
+ }
