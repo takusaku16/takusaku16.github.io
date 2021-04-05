@@ -245,8 +245,8 @@ const logSwipeEnd = (event) => {
     event.preventDefault();
     if(Math.abs(endY - startY) - Math.abs(endX - startX) > 0) {
         // 縦方向のスワイプが大きい場合、縦スクロール
-        if( 0 < (endY - startY) ) scrollTo(0, readModeButton.getBoundingClientRect().top); // 下向き
-        else scrollTo(0, 0); // 上向き
+        if( 0 < (endY - startY) ) scrollTo(0, bookOverlay.getBoundingClientRect().top); // 下向き
+        else scrollTo(0, readModeButton.getBoundingClientRect().top); // 上向き
     } else {
         // 横方向のスワイプが大きい場合、ページを進める/戻す
         if( 0 < (endX - startX) ) nextPage(); // 右向き
