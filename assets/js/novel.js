@@ -228,19 +228,30 @@ document.body.addEventListener('keydown', (event) => {
 
 // スワイプ ------------------------------------------------------------
 let startX = null;
+let startY = null;
 let endX = null;
+let endY = null;
 const logSwipeStart = (event) => {
     event.preventDefault();
     startX = event.touches[0].pageX;
+    startY = event.touches[0].pageY;
 }
 const logSwipe = (event) => {
     event.preventDefault();
     endX = event.touches[0].pageX;
+    endY = event.touches[0].pageY;
 }
 const logSwipeEnd = (event) => {
     event.preventDefault();
-    if( 0 < (endX - startX) ) nextPage();
-    else prevPage();
+    if(Math.abs(endY - startY) - Math.abs(endX - startX) > 0) {
+        // 縦方向のスワイプが大きい場合、縦スクロール
+        if( 0 < (endY - startY) ) scrollTo(0, readModeButton.getBoundingClientRect().top); // 下向き
+        else scrollTo(0, 0); // 上向き
+    } else {
+        // 横方向のスワイプが大きい場合、ページを進める/戻す
+        if( 0 < (endX - startX) ) nextPage(); // 右向き
+        else prevPage();   // 左向き
+    }
 }
 bookOverlay.addEventListener('touchmove', logSwipe, { passive: false });
 bookOverlay.addEventListener('touchstart', logSwipeStart, { passive: false });
