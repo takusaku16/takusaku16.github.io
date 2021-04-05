@@ -1,54 +1,58 @@
 <div id="book-ui-header">
     <div>
         <div class="book-ui-group">
-        <span id="fontFamilyLabel"></span>
-        <label>
-            <select id="fontFamilyBox">
-            <option value='serif'>serif</option>
-            <option value='"ヒラギノ明朝 ProN W3"'>ヒラギノ明朝 ProN W3</option>
-            <option value='"游明朝"'>游明朝</option>
-            <option value='ＭＳ 明朝'>ＭＳ 明朝</option>
-            </select>
-        </label>
+            <span id="fontFamilyLabel"></span>
+            <label>
+                <select id="fontFamilyBox">
+                <option value='serif'>serif</option>
+                <option value='"ヒラギノ明朝 ProN W3"'>ヒラギノ明朝 ProN W3</option>
+                <option value='"游明朝"'>游明朝</option>
+                <option value='ＭＳ 明朝'>ＭＳ 明朝</option>
+                </select>
+            </label>
         </div>
         <div class="book-ui-group">
-        <label>
-            <select id="colorThemeBox">
-            <option value='light'>light</option>
-            <option value='dark'>dark</option>
-            </select>
-        </label>
-        <input type="color" id="backgroundColorpicker" value="#f7f2df">
-        <input type="color" id="fontColorpicker" value="#111111">
-        <input type="color" id="pageTextColorpicker" value="#777777">
-        <input type="color" id="pageContentColorpicker" value="#fdfdfd">
+            <label>
+                <select id="colorThemeBox">
+                <option value='light'>light</option>
+                <option value='dark'>dark</option>
+                <option value='blood'>blood</option>
+                </select>
+            </label>
+            <input type="color" id="backgroundColorpicker" value="#f4e7b8">
+            <input type="color" id="fontColorpicker" value="#111111">
+            <input type="color" id="pageTextColorpicker" value="#777777">
+            <input type="color" id="pageContentColorpicker" value="#fdfdfd">
+        </div>
+        <div class="book-ui-group">
+            <input type="button" value="Session消去" id="deleteSession" />
         </div>
     </div>
     <div>
         <div class="book-ui-group">
-        <input type="button" value="←" id="leftButton" />
-        <input type="button" value="→" id="rightButton" />
+            <input type="button" value="←" id="leftButton" />
+            <input type="button" value="→" id="rightButton" />
         </div>
         <div class="book-ui-group">
-        <span id="pageNumMaxLabel"></span>  
+            <span id="pageNumMaxLabel"></span>  
         </div>
         <div class="book-ui-group">
-        <input type="button" value="↑" id="fontSizeUpButton" />
-        <span id="fontSizeLabel"></span>
-        <input type="button" value="↓" id="fontSizeDownButton" />
-        <input type="button" value="18px" id="fontSizeDefaultButton" />
-        <label>
-            <select id="fontSizeBox">
-            <option value="12">12 S </option>
-            <option value="18" selected>18 S H</option>
-            <option value="36">36 S </option>
-            </select>
-        </label>
+            <input type="button" value="↑" id="fontSizeUpButton" />
+            <span id="fontSizeLabel"></span>
+            <input type="button" value="↓" id="fontSizeDownButton" />
+            <input type="button" value="18px" id="fontSizeDefaultButton" />
+            <label>
+                <select id="fontSizeBox">
+                <option value="12">12 S </option>
+                <option value="18" selected>18 S H</option>
+                <option value="36">36 S </option>
+                </select>
+            </label>
         </div>
         <div class="book-ui-group">
-        <input type="button" value="Multi(M)"  id="multiButton" />
-        <input type="button" value="Spread(S)" id="spreadButton" />
-        <input type="button" value="Half(H)"   id="halfButton" />
+            <input type="button" value="Multi(M)"  id="multiButton" />
+            <input type="button" value="Spread(S)" id="spreadButton" />
+            <input type="button" value="Half(H)"   id="halfButton" />
         </div>
     </div>    
 </div>

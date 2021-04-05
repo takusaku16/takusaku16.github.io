@@ -7,7 +7,7 @@
  $book-footer-height: 56px !default;
  $book-middle-text-width: 594px !default;
  $book-middle-LR-width: 36px !default;
- $book-background-color: #f7f2df !default;
+ $book-background-color: #f4e7b8 !default;
  #book {
    width: $book-middle-text-width + $book-middle-LR-width * 2;
    margin: auto;
@@ -19,9 +19,12 @@
    height: $book-header-height;
    color: #555;
    font-size: 10px;
+   margin-left: 54px;
    margin-right: 54px;
    text-align: right;
    line-height: 70px;
+   display: flex;
+   justify-content: space-between;
  
    #book-pageNum.left {
      animation: leftMove 0.5s 1 ease-in;
@@ -50,11 +53,11 @@
           font-size: 36px
         }
       
-        h3 {
-        }
+        // h3 {
+        // }
       
-        h4 {
-        }
+        // h4 {
+        // }
       }
    }
    #book-left {
@@ -86,6 +89,12 @@
  #book-ui-middle {
    margin-top: 10px;
    text-align: center;
+   display: flex;
+   justify-content: center;
+
+   #page-link {
+     line-height: 36px;
+   }
  }
  #book-ui-footer {
    margin-top: 10px;

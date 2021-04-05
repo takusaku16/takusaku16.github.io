@@ -25,9 +25,12 @@ const fontColorpicker = document.getElementById("fontColorpicker");
 const pageTextColorpicker = document.getElementById("pageTextColorpicker");
 const pageContentColorpicker = document.getElementById("pageContentColorpicker");
 const colorThemeBox = document.getElementById("colorThemeBox");
+const deleteSession = document.getElementById("deleteSession");
 
 // ui-middle
 const readModeButton = document.getElementById('readModeButton');
+const pageNextLink = document.getElementById('page-nextLink');
+const pagePrevLink = document.getElementById('page-prevLink');
 
 // ui-footer
 const getScroll = document.getElementById('getScroll');
@@ -36,6 +39,7 @@ const scrollLeftLabel = document.getElementById('scrollLeftLabel');
 // book
 const book = document.getElementById('book');
 const bookTextCover = document.getElementById('book-text-cover');
+const bookHeader = document.getElementById('book-header');
 const bookText = document.getElementById('book-text');
 const bookPageNum = document.getElementById('book-pageNum');
 const bookOverlay = document.getElementById('book-overlay');
@@ -70,11 +74,11 @@ const updateSetting = () => {
     bookText.style.fontFamily = `${fontFamily}`
     book.style.backgroundColor = `${backgroundColor}`
     bookText.style.color = `${fontColor}`
-    bookPageNum.style.color = `${pageTextColor}`
+    bookHeader.style.color = `${pageTextColor}`
     pageContent.style.backgroundColor = `${pageContentColor}`
     pageContent.style.color = `${fontColor}`
     pageNumMax = Math.floor( (bookText.clientWidth + bookMoveScroll) / bookMoveScroll )
-    pageNumMaxLabel.textContent = `${pageNumMax}`
+    pageNumMaxLabel.textContent = `${pageNum} / ${pageNumMax}`
 }
 const nextPage = () => {
     let bookScrollLeftAfter = bookMoveScroll * ((pageNum - 1) + 1) * -1
@@ -87,6 +91,7 @@ const nextPage = () => {
     bookPageNum.classList.add('left');
     setTimeout(function() { bookPageNum.classList.remove('left');   }, fadeTime);
     setTimeout(function() { bookPageNum.textContent = `${pageNum}`; }, fadeChangeNumberTime);
+    updateSetting();
 }
 const prevPage = () => {
     if(pageNum > pageNumMax) pageNum = pageNumMax
@@ -100,6 +105,7 @@ const prevPage = () => {
     bookPageNum.classList.add('right');
     setTimeout(function() { bookPageNum.classList.remove('right');  }, fadeTime);
     setTimeout(function() { bookPageNum.textContent = `${pageNum}`; }, fadeChangeNumberTime);
+    updateSetting();
 }
 const changeReadMode = () => {
     const siteFooter = document.getElementsByClassName('site-footer')[0];
@@ -129,7 +135,7 @@ const changeBookSize = (afterWidth) => {
 }
 const changeColorTheme = (theme) => {
     if(theme === "light"){
-        backgroundColor = "#f7f2df"
+        backgroundColor = "#f4e7b8"
         fontColor = "#111111"
         pageTextColor = "#777777"
         pageContentColor = "#fdfdfd"
@@ -138,7 +144,12 @@ const changeColorTheme = (theme) => {
         fontColor = "#cdc6c6"
         pageTextColor = "#777777"
         pageContentColor = "#080808"
-    }
+    } else if(theme === "blood"){
+        backgroundColor = "#10100f"
+        fontColor = "#db3939"
+        pageTextColor = "#cc7575"
+        pageContentColor = "#080808"
+    } else { /* null */ }
     backgroundColorpicker.value = backgroundColor
     fontColorpicker.value = fontColor
     pageTextColorpicker.value = pageTextColor
@@ -146,14 +157,52 @@ const changeColorTheme = (theme) => {
     colorThemeBox.value = theme
     updateSetting();
 }
+const storeSession = () => {
+    let isReadMode = 0
+    if(siteHeader.style.display === "none") isReadMode = 1
+    sessionStorage.setItem('isReadMode', isReadMode);
+    sessionStorage.setItem('sessionFontSize', fontSize);
+    sessionStorage.setItem('sessionBookWidth', bookWidth);
+    sessionStorage.setItem('sessionBackgroundColor', backgroundColor);
+    sessionStorage.setItem('sessionFontColor', fontColor);
+    sessionStorage.setItem('sessionPageTextColor', pageTextColor);
+    sessionStorage.setItem('sessionPageContentColor', pageContentColor);
+}
 
 // ===< addEventLister >~~=======================================================
 // init ----------------------------------------------------------------
 window.addEventListener('load', () => {
-    changeBookSize(bookInitialWidth)
-    changeColorTheme("light")
+    const sessionBookWidth = parseInt(sessionStorage.getItem('sessionBookWidth'),10);
+    const sessionFontSize = parseInt(sessionStorage.getItem('sessionFontSize'),10);
+    const isReadMode = Boolean(parseInt(sessionStorage.getItem('isReadMode'),10))
+    const sessionBackgroundColor = sessionStorage.getItem('sessionBackgroundColor');
+    const sessionFontColor = sessionStorage.getItem('sessionFontColor');
+    const sessionPageTextColor = sessionStorage.getItem('sessionPageTextColor');
+    const sessionPageContentColor = sessionStorage.getItem('sessionPageContentColor');
+    
+    if(sessionFontSize) fontSize = sessionFontSize
+    if(sessionBookWidth) changeBookSize(sessionBookWidth)
+    else changeBookSize(bookInitialWidth)
+    if(isReadMode) changeReadMode()
+    if(sessionBackgroundColor) {
+        backgroundColor = sessionBackgroundColor
+        fontColor = sessionFontColor
+        pageTextColor = sessionPageTextColor
+        pageContentColor = sessionPageContentColor
+        changeColorTheme("")
+    } else changeColorTheme("light")
     bookPageNum.textContent = `${pageNum}`
 })
+
+deleteSession.addEventListener('click', (event) => {
+    sessionStorage.removeItem('isReadMode')
+    sessionStorage.removeItem('sessionFontSize')
+    sessionStorage.removeItem('sessionBookWidth')
+    sessionStorage.removeItem('sessionBackgroundColor')
+    sessionStorage.removeItem('sessionFontColor')
+    sessionStorage.removeItem('sessionPageTextColor')
+    sessionStorage.removeItem('sessionPageContentColor')
+});
 
 // book, 入力 ----------------------------------------------------------
 //    < scroll - mouse >
@@ -171,10 +220,31 @@ document.body.addEventListener('keydown', (event) => {
     if (event.key === 'f') changeReadMode()
     if (event.key === 'l') changeColorTheme("light")
     if (event.key === 'd') changeColorTheme("dark")
+    if (event.key === 'b') changeColorTheme("blood")
     if (event.key === 'm') changeBookSize(bookInitialWidth * 2)
     if (event.key === 's') changeBookSize(bookInitialWidth)
     if (event.key === 'h') changeBookSize(bookInitialWidth / 2)
 });
+
+// スワイプ ------------------------------------------------------------
+let startX = null;
+let endX = null;
+const logSwipeStart = (event) => {
+    event.preventDefault();
+    startX = event.touches[0].pageX;
+}
+const logSwipe = (event) => {
+    event.preventDefault();
+    endX = event.touches[0].pageX;
+}
+const logSwipeEnd = (event) => {
+    event.preventDefault();
+    if( 0 < (endX - startX) ) nextPage();
+    else prevPage();
+}
+bookOverlay.addEventListener('touchmove', logSwipe, { passive: false });
+bookOverlay.addEventListener('touchstart', logSwipeStart, { passive: false });
+bookOverlay.addEventListener('touchend', logSwipeEnd, { passive: false });
 
 // ui-header------------------------------------------------------------
 //    < fontFamily >
@@ -184,7 +254,7 @@ fontFamilyBox.addEventListener('change', (event) => { fontFamily = event.current
 colorThemeBox.addEventListener('change', (event) => { changeColorTheme(event.currentTarget.value) });
 backgroundColorpicker.addEventListener('change', (event) => { backgroundColor = event.currentTarget.value; updateSetting(); });
 fontColorpicker.addEventListener('change', (event) => { fontColor = event.currentTarget.value; updateSetting(); });
-pageTextColorpicker.addEventListener('change', (event) => { pageTextgroundColor = event.currentTarget.value; updateSetting(); });
+pageTextColorpicker.addEventListener('change', (event) => { pageTextColor = event.currentTarget.value; updateSetting(); });
 pageContentColorpicker.addEventListener('change', (event) => { pageContentColor = event.currentTarget.value; updateSetting(); });
 
 //    < scroll >
@@ -205,6 +275,9 @@ halfButton.addEventListener('click', () => { changeBookSize(bookInitialWidth / 2
 // ui-middle------------------------------------------------------------
 //    < readMode >
 readModeButton.addEventListener('click', changeReadMode);
+pageNextLink.addEventListener('click', storeSession);
+pagePrevLink.addEventListener('click', storeSession);
+
 
 // ui-footer -----------------------------------------------------------
 getScroll.addEventListener('click', () => {
