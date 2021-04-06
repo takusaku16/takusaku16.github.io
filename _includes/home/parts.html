@@ -11,9 +11,9 @@
                 <span class="post-meta">
                     [
                     {%- for category in include.categories -%}
-                        {% if post.categories contains category %}
+                        {%- if post.categories contains category -%}
                             {{ category }}
-                        {% endif %}
+                        {%- endif -%}
                     {%- endfor -%}
                     ]
                 </span>

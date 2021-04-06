@@ -9,9 +9,9 @@ layout: default
 
   {{ content }}
 
-  {% for item in site.data.typeCategory %}
+  {%- for item in site.data.typeCategory -%}
     {%- assign _posts = site.posts | where_exp: "post", "post.id contains item.type" -%}
-    {% include home/parts.html limit=2 posts=_posts type=item.type categories=item.categories showCategory=item.showCategory %}
-  {% endfor %}
+    {%- include home/parts.html limit=2 posts=_posts type=item.type categories=item.categories showCategory=item.showCategory -%}
+  {%- endfor -%}
 
 </div>

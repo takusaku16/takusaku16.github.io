@@ -1,12 +1,12 @@
 {%- if include.posts.size > 0 -%}
 
-{% comment %}
+{%- comment -%}
 {%- for post in include.posts -%}
     <div>- {{ post.category}} --- {{ post.title }} --- {{ post.categories }} --- {{ post.id }}</div>    
 {%- endfor -%}
-{% endcomment %}
+{%- endcomment -%}
 
-{% comment %}
+{%- comment -%}
 <div>-------------------------------</div>
 {%- for category in include.categories -%}
     {%- if category == empty -%}
@@ -19,7 +19,7 @@
     {%- endfor -%}
     <div>-------------------------------</div>
 {%- endfor -%}
-{% endcomment %}
+{%- endcomment -%}
 
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 <ul class="post-yp-list">
@@ -28,7 +28,7 @@
             {%- continue -%}
         {%- endif -%}
 
-        {% comment %} Diary: id, 他: category で抽出 ※ github pages では where_exp 内で or が利用できなかった {% endcomment %}
+        {%- comment -%} Diary: id, 他: category で抽出 ※ github pages では where_exp 内で or が利用できなかった {%- endcomment -%}
         {%- assign posts_cateogry = include.posts | where_exp: "post", "post.categories contains category" -%}
         {%- if posts_cateogry == empty -%}
             {%- assign posts_cateogry = include.posts | where_exp: "post", "post.id contains category" -%}

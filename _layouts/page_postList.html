@@ -3,9 +3,9 @@ layout: page
 ---
 {{ content }}
 
-{% for item in site.data.typeCategory %}
-  {% if page.url contains item.type %}
+{%- for item in site.data.typeCategory -%}
+  {%- if page.url contains item.type -%}
     {%- assign _posts = site.posts | where_exp: "post", "post.id contains item.type" -%}
-    {% include page/parts.html posts=_posts categories=item.categories %}
-  {% endif %}
-{% endfor %}
+    {%- include page/parts.html posts=_posts categories=item.categories -%}
+  {%- endif -%}
+{%- endfor -%}
