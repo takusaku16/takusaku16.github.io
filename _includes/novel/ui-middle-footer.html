@@ -1,12 +1,25 @@
+{%- assign nextNovelUrl = empty -%}
+{%- assign prevNovelUrl = empty -%}
+{% unless page.nextNovel == "" %}
+    {%- assign nextNovelUrl = site.posts | where_exp: "post", "post.path contains page.nextNovel" | map: "url" -%}
+    {% if nextNovelUrl == empty %}<div style="text-align: center; background-color: black; color: red;">ERROR: 指定された次章のURLが見つかりません</div>{% endif %}
+    {% if nextNovelUrl.size > 1 %}<div style="text-align: center; background-color: black; color: yellow;">WARN: 複数の次章URLがあります。</div>{% endif %}
+{% endunless %}
+{% unless page.prevNovel == "" %}
+    {%- assign prevNovelUrl = site.posts | where_exp: "post", "post.path contains page.prevNovel" | map: "url" -%}
+    {% if prevNovelUrl == empty %}<div style="text-align: center; background-color: black; color: red;">ERROR: 指定された前章のURLが見つかりません</div>{% endif %}
+    {% if prevNovelUrl.size > 1 %}<div style="text-align: center; background-color: black; color: yellow;">WARN: 複数の前章URLがあります。</div>{% endif %}
+{% endunless %}
+
 <div id="book-ui-middle">
     <div class="book-ui-group">
-        <input type="button" value="{{ page.nextLabel | default: '次章' }}" id="page-nextLink" onclick="location.href='{{ page.nextNovel | relative_url }}'" {% unless page.nextNovel contains "contents" %}disabled{% endunless %}/>
+        <input type="button" value="{{ page.nextLabel | default: '次章' }}" id="page-nextLink" onclick="location.href='{{ nextNovelUrl }}'" {% if nextNovelUrl == empty %}disabled{% endif %}/>
     </div>    
     <div class="book-ui-group">
         <input type="button" value="集中モード切り替え(F)"  id="readModeButton" />
     </div>
     <div class="book-ui-group">
-        <input type="button" value="{{ page.prevLabel | default: '前章' }}" id="page-prevLink" onclick="location.href='{{ page.prevNovel | relative_url }}'" {% unless page.prevNovel contains "contents" %}disabled{% endunless %}/>
+        <input type="button" value="{{ page.prevLabel | default: '前章' }}" id="page-prevLink" onclick="location.href='{{ prevNovelUrl }}'" {% if prevNovelUrl == empty %}disabled{% endif %}/>
     </div>
 </div>
   

@@ -2,11 +2,11 @@
 layout:    novel
 category:  "人食いの鬼助"
 title:     "人食いの鬼助"
-date:      2021-04-05 21:38:04 +0900
-nextLabel: あとがき
-nextNovel: /contents/novel/short/人食いの鬼助/2021/04/05/kisuke_ato.html
-prevLabel: ""
+date:      2021-04-06 13:10:48 +0900
+nextNovel: kisuke_ato
 prevNovel: ""
+nextLabel: あとがき
+prevLabel: ""
 ---
 「また、出ただよ」
 「出だって、何がさ」
