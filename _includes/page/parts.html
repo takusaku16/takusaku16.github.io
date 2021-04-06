@@ -28,10 +28,13 @@
             {%- continue -%}
         {%- endif -%}
 
-        {% comment %} Diary: id, 他: category で抽出 {% endcomment %}
-        {%- assign posts_cateogry = include.posts | where_exp: "post", "post.categories contains category or post.id contains category" -%}
+        {% comment %} Diary: id, 他: category で抽出 ※ github pages では where_exp 内で or が利用できなかった {% endcomment %}
+        {%- assign posts_cateogry = include.posts | where_exp: "post", "post.categories contains category" -%}
         {%- if posts_cateogry == empty -%}
-            {%- continue -%}
+            {%- assign posts_cateogry = include.posts | where_exp: "post", "post.id contains category" -%}
+            {%- if posts_cateogry == empty -%}
+                {%- continue -%}
+            {%- endif -%}
         {%- endif -%}
 
         <h4>
