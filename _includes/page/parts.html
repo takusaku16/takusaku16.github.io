@@ -1,26 +1,4 @@
 {%- if include.posts.size > 0 -%}
-
-{%- comment -%}
-{%- for post in include.posts -%}
-    <div>- {{ post.category}} --- {{ post.title }} --- {{ post.categories }} --- {{ post.id }}</div>    
-{%- endfor -%}
-{%- endcomment -%}
-
-{%- comment -%}
-<div>-------------------------------</div>
-{%- for category in include.categories -%}
-    {%- if category == empty -%}
-        {%- continue -%}
-    {%- endif -%}
-    <div>{{ category }}</div>
-    {%- assign posts_cateogry = include.posts | where_exp: "post", "post.id contains category" -%}
-    {%- for post in posts_cateogry -%}
-        <div>- {{ post.category}} --- {{ post.title }} --- {{ post.categories }} --- {{ post.id }}</div>    
-    {%- endfor -%}
-    <div>-------------------------------</div>
-{%- endfor -%}
-{%- endcomment -%}
-
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 <ul class="post-yp-list">
     {%- for category in include.categories -%}
