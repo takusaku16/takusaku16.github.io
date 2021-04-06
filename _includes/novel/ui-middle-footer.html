@@ -1,12 +1,12 @@
 <div id="book-ui-middle">
     <div class="book-ui-group">
-        <input type="button" value="次へ" id="page-nextLink" onclick="location.href='{{ page.nextNovel | relative_url }}'" {% unless page.nextNovel contains "contents" %}disabled{% endunless %}/>
+        <input type="button" value="{{ page.nextLabel | default: '次章' }}" id="page-nextLink" onclick="location.href='{{ page.nextNovel | relative_url }}'" {% unless page.nextNovel contains "contents" %}disabled{% endunless %}/>
     </div>    
     <div class="book-ui-group">
         <input type="button" value="集中モード切り替え(F)"  id="readModeButton" />
     </div>
     <div class="book-ui-group">
-        <input type="button" value="前へ" id="page-prevLink" onclick="location.href='{{ page.prevNovel | relative_url }}'" {% unless page.prevNovel contains "contents" %}disabled{% endunless %}/>
+        <input type="button" value="{{ page.prevLabel | default: '前章' }}" id="page-prevLink" onclick="location.href='{{ page.prevNovel | relative_url }}'" {% unless page.prevNovel contains "contents" %}disabled{% endunless %}/>
     </div>
 </div>
   
@@ -29,7 +29,7 @@
         <div>　[18 S H] は Spread(見開き) と Half(半分) の時に丁度良いフォントサイズを意味する。</div>
         <br>
         <hr>
-        <div>次へ/前へ</div>
+        <div>次章/前章 (あとがき など）</div>
         <div>　各種設定を引き継いで前後のお話にページ遷移します。</div>
         <div>　引継ぎ設定: 集中モード, color, fontSize, サイズ</div>
         <div>　※「session消去」ボタンを押すと引継ぎ設定をリセット出来ます。</div>

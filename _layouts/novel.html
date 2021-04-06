@@ -12,7 +12,12 @@ layout: default
     <div id="book-middle">
         <div id="book-left"></div>
         <div id="book-text-cover">
-          <div id="book-text">{{ content }}</div>
+            <div id="book-text-all">
+                <div id="book-startText"><h2>{{ page.title }}</h2></div>
+                <div id="book-text">{{ content }}</div>
+                <div id="book-endText">{{ page.title }}　了</div>
+                <br><hr>
+            </div>
         </div>
         <div id="book-right"></div>
     </div>

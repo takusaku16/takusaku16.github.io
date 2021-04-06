@@ -28,7 +28,8 @@
             {%- continue -%}
         {%- endif -%}
 
-        {%- assign posts_cateogry = include.posts | where_exp: "post", "post.id contains category" -%}
+        {% comment %} Diary: id, 他: category で抽出 {% endcomment %}
+        {%- assign posts_cateogry = include.posts | where_exp: "post", "post.categories contains category or post.id contains category" -%}
         {%- if posts_cateogry == empty -%}
             {%- continue -%}
         {%- endif -%}
