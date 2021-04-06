@@ -5,6 +5,7 @@ const J_bookTextCover = $('#book-text-cover');// JQuery メソッドを利用す
 const siteHeader = document.getElementsByClassName('site-header')[0];
 const wrapper = document.getElementsByClassName('wrapper')[1]; // 1つ目はヘッダー
 const pageContent = document.getElementsByClassName('page-content')[0];
+const siteFooter = document.getElementsByClassName('site-footer')[0];
 
 // ui-header
 const leftButton = document.getElementById('leftButton');
@@ -126,8 +127,6 @@ const prevPage = () => {
     }
 }
 const changeReadMode = () => {
-    const siteFooter = document.getElementsByClassName('site-footer')[0];
-
     if(siteHeader.style.display === "none") siteHeader.style.display = "block"
     else siteHeader.style.display = "none"
 
@@ -143,15 +142,15 @@ const changeReadMode = () => {
     if(wrapper.classList.contains("wrapper")) wrapper.classList.remove("wrapper")
     else wrapper.classList.add("wrapper")
 }
-const changeBookSize = (afterWidth) => {
+const changeBookSize = (afterWidth, doUpdate = true) => {
     bookWidth = afterWidth
     bookMoveScroll = bookWidth
     book.style.width = `${bookWidth + bookPadding}px`
     bookOverlay.style.width = `${bookWidth + bookPadding}px`
     bookTextCover.style.width = `${bookWidth}px`
-    updateSetting();
+    if(doUpdate) updateSetting();
 }
-const changeColorTheme = (theme) => {
+const changeColorTheme = (theme, doUpdate = true) => {
     if(theme === "light"){
         backgroundColor = "#f4e7b8"
         fontColor = "#111111"
@@ -173,7 +172,7 @@ const changeColorTheme = (theme) => {
     pageTextColorpicker.value = pageTextColor
     pageContentColorpicker.value = pageContentColor
     colorThemeBox.value = theme
-    updateSetting();
+    if(doUpdate) updateSetting();
 }
 const storeSession = () => {
     let isReadMode = 0
@@ -198,17 +197,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const sessionPageTextColor = sessionStorage.getItem('sessionPageTextColor');
     const sessionPageContentColor = sessionStorage.getItem('sessionPageContentColor');
     
+    if(isReadMode) changeReadMode()
     if(sessionBackgroundColor) {
         backgroundColor = sessionBackgroundColor
         fontColor = sessionFontColor
         pageTextColor = sessionPageTextColor
         pageContentColor = sessionPageContentColor
-        changeColorTheme("")
-    } else changeColorTheme("light")
-    if(isReadMode) changeReadMode()
+        changeColorTheme("", false)
+    } else changeColorTheme("light", false)
     if(sessionFontSize) fontSize = sessionFontSize
-    if(sessionBookWidth) changeBookSize(sessionBookWidth)
-    else changeBookSize(bookInitialWidth)
+    if(sessionBookWidth) changeBookSize(sessionBookWidth, false)
+    else changeBookSize(bookInitialWidth, false)
+    updateSetting()
     bookPageNum.textContent = `${pageNum}`
 })
 
