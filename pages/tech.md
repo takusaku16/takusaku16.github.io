@@ -1,5 +1,5 @@
 ---
-layout: page_postList
+layout: page/postList
 title:  "Tech"
 permalink: /tech/
 ---

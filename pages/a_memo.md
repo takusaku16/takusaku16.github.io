@@ -2,9 +2,10 @@
 layout: page
 title: Memo
 permalink: /memo/
+toc: true
 ---
 
-## さーばー
+## javascript
 　javascript というか想像以上にサーバー関連がわからない。
 
 ### 非同期
@@ -31,9 +32,9 @@ permalink: /memo/
   - apache とか nginx とかで多分やる
 - firewall
   - 受信規則で特定ポートを許可する必要が多分ある
-- ipAddres
+- ipAddres（固定/動的）
   - ipconfig -> ipv4 : プライベートIPアドレス(LAN)
-  - Router の ipv4 : グローバルIPアドレス(WAN)
+  - Router の ipv4 : グローバルIPアドレス(WAN) : from プロバイダ
 - 名前解決
   - 127.0.0.1 localhost : ローカル（C:\Windows\System32\drivers\etc\hosts）
   - DNSサーバー様 : グローバル（登録してつかうっぽい）
@@ -62,3 +63,39 @@ permalink: /memo/
     - CORS を無視できるのがある。あぶない。
   - chrome の security を外す
     - オプションに指定すると外せる。あぶ。
+
+## すとりーみんぐ
+　仕組みよくわからないけど視聴してるよね。調べても分からん。
+
+### プロトコル
+- RTMP
+- HLS
+- MPEG-DASH
+- SRT
+- WebRTC
+
+### 動画形式（映像コンテナ）
+- WMV
+- FLV
+
+### コーデック
+- H.264 (AVC = Advanced Video Coding)
+- H.265 (HEVC = High Efficiency Video Coding)
+  
+### とどけかた
+- 1
+  - OBS で RTMP
+  - 準備:
+    - ローカルホストでサーバー立ち上げ
+    - ポート開放
+  - 送信:
+    - ローカルホストに映像を送信
+  - 受信:
+    - グローバルIPアドレスを直接指定して受信
+- 2
+  - OBS で
+  - 送信: 
+    - ライブストリーミングサイトに映像を送信
+  - 受信:
+    - ユーザーはライブストリーミングサイトを経由して受信
+

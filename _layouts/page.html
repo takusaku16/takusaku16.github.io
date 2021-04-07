@@ -8,6 +8,12 @@ layout: default
   </header>
 
   <div class="post-content">
+    {%- if page.toc -%}
+      <details>
+        <summary>目次</summary>
+        {%- include toc.html html=content -%}
+      </details>
+    {%- endif -%}
     {{ content }}
   </div>
 
