@@ -9,7 +9,7 @@
         {%- comment -%} Diary: id, 他: category で抽出 ※ github pages では where_exp 内で or が利用できなかった {%- endcomment -%}
         {%- assign posts_cateogry = include.posts | where_exp: "post", "post.categories contains category" -%}
         {%- if posts_cateogry == empty -%}
-            {%- assign posts_cateogry = include.posts | where_exp: "post", "post.id contains category" -%}
+            {%- assign posts_cateogry = include.posts | where_exp: "post", "post.url contains category" -%}
             {%- if posts_cateogry == empty -%}
                 {%- continue -%}
             {%- endif -%}

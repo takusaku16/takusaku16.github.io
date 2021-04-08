@@ -1,0 +1,13 @@
+---
+layout: page
+---
+{{ content }}
+
+{%- for item in site.data.junk -%}
+  {%- if page.url contains item.type -%}
+    {%- assign type = "pages/" -%}
+    {%- assign type = type | append: item.type -%}
+    {%- assign _posts = site.pages | where_exp: "post", "post.url contains type" -%}
+    {%- include page/parts.html posts=_posts categories=item.categories -%}
+  {%- endif -%}
+{%- endfor -%}

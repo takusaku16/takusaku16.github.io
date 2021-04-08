@@ -1,8 +1,9 @@
+const apiKey = document.getElementById('apiKey');
+const emptyButton = document.getElementById('emptyButton');
 const inputText = document.getElementById('inputText');
 const searchButton = document.getElementById('searchButton');
 const nextButton = document.getElementById('nextButton');
 const prevButton = document.getElementById('prevButton');
-const resultList = document.getElementById('resultList');
 const eventTypeBox = document.getElementById('eventTypeBox');
 const pageNum = document.getElementById('pageNum');
 const errorText = document.getElementById('errorText');
@@ -19,18 +20,18 @@ const perPage = 10;
 const update = (token) => {
     pageToken = token;
 
-    // テスト
-    createTable(testJson)
-
-    // リクエスト投げる
-    // getJsonFile();
+    if(apiKey.value) getJsonFile(); // リクエスト
+    else {
+        errorText.textContent = ""
+        createTable(testJson); // 疑似構造でテスト
+    }
 }
 
 // Youtube data api をjsonファイルで取得
 const getJsonFile = () => {
     const url = "https://www.googleapis.com/youtube/v3/search"
     let params = {
-        key: 'AIzaSyBpVvu-lRJpV1glTDMQ0G7mH2gvUYwJAy0',
+        key: apiKey.value,
         part: 'id,snippet',
         q: inputText.value,
         type: 'video',
@@ -45,7 +46,9 @@ const getJsonFile = () => {
         .then(response => {
             if (response.ok) return response.json();
             switch (response.status) { // エラーハンドリング
-                case 400: throw Error(`${response.status}: INVALID_TOKEN`);
+                case 400: 
+                    apiKey.value = ""
+                    throw Error(`${response.status}: INVALID_TOKEN`);
                 case 401: throw Error(`${response.status}: UNAUTHORIZED`);
                 case 500: throw Error(`${response.status}: INTERNAL_SERVER_ERROR`);
                 case 502: throw Error(`${response.status}: BAD_GATEWAY`);
@@ -56,21 +59,7 @@ const getJsonFile = () => {
         })
         .then(json => {
             console.log(json)
-
             createTable(json)
-
-            // for (const item of json.items) {
-            //     // console.log(item)
-            //     resultList.insertAdjacentHTML('beforeend',
-            //         `<li data-theme="c">
-            //             <div>
-            //                 <a href=https://www.youtube.com/watch?v=${item.id.videoId}>
-            //                     ${item.snippet.title}
-            //                 </a>
-            //             </div>
-            //         </li>`
-            //     );
-            // }
 
             nextPageToken = json.nextPageToken;
             prevPageToken = json.prevPageToken;
@@ -90,7 +79,6 @@ const getJsonFile = () => {
 }
 
 const createTable = (json) => {
-    // while (resultList.firstChild) resultList.removeChild(resultList.firstChild);
     while (onairList.firstChild) onairList.removeChild(onairList.firstChild);
 
     // table要素を生成
@@ -137,9 +125,7 @@ const createTag_t = (tag, attr, text) => {
 searchButton.addEventListener('click', () => { currentPageNum = 1; update("") });
 nextButton.addEventListener('click', () => { currentPageNum++; update(nextPageToken) });
 prevButton.addEventListener('click', () => { currentPageNum--; update(prevPageToken) });
-
-// https://qiita.com/yasutomo99/items/1b7f1173c95d39c4db22
-
+emptyButton.addEventListener('click', () => { apiKey.value = "" });
 
 // test
 const testJson = {
