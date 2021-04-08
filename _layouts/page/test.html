@@ -4,15 +4,23 @@ layout: page
 {{ content }}
 
 <div id="player"></div>
-    <div class="">
-      <input id="inputText" type="text" name="" value="RTA">
+  <div class="">
+    <form id="eventTypeBox">
+      <input name="eventType" type="radio" value="video"> video
+      <input name="eventType" type="radio" value="live" checked> live
+    </form>
 
-      <button id="searchButton" type="button" name="button">検索</button>
-      <button id="nextButton" type="button" name="button">次へ</button>
-      <button id="prevButton" type="button" name="button">戻る</button>
-      <ul id="result">
+    <input id="inputText" type="text" name="" value="RTA">
+    <button id="searchButton" type="button" name="button">検索</button>
+    <button id="nextButton" type="button" name="button" disabled>次へ</button>
+    <button id="prevButton" type="button" name="button" disabled>戻る</button>
+    <div id="pageNum">--- / ---</div>
+    <div id="errorText" style="text-align: center; background-color: black; color: red;"></div>
+    <ul id="resultList">
 
-      </ul>
+    </ul>
+    <div id="onairList"></div>
+  </div>
 </div>
 
 <!-- https://qiita.com/yasutomo99/items/1b7f1173c95d39c4db22 -->

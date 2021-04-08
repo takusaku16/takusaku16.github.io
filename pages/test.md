@@ -8,3 +8,4 @@ permalink: /test/
 
 > https://qiita.com/yasutomo99/items/1b7f1173c95d39c4db22
 
+### 現在: 非リクエスト状態
