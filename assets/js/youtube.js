@@ -14,17 +14,35 @@ let pageToken = "";
 let nextPageToken = "";
 let prevPageToken = "";
 let currentPageNum = 1;
-const perPage = 10;
+const perPage = 1;
 
 // function -------------------------------------------------------------
-const update = (token) => {
+const update = async (token) => {
+    searchButton.disabled = true; // 連打対策
+    nextButton.disabled = true;
+    prevButton.disabled = true;
+    // -----------------------------------------
     pageToken = token;
+    errorText.textContent = ""
+    let json = testJson // 疑似構造で初期化
 
-    if(apiKey.value) getJsonFile(); // リクエスト
-    else {
-        errorText.textContent = ""
-        createTable(testJson); // 疑似構造でテスト
-    }
+    // リクエスト（待ち）
+    if(apiKey.value) json = await getJsonFile();
+
+    // 組み立て
+    createTable(json); 
+
+    nextPageToken = json.nextPageToken || "";
+    prevPageToken = json.prevPageToken || "";
+
+    const basePageNum = (currentPageNum - 1) * perPage
+    const totalResults = json.pageInfo ? json.pageInfo.totalResults : "---"
+    pageNum.textContent = `表示 ${basePageNum + 1} ~ ${basePageNum + perPage} : 約 ${totalResults}` 
+
+    // -----------------------------------------
+    prevButton.disabled = !prevPageToken ? true : false
+    nextButton.disabled = !nextPageToken ? true : false
+    searchButton.disabled = false;
 }
 
 // Youtube data api をjsonファイルで取得
@@ -38,47 +56,43 @@ const getJsonFile = () => {
         maxResults: perPage,
         pageToken: pageToken
     };
-    const radioNodeList = eventTypeBox.eventType ;
+    const radioNodeList = eventTypeBox.eventType
     if ( radioNodeList.value === "live" ) params.eventType = 'live' 
-
     const qs = new URLSearchParams(params);
-    fetch(`${url}?${qs}`)
-        .then(response => {
-            if (response.ok) return response.json();
-            switch (response.status) { // エラーハンドリング
-                case 400: 
-                    apiKey.value = ""
-                    throw Error(`${response.status}: INVALID_TOKEN`);
-                case 401: throw Error(`${response.status}: UNAUTHORIZED`);
-                case 500: throw Error(`${response.status}: INTERNAL_SERVER_ERROR`);
-                case 502: throw Error(`${response.status}: BAD_GATEWAY`);
-                case 403: throw Error(`${response.status}: FORBIDDEN: リクエスト上限に達しました。しばらく経ってからまた来てね`);
-                case 404: throw Error(`${response.status}: NOT_FOUND`);
-                default:  throw Error(`${response.status}: UNHANDLED_ERROR`);
-            } 
-        })
-        .then(json => {
-            console.log(json)
-            createTable(json)
+    
+    return fetch(`${url}?${qs}`).then(response => {
+        // Json を返して終わり
+        if (response.ok) return response.json();
 
-            nextPageToken = json.nextPageToken;
-            prevPageToken = json.prevPageToken;
-            pageNum.textContent = `表示 ${(currentPageNum - 1) * perPage + 1} ~ ${(currentPageNum - 1) * perPage + perPage} : 約 ${json.pageInfo.totalResults}` 
-
-            if(!nextPageToken) nextButton.disabled = true
-            else nextButton.disabled = false
-            if(!prevPageToken) prevButton.disabled = true
-            else prevButton.disabled = false
-
-            return ;
-        })
-        .catch(err => {
-            console.error(err)
-            errorText.textContent = err.message
+        // 終わらなかったら、エラーハンドリング
+        apiKey.value = ""
+        console.warn(`requestlink: ${url}?${qs}`)
+        console.warn(response)
+        return response.json().then((err) => {
+            const code = err.error.code
+            const message = err.error.message
+            switch (code) {
+                case 400: throw new Error(`${code}: INVALID_TOKEN\n${message}`);
+                case 401: throw new Error(`${code}: UNAUTHORIZED\n${message}`);
+                case 500: throw new Error(`${code}: INTERNAL_SERVER_ERROR\n${message}`);
+                case 502: throw new Error(`${code}: BAD_GATEWAY\n${message}`);
+                case 403: throw new Error(`${code}: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n${message}`);
+                case 404: throw new Error(`${code}: NOT_FOUND\n${message}`);
+                default:  throw new Error(`${code}: UNHANDLED_ERROR\n${message}`);
+            }
         });
+    })
+    .catch(err => {
+        console.error(err)
+        errorText.textContent = err.message
+        return []
+    });
 }
 
 const createTable = (json) => {
+    if(isEmpty(json)) return console.warn(`createTable : args is empty.`);
+
+    // 要素初期化
     while (onairList.firstChild) onairList.removeChild(onairList.firstChild);
 
     // table要素を生成
@@ -112,15 +126,34 @@ const createTable = (json) => {
     
     // 生成したtable要素を追加する
     onairList.appendChild(table);
+
+    // JQuery 行リンク作成
+    jQuery(($) => {
+        $('tbody tr[data-href]').addClass('clickable').delegate('*', 'click', function() {
+            if ( this.tagName !== 'A' ) {
+                window.open( $(this).parents('tr').data('href') , '_blank');
+            }
+            return false;
+        });
+    });
 }
 
 const createTag_t = (tag, attr, text) => {
-    let t = document.createElement(`${tag}`);
+    let t = document.createElement(`${tag}`)
     t.setAttribute('class', `${attr}`);
     t.textContent = `${text}`
     return t;
 }
 
+const isEmpty = (val) => {
+    if ( !val ) { // null, undefined,'', 0, false
+        if ( val !== 0 && val !== false ) return true;
+    }else if( typeof val == "object"){// array or object
+        return Object.keys(val).length === 0;
+    }
+
+    return false;//値は空ではない
+}
 // ===< addEventLister >=========================================================
 searchButton.addEventListener('click', () => { currentPageNum = 1; update("") });
 nextButton.addEventListener('click', () => { currentPageNum++; update(nextPageToken) });

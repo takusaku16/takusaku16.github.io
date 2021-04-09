@@ -2,13 +2,13 @@
 {%- assign prevNovelUrl = empty -%}
 {%- unless page.nextNovel == "" -%}
     {%- assign nextNovelUrl = site.posts | where_exp: "post", "post.path contains page.nextNovel" | map: "url" -%}
-    {%- if nextNovelUrl == empty -%}<div style="text-align: center; background-color: black; color: red;">ERROR: 指定された次章のURLが見つかりません</div>{%- endif -%}
-    {%- if nextNovelUrl.size > 1 -%}<div style="text-align: center; background-color: black; color: yellow;">WARN: 複数の次章URLがあります。</div>{%- endif -%}
+    {%- if nextNovelUrl == empty -%}<div id="errorText">ERROR: 指定された次章のURLが見つかりません</div>{%- endif -%}
+    {%- if nextNovelUrl.size > 1 -%}<div id="warnText">WARN: 複数の次章URLがあります。</div>{%- endif -%}
 {%- endunless -%}
 {%- unless page.prevNovel == "" -%}
     {%- assign prevNovelUrl = site.posts | where_exp: "post", "post.path contains page.prevNovel" | map: "url" -%}
-    {%- if prevNovelUrl == empty -%}<div style="text-align: center; background-color: black; color: red;">ERROR: 指定された前章のURLが見つかりません</div>{%- endif -%}
-    {%- if prevNovelUrl.size > 1 -%}<div style="text-align: center; background-color: black; color: yellow;">WARN: 複数の前章URLがあります。</div>{%- endif -%}
+    {%- if prevNovelUrl == empty -%}<div id="errorText">ERROR: 指定された前章のURLが見つかりません</div>{%- endif -%}
+    {%- if prevNovelUrl.size > 1 -%}<div id="warnText">WARN: 複数の前章URLがあります。</div>{%- endif -%}
 {%- endunless -%}
 
 <div id="book-ui-middle">
