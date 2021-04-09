@@ -1,63 +1,63 @@
 // JQuery用
-const J_bookTextCover = $('#book-text-cover');// JQuery メソッドを利用する用( animate )
+const J_bookTextCover = $('#book-text-cover')// JQuery メソッドを利用する用( animate )
 
 // 全体
-const siteHeader = document.getElementsByClassName('site-header')[0];
-const wrapper = document.getElementsByClassName('wrapper')[1]; // 1つ目はヘッダー
-const pageContent = document.getElementsByClassName('page-content')[0];
-const siteFooter = document.getElementsByClassName('site-footer')[0];
+const siteHeader = document.getElementsByClassName('site-header')[0]
+const wrapper = document.getElementsByClassName('wrapper')[1] // 1つ目はヘッダー
+const pageContent = document.getElementsByClassName('page-content')[0]
+const siteFooter = document.getElementsByClassName('site-footer')[0]
 
 // ui-header
-const leftButton = document.getElementById('leftButton');
-const rightButton = document.getElementById('rightButton');
-const pageNumMaxLabel = document.getElementById('pageNumMaxLabel');
-const fontFamilyLabel = document.getElementById('fontFamilyLabel');
-const fontFamilyBox = document.getElementById('fontFamilyBox');
-const fontSizeUpButton = document.getElementById('fontSizeUpButton');
-const fontSizeLabel = document.getElementById('fontSizeLabel');
-const fontSizeDownButton = document.getElementById('fontSizeDownButton');
-const fontSizeDefaultButton = document.getElementById('fontSizeDefaultButton');
-const fontSizeBox = document.getElementById('fontSizeBox');
-const multiButton = document.getElementById('multiButton');
-const spreadButton = document.getElementById('spreadButton');
-const halfButton = document.getElementById('halfButton');
-const backgroundColorpicker = document.getElementById("backgroundColorpicker");
-const fontColorpicker = document.getElementById("fontColorpicker");
-const pageTextColorpicker = document.getElementById("pageTextColorpicker");
-const pageContentColorpicker = document.getElementById("pageContentColorpicker");
-const colorThemeBox = document.getElementById("colorThemeBox");
-const deleteSession = document.getElementById("deleteSession");
+const leftButton = document.getElementById('leftButton')
+const rightButton = document.getElementById('rightButton')
+const pageNumMaxLabel = document.getElementById('pageNumMaxLabel')
+const fontFamilyLabel = document.getElementById('fontFamilyLabel')
+const fontFamilyBox = document.getElementById('fontFamilyBox')
+const fontSizeUpButton = document.getElementById('fontSizeUpButton')
+const fontSizeLabel = document.getElementById('fontSizeLabel')
+const fontSizeDownButton = document.getElementById('fontSizeDownButton')
+const fontSizeDefaultButton = document.getElementById('fontSizeDefaultButton')
+const fontSizeBox = document.getElementById('fontSizeBox')
+const multiButton = document.getElementById('multiButton')
+const spreadButton = document.getElementById('spreadButton')
+const halfButton = document.getElementById('halfButton')
+const backgroundColorpicker = document.getElementById("backgroundColorpicker")
+const fontColorpicker = document.getElementById("fontColorpicker")
+const pageTextColorpicker = document.getElementById("pageTextColorpicker")
+const pageContentColorpicker = document.getElementById("pageContentColorpicker")
+const colorThemeBox = document.getElementById("colorThemeBox")
+const deleteSession = document.getElementById("deleteSession")
 
 // ui-middle
-const readModeButton = document.getElementById('readModeButton');
-const pageNextLink = document.getElementById('page-nextLink');
-const pagePrevLink = document.getElementById('page-prevLink');
+const readModeButton = document.getElementById('readModeButton')
+const pageNextLink = document.getElementById('page-nextLink')
+const pagePrevLink = document.getElementById('page-prevLink')
 
 // ui-footer
-const getScroll = document.getElementById('getScroll');
-const scrollLeftLabel = document.getElementById('scrollLeftLabel');
+const getScroll = document.getElementById('getScroll')
+const scrollLeftLabel = document.getElementById('scrollLeftLabel')
 
 // book
-const book = document.getElementById('book');
-const bookTextCover = document.getElementById('book-text-cover');
-const bookTextAll = document.getElementById('book-text-all');
-const bookHeader = document.getElementById('book-header');
-const bookText = document.getElementById('book-text');
-const bookPageNum = document.getElementById('book-pageNum');
-const bookOverlay = document.getElementById('book-overlay');
-const bookUiHeader = document.getElementById('book-ui-header');
-const bookUiFooter = document.getElementById('book-ui-footer');
-const bookEndText = document.getElementById('book-endText');
+const book = document.getElementById('book')
+const bookTextCover = document.getElementById('book-text-cover')
+const bookTextAll = document.getElementById('book-text-all')
+const bookHeader = document.getElementById('book-header')
+const bookText = document.getElementById('book-text')
+const bookPageNum = document.getElementById('book-pageNum')
+const bookOverlay = document.getElementById('book-overlay')
+const bookUiHeader = document.getElementById('book-ui-header')
+const bookUiFooter = document.getElementById('book-ui-footer')
+const bookEndText = document.getElementById('book-endText')
 
 // 定数
 const fadeTime = 300
 const fadeChangeNumberTime = 100
-const bookInitialWidth = 594;
-const bookPadding = 36 * 2;
+const bookInitialWidth = 594
+const bookPadding = 36 * 2
 
 // 初期値 : book関連
-let bookWidth = bookInitialWidth;
-let bookMoveScroll = bookWidth;
+let bookWidth = bookInitialWidth
+let bookMoveScroll = bookWidth
 let pageNumMax = 0
 let pageNum = 1
 let remainPageAnimationNum = 0
@@ -89,20 +89,20 @@ const nextPage = () => {
     let bookScrollLeftAfter = bookMoveScroll * ((pageNum - 1) + 1) * -1
     if(bookScrollLeftAfter < (bookTextAll.clientWidth * -1) + (bookMoveScroll) ) {
         bookScrollLeftAfter = (bookTextAll.clientWidth * -1) + (bookMoveScroll)
-        if(bookTextCover.scrollLeft === bookScrollLeftAfter) return;
+        if(bookTextCover.scrollLeft === bookScrollLeftAfter) return
     }
     if(pageNum < pageNumMax) pageNum++
-    updateSetting();
-    bookPageNum.classList.add('left');
+    updateSetting()
+    bookPageNum.classList.add('left')
     remainPageAnimationNum++
     if(remainPageAnimationNum === 1) {
-        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, fadeTime, 'swing');
-        setTimeout(function() { bookPageNum.classList.remove('left');   remainPageAnimationNum-- }, fadeTime);
-        setTimeout(function() { bookPageNum.textContent = `${pageNum}`; }, fadeChangeNumberTime);
+        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, fadeTime, 'swing')
+        setTimeout(function() { bookPageNum.classList.remove('left');   remainPageAnimationNum-- }, fadeTime)
+        setTimeout(function() { bookPageNum.textContent = `${pageNum}` }, fadeChangeNumberTime)
     } else {
-        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, 0, 'swing');
-        setTimeout(function() { bookPageNum.classList.remove('left');   remainPageAnimationNum-- }, 0);
-        setTimeout(function() { bookPageNum.textContent = `${pageNum}`; }, 0);
+        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, 0, 'swing')
+        setTimeout(function() { bookPageNum.classList.remove('left');   remainPageAnimationNum-- }, 0)
+        setTimeout(function() { bookPageNum.textContent = `${pageNum}` }, 0)
     }
 }
 const prevPage = () => {
@@ -110,20 +110,20 @@ const prevPage = () => {
     let bookScrollLeftAfter = bookMoveScroll * ((pageNum - 1) - 1) * -1
     if(bookScrollLeftAfter > 0) {
         bookScrollLeftAfter = 0
-        if(bookTextCover.scrollLeft === bookScrollLeftAfter) return;
+        if(bookTextCover.scrollLeft === bookScrollLeftAfter) return
     }
     if(pageNum > 1) pageNum--
-    updateSetting();
-    bookPageNum.classList.add('right');
+    updateSetting()
+    bookPageNum.classList.add('right')
     remainPageAnimationNum++
     if(remainPageAnimationNum === 1) {
-        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, fadeTime, 'swing');
-        setTimeout(function() { bookPageNum.classList.remove('right');   remainPageAnimationNum-- }, fadeTime);
-        setTimeout(function() { bookPageNum.textContent = `${pageNum}`; }, fadeChangeNumberTime);
+        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, fadeTime, 'swing')
+        setTimeout(function() { bookPageNum.classList.remove('right');   remainPageAnimationNum-- }, fadeTime)
+        setTimeout(function() { bookPageNum.textContent = `${pageNum}` }, fadeChangeNumberTime)
     } else {
-        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, 0, 'swing');
-        setTimeout(function() { bookPageNum.classList.remove('right');   remainPageAnimationNum-- }, 0);
-        setTimeout(function() { bookPageNum.textContent = `${pageNum}`; }, 0);
+        J_bookTextCover.animate({ scrollLeft: bookScrollLeftAfter }, 0, 'swing')
+        setTimeout(function() { bookPageNum.classList.remove('right');   remainPageAnimationNum-- }, 0)
+        setTimeout(function() { bookPageNum.textContent = `${pageNum}` }, 0)
     }
 }
 const changeReadMode = () => {
@@ -148,7 +148,7 @@ const changeBookSize = (afterWidth, doUpdate = true) => {
     book.style.width = `${bookWidth + bookPadding}px`
     bookOverlay.style.width = `${bookWidth + bookPadding}px`
     bookTextCover.style.width = `${bookWidth}px`
-    if(doUpdate) updateSetting();
+    if(doUpdate) updateSetting()
 }
 const changeColorTheme = (theme, doUpdate = true) => {
     if(theme === "light"){
@@ -172,30 +172,30 @@ const changeColorTheme = (theme, doUpdate = true) => {
     pageTextColorpicker.value = pageTextColor
     pageContentColorpicker.value = pageContentColor
     colorThemeBox.value = theme
-    if(doUpdate) updateSetting();
+    if(doUpdate) updateSetting()
 }
 const storeSession = () => {
     let isReadMode = 0
     if(siteHeader.style.display === "none") isReadMode = 1
-    sessionStorage.setItem('isReadMode', isReadMode);
-    sessionStorage.setItem('sessionFontSize', fontSize);
-    sessionStorage.setItem('sessionBookWidth', bookWidth);
-    sessionStorage.setItem('sessionBackgroundColor', backgroundColor);
-    sessionStorage.setItem('sessionFontColor', fontColor);
-    sessionStorage.setItem('sessionPageTextColor', pageTextColor);
-    sessionStorage.setItem('sessionPageContentColor', pageContentColor);
+    sessionStorage.setItem('isReadMode', isReadMode)
+    sessionStorage.setItem('sessionFontSize', fontSize)
+    sessionStorage.setItem('sessionBookWidth', bookWidth)
+    sessionStorage.setItem('sessionBackgroundColor', backgroundColor)
+    sessionStorage.setItem('sessionFontColor', fontColor)
+    sessionStorage.setItem('sessionPageTextColor', pageTextColor)
+    sessionStorage.setItem('sessionPageContentColor', pageContentColor)
 }
 
 // ===< addEventLister >~~=======================================================
 // init ----------------------------------------------------------------
 window.addEventListener('DOMContentLoaded', () => {
-    const sessionBookWidth = parseInt(sessionStorage.getItem('sessionBookWidth'),10);
-    const sessionFontSize = parseInt(sessionStorage.getItem('sessionFontSize'),10);
+    const sessionBookWidth = parseInt(sessionStorage.getItem('sessionBookWidth'),10)
+    const sessionFontSize = parseInt(sessionStorage.getItem('sessionFontSize'),10)
     const isReadMode = Boolean(parseInt(sessionStorage.getItem('isReadMode'),10))
-    const sessionBackgroundColor = sessionStorage.getItem('sessionBackgroundColor');
-    const sessionFontColor = sessionStorage.getItem('sessionFontColor');
-    const sessionPageTextColor = sessionStorage.getItem('sessionPageTextColor');
-    const sessionPageContentColor = sessionStorage.getItem('sessionPageContentColor');
+    const sessionBackgroundColor = sessionStorage.getItem('sessionBackgroundColor')
+    const sessionFontColor = sessionStorage.getItem('sessionFontColor')
+    const sessionPageTextColor = sessionStorage.getItem('sessionPageTextColor')
+    const sessionPageContentColor = sessionStorage.getItem('sessionPageContentColor')
     
     if(isReadMode) changeReadMode()
     if(sessionBackgroundColor) {
@@ -220,21 +220,21 @@ deleteSession.addEventListener('click', (event) => {
     sessionStorage.removeItem('sessionFontColor')
     sessionStorage.removeItem('sessionPageTextColor')
     sessionStorage.removeItem('sessionPageContentColor')
-});
+})
 
 // book, 入力 ----------------------------------------------------------
 //    < scroll - mouse >
 bookOverlay.addEventListener('click', (event) => {
-    if(event.offsetX < bookWidth /2) nextPage();
-    else prevPage();
-});
+    if(event.offsetX < bookWidth /2) nextPage()
+    else prevPage()
+})
 
 //    < key >
 document.body.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft' || event.key === 'Left') nextPage()
     if (event.key === 'ArrowRight' || event.key === 'Right') prevPage()
-    if (event.key === 'ArrowUp' || event.key === 'Up') { fontSize++; updateSetting(); }
-    if (event.key === 'ArrowDown' || event.key === 'Down') { fontSize--; updateSetting(); }
+    if (event.key === 'ArrowUp' || event.key === 'Up') { fontSize++; updateSetting() }
+    if (event.key === 'ArrowDown' || event.key === 'Down') { fontSize--; updateSetting() }
     if (event.key === 'f') changeReadMode()
     if (event.key === 'l') changeColorTheme("light")
     if (event.key === 'd') changeColorTheme("dark")
@@ -242,74 +242,74 @@ document.body.addEventListener('keydown', (event) => {
     if (event.key === 'm') changeBookSize(bookInitialWidth * 2)
     if (event.key === 's') changeBookSize(bookInitialWidth)
     if (event.key === 'h') changeBookSize(bookInitialWidth / 2)
-});
+})
 
 // スワイプ ------------------------------------------------------------
-let startX = null;
-let startY = null;
-let endX = null;
-let endY = null;
+let startX = null
+let startY = null
+let endX = null
+let endY = null
 const logSwipeStart = (event) => {
-    event.preventDefault();
-    startX = event.touches[0].pageX;
-    startY = event.touches[0].pageY;
+    event.preventDefault()
+    startX = event.touches[0].pageX
+    startY = event.touches[0].pageY
 }
 const logSwipe = (event) => {
-    event.preventDefault();
-    endX = event.touches[0].pageX;
-    endY = event.touches[0].pageY;
+    event.preventDefault()
+    endX = event.touches[0].pageX
+    endY = event.touches[0].pageY
 }
 const logSwipeEnd = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if(Math.abs(endY - startY) - Math.abs(endX - startX) > 0) {
         // 縦方向のスワイプが大きい場合、縦スクロール
-        if( 0 < (endY - startY) ) scrollTo(0, bookOverlay.getBoundingClientRect().top); // 下向き
-        else scrollTo(0, readModeButton.getBoundingClientRect().top); // 上向き
+        if( 0 < (endY - startY) ) scrollTo(0, bookOverlay.getBoundingClientRect().top) // 下向き
+        else scrollTo(0, readModeButton.getBoundingClientRect().top) // 上向き
     } else {
         // 横方向のスワイプが大きい場合、ページを進める/戻す
-        if( 0 < (endX - startX) ) nextPage(); // 右向き
-        else prevPage();   // 左向き
+        if( 0 < (endX - startX) ) nextPage() // 右向き
+        else prevPage()   // 左向き
     }
 }
-bookOverlay.addEventListener('touchmove', logSwipe, { passive: false });
-bookOverlay.addEventListener('touchstart', logSwipeStart, { passive: false });
-bookOverlay.addEventListener('touchend', logSwipeEnd, { passive: false });
+bookOverlay.addEventListener('touchmove', logSwipe, { passive: false })
+bookOverlay.addEventListener('touchstart', logSwipeStart, { passive: false })
+bookOverlay.addEventListener('touchend', logSwipeEnd, { passive: false })
 
 // ui-header------------------------------------------------------------
 //    < fontFamily >
-fontFamilyBox.addEventListener('change', (event) => { fontFamily = event.currentTarget.value; updateSetting(); });
+fontFamilyBox.addEventListener('change', (event) => { fontFamily = event.currentTarget.value; updateSetting() })
 
 //    < color >
-colorThemeBox.addEventListener('change', (event) => { changeColorTheme(event.currentTarget.value) });
-backgroundColorpicker.addEventListener('change', (event) => { backgroundColor = event.currentTarget.value; updateSetting(); });
-fontColorpicker.addEventListener('change', (event) => { fontColor = event.currentTarget.value; updateSetting(); });
-pageTextColorpicker.addEventListener('change', (event) => { pageTextColor = event.currentTarget.value; updateSetting(); });
-pageContentColorpicker.addEventListener('change', (event) => { pageContentColor = event.currentTarget.value; updateSetting(); });
+colorThemeBox.addEventListener('change', (event) => { changeColorTheme(event.currentTarget.value) })
+backgroundColorpicker.addEventListener('change', (event) => { backgroundColor = event.currentTarget.value; updateSetting() })
+fontColorpicker.addEventListener('change', (event) => { fontColor = event.currentTarget.value; updateSetting() })
+pageTextColorpicker.addEventListener('change', (event) => { pageTextColor = event.currentTarget.value; updateSetting() })
+pageContentColorpicker.addEventListener('change', (event) => { pageContentColor = event.currentTarget.value; updateSetting() })
 
 //    < scroll >
-leftButton.addEventListener('click', nextPage);
-rightButton.addEventListener('click', prevPage);
+leftButton.addEventListener('click', nextPage)
+rightButton.addEventListener('click', prevPage)
 
 //    < fontSize >
-fontSizeUpButton.addEventListener('click', () => { fontSize++; updateSetting(); });
-fontSizeDownButton.addEventListener('click', () => { fontSize--; updateSetting(); });
-fontSizeDefaultButton.addEventListener('click', () => { fontSize = 18; updateSetting(); });
-fontSizeBox.addEventListener('change', (event) => { fontSize = event.currentTarget.value; updateSetting(); });
+fontSizeUpButton.addEventListener('click', () => { fontSize++; updateSetting() })
+fontSizeDownButton.addEventListener('click', () => { fontSize--; updateSetting() })
+fontSizeDefaultButton.addEventListener('click', () => { fontSize = 18; updateSetting() })
+fontSizeBox.addEventListener('change', (event) => { fontSize = event.currentTarget.value; updateSetting() })
 
 //    < bookSize >
-multiButton.addEventListener('click', () => { changeBookSize(bookInitialWidth * 2) });
-spreadButton.addEventListener('click', () => { changeBookSize(bookInitialWidth) });
-halfButton.addEventListener('click', () => { changeBookSize(bookInitialWidth / 2) });
+multiButton.addEventListener('click', () => { changeBookSize(bookInitialWidth * 2) })
+spreadButton.addEventListener('click', () => { changeBookSize(bookInitialWidth) })
+halfButton.addEventListener('click', () => { changeBookSize(bookInitialWidth / 2) })
 
 // ui-middle------------------------------------------------------------
 //    < readMode >
-readModeButton.addEventListener('click', changeReadMode);
-pageNextLink.addEventListener('click', storeSession);
-pagePrevLink.addEventListener('click', storeSession);
+readModeButton.addEventListener('click', changeReadMode)
+pageNextLink.addEventListener('click', storeSession)
+pagePrevLink.addEventListener('click', storeSession)
 
 
 // ui-footer -----------------------------------------------------------
 getScroll.addEventListener('click', () => {
     scrollLeftLabel.textContent = `scrollLeft: ${bookTextCover.scrollLeft} : ${bookTextAll.clientWidth} : ${bookMoveScroll}`
-});
+})
 
