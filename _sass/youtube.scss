@@ -2,64 +2,84 @@
 * Youtube
 */
 #onairList {
-    table{
+    table {
         border-collapse: collapse;
         border-spacing: 0;
         width: 80%;
         margin: auto;
         table-layout: fixed;
+        font-size: 12px;
+        border-style: solid dotted;
+
+        tbody {
+            white-space: nowrap;
+        }
+
+        tr {
+            border-bottom: solid 1px #eee;
+            cursor: pointer;
+
+            &:hover{
+                background-color: #d4f0fd;
+            }
+
+            th, td{
+                text-align: center;
+                width: 25%;
+                padding: 10px 0;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                border-style: solid dashed; /* 線種 */
+                border-width: 1px; /* 線の太さ */
+                border-color: green gray; /* 線色 */
+            }
+
+            th {
+                &.no {
+                    width: 26px;
+                }
+
+                &.channelTitle {
+                    width: 90px;
+                }
+
+                &.title {
+                    width: 350px;
+                }
+
+                &.publishedAt {
+                    width: 140px;
+                }
+
+                &.description {
+                    // width: 130px;
+                    width: 270px;
+                }
+            }
+
+            td {
+                &.no {
+                }
+
+                &.channelTitle {
+                    padding-left: 5px;
+                    text-align: left;
+                }
+                
+                &.title {
+                    padding-left: 5px;
+                    text-align: left;
+                }
+
+                &.publishedAt {
+                }
+
+                &.description {
+                    padding-left: 5px;
+                }
+            }
+        }
     }
-
-    table tr{
-        border-bottom: solid 1px #eee;
-        cursor: pointer;
-    }
-
-    table tr:hover{
-        background-color: #d4f0fd;
-    }
-
-    table th,table td{
-        text-align: center;
-        width: 25%;
-        padding: 10px 0;
-
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    table th, table td {
-        border-style: solid dashed; /* 線種 */
-        border-width: 1px; /* 線の太さ */
-        border-color: green gray; /* 線色 */
-    }
-
-    table td .icon img{
-        width: 35px;
-    }
-
-
-    table th.image {
-        width:35px;
-    }
-
-    table th.communityText {
-        width:120px;
-    }
-
-    table th.number {
-        width:45px;
-    }
-
-    table td.communityText {
-        padding-left: 15px;
-        text-align: left;
-    }
-
-    table td.text {
-        padding-left: 15px;
-        text-align: left;
-    }
-
 }

@@ -10,14 +10,25 @@ layout: page
   <button id="emptyButton" type="button" name="button">空</button>
   
   <div>
-    <form id="eventTypeBox">
+    <label>
+      <select id="getPageNumBox">
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20" selected>20</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+      </select>
+    </label>
+    <form id="eventTypeBox" style="display: inline-block;">
       <input name="eventType" type="radio" value="video"> video
       <input name="eventType" type="radio" value="live" checked> live
     </form>
     <input id="inputText" type="text" name="" value="RTA">
-    <button id="searchButton" type="button" name="button">検索</button>
-    <button id="nextButton" type="button" name="button" disabled>次へ</button>
-    <button id="prevButton" type="button" name="button" disabled>戻る</button>
+    <button id="searchButton" type="button">検索</button>
+    <button id="nextButton" type="button" disabled>次へ</button>
+    <button id="prevButton" type="button" disabled>戻る</button>
+    <button id="whiteSpaceButton" type="button" disabled>開閉</button>
     <div id="pageNum">--- / ---</div>
   </div>
 

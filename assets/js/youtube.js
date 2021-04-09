@@ -8,19 +8,22 @@ const eventTypeBox = document.getElementById('eventTypeBox')
 const pageNum = document.getElementById('pageNum')
 const errorText = document.getElementById('errorText')
 const onairList = document.getElementById('onairList')
+const getPageNumBox = document.getElementById('getPageNumBox')
+const whiteSpaceButton = document.getElementById('whiteSpaceButton')
 
 // ページトークンの初期化
 let pageToken = ""
 let nextPageToken = ""
 let prevPageToken = ""
 let currentPageNum = 1
-const perPage = 1
+let perPage = 20
 
 // function -------------------------------------------------------------
 const update = async (token) => {
     searchButton.disabled = true // 連打対策
     nextButton.disabled = true
     prevButton.disabled = true
+    whiteSpaceButton.disabled = true
     // -----------------------------------------
     pageToken = token
     errorText.textContent = ""
@@ -40,6 +43,7 @@ const update = async (token) => {
     pageNum.textContent = `表示 ${basePageNum + 1} ~ ${basePageNum + perPage} : 約 ${totalResults}` 
 
     // -----------------------------------------
+    whiteSpaceButton.disabled = false
     prevButton.disabled = !prevPageToken ? true : false
     nextButton.disabled = !nextPageToken ? true : false
     searchButton.disabled = false
@@ -61,26 +65,26 @@ const getJsonFile = () => {
     const qs = new URLSearchParams(params)
     
     return fetch(`${url}?${qs}`).then(response => {
-        // Json を返して終わり
-        if (response.ok) return response.json()
-
-        // 終わらなかったら、エラーハンドリング
-        apiKey.value = ""
-        console.warn(`requestlink: ${url}?${qs}`)
-        console.warn(response)
-        return response.json().then((err) => {
-            const code = err.error.code
-            const message = err.error.message
-            switch (code) {
-                case 400: throw new Error(`${code}: INVALID_TOKEN\n${message}`)
-                case 401: throw new Error(`${code}: UNAUTHORIZED\n${message}`)
-                case 500: throw new Error(`${code}: INTERNAL_SERVER_ERROR\n${message}`)
-                case 502: throw new Error(`${code}: BAD_GATEWAY\n${message}`)
-                case 403: throw new Error(`${code}: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n${message}`)
-                case 404: throw new Error(`${code}: NOT_FOUND\n${message}`)
-                default:  throw new Error(`${code}: UNHANDLED_ERROR\n${message}`)
-            }
-        })
+        if (!response.ok) { // エラーハンドリング
+            apiKey.value = ""
+            console.warn(`requestlink: ${url}?${qs}`)
+            console.warn(response)
+            return response.json().then((err) => {
+                const code = err.error.code
+                const message = err.error.message
+                switch (code) {
+                    case 400: throw new Error(`${code}: INVALID_TOKEN\n${message}`)
+                    case 401: throw new Error(`${code}: UNAUTHORIZED\n${message}`)
+                    case 500: throw new Error(`${code}: INTERNAL_SERVER_ERROR\n${message}`)
+                    case 502: throw new Error(`${code}: BAD_GATEWAY\n${message}`)
+                    case 403: throw new Error(`${code}: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n${message}`)
+                    case 404: throw new Error(`${code}: NOT_FOUND\n${message}`)
+                    default:  throw new Error(`${code}: UNHANDLED_ERROR\n${message}`)
+                }
+            })
+        }
+        
+        return response.json()
     })
     .catch(err => {
         console.error(err)
@@ -99,24 +103,27 @@ const createTable = (json) => {
     let table = document.createElement('table')
     let thead = document.createElement('thead')
     let tbody = document.createElement('tbody')
+    tbody.setAttribute('id', `tbody`)
 
     // th部分の作成
     let tr = document.createElement('tr')
-    tr.appendChild( createTag_t('th', 'text', 'channelTitle') )
-    tr.appendChild( createTag_t('th', 'text', 'title') )
-    tr.appendChild( createTag_t('th', 'text', 'description') )
-    tr.appendChild( createTag_t('th', 'text', 'publishedAt') )
+    tr.appendChild( createTag_t('th', 'no', 'No') )
+    tr.appendChild( createTag_t('th', 'channelTitle', 'channelTitle') )
+    tr.appendChild( createTag_t('th', 'title', 'title') )
+    // tr.appendChild( createTag_t('th', 'publishedAt', 'publishedAt') )
+    tr.appendChild( createTag_t('th', 'description', 'description') )
     thead.appendChild(tr)
-
+    
     // tr部分のループ
+    let number = (currentPageNum - 1) * perPage
     for (const item of json.items) {
-        console.log(item)
         tr = document.createElement('tr')
         tr.setAttribute("data-href", `https://www.youtube.com/watch?v=${item.id.videoId}`)
-        tr.appendChild( createTag_t('td', 'text', item.snippet.channelTitle) )
-        tr.appendChild( createTag_t('td', 'text', item.snippet.title) )
-        tr.appendChild( createTag_t('td', 'text', item.snippet.description) )
-        tr.appendChild( createTag_t('td', 'text', item.snippet.publishedAt) )
+        tr.appendChild( createTag_t('td', 'no', ++number) )
+        tr.appendChild( createTag_t('td', 'channelTitle', item.snippet.channelTitle) )
+        tr.appendChild( createTag_t('td', 'title', item.snippet.title) )
+        // tr.appendChild( createTag_t('td', 'publishedAt', item.snippet.publishedAt) )
+        tr.appendChild( createTag_t('td', 'description', item.snippet.description) )
         tbody.appendChild(tr)
     }
 
@@ -155,10 +162,19 @@ const isEmpty = (val) => {
     return false//値は空ではない
 }
 // ===< addEventLister >=========================================================
+getPageNumBox.addEventListener('change', (event) => { perPage = event.currentTarget.value })
 searchButton.addEventListener('click', () => { currentPageNum = 1; update("") })
 nextButton.addEventListener('click', () => { currentPageNum++; update(nextPageToken) })
 prevButton.addEventListener('click', () => { currentPageNum--; update(prevPageToken) })
 emptyButton.addEventListener('click', () => { apiKey.value = "" })
+whiteSpaceButton.addEventListener('click', () => {
+    const tbody = document.getElementById('tbody')
+    if (tbody.style.whiteSpace === "nowrap" || tbody.style.whiteSpace === "") {
+        tbody.style.whiteSpace = "normal";
+    } else {
+        tbody.style.whiteSpace = "nowrap";
+    }
+})
 
 // test
 const testJson = {
@@ -172,53 +188,76 @@ const testJson = {
     },
     "items": [
         {
-            "kind": "youtube#searchResult",
-            "etag": 'etag',
-            "id": {
-                "kind": 'kind: string',
-                "videoId": 'videoId: string',
-                "channelId": 'channelId: string',
-                "playlistId": 'playlistId: string'
-            },
+            "id": { "channelId": 'channelId: string',},
             "snippet": {
-                "publishedAt": 'publishedAt: datetime',
-                "channelId": 'channelId: string',
-                "title": 'title: string',
-                "description": 'description: string',
-                "thumbnails": {
-                    'key': {
-                        "url": 'url: string',
-                        "width": 'width: unsigned integer',
-                        "height": 'height: unsigned integer'
-                    }
-                },
-                "channelTitle": 'channelTitle: string'
+                "channelTitle": 'たろう',
+                "title": '【RTA】走り切ってやるぜ【VTuber】',
+                "description": 'こんな感じで表示されます。まあまあ良さそうですかね。人それぞれあると思いますが。',
             }
         },
         {
-            "kind": "youtube#searchResult",
-            "etag": 'etag',
-            "id": {
-                "kind": 'kind: string',
-                "videoId": 'videoId: string',
-                "channelId": 'channelId: string',
-                "playlistId": 'playlistId: string'
-            },
+            "id": { "channelId": 'channelId: string',},
             "snippet": {
-                "publishedAt": 'publishedAt: datetime',
-                "channelId": 'channelId: string',
-                "title": 'title: string',
-                "description": 'description: string',
-                "thumbnails": {
-                    'key': {
-                        "url": 'url: string',
-                        "width": 'width: unsigned integer',
-                        "height": 'height: unsigned integer'
-                    }
-                },
-                "channelTitle": 'channelTitle: string'
+                "channelTitle": 'キララ☆ラキ',
+                "title": '雑にやる天空ドドメキチャート 32日目',
+                "description": '開閉ボタンを押すとDescriptionを全部読めます。',
             }
-        }
-
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": 'あ',
+                "title": '世界記録を出すまで寝ないでやるRTA',
+                "description": 'タウンページみたいに一覧で見たいという欲求があるが、どこにもないので、作った。しかし、リクエスト数の制限の話もあるので、気軽に使えない。けど、まあ良いか。',
+            }
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": '名無しさん',
+                "title": '賑やかし',
+                "description": 'ちなみにクリックするとYoutubeページに飛べます（これだと飛べないですが、飛べます）',
+            }
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": '名無しさん',
+                "title": '賑やかし',
+                "description": 'RTAありがてえ',
+            }
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": '名無しさん',
+                "title": '賑やかし',
+                "description": 'わーわー',
+            }
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": '名無しさん',
+                "title": '賑やかし',
+                "description": 'わーわー',
+            }
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": '名無しさん',
+                "title": '賑やかし',
+                "description": 'わーわー',
+            }
+        },
+        {
+            "id": { "channelId": 'channelId: string',},
+            "snippet": {
+                "channelTitle": '名無しさん',
+                "title": '賑やかし',
+                "description": 'わーわー',
+            }
+        },
     ]
 }
