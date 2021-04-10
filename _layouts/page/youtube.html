@@ -6,7 +6,11 @@ layout: page
 <div id="player"></div>
   {% assign apiKey = site.data.key[0].youtubeApiKey %}
   <span>API Key: </span>
+  {% if apiKey %}
   <input id="apiKey" type="text" name="" value="{{ apiKey }}">
+  {% else %}
+  <span id="apiKey"></span>
+  {% endif %}
   <button id="emptyButton" type="button" name="button">空</button>
   
   <div>

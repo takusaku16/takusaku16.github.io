@@ -50,7 +50,7 @@ const update = async (token) => {
 }
 
 // Youtube data api をjsonファイルで取得
-const getJsonFile = () => {
+const getJsonFile = async () => {
     const url = "https://www.googleapis.com/youtube/v3/search"
     let params = {
         key: apiKey.value,
@@ -64,33 +64,33 @@ const getJsonFile = () => {
     if ( radioNodeList.value === "live" ) params.eventType = 'live' 
     const qs = new URLSearchParams(params)
     
-    return fetch(`${url}?${qs}`).then(response => {
+    try {
+        const response = await fetch(`${url}?${qs}`)
         if (!response.ok) { // エラーハンドリング
             apiKey.value = ""
             console.warn(`requestlink: ${url}?${qs}`)
             console.warn(response)
-            return response.json().then((err) => {
-                const code = err.error.code
-                const message = err.error.message
-                switch (code) {
-                    case 400: throw new Error(`${code}: INVALID_TOKEN\n${message}`)
-                    case 401: throw new Error(`${code}: UNAUTHORIZED\n${message}`)
-                    case 500: throw new Error(`${code}: INTERNAL_SERVER_ERROR\n${message}`)
-                    case 502: throw new Error(`${code}: BAD_GATEWAY\n${message}`)
-                    case 403: throw new Error(`${code}: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n${message}`)
-                    case 404: throw new Error(`${code}: NOT_FOUND\n${message}`)
-                    default:  throw new Error(`${code}: UNHANDLED_ERROR\n${message}`)
-                }
-            })
+            const err = await response.json()
+            const code = err.error.code
+            const message = err.error.message
+            switch (code) {
+                case 400: throw new Error(`${code}: INVALID_TOKEN\n${message}`)
+                case 401: throw new Error(`${code}: UNAUTHORIZED\n${message}`)
+                case 500: throw new Error(`${code}: INTERNAL_SERVER_ERROR\n${message}`)
+                case 502: throw new Error(`${code}: BAD_GATEWAY\n${message}`)
+                case 403: throw new Error(`${code}: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n${message}`)
+                case 404: throw new Error(`${code}: NOT_FOUND\n${message}`)
+                default:  throw new Error(`${code}: UNHANDLED_ERROR\n${message}`)
+            }
         }
         
-        return response.json()
-    })
-    .catch(err => {
+        return await response.json()
+
+    } catch (err) {
         console.error(err)
         errorText.textContent = err.message
         return []
-    })
+    }
 }
 
 const createTable = (json) => {

@@ -5,8 +5,8 @@
   showCategory: false
 - type: tech
   categories: 
+    - javascript
     - jekyll
-    - 麻雀
   showCategory: true
 - type: novel
   categories: 
