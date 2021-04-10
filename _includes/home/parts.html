@@ -19,10 +19,21 @@
                 </span>
             {%- endif -%}
 
+            {%- assign now = site.time | date: "%Y%m%d" -%}
+            {%- assign post_date = post.date | date: "%Y%m%d" -%}
+            {%- assign recent = now | minus: post_date -%}
             <h3>
-                <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                </a>
+                <span class="post-link">
+                    {%- if recent < 3 -%}
+                    <span class="annotation new">New!</span>
+                    {%- endif -%}
+                    <a href="{{ post.url | relative_url }}">
+                        {{ post.title | escape }}
+                    </a>
+                    {%- if recent < 7 -%}
+                    <span class="annotation week">week</span>
+                    {%- endif -%}
+                </span>
             </h3>
 
             {%- if site.show_excerpts -%}

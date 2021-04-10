@@ -221,8 +221,46 @@
 }
 
 .post-link {
-  display: block;
+  position: relative;
   @include relative-font-size(1.5);
+
+  .annotation {
+    position       : absolute;
+    top            : 8px;
+    font-weight    : bold;
+    border-radius  : 8px;
+    font-size      : 10px;
+    letter-spacing : -1px;
+    padding        : 0px 6px;
+  }
+  .new {
+    left           : -38px;
+    background     : #ff0000;
+    color          : #ffffff;
+    animation      : newAnime .8s infinite alternate;
+  }
+  @keyframes newAnime {
+    0% {  color      : #ff0000;          /* ブリンク時の文字色      */
+          background : #ffffff;          /* ブリンク時の背景色      */
+        }
+  100% {  color      : #ffffff;          /* ブリンク時の文字色      */
+          background : #ff0000;          /* ブリンク時の背景色      */
+        }
+  }
+  .week {
+    right          : -38px;
+    background     : #0000ff;
+    color          : #ffffff;
+    animation      : weekAnime .8s infinite alternate;
+  }
+  @keyframes weekAnime {
+    0% {  color      : #0000ff;          /* ブリンク時の文字色      */
+          background : #ffffff;          /* ブリンク時の背景色      */
+        }
+  100% {  color      : #ffffff;          /* ブリンク時の文字色      */
+          background : #0000ff;          /* ブリンク時の背景色      */
+        }
+  }
 }
 
 .post-yp-list {
