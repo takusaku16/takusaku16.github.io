@@ -221,20 +221,18 @@
 }
 
 .post-link {
-  position: relative;
   @include relative-font-size(1.5);
 
   .annotation {
-    position       : absolute;
-    top            : 8px;
     font-weight    : bold;
     border-radius  : 8px;
     font-size      : 10px;
     letter-spacing : -1px;
     padding        : 0px 6px;
+    vertical-align : middle;
   }
   .new {
-    left           : -38px;
+    margin-left    : -38px;
     background     : #ff0000;
     color          : #ffffff;
     animation      : newAnime .8s infinite alternate;
@@ -248,7 +246,7 @@
         }
   }
   .week {
-    right          : -38px;
+    margin-right   : -38px;
     background     : #0000ff;
     color          : #ffffff;
     animation      : weekAnime .8s infinite alternate;

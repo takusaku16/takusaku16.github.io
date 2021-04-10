@@ -23,7 +23,7 @@
             {%- assign post_date = post.date | date: "%Y%m%d" -%}
             {%- assign recent = now | minus: post_date -%}
             <h3>
-                <span class="post-link">
+                <div class="post-link">
                     {%- if recent < 3 -%}
                     <span class="annotation new">New!</span>
                     {%- endif -%}
@@ -33,7 +33,7 @@
                     {%- if recent < 7 -%}
                     <span class="annotation week">week</span>
                     {%- endif -%}
-                </span>
+                </div>
             </h3>
 
             {%- if site.show_excerpts -%}
