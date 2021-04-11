@@ -20,10 +20,39 @@
         </h4>
 
         {%- for post in posts_cateogry -%}
-        <li>
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </li>
+            {%- comment -%} 未来の記事は飛ばす ※github pages では日付に関係なく表示されるため {%- endcomment -%}
+            {%- assign nowDateTime = site.time | date: "%Y%m%d%H%M%S" -%}
+            {%- assign postDateTime = post.date | date: "%Y%m%d%H%M%S" -%}
+            {%- assign recentDateTime = nowDateTime | minus: postDateTime -%}
+            {%- if recentDateTime < 0 -%}
+                {%- if jekyll.environment == 'development' -%}
+                    <li>
+                        {%- comment -%} 開発環境では予約投稿の状態を表示 {%- endcomment -%}
+                        <div class="post-reservation">
+                            <span class="annotation reserve">予約</span>
+                            <span class="post-meta">{{ post.date | date: date_format }} </span>
+                            {%- if include.showCategory -%}
+                            <span class="post-meta">
+                                [
+                                {%- for category in include.categories -%}
+                                    {%- if post.categories contains category -%}
+                                        {{ category }}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                                ]
+                            </span>    
+                            {%- endif -%}
+                            <span><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
+                        </div>
+                        {%- comment -%} ============================= {%- endcomment -%}
+                    </li>
+                {%- endif -%}
+                {%- continue -%}
+            {%- endif -%}
+            <li>
+                <span class="post-meta">{{ post.date | date: date_format }}</span>
+                <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </li>
         {%- endfor -%}
         
         <br>

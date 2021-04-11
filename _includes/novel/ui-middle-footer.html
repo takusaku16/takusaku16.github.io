@@ -1,14 +1,34 @@
 {%- assign nextNovelUrl = empty -%}
 {%- assign prevNovelUrl = empty -%}
 {%- unless page.nextNovel == "" -%}
-    {%- assign nextNovelUrl = site.posts | where_exp: "post", "post.path contains page.nextNovel" | map: "url" -%}
-    {%- if nextNovelUrl == empty -%}<div id="errorText">ERROR: 指定された次章のURLが見つかりません</div>{%- endif -%}
-    {%- if nextNovelUrl.size > 1 -%}<div id="warnText">WARN: 複数の次章URLがあります。</div>{%- endif -%}
+    {%- assign nextNovel = site.posts | where_exp: "post", "post.path contains page.nextNovel" | first -%}
+    {%- assign nextNovelUrl = nextNovel.url -%}
+    {%- if nextNovel == empty -%}<div id="errorText">ERROR: 指定された次章のURLが見つかりません</div>{%- endif -%}
+    {%- if nextNovel.size > 1 -%}<div id="warnText">WARN: 複数の次章URLがあります。</div>{%- endif -%}
 {%- endunless -%}
 {%- unless page.prevNovel == "" -%}
     {%- assign prevNovelUrl = site.posts | where_exp: "post", "post.path contains page.prevNovel" | map: "url" -%}
     {%- if prevNovelUrl == empty -%}<div id="errorText">ERROR: 指定された前章のURLが見つかりません</div>{%- endif -%}
     {%- if prevNovelUrl.size > 1 -%}<div id="warnText">WARN: 複数の前章URLがあります。</div>{%- endif -%}
+{%- endunless -%}
+
+{%- comment -%} 未来の記事は飛ばす ※github pages では日付に関係なく表示されるため {%- endcomment -%}
+{%- unless nextNovelUrl == empty -%}
+    {%- assign nowDateTime = site.time | date: "%Y%m%d%H%M%S" -%}
+    {%- assign postDateTime = nextNovel.date | date: "%Y%m%d%H%M%S" -%}
+    {%- assign recentDateTime = nowDateTime | minus: postDateTime -%}
+    {%- if recentDateTime < 0 -%}
+        {%- if jekyll.environment == 'production' -%}
+            {%- assign nextNovelUrl = empty -%}
+        {%- else -%}
+            <div class="post-reservation">
+                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                <span class="annotation reserve">予約</span>
+                <span class="post-meta">{{ nextNovel.date | date: date_format }} </span>
+                <span><a href="{{ nextNovel.url | relative_url }}">{{ nextNovel.title | escape }}</a></span>
+            </div>
+        {%- endif -%}
+    {%- endif -%}
 {%- endunless -%}
 
 <div id="book-ui-middle">

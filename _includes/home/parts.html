@@ -1,45 +1,79 @@
 {%- if include.posts.size > 0 -%}
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{%- assign showPostNum = 0 -%}
 <div class="home-post-type">
     <h2 class="home-post-list-heading">{{ page.list_title | default: include.type | capitalize }}</h2>
     <ul class="post-list">
+        {%- for post in include.posts -%}
+            {%- if showPostNum >= include.limit -%}
+                {%- break -%}
+            {%- endif -%}
 
-        {%- for post in include.posts limit: include.limit -%}
-        <li>
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            {%- if include.showCategory -%}
-                <span class="post-meta">
-                    [
-                    {%- for category in include.categories -%}
-                        {%- if post.categories contains category -%}
-                            {{ category }}
+            {%- comment -%} 未来の記事は飛ばす ※github pages では日付に関係なく表示されるため {%- endcomment -%}
+            {%- assign nowDateTime = site.time | date: "%Y%m%d%H%M%S" -%}
+            {%- assign postDateTime = post.date | date: "%Y%m%d%H%M%S" -%}
+            {%- assign recentDateTime = nowDateTime | minus: postDateTime -%}
+            {%- if recentDateTime < 0 -%}
+                {%- if jekyll.environment == 'development' -%}
+                    {%- comment -%} 開発環境では予約投稿の状態を表示 {%- endcomment -%}
+                    <div class="post-reservation">
+                        <span class="annotation reserve">予約</span>
+                        <span class="post-meta">{{ post.date | date: date_format }} </span>
+                        {%- if include.showCategory -%}
+                        <span class="post-meta">
+                            [
+                            {%- for category in include.categories -%}
+                                {%- if post.categories contains category -%}
+                                    {{ category }}
+                                {%- endif -%}
+                            {%- endfor -%}
+                            ]
+                        </span>    
                         {%- endif -%}
-                    {%- endfor -%}
-                    ]
-                </span>
+                        <span><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
+                    </div>
+                    {%- comment -%} ============================= {%- endcomment -%}
+                {%- endif -%}
+                {%- continue -%}
             {%- endif -%}
 
-            {%- assign now = site.time | date: "%Y%m%d" -%}
-            {%- assign post_date = post.date | date: "%Y%m%d" -%}
-            {%- assign recent = now | minus: post_date -%}
-            <h3>
-                <div class="post-link">
-                    {%- if recent < 3 -%}
-                    <span class="annotation new">New!</span>
-                    {%- endif -%}
-                    <a href="{{ post.url | relative_url }}">
-                        {{ post.title | escape }}
-                    </a>
-                    {%- if recent < 7 -%}
-                    <span class="annotation week">week</span>
-                    {%- endif -%}
-                </div>
-            </h3>
+            <li>
+                <span class="post-meta">{{ post.date | date: date_format }}</span>
+                {%- if include.showCategory -%}
+                    <span class="post-meta">
+                        [
+                        {%- for category in include.categories -%}
+                            {%- if post.categories contains category -%}
+                                {{ category }}
+                            {%- endif -%}
+                        {%- endfor -%}
+                        ]
+                    </span>
+                {%- endif -%}
 
-            {%- if site.show_excerpts -%}
-            {{ post.excerpt }}
-            {%- endif -%}
-        </li>
+                {%- assign nowDate = site.time | date: "%Y%m%d" -%}
+                {%- assign postDate = post.date | date: "%Y%m%d" -%}
+                {%- assign recentDate = nowDate | minus: postDate -%}
+                <h3>
+                    <div class="post-link">
+                        {%- if recentDate < 3 -%}
+                        <span class="annotation new">New!</span>
+                        {%- endif -%}
+                        <a href="{{ post.url | relative_url }}">
+                            {{ post.title | escape }}
+                        </a>
+                        {%- if recentDate < 7 -%}
+                        <span class="annotation week">week</span>
+                        {%- endif -%}
+                    </div>
+                </h3>
+
+                {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+                {%- endif -%}
+            </li>
+            
+            {%- assign showPostNum = showPostNum | plus: 1-%}
         {%- endfor -%}
 
         <a class="home-post-moreread-link" href="/{{ include.type }}">

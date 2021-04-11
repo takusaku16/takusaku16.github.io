@@ -53,3 +53,13 @@ plugins:
 #   - vendor/ruby/
 
 google_analytics: G-Y8XBTJHM0K
+
+# initial: \n\n 
+# 　初回段落に Liquid が含まれていた場合にビルドに影響する状態。
+# 　excerpt 処理自体をなくしたい（ --profile で処理が走っているのを確認出来る）
+#     def generate_excerpt?
+#       !excerpt_separator.empty? && instance_of?(Jekyll::Page) && html?
+#     end
+#     https://github.com/jekyll/jekyll/blob/master/lib/jekyll/page.rb
+#   excerpt_separator が empty なら処理自体をなくせるらしい。よって以下。
+excerpt_separator: ""
