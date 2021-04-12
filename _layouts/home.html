@@ -9,6 +9,12 @@ layout: default
 
   {{ content }}
 
+  {%- if jekyll.environment == 'development' -%}
+    {%- assign draftCategory = "drafts" -%}
+    {%- assign _posts = site.posts | where_exp: "post", "post.id contains draftCategory" -%}
+    {%- include page/parts.html posts=_posts categories=draftCategory -%}
+  {%- endif -%}
+
   {%- for item in site.data.typeCategory -%}
     {%- assign _posts = site.posts | where_exp: "post", "post.id contains item.type" -%}
     {%- include home/parts.html limit=2 posts=_posts type=item.type categories=item.categories showCategory=item.showCategory -%}
