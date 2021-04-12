@@ -1,6 +1,6 @@
 {%- if page.id contains "novel" -%}
 
-    <!-- JQuery : animate -->
+    <!-- [CDN] JQuery : animate -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- novel.js -->
@@ -9,10 +9,17 @@
 {%- endif -%}
 {%- if page.url contains "youtube" -%}
 
-    <!-- JQuery : data-href -->
+    <!-- [CDN] JQuery : data-href -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- get.js -->
     <script type="text/javascript" src="/assets/js/youtube.js"></script>
     
+{%- endif -%}
+{%- if page.url contains "memo" -%}
+
+    <!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+      
 {%- endif -%}

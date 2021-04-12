@@ -5,7 +5,6 @@ permalink: /memo/
 toc: true
 ---
 
-
 ## Storage
 　保存場所
 
@@ -408,3 +407,91 @@ https://ja.wikipedia.org/wiki/リバースプロキシ
   - Webサーバー。
   - HTTPリクエストも見たうえで送信先サーバーを選択できる。
   - HTTPロードバランサ
+
+うまくまとまらない。Webサーバーというかプロキシというか負荷分散というか概念がまあふわふわしてる。そのうちまた調べる。
+
+## グラフィックス API 関連図
+　DirectX や OpenGL とかの関係性が分からなかったので図式化。間違いもあるかもしれない。調べた限りではこんな感じらしい。
+
+　点線( - - - )は派生みたいなイメージ。VulkanはOpenGLと密接な関係。WebGPU（現在いろいろ策定中）はWebGLの強い版。
+
+　OpenCL などはGPGPU用の統合開発環境っぽい。煩雑になるので図示はしなかったが、 図示するならDirectXやOpenGLに繋がる。グラフィックスAPIを使うためのまとまった開発環境。
+
+<div style="height: 470px; overflow: hidden;"><div style="margin-top:-260px;"><div class="mermaid">
+graph TD
+
+subgraph 実行環境
+    Windows
+    Linux
+    subgraph Apple
+        Mac
+        iOS
+    end
+    Android
+    PS3
+    3DS
+    ブラウザ
+    Apple製品    
+    subgraph IDE[IDE for GPGPU]
+        CUDA
+        OpenCL
+        DirectCompute
+    end
+end
+
+subgraph プログラミング言語
+    javascript
+end
+
+subgraph コンピュータグラフィックスAPI
+    O_GL[OpenGL]
+    O_ES[OpenGL ES]
+    DirectX
+    WebGL
+    WebGPU
+    G_API[DirectX, OpenGL, Vulkan, Metal]
+    Vulkan
+    Metal
+    O_ES ---> O_GL
+    WebGL ---> O_ES
+    WebGL -.-> WebGPU
+    WebGPU --> G_API
+end
+
+subgraph シェーディング言語
+    Cg
+    HLSL
+    GLSL
+    MSL
+    SW[SPIR-V, WHLSL]
+end
+
+Windows --> DirectX
+Windows --> O_GL
+Linux --> O_GL
+Android --> O_ES
+PS3 --> O_ES
+3DS --> O_ES
+ブラウザ --> javascript
+javascript --> WebGL
+iOS --> O_ES
+Mac --> O_GL
+Apple製品 --> Metal
+
+DirectX --> HLSL
+DirectX --> Cg
+O_GL --> Cg
+O_GL --> GLSL
+O_GL -.-> Vulkan
+Vulkan --> GLSL
+Metal --> MSL
+
+G_API --> SW
+</div></div></div>
+
+
+## Rust
+
+## Rust + ゲームプログラミング
+
+
