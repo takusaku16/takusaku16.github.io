@@ -118,24 +118,47 @@ XMLHttpRequest などで非同期通信を実装することを考える。
     - オプションに指定すると外せる。あぶ。
 
 ## リアルタイム双方向通信
-- HTTPプロトコル でがんばる
-  - ロングポーリング
-    - クライアントが一定間隔でサーバに問い合わせをし続ける
-  - Comet
-    - サーバ側から通信を開始するサーバプッシュ機能を疑似的に実現
-  - SSE(Server-Sent Event)
-    - Comet の発展系。APIが整ってるが、接続性はComet
+### HTTPプロトコル でがんばる
+- ポーリング
+  - クライアントが一定間隔でサーバに問い合わせをし続ける
+  - デメリット: 画面全部を取得し直してくるため無駄が多い
+- Ajax
+  - クライアントが一定間隔でサーバに問い合わせをし続ける
+  - 画面の更新部分だけ取得してくる。
+  - メリット: 無駄が減った
+  - デメリット: 更新が無くても問い合わせること
+- ロングポーリング（Comet）
+  - サーバー側は更新があるまでリクエストに対してレスポンスを返さない
+  - 更新があればレスポンスを返し、クライアントは再度リクエストを投げて通信を張る
+    - レスポンスを返すとHTTP通信は通信を閉じてしまうため
+  - メリット: 更新がない時は更新しない
+  - デメリット: サーバーの更新頻度が早いと更新を正しく受け取れない場合がある・通信を張るコスト
+- SSE(Server-Sent Event)
+  - レスポンスを返さず、代わりに chunk を送信する。
+  - メリット: 更新頻度が速くても大丈夫・通信を張り直さない
+  - デメリット: 
+    - HTTP通信を張り続けるため、CPU使用率に影響
+    - Server-Clientの構造。
+
+### 現状の代表格二人組
 - WebSocket
-  - TCP上に構築されたプロトコル
-  - Server-Clientでの接続方式
+  - TCP上に構築されたプロトコル（WebSocketプロトコル）（HTTPではない）
+  - メリット: 
+    - Server-Client方式・Client-Server方式の両方出来る
 - WebRTC
+  - WebRTCの中の通信規格でP2Pの接続相手と通信を行う javascript のAPI
   - ウェブでUDP通信
-  - Peer-to-Peer（サーバを介さずコンピュータ同士を直接つなぐ）方式
+    - 映像配信・クラウドゲーミングに良い。
+  - メリット:
+    - Peer-to-Peer方式（サーバーがいらない）（ブラウザがあれば良い）
+
+### 期待の新人
 - WebTransport
-  - QUICプロトコル
-    - UDPの上に構築されたプロトコル
-    - 到達の保証付き（TCP的）
-  - Server-Clientでの接続方式
+  - QUICプロトコル（両方の良いとこ取り）
+    - UDPの上に構築されたプロトコル（WebRTC）
+    - 到達の保証付き（TCP的）（WebSocket）
+  - Server-Client方式・Client-Server方式の両方出来る
+  - WebRTCの要件をWebSocket的に扱えるようになる。
 
 ## HTTP
 - HTTP/2
@@ -193,8 +216,7 @@ TCP/UDP ベース
 - H.265 (HEVC = High Efficiency Video Coding)
   
 ### とどけかた
-- 1
-  - OBS で RTMP
+- 1 友達に届ける
   - 準備:
     - ローカルホストでサーバー立ち上げ
     - ポート開放
@@ -202,12 +224,81 @@ TCP/UDP ベース
     - ローカルホストに映像を送信
   - 受信:
     - グローバルIPアドレスを直接指定して受信
-- 2
-  - OBS で
+- 2 ストリーミングサイト
   - 送信: 
     - ライブストリーミングサイトに映像を送信
   - 受信:
     - ユーザーはライブストリーミングサイトを経由して受信
+
+### 構成図🖼
+　Flash系列ならRTMPを再生できるので、WindowsMediaPlayerで直接再生するか、ブラウザに搭載されたFlashPlayer（もう死んだが）で見るかが出来る。
+
+　でも、スタンダードはHLS形式。OBSはRTMPで伝送するので、HLSに変換が必要。HLSはCDNとの相性が良いとか。ブラウザで標準で視聴出来るように整備されているので、安心はHLS。YoutubeはRTMPとHLSを選べた気がする。
+
+※図は割と主観による略式が中心で、情報の正確性も保証出来ないので注意（この図以外も全部そう）。
+
+<div class="mermaid">
+graph TD
+
+subgraph リスナー
+    subgraph 再生媒体
+        WindowsMediaPlayer
+        subgraph ブラウザ
+            FlashPlayer
+            subgraph HTML5
+                videoタグ
+            end
+        end
+    end
+end
+subgraph 配信者
+    OBS
+end
+subgraph サーバー
+    RTMP形式
+    HLS形式
+    RTMP形式　--"HLSに変換"--> HLS形式
+end
+
+OBS --"push(rtmp)"--> RTMP形式
+WindowsMediaPlayer --"pull(rtmp)"--> RTMP形式
+FlashPlayer --"pull(rtmp)"--> RTMP形式
+videoタグ --"pull(hls)"--> HLS形式
+</div>
+
+## ねとらじ🖼
+　ストリーミング配信について調べてたんですが、そういやねとらじもあったなぁと思って、簡易に構成をまとめた。想像に身を委ねたので合ってるかは分からない。放送用ソフトのBelugaはWinsock使ってTCPコネクションを作ってるのは分かったけど、詳しく中身見てない。ので、怪しい図。視聴は winamp 一択だ、今でも音楽プレイヤーとして使ってる人は減ったんだろうなと思いを馳せる。
+
+　ところで、Youtube版の Dolphin とか欲しかったんだけど、 Youtube Data API はクオータ制限あるし、番組数が多すぎてオフセット指定する形だし、Youtubeヘッドラインツールは厳しい。一覧が好きなんだがなあ。
+
+<div class="mermaid">
+graph TD
+
+subgraph リスナー
+    subgraph 再生媒体
+        subgraph HTML5
+            videoタグ
+        end
+        winamp
+    end
+    subgraph 番組一覧
+        ブラウザ
+        Dolphin
+    end
+    videoタグ -.-> ブラウザ
+    winamp -.-> Dolphin
+end
+subgraph 配信者
+    Beluga
+end
+subgraph サーバー
+    ねとらじ
+end
+
+ブラウザ --"pull(http)"--> ねとらじ
+Dolphin --"pull(?)"--> ねとらじ
+Beluga --"push(tcp)"--> ねとらじ
+</div>
 
 ## ライセンス
 著作権だそうです。
@@ -342,6 +433,11 @@ TCP/UDP ベース
   - CDN: CloudFlare
 - Webサーバー
 
+### プロキシ
+### リバースプロキシ
+### 負荷分散
+
+
 - DNSラウンドロビン
 - ロードバランサー
   - リクエストの処理はロードバランサーで振り分けられたWebサーバがする
@@ -410,7 +506,7 @@ https://ja.wikipedia.org/wiki/リバースプロキシ
 
 うまくまとまらない。Webサーバーというかプロキシというか負荷分散というか概念がまあふわふわしてる。そのうちまた調べる。
 
-## グラフィックス API 関連図
+## グラフィックス API 関連図🖼
 　DirectX や OpenGL とかの関係性が分からなかったので図式化。間違いもあるかもしれない。調べた限りではこんな感じらしい。
 
 　点線( - - - )は派生みたいなイメージ。VulkanはOpenGLと密接な関係。WebGPU（現在いろいろ策定中）はWebGLの強い版。
@@ -494,7 +590,7 @@ G_API --> SW
 - ①ブラウザで何かしたいな -> javascript で -> WebGL を使えばいいのか -> 内部的には OpenGL ES を使ってるっぽい -> ま、とりあえずシェーディング言語は GLSL を使うことになりそうかな（みたいな感じです）
 - ②Rust で何かするか -> なんか vulkan って出てきたけど、何 -> OpenGL に関係した何からしい -> へぇ
 
-
+　DirectXについての補足ですが、DirectXはWinAPIの一種（なのかな）。WinAPIはWindowsアプリケーションを作るためのもの。なのでグラフィック以外の機能もDirectXは持っている。OpenGLと比較する場合は、DirectXの中の `Direct2D/3D` と比較することになる。
 
 ## Rust
 
