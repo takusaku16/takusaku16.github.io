@@ -506,6 +506,38 @@ https://ja.wikipedia.org/wiki/リバースプロキシ
 
 うまくまとまらない。Webサーバーというかプロキシというか負荷分散というか概念がまあふわふわしてる。そのうちまた調べる。
 
+## Windowsアプリケーション
+- WinAPI(C/C++)
+- MFC(C/C++)
+  - WinAPIのラッパーしたフレームワーク
+- Windowsフォームアプリケーション（.NET）
+  - C++/CLI or C# で開発可能
+
+### .NET 原初
+- .NET Framework
+  - 原初
+  - 共通言語基盤（CLI）
+    - .NET Frameworkの基幹を構成する実行コードや実行環境などについてマイクロソフトが策定した仕様
+  - 共通言語ランタイム（CLR）
+    - 共通言語基盤 (CLI) の実装の一つ（Microsoft作）。
+
+### .NET 派生
+- .NET CORE
+  - OSS
+  - クロスプラットフォーム
+  - Microsoftのサポートが手厚い。.NETの実質的後継
+- MONO
+  - OSS
+  - クロスプラットフォーム
+    - WinAPIが元であるためWindows限定だったが、MONOはWindows以外でも使える。
+  - CLIの実装の一つでもある
+- xamarin
+  - iOS/Androidのクロスプラットフォーム開発向け
+
+### XX Studio
+- Visual Studio: .NET の開発環境
+- XamarinStudio: Mono の開発環境
+
 ## グラフィックス API 関連図🖼
 　DirectX や OpenGL とかの関係性が分からなかったので図式化。間違いもあるかもしれない。調べた限りではこんな感じらしい。
 
@@ -591,6 +623,85 @@ G_API --> SW
 - ②Rust で何かするか -> なんか vulkan って出てきたけど、何 -> OpenGL に関係した何からしい -> へぇ
 
 　DirectXについての補足ですが、DirectXはWinAPIの一種（なのかな）。WinAPIはWindowsアプリケーションを作るためのもの。なのでグラフィック以外の機能もDirectXは持っている。OpenGLと比較する場合は、DirectXの中の `Direct2D/3D` と比較することになる。
+
+## クラウドサービス
+
+　名称だけざっと一覧が見たかったのでまとめ。GCPってGoogleから始まるんじゃなくて Cloud から始まるのか。把握した。
+
+  `Compute Engine` で `Cloud Functions` を使って `Cloud Storage` に入れたファイルを `Cloud CDN` で保持。という言葉の意味がこれで分かった。良かった。
+
+### コンピュートリソース
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| 仮想サーバー | Amazon EC2 | Azure Virtual Machine | Compute Engine |
+| ベアメタルサーバー | Amazon EC2 Bare Metal Instance | Azure Bare Metal Servers | Bare Metal Solution |
+| コンテナ環境 | Amazon Elastic Container Service<br>Amazon Elastic Kubernetes Service<br>AWS Fargate | Azure Container Instance<br>Azure Kubernetes Service | Kubernetes Engine<br>Cloud Run |
+| アプリケーション基盤 | AWS Elastic Beanstalk | Azure Web Apps | App Engine |
+| サーバーレス | Amazon Lambda | Azure Functions | Cloud Functions |
+
+### ストレージ
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| ブロックストレージ | Amazon Elastic Block Storage | Azure Disk Storage | Persistent Disk |
+| ファイルストレージ | Amazon Elastic File System | Azure Files | FileStore |
+| オブジェクトストレージ | Amazon S3<br>Amazon Glacier | Azure Blob Storage<br>Azure Archive Stroage | Cloud Storage |
+| 大容量データ移行サービス | AWS Snowball<br>AWS Snowball Edge<br>AWS Snowmobile | Azure Data Box | Transfer Appliance |
+
+### データベースサービス
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| リレーショナルデータベース | Amazon RDS<br>Amazon Aurora | Azure SQL Database<br>Azure Database for MySQL/PostgreSQL | Cloud SQL<br>Cloud Spanner |
+| NoSQL | Amazon DynamoDB | Azure Cosmos DB | Cloud Datastore |
+| データウェアハウス | Amazon Redshift | Azure Synapse Analytics | BigQuery |
+
+### ネットワーク
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| 仮想ネットワーク | Amazon VPC | Virtual Network | Virtual Private Cloud |
+| ロードバランサー | Elastic Load Balancing | Azure Load Balancer<br>Azure Application Gateway | Cloud Load Balancing |
+| DNS | Amazon Route53 | Azure DNS | Cloud DNS |
+| CDN | Amazon CloudFront | Azure CDN | Cloud CDN |
+| VPN | Amazon VPN | Azure VPN Gateway | Cloud VPN |
+| 専用線接続 | Amazon Direct Connect | Azure Express Route | Cloud InterConnect |
+
+### アプリケーション開発
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| コード管理 | AWS CodeCommit | Azure Repos | Cloud Source Repositories |
+| CI/CD | AWS CodeBuild<br>AWS CodeDeploy<br>AWS Code Pipeline | Azure Pipelines | Cloud Build |
+| IDE | AWS Cloud9 | Visual Studio | Cloud Code |
+| SDK | AWS SDK | Azure SDK Visual Studio | Cloud SDK |
+
+### 運用管理
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| サービス管理 | AWS Management Console<br>AWS Command Line Interface | Azure Portal<br>Azure Command Line Interface<br>Azure PowerShell<br>Azure Cloud Shell | Cloud Console<br>Cloud Shell<br>Cloud APIs |
+| 監視、ロギング | Amazon CloudWatch | Azure Monitor<br>Log Analytics | Cloud Monitoring<br>Cloud Logging<br>Cloud Trace<br>Error Reporting<br>Cloud Debugger |
+| 環境構築自動化 | AWS CloudFormation | Azure Building Blocks | Cloud Deployment Manager |
+| 構成管理 | AWS Config | Azure Portal | Cloud Security Scanner<br>Cloud IAM |
+
+### セキュリティ
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| 権限管理 | AWS Identity and Access Management | Azure Active Directory | Cloud IAM |
+| SSL証明書 | AWS Certificate Manager | App Service | Cloud Load Balancing |
+| 鍵管理 | AWS Key Management Service<br>AWS CloudHSM | Azure Key Vault | Cloud Key Management Service |
+| ネットワークセキュリティ | Security Group<br>ネットワークACL<br>AWS Firewall Manager<br>AWS Shield<br>AWS WAF | Azure Firewall<br>Azure Firewall Manager<br>Azure DDoS Protection<br>Azure WAF | Firewall Rule<br>Cloud Armor |
+
+### 機械学習、IoT、モバイル
+
+|  | AWS | Azure | GCP |
+|-|-|-|-|
+| 機械学習 | Amazon Lex<br>Amazon Comprehend<br>Amazon Polly<br>Amazon Recognition<br>Amazon Recognition Video<br>Amazon Machine Learning | LUIS<br>Azure Bot Service<br>Azure Speech Recognition API<br>Bing Speech API<br>Emotion API<br>Face API<br>Computer Vision API<br>Azure Machine Learning | Natural Language API<br>Cloud Text-to-Speech<br>Translation API<br>Speech API<br>Vision API<br>Cloud Video Intelligence<br>Cloud Machine Learning Services |
+| IoT | AWS IoT Platform<br>AWS IoT Button | Azure IoT Platform<br>Azure Sphere | Google Cloud IoT |
+| モバイル | AWS Mobile Hub | Azure Mobile Apps | Firebase |
 
 ## Rust
 
