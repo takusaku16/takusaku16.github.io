@@ -6,7 +6,7 @@ toc: true
 ---
 
 ## Storage
-　保存場所
+　保存場所<a href="hidelink.html" class="hidelink">隠しリンク</a>
 
 - Local Storage 
   - 永続的
@@ -704,6 +704,8 @@ G_API --> SW
 | モバイル | AWS Mobile Hub | Azure Mobile Apps | Firebase |
 
 ## Rust
+
+
 
 ## Rust + ゲームプログラミング
 

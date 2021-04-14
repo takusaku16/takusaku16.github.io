@@ -53,6 +53,7 @@ plugins:
 #   - vendor/ruby/
 
 google_analytics: G-Y8XBTJHM0K
+lang: "jp"
 
 # initial: \n\n 
 # 　初回段落に Liquid が含まれていた場合にビルドに影響する状態。
