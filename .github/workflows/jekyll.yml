@@ -7,23 +7,15 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
-    # Use GitHub Actions' cache to shorten build times and decrease load on servers
-    - uses: actions/cache@v2
       with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-
-    # Standard usage
-    - uses:  helaili/jekyll-action@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ref: master
+    - name: Run with dest path
+      uses: helaili/jekyll-build@v2
       with:
-        token: ${ GITHUB_TOKEN }
+        target_branch: gh-pages
+        target_path: /
+        keep_history: true
+        token: ${{ secrets.GITHUB_TOKEN }}
