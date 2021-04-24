@@ -747,11 +747,16 @@ G_API --> SW
 　図に関して、図が煩雑になるため記載を避けた要素がいくつかあり。また、いくつかについてはカテゴライズに迷ったけど投げ入れてるのもあるので、視点や観点が変わると変わりうる。とりあえず、私的にこう思ったよの集合体としての図。
 
 #### ゲームエンジン図🖼
-<div style="height: 216px; overflow: hidden;"><div style="margin-top:-150px;"><div class="mermaid">
+<div style="height: 236px; overflow: hidden;"><div style="margin-top:-130px;"><div class="mermaid">
 graph TD
 subgraph グラフィックスAPI
     SomeGraphicsAPI
     WebGPU
+end
+subgraph ゲームエンジン
+    Godot
+    libtcod
+    Voxlap
 end
 subgraph Rustライブラリ
     gfx-rs/gfx --> SomeGraphicsAPI
@@ -759,20 +764,18 @@ subgraph Rustライブラリ
         gfx-rs/wgpu --> WebGPU
     end
 end
-subgraph ゲームエンジン
-    Godot
-    libtcod
-    Voxlap
+subgraph "Rustフレームワーク(ECS)"
+    legion
+    Specs
+    
 end
 subgraph Rustゲームエンジン
-    subgraph ECS
-        amethyst
-        legion
-    end
     piston
     Beby
     Victorem
-    unrsut ---> WebGPU
+    amethyst --> Specs
+    amethyst --> gfx-rs/gfx
+    unrsut --> WebGPU
     Haromoy --> WebGPU
     oxidator --> WebGPU
     ggez --> gfx-rs/gfx
@@ -834,3 +837,203 @@ end
 
 ### メモ補足
 　DirectX や DXlib もRustから呼び出せる。Rust とどのグラフィックライブラリを組み合わせて使うかは自由。
+
+## DirectX
+　本当は Vulkan について調べたいけど、英語わからん。なので一旦保留。ずっとWindowsを使ってきた人生ということで、DirectX について調べてみようかと。
+
+### 基礎俯瞰図🖼
+<div class="mermaid">
+graph LR
+
+subgraph ゲーム開発者
+    アプリケーション
+end
+subgraph Microsoft
+    DirectX
+end
+subgraph ハードウェア製造者
+    デバイスドライバ
+    ハードウェア
+end
+
+アプリケーション --命令--> DirectX
+DirectX --命令--> デバイスドライバ
+デバイスドライバ --命令--> ハードウェア
+</div>
+
+### コンポーネント分類図🖼
+<div style="height: 112px; overflow: hidden;"><div style="margin-top:-28px;"><div class="mermaid">
+graph TD 
+
+subgraph "DirectX Graphics"
+    subgraph "Direct3D(D3D)"
+        DirectCompute
+        DirectML
+    end
+    DXGI["DirectX Graphics Infrastructure(DXGI)"]
+    D2D["Direct2D(D2D)"]
+    DirectWrite
+end
+</div></div></div>
+
+<div style="height: 76px; overflow: hidden;"><div style="margin-top:-18px;"><div class="mermaid">
+graph TD 
+
+subgraph "DirectX Audio"
+    XAudio1,2
+    X3DAudio
+    XACT
+    DirectSound
+    DS3D["DirectSound3D(DS3D)"]
+    DirectMusic
+end
+</div></div></div>
+
+<div style="height: 80px; overflow: hidden;"><div style="margin-top:-22px;"><div class="mermaid">
+graph TD 
+
+subgraph 入力
+    DirectInput
+    XInput
+end
+subgraph 動画
+    DXVA["DirectX Video Acceleration(DXVA)"]
+end
+subgraph メディア
+    DirectAnimation
+    DMO["DirectX Media Objects"]
+end
+subgraph ネットワーク
+    DirectPlay
+end
+subgraph セットアップ
+    DirectSetup
+end
+</div></div></div>
+
+## オーディオAPI
+　グラフィックAPIをまとめてオーディオAPIをまとめないというのも変な話だと思ったので、一応、俯瞰してみた。しかしながら、各SDKの違いはよく分からない。基本的に C++ API でクロスプラットフォームっぽい。
+
+　ブラウザでは、javascript で Web Audio API を使えるらしい。とはいえ、図の中に雑に放り投げて置いた。違いが言語ぐらいしか分からなかったので、分類出来ない。音とは。
+
+### オーディオAPI俯瞰図🖼
+<div style="height: 190px; overflow: hidden;"><div style="margin-top:-54px;"><div class="mermaid">
+graph TD
+
+subgraph オーディオAPI
+    OpenAL --fork--> OS[OpenAL Soft]
+    subgraph OSS
+        OS
+    end
+    subgraph DirectX
+        XAudio
+    end
+    subgraph 主流
+        Wwise
+        FMOD
+        CRI[CRI ADX2]
+    end
+    subgraph 他
+        irrKlang
+    end
+    subgraph "ブラウザ(JS)"
+        WA[Web Audio API]
+    end
+end
+</div></div></div>
+
+## コンピュータグラフィックス
+　シェーダーが分からなかったので、CGとDirectXの両サイドから関連付けてまとめてみた。多少は分かった。
+
+　一応、CPUとGPUで違いますよという大前提だけ共有。
+
+- C++ がCPU上で動く実行ファイルを生成
+  - CPU: どんな計算も可
+- HLSL(シェーディング言語) はGPU上で動く実行ファイルを生成
+  - GPU: 描画処理の計算。HLSLを書く即ち描画処理を書くこと（多分）
+
+　余談だが、シェーダーが出来る前は描画処理は用意された手法のみだったが、今は様々な手法によって描画処理をプログラマが実装出来る時代だそうです。嬉しい時代だ。
+
+　さて、プログラムが描画されるまでの簡単な流れを図にした。DirectX準拠なので、OpenGLだとシェーダーの名前や種類が多少違う。でも流れは多分一緒。
+
+### 描画パイプライン🖼
+<div class="mermaid">
+graph TD
+
+subgraph "描画パイプライン(簡易)"
+    頂点デー["頂点データ(ポリゴン)"] --> 頂点シェ[頂点シェーダ]
+    頂点シェ:::coordinate_system --> テッセレ[テッセレーション]
+    テッセレ:::shader --> ジオメトリシェ[ジオメトリシェーダ]
+    ジオメトリシェ:::shader --ラスタ化--> ピクセルシェ[ピクセルシェーダ]
+    ピクセルシェ:::pixel_shader --レンダリングバッファ--> レンダリングターゲット
+    レンダリングターゲット:::render_backend --描画処理--> デジ画像[デジタル画像]
+end
+
+subgraph 描画パイプライン
+    頂点データ["頂点データ(ポリゴン)"] --投影--> モデリング座標系["形状モデル(モデリング座標系)"]
+
+    subgraph レンダリング
+        subgraph "ベクタ(線分)"
+            subgraph "頂点シェーダ"
+                subgraph "座標変換(MVP)"
+                    モデリング座標系:::coordinate_system --"モデリング変換(M)"--> ワールド座標系["形状モデル(ワールド座標系)"]
+                    ワールド座標系:::coordinate_system --"視野変換(V)"--> カメラ座標系["形状モデル(カメラ座標系)"]
+                    カメラ座標系:::coordinate_system --"投影変換(P)"--> 投影座標系["形状モデル(投影座標系)"]
+                end
+                
+                投影座標系:::coordinate_system --"隠面消去(カリング)"--> 隠面モデル["隠面消去された形状モデル"]
+
+            end
+        end
+
+        subgraph "テッセレーション"
+            隠面モデル:::format_model --> ハルシェーダ
+            ハルシェーダ:::shader --制御点算出--> テッセレータ
+            テッセレータ:::shader --ポリゴン分割--> ドメインシェーダ
+            ドメインシェーダ:::shader --分割したポリゴンの頂点座標算出--> ポリゴン分割済み形式モデル
+        end
+
+        subgraph "ジオメトリシェーダ"
+            ポリゴン分割済み形式モデル:::format_model --> ジオ[ジオメトリシェーダ]
+            ジオ:::shader --頂点数の増減--> 頂点数増減済み形式モデル
+        end
+
+        subgraph "座標変換(U)"
+            頂点数増減済み形式モデル:::format_model --"ビューポート変換(U) + クリッピング"--> デバイス座標系["形状モデル(デバイス座標系)"]
+        end
+
+        デバイス座標系:::coordinate_system --"ラスタ化(線分->画素)(線形補間 + 頂点カラー補間)"--> ラスタ
+
+        subgraph "ラスタ(画素)"
+            subgraph "ピクセルシェーダ"
+                ラスタ:::pixel_shader --シェーディング--> 陰影["物体表面に光の濃淡(陰影)"]
+                陰影:::pixel_shader --シャドウイング--> 影
+                影:::pixel_shader --マッピング--> テクスチャ["模様(テクスチャ)"]
+            end
+        end
+    end
+
+    subgraph レンダーバックエンド
+        テクスチャ:::pixel_shader --アルファテスト--> RT_a["レンダリングターゲット（透明色除外）"]
+        RT_a:::render_backend --"深度テスト(奥行き比較)"--> RT_b["レンダリングターゲット（奥は除外）"]
+        RT_b:::render_backend --ステンシルテスト--> RT_c["レンダリングターゲット（マスク）"]
+    end
+    
+    RT_c:::render_backend --描画処理--> デジタル画像
+end
+
+classDef coordinate_system fill:#f96;
+classDef format_model fill:#6f9;
+classDef shader fill:#69f;
+classDef pixel_shader fill:#bd0;
+classDef render_backend fill:#0fd;
+</div>
+
+### 補足 コンピュートシェーダー
+　CPUでもGPUでもなく、GPGPU専用のシェーダー。
+
+　GPGPUというのは、GPU（描画処理専門）を描画処理以外にも使おうという目的で作られたもの。
+
+　CPUは逐次処理に強く、GPUは並列処理に強い。GPGPUも並列処理に強い。
+
+　コンピュートシェーダーは通常の描画パイプラインに乗らない。
