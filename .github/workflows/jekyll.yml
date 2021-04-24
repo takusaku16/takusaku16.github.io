@@ -1,21 +1,21 @@
-name: Jekyll site CI
+# name: Jekyll site CI
 
-on:
-  # UTC + 9 ‚ÅŒvŽZ 0 0 * * * -> 0 9 * * * 
-  schedule:
-    - cron:  "0 15 * * *"
+# on:
+#   # UTC + 9 ‚ÅŒvŽZ 0 0 * * * -> 0 9 * * * 
+#   schedule:
+#     - cron:  "0 15 * * *"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: master
-    - name: Run with dest path
-      uses: helaili/jekyll-build@v2
-      with:
-        target_branch: gh-pages
-        target_path: /
-        keep_history: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#       with:
+#         ref: master
+#     - name: Run with dest path
+#       uses: helaili/jekyll-build@v2
+#       with:
+#         target_branch: gh-pages
+#         target_path: /
+#         keep_history: true
+#         token: ${{ secrets.GITHUB_TOKEN }}
