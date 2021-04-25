@@ -3,6 +3,10 @@
 
   <div class="wrapper">
 
+    <div class="footer-text">{{ site.title | escape }} | subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a> | {{- site.description | escape -}}</div>
+
+    {%- comment -%}
+
     <h2 class="footer-heading">{{ site.title | escape }}</h2>
 
     <div class="footer-col-wrapper">
@@ -28,14 +32,14 @@
       </div>
 
       <div class="footer-col footer-col-2">
-        {%- comment -%}
         {%- include social.html -%}
-        {%- endcomment -%}
       </div>
 
       <div class="footer-col footer-col-3">
         <p>{{- site.description | escape -}}</p>
       </div>
+
+      {%- endcomment -%}
     </div>
 
   </div>
