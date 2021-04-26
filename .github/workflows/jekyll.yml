@@ -41,4 +41,4 @@ jobs:
           publish_dir: ./
           allow_empty_commit: true
           enable_jekyll: true
-          cname: github.peaceiris.com
+          # cname: github.peaceiris.com
