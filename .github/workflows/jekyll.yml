@@ -1,3 +1,32 @@
+name: Testing the GitHub Pages publication
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron:  "0 15 * * *"
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@v2
+
+    # Use GitHub Actions' cache to shorten build times and decrease load on servers
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    # Standard usage
+    - uses:  helaili/jekyll-action@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        target_branch: 'gh-pages'
+
 # name: Jekyll site CI
 
 # on:
@@ -20,25 +49,25 @@
 #         keep_history: true
 #         token: ${{ secrets.GITHUB_TOKEN }}
 
-name: GitHub Pages
+# name: GitHub Pages
 
-on:
-  push:
-    branches:
-      - master
-  schedule:
-    - cron:  "0 15 * * *"
+# on:
+#   push:
+#     branches:
+#       - master
+#   schedule:
+#     - cron:  "0 15 * * *"
 
-jobs:
-  deploy:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          allow_empty_commit: true
-          enable_jekyll: true
-          # cname: github.peaceiris.com
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-18.04
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Deploy to GitHub Pages
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./
+#           allow_empty_commit: true
+#           enable_jekyll: true
+#           # cname: github.peaceiris.com
