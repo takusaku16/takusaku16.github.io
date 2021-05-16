@@ -4,11 +4,9 @@
   link: /tech/
 - name: Novel
   link: /novel/
-- name: Junk
-  link: /junk/
 - name: Memo
   link: /memo/
-- name: Test
-  link: /pages/junk/youtube
+- name: Junk
+  link: /junk/
 - name: About
   link: /about/

@@ -1,3 +1,7 @@
+- type: memo
+  categories: 
+    - unknown
+    - CTF
 - type: junk
   categories: 
-    - junk
+    - test

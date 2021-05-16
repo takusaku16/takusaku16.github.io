@@ -16,14 +16,11 @@ permalink: /about/
 #### Novel
 　希望の地。
 
-#### Junk
-　物置。
-
 #### Memo
 　メモ。自分用。
 
-#### Test
-　えっさほいさ。
+#### Junk
+　物置。
 
 #### About
 　ここ。
