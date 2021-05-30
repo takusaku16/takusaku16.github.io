@@ -7,6 +7,13 @@
     <script type="text/javascript" src="/assets/js/novel.js"></script>
 
 {%- endif -%}
+{%- if page.url contains "memo" -%}
+
+    <!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+      
+{%- endif -%}
 {%- if page.url contains "youtube" -%}
 
     <!-- [CDN] JQuery : data-href -->
@@ -16,10 +23,10 @@
     <script type="text/javascript" src="/assets/js/youtube.js"></script>
     
 {%- endif -%}
-{%- if page.url contains "memo" -%}
-
-    <!-- [CDN] mermaid.js -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
-      
+{%- if page.url contains "typingToJson" -%}
+    <script type="text/javascript" src="/assets/js/kanaToRoman.js"></script>
+    <script type="text/javascript" src="/assets/js/typingToJson.js"></script>
+{%- elsif page.url contains "typing" -%}
+    <script type="text/javascript" src="/assets/js/typingWordList.js"></script>
+    <script type="text/javascript" src="/assets/js/typing.js"></script>
 {%- endif -%}

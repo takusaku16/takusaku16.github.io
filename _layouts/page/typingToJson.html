@@ -1,0 +1,36 @@
+---
+layout: page
+---
+{{ content }}
+
+<div class="typingToJsonArea">
+    <input type="text" id="inputArea_0" size="5" value="furigana"></textarea>
+    <input type="text" id="inputArea_1" size="5" value="japanese"></textarea>
+    <input type="text" id="inputArea_2" size="5" value="typing"></textarea>
+    <span id="splitWordLabel">区切り</span>
+    <label>
+        <select id="splitWordBox">
+            <option value='	' selected>タブ</option>
+            <option value=' '>空白</option>
+        </select>
+    </label>
+    <div>入力</div>
+    <textarea id="in"  rows="5" cols="107"></textarea>
+    <div>出力</div>
+    <textarea id="out" rows="8" cols="107"></textarea>
+    <div>
+        [入力例1] - 最初のカラム(furigana)をローマ字に変換して最後のカラム(typing)にします。<br>
+<pre>もも	もも
+ぱぱ	パパ
+くま	熊
+あい	愛</pre>
+    </div>
+    <div>
+        [入力例2] - 元に戻す。「{」で始まる入力なら元に戻す処理をする<br>
+<pre>{ "furigana": "もも", "japanese": "もも", "typing": "momo" },
+{ "furigana": "ぱぱ", "japanese": "パパ", "typing": "papa" },
+{ "furigana": "くま", "japanese": "熊", "typing": "kuma" },
+{ "furigana": "あい", "japanese": "愛", "typing": "ai" },</pre>
+    </div>
+</div>
+    
