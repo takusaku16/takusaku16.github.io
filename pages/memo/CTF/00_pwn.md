@@ -410,7 +410,76 @@ dangling pointer
 
 ## 付録
 
-### コマンド
+### 権限関連のコマンド
+
+| コマンド | option | 意味 |
+|---|---|---|
+| sudo | | スーパーユーザー(root)でコマンドを実行する |
+| su | | ユーザーを切り替える(Substitute User) |
+| id | | ユーザーの識別情報を表示する |
+| whoami | | 現在（自分自身）のユーザー名を表示する |
+| groups | | 所属しているグループを表示する |
+| passwd | | パスワードを変更する |
+| tty | | 標準入出力となっている端末デバイスを表示する |
+
+#### /etc/passwd
+
+`root:x:0:0:root:/root:/bin/bash`
+
+| 対象 | 意味 |
+|---|---|
+| root | ユーザー名 |
+| x | 「x」と言う文字 or 暗号化されたパスワード(shadow) |
+| 0 | ユーザーID |
+| 0 | グループID |
+| root | コメント |
+| /root | そのユーザーのホームディレクトリ |
+| /bin/bash | そのユーザーのログインシェル名 |
+
+####  /etc/shadow
+暗号化されたパスワードが書かれている。 root のリードオンリー
+
+`user00:$6$Z4xEy/1KTCW.rz$Yxkc8XkscDusGWKan621H4eaPRjHc1bkXDjyFtcTtgxzlxvuPiE1rnqdQVO1lYgNOzg72FU95RQut93JF6Deo/:15491:0:99999:7:::`
+
+| 対象 | 意味 |
+|---|---|
+| user00 | ユーザー名 |
+| 6 | ハッシュ方式( `$6` ) |
+| Z4xEy/1KTCW.rz | salt ( `$Z4xEy/1KTCW.rz$` の $ で囲まれた部分) |
+| Yxkc... | パスワード（ハッシュ） |
+| 15491 | 1970/1/1から最後にパスワードが変更された日までの日数 |
+| 0 | パスワードが変更可能となるまでの日数 |
+| 99999 | パスワードを変更しなくてはならなくなる日までの日数 |
+| 7 | パスワード有効期限が来る前に、ユーザが警告を受ける日数 |
+| (null) | パスワード有効期限が過ぎてからアカウントが使用不能になるまでの日数 |
+| (null) | 1970/1/1からアカウントが使用不能になる日までの日数 |
+| (null) | 予約フィールド |
+
+ハッシュ方式の数字の意味は以下。
+
+- 1: md5
+- 5: sha-256
+- 6: sha-512
+
+`etc/pam.d/system-auth` でハッシュ方式が指定されている。デフォルトでは `sha-512`
+
+crypt コマンドによる例が以下
+
+```sh
+# perl -e 'print crypt("password", "\$6\$Z4xEy/1KTCW.rz");'
+$6$Z4xEy/1KTCW.rz$Yxkc8XkscDusGWKan621H4eaPRjHc1bkXDjyFtcTtgxzlxvuPiE1rnqdQVO1lYgNOzg72FU95RQut93JF6Deo/
+```
+
+#### fd
+- 0: 標準入力
+- 1: 標準出力
+- 2: 標準エラー出力
+
+ファイルディスクリプタ
+
+`/proc/[プロセスID]/fd/`
+
+### 解析関連のコマンド
 
 | コマンド | option | 意味 |
 |---|---|---|
@@ -420,7 +489,7 @@ dangling pointer
 | strings |  | ファイルに含まれる文字列を表示 |
 | lld |  | 共有ライブラリへの依存関係を表示 |
 | gcc | -v | gcc情報表示 |
-| uname | | OS情報表示 |
+| uname | -a | OS情報表示 |
 
 #### gdb
 
