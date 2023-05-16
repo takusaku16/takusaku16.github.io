@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ksnctf 002 Easy Cipher | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="ksnctf 002 Easy Cipher" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/ctf_ksnctf/2021/05/18/002.html" />
+<meta property="og:url" content="/contents/tech/ctf_ksnctf/2021/05/18/002.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-18T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ksnctf 002 Easy Cipher" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-05-18T12:38:04+00:00","datePublished":"2021-05-18T12:38:04+00:00","description":"どこまでも逝こう。","headline":"ksnctf 002 Easy Cipher","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/ctf_ksnctf/2021/05/18/002.html"},"url":"/contents/tech/ctf_ksnctf/2021/05/18/002.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ksnctf 002 Easy Cipher</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-18T12:38:04+00:00" itemprop="datePublished">May 18, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#ksnctf-002-easy-cipher">ksnctf 002 Easy Cipher</a><ul><li><a href="#謎解き">謎解き</a></li><li><a href="#解く">解く</a></li></ul></li><li><a href="#所感">所感</a></li></ul></details>
+    <h2 id="ksnctf-002-easy-cipher">ksnctf 002 Easy Cipher</h2>
+<ul>
+  <li>問題公開日: 2012/05/24</li>
+  <li>ジャンル: crypto</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+
+<p>　どうやら文章が書かれているのだが、読めるようになっていない。</p>
+
+<p>　それでも規則性はあるようで、一定間隔で空白が存在する。</p>
+
+<p>　使われている文字もアルファベットであることから、これは英語の文章と考えられる。</p>
+
+<p>　英単語でかつ、一文字、二文字となれば、かなり絞れるだろうと考えてみると、</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>字数</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>a, I</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>am, an, as, at, be, by, do, go, hi, id, if, is, it, me, my, of, on, or, so, to, up, we, …</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　一文字はこれしかないだろう。ただ、二文字については考えてみると案外量がある。</p>
+
+<p>　問題文に目を通すと、 一文字では <code class="language-plaintext highlighter-rouge">n</code> がある。文頭で使われていないことから、 I ではなく <code class="language-plaintext highlighter-rouge">a</code> と考えられる。</p>
+
+<p>　二文字については、 <code class="language-plaintext highlighter-rouge">vf</code>, <code class="language-plaintext highlighter-rouge">vg</code>, <code class="language-plaintext highlighter-rouge">va</code>, <code class="language-plaintext highlighter-rouge">na</code>, <code class="language-plaintext highlighter-rouge">bs</code> がある。</p>
+
+<p>　正直言って確定は難しい。</p>
+
+<p>　そこで、文章のまとまりで見てみると、閃いた。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">EBG KVVV vf n fvzcyr</code> が文頭にあるが、 <code class="language-plaintext highlighter-rouge">〇〇 is a △△</code> と書かれているような気がしてくる。仮置きでこれを正解とすれば、以下のようになる。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>前</th>
+      <th>後</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n</code></td>
+      <td><code class="language-plaintext highlighter-rouge">a</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v</code></td>
+      <td><code class="language-plaintext highlighter-rouge">i</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">s</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　3つもあれば規則性を叩き出せるだろうと考えてみると、なるほど分かった。13個ずれている。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nopqrstuvwxyzabcdefghijklm</code></li>
+  <li><code class="language-plaintext highlighter-rouge">abcdefghijklmnopqrstuvwxyz</code></li>
+</ul>
+
+<p>　13個ずらすと、仮置きを満たすような並びになっている。これを元に順番に読んでいくと確かに文章になっているようだった。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">EBG KVVV vf n fvzcyr yrggre fhofgvghgvba pvcure</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ROT XIII is a simple letter substitution cipher</code></li>
+</ul>
+
+<p>　なるほど。どうやらこれは <code class="language-plaintext highlighter-rouge">ROT13</code> と呼ばれる暗号文らしい。調べてみるとwikiも存在したので、正解と思われる。</p>
+
+<p>　ROT13 とはまさに13個ずらして作る暗号文であるようだ。</p>
+
+<h3 id="解く">解く</h3>
+<p>　規則性が分かったので、一文字ずつ解いていっても良いが、せっかくなのでプログラムを書く。最近Rustの勉強をしており、丁度良い題材である。</p>
+
+<p>　というわけで、プログラムを書いた。</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">cryptogram</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">"EBG KVVV vf n fvzcyr yrggre fhofgvghgvba pvcure gung ercynprf n yrggre jvgu gur yrggre KVVV yrggref nsgre vg va gur nycunorg. EBG KVVV vf na rknzcyr bs gur Pnrfne pvcure, qrirybcrq va napvrag Ebzr. Synt vf SYNTFjmtkOWFNZdjkkNH. Vafreg na haqrefpber vzzrqvngryl nsgre SYNT."</span><span class="p">);</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">plain</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="n">cryptogram</span><span class="nf">.as_str</span><span class="p">()</span><span class="nf">.chars</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">match</span> <span class="n">c</span> <span class="p">{</span>
+            <span class="sc">'a'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'n'</span><span class="p">),</span>
+            <span class="sc">'b'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'o'</span><span class="p">),</span>
+            <span class="sc">'c'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'p'</span><span class="p">),</span>
+            <span class="sc">'d'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'q'</span><span class="p">),</span>
+            <span class="sc">'e'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'r'</span><span class="p">),</span>
+            <span class="sc">'f'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'s'</span><span class="p">),</span>
+            <span class="sc">'g'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'t'</span><span class="p">),</span>
+            <span class="sc">'h'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'u'</span><span class="p">),</span>
+            <span class="sc">'i'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'v'</span><span class="p">),</span>
+            <span class="sc">'j'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'w'</span><span class="p">),</span>
+            <span class="sc">'k'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'x'</span><span class="p">),</span>
+            <span class="sc">'l'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'y'</span><span class="p">),</span>
+            <span class="sc">'m'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'z'</span><span class="p">),</span>
+            <span class="sc">'n'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'a'</span><span class="p">),</span>
+            <span class="sc">'o'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'b'</span><span class="p">),</span>
+            <span class="sc">'p'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'c'</span><span class="p">),</span>
+            <span class="sc">'q'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'d'</span><span class="p">),</span>
+            <span class="sc">'r'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'e'</span><span class="p">),</span>
+            <span class="sc">'s'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'f'</span><span class="p">),</span>
+            <span class="sc">'t'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'g'</span><span class="p">),</span>
+            <span class="sc">'u'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'h'</span><span class="p">),</span>
+            <span class="sc">'v'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'i'</span><span class="p">),</span>
+            <span class="sc">'w'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'j'</span><span class="p">),</span>
+            <span class="sc">'x'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'k'</span><span class="p">),</span>
+            <span class="sc">'y'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'l'</span><span class="p">),</span>
+            <span class="sc">'z'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'m'</span><span class="p">),</span>
+            <span class="sc">'A'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'N'</span><span class="p">),</span>
+            <span class="sc">'B'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'O'</span><span class="p">),</span>
+            <span class="sc">'C'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'P'</span><span class="p">),</span>
+            <span class="sc">'D'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'Q'</span><span class="p">),</span>
+            <span class="sc">'E'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'R'</span><span class="p">),</span>
+            <span class="sc">'F'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'S'</span><span class="p">),</span>
+            <span class="sc">'G'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'T'</span><span class="p">),</span>
+            <span class="sc">'H'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'U'</span><span class="p">),</span>
+            <span class="sc">'I'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'V'</span><span class="p">),</span>
+            <span class="sc">'J'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'W'</span><span class="p">),</span>
+            <span class="sc">'K'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'X'</span><span class="p">),</span>
+            <span class="sc">'L'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'Y'</span><span class="p">),</span>
+            <span class="sc">'M'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'Z'</span><span class="p">),</span>
+            <span class="sc">'N'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'A'</span><span class="p">),</span>
+            <span class="sc">'O'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'B'</span><span class="p">),</span>
+            <span class="sc">'P'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'C'</span><span class="p">),</span>
+            <span class="sc">'Q'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'D'</span><span class="p">),</span>
+            <span class="sc">'R'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'E'</span><span class="p">),</span>
+            <span class="sc">'S'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'F'</span><span class="p">),</span>
+            <span class="sc">'T'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'G'</span><span class="p">),</span>
+            <span class="sc">'U'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'H'</span><span class="p">),</span>
+            <span class="sc">'V'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'I'</span><span class="p">),</span>
+            <span class="sc">'W'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'J'</span><span class="p">),</span>
+            <span class="sc">'X'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'K'</span><span class="p">),</span>
+            <span class="sc">'Y'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'L'</span><span class="p">),</span>
+            <span class="sc">'Z'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'M'</span><span class="p">),</span>
+            <span class="n">_</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"---- cryptogram ----"</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">cryptogram</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"---- plain ----"</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">plain</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　match 式のところが無理やりになってしまった。良い書き方をいろいろ考えたのだが、さっぱり分からなかった。ROT13よりもRustの文字列の扱いの方が遥かに謎深い。</p>
+
+<p>　ともかく、これでFLAGを獲得出来た。クリア。</p>
+
+<h2 id="所感">所感</h2>
+
+<p>　CTFと言えば pwn だと同僚は言っていたのだが、pwnはさっぱり分からなかった。一方で crypto は規則性を見つける遊びのように当時感じて、crypto だけ解いてた。</p>
+
+<p>　その時に、ROT13 にも触れた記憶があるのだが、ROT13の wiki を見るまで思い出すことはなかった。</p>
+
+<p>　今回の問題は見ていたら解けてしまったパターンなので、あまり論理的ではないし、広い視野から問題を見つめたわけでもないので、正直微妙な手応えである。</p>
+
+<p>　ただ、何はともあれ ksnctf の問題をちゃんと解けたのは実質これが初めてとなるので、良しとした。なんやかんやFLAGを見つけると嬉しいものである。</p>
+
+<p>　次回の crypto では、ROT13を起点にして暗号の歴史でも紐解ければと思う。</p>
+
+<p>　
+　
+　</p>
+
+  </div><a class="u-url" href="/contents/tech/ctf_ksnctf/2021/05/18/002.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

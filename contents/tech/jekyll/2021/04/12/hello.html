@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>記事の予約投稿 導線隠蔽 | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="記事の予約投稿 導線隠蔽" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/jekyll/2021/04/12/hello.html" />
+<meta property="og:url" content="/contents/tech/jekyll/2021/04/12/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-12T13:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="記事の予約投稿 導線隠蔽" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-12T13:38:04+00:00","datePublished":"2021-04-12T13:38:04+00:00","description":"どこまでも逝こう。","headline":"記事の予約投稿 導線隠蔽","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/jekyll/2021/04/12/hello.html"},"url":"/contents/tech/jekyll/2021/04/12/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">記事の予約投稿 導線隠蔽</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-12T13:38:04+00:00" itemprop="datePublished">Apr 12, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#投稿予約">投稿予約</a></li><li><a href="#予約の表示サンプル">予約の表示サンプル</a></li><li><a href="#実装">実装</a></li><li><a href="#終わり">終わり</a></li></ul></details>
+    <h2 id="投稿予約">投稿予約</h2>
+<p>　<code class="language-plaintext highlighter-rouge">github pages + Jekyll</code> のブログは、日付の記事が未来であっても、標準では表示されてしまう（少なくとも現状はそう）</p>
+
+<p>　別にそれでもいいのだが、せっかくなので未来の記事は表示しないようにしてみる。</p>
+
+<p>　ただし、記事への導線を切るだけなので、URLにアクセスすれば読むことが出来る。まぁ、早く読んだところで私のブログは何も恩恵はないだろう。なので無問題。</p>
+
+<p>　どちらかというと、未来の日付なのかどうかが自分で分からなくなるからこの機能を入れる。分からないとなんだか落ち着かない。なら作るしかない。</p>
+
+<h2 id="予約の表示サンプル">予約の表示サンプル</h2>
+<p>　みんなには通常見えないが、開発環境（ローカル環境）で作業をする私にだけは、以下のようなものが表示されるようになる。良き。</p>
+
+<div class="post-reservation">
+    <span class="annotation reserve">予約</span>
+    <span class="post-meta">Apr 12, 2021 </span>
+    <span class="post-meta">[ jekyll ]</span>    
+    <span><a href="/contents/tech/jekyll/2021/04/12/hello.html">記事の予約投稿 導線隠蔽</a></span>
+</div>
+
+<p>　　</p>
+
+<p>　別件ではあるが、トップページにて、「New!」「week」の表示をつけたのもほとんどこのタイミングだ。</p>
+
+<ul>
+  <li>「New!」は投稿から3日以内</li>
+  <li>「week」は投稿から1週間以内</li>
+</ul>
+
+<p>　のような表示も搭載した。作り方は以下に示す内容とほぼ同じ。</p>
+
+<p>　では、さっそく実装を。</p>
+
+<h2 id="実装">実装</h2>
+<p>　ここでは、全記事チェックして、未来の日付なら <code class="language-plaintext highlighter-rouge">continue</code> で飛ばす処理を示す。そしてこれが全てだ。</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">site.posts</span><span class="w"> </span><span class="p">-%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">nowDateTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">time</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="s2">"%Y%m%d%H%M%S"</span><span class="w"> </span><span class="p">-%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">postDateTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">date</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="s2">"%Y%m%d%H%M%S"</span><span class="w"> </span><span class="p">-%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">recentDateTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nowDateTime</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">minus</span><span class="p">:</span><span class="w"> </span><span class="nv">postDateTime</span><span class="w"> </span><span class="p">-%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">recentDateTime</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">jekyll</span><span class="p">.</span><span class="nv">environment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'development'</span><span class="w"> </span><span class="p">-%}</span>
+            &lt;div&gt;予約記事あり&lt;/div&gt;
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">continue</span><span class="w"> </span><span class="p">-%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">recentDateTime</code> は現在時刻から記事時刻を引いている。この値が負であれば未来の記事だ。</p>
+
+<p>　未来の記事であり、開発環境( <code class="language-plaintext highlighter-rouge">development</code> ) の場合には、「予約記事あり」と画面に表示する。従って、本番環境である <code class="language-plaintext highlighter-rouge">github pages</code> では何も表示されない。つまりはこれまで通りということである。</p>
+
+<p>　あとは、「予約記事あり」の部分を好きにデザインすると良い。完成。簡単だった。</p>
+
+<p>　ちなみに、これは時間の比較もしているが、「New!」と「week」については日付の確認だけにしないといけないだろう。なので、以下のようにすると良い。</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">nowDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">time</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="s2">"%Y%m%d"</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">postDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">date</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="s2">"%Y%m%d"</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">recentDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">nowDate</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">minus</span><span class="p">:</span><span class="w"> </span><span class="nv">postDate</span><span class="w"> </span><span class="p">-%}</span>
+</code></pre></div></div>
+
+<h2 id="終わり">終わり</h2>
+<p>　見ての通り、リンクなどを表示していないだけだが、導線を経由しないで記事にアクセスする人なんて普通はいないので、これで十分だろう。</p>
+
+<p>　それはそれとして、トップページが賑やかになって良かった。</p>
+
+<p>　ただし、1週間何も更新しなかった場合には、再びさみしいトップページに戻ってしまう。</p>
+
+<p>　そうだとしても、トップページを見るだけでブログの更新状態が分かるというのは素晴らしい。きっとやる気も出るに違いない。</p>
+
+<p>　可視化は偉大。</p>
+
+<p>　一応、「New!」と「week」の表示例も最後に載せておきますね。</p>
+
+<p>　ではこの辺で。</p>
+
+<div style="text-align:center;">
+    <div class="post-link">
+        <span class="annotation new">New!</span>
+        <a href="/contents/tech/jekyll/2021/04/12/hello.html">
+            記事の予約投稿 導線隠蔽
+        </a>
+        <span class="annotation week">week</span>
+    </div>
+    <div class="post-link">
+        <a href="/contents/tech/jekyll/2021/04/12/hello.html">
+            記事の予約投稿 導線隠蔽
+        </a>
+        <span class="annotation week">week</span>
+    </div>
+</div>
+
+  </div><a class="u-url" href="/contents/tech/jekyll/2021/04/12/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

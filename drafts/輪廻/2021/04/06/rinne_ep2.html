@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>死後 | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="死後" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/drafts/%E8%BC%AA%E5%BB%BB/2021/04/06/rinne_ep2.html" />
+<meta property="og:url" content="/drafts/%E8%BC%AA%E5%BB%BB/2021/04/06/rinne_ep2.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-06T04:10:48+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="死後" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-06T04:10:48+00:00","datePublished":"2021-04-06T04:10:48+00:00","description":"どこまでも逝こう。","headline":"死後","mainEntityOfPage":{"@type":"WebPage","@id":"/drafts/%E8%BC%AA%E5%BB%BB/2021/04/06/rinne_ep2.html"},"url":"/drafts/%E8%BC%AA%E5%BB%BB/2021/04/06/rinne_ep2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div id="book-ui-header">
+    <div>
+        <div class="book-ui-group">
+            <span id="fontFamilyLabel"></span>
+            <label>
+                <select id="fontFamilyBox">
+                <option value='serif'>serif</option>
+                <option value='"ヒラギノ明朝 ProN W3"'>ヒラギノ明朝 ProN W3</option>
+                <option value='"游明朝"'>游明朝</option>
+                <option value='ＭＳ 明朝'>ＭＳ 明朝</option>
+                </select>
+            </label>
+        </div>
+        <div class="book-ui-group">
+            <label>
+                <select id="colorThemeBox">
+                <option value='light'>light</option>
+                <option value='dark'>dark</option>
+                <option value='blood'>blood</option>
+                </select>
+            </label>
+            <input type="color" id="backgroundColorpicker" value="#f4e7b8">
+            <input type="color" id="fontColorpicker" value="#111111">
+            <input type="color" id="pageTextColorpicker" value="#777777">
+            <input type="color" id="pageContentColorpicker" value="#fdfdfd">
+        </div>
+        <div class="book-ui-group">
+            <input type="button" value="Session消去" id="deleteSession" />
+        </div>
+    </div>
+    <div>
+        <div class="book-ui-group">
+            <input type="button" value="←" id="leftButton" />
+            <input type="button" value="→" id="rightButton" />
+        </div>
+        <div class="book-ui-group">
+            <span id="pageNumMaxLabel">0 / 00</span>  
+        </div>
+        <div class="book-ui-group">
+            <input type="button" value="↑" id="fontSizeUpButton" />
+            <span id="fontSizeLabel">18px</span>
+            <input type="button" value="↓" id="fontSizeDownButton" />
+            <input type="button" value="18px" id="fontSizeDefaultButton" />
+            <label>
+                <select id="fontSizeBox">
+                <option value="12">12 S </option>
+                <option value="18" selected>18 S H</option>
+                <option value="36">36 S </option>
+                </select>
+            </label>
+        </div>
+        <div class="book-ui-group">
+            <input type="button" value="Multi(M)"  id="multiButton" />
+            <input type="button" value="Spread(S)" id="spreadButton" />
+            <input type="button" value="Half(H)"   id="halfButton" />
+        </div>
+    </div>    
+</div><article id="book">
+    <div id="book-header">
+        <div>死後</div>
+        <div id="book-pageNum"></div>
+    </div>
+    <div id="book-middle">
+        <div id="book-left"></div>
+        <div id="book-text-cover">
+            <div id="book-text-all">
+                <div id="book-startText"><h2>死後</h2></div>
+                <div id="book-text"><p>「ようこそ。古出剛三郎様。ここは――」
+　どこだ。
+　暗い。
+　真っ暗だ。
+　布団の中で目を開けている時もこんな感じだ。
+　だが、布団など被っていない。
+　手を左右に動かしたり、首を動かしても、景色は変わらない。
+　どこかしこも闇だ。
+　何も見えない。
+　途端、頭に電流が流れたかのような痛みが走った。
+　ズキズキと断続的に痛みがやってくる。
+　頭を手で押さえてみても頭痛が和らぐことはない。
+　一体なんだというのだ。
+　誘拐されてどこかに閉じ込められているから暗いのか？
+　変な薬を飲まされたから頭が痛いのか？
+　誘拐も薬も記憶にない。
+　勤続三十年のサラリーマン風情に誰も興味などない。一昔前に流行ったオヤジ狩りがせいぜいだ。仮にオヤジ狩りにあったのだとしても、この状況を説明してくれはしないだろう。
+　目も記憶も駄目ならば――耳か。
+　音ならば何か聞こえるのではないか。
+　つい先ほども何か聞こえたような気がする。
+　耳を澄ますんだ。
+　そう。
+「――」
+　何か聞こえる気がする。
+　しかし、キーンと永遠に鳴り響いている邪魔な音がある。
+　耳鳴りが五月蠅い。
+　確かに音が聞こえているのに、それが何なのか判然としない。
+　耳も駄目だ。
+　頭に響く鈍い痛みは今もなお続いている。
+　このままでは倒れてしまう、そう思ったから床に座った。床は滑々として大理石のようにも感じられた。だが、硬い感じではなくむしろプラスチックのような軽さを感じる。不思議な材質だ。
+　座っているのも少々大変であったため、私はそのまま横になることにした。
+　そうして目を閉じる。
+　頭の痛みが引く気配はない。
+　良く思いださなくては。
+　記憶を辿る必要がある。
+　目も耳も頭も判然としないが、それでも掘り起こさなくてはなるまい。
+　しかし。
+　良く考えれば、立ったまま気を失っていたのか。それは、もはや常軌を逸している。
+　電車のつり革に掴まったまま寝ている人を見たことがあるが、真似しようにも真似できなかった経験がある。集中出来ないのだ。あちらこちらに人の気配がして落ち着かない。すごく疲れている時は周りのことを気にする余裕がなくなるが、今度は立っていることがどうにも解せなくなってくる。立ったまま休むなど不可能だ。
+　そんな私が、立ったまま気を失っていたのだ。
+　やはり只事ではない。
+　体全体がだんだんと重くなってきた。
+　腕を動かすのが辛いわけではないが、地面に触れている感覚が薄れてきた。
+　丁度、手足が痺れてしまった時の感覚に近い。触れているのにその感触がない。
+　これほどまでに感覚器官が異常を示しているというのに、痛覚だけは正常だ。
+　痛覚は異常を知らせてくれる器官だ。
+　わざわざ知らせてくれなくてもこの異常性は理解している。
+　大丈夫だ。
+　だから、この痛みをなんとか止めてくれ。
+　返答かの如くズキズキと頭を痛覚が流れていく。
+　耐えるしかない。
+　症状が治まるのを待つしか私に出来ることはないだろう。
+　こういう時に、味覚や嗅覚というのは何もしてくれない。
+　何も匂わないし、何も味わえない。
+　内側から来る痛みの鼓動にも、外側の闇にも、どちらも解決してくれない。
+　味や匂いというのは、この状況をひっくり返すような大発見をするには荷が重すぎるのだ。
+　しかし、引っかかる。味覚や嗅覚ならば何か思いだせそうな気がするのだ。
+　何か食べていたのか？
+　何か飲んでいたのか？
+　何か匂いの強い空間だったのか？
+　記憶を探り出す。
+　私の記憶の最終地点に何があったか。
+　――酒だ。
+　昨日は珍しく酒を飲んだような気がする。
+　しかし、家に酒の類は一切置いていない。
+　一時期は良く飲んでいたが、いつしか自然と飲まなくなっていた。元々、味や料理に拘らない性格だったせいか、酒は冷蔵庫の中に並ばなくなった。むしろ、お茶やコーヒーといった温かい飲み物は好んで飲んだ。夏でもホットコーヒーを頼んで友人に不思議がられたことがある。私にとっては不思議ではないのだが。こういう話をすると、熱燗ならばどうかと聞かれるのだが、どうにも気が進まない。嫌いというわけではないが、それならば温かいお茶の方が良いと思ってしまう。
+　とはいえ、飲めないわけではない。飲み会の席ではお酒しか頼まない。それは雰囲気に流されていると言えるが、それが良いのである。
+　例えば、外で肉を焼くバーべーキューの時にフランス料理を横で食べようとするなど普通のことではないだろう。フランス料理がいくらおいしかろうが、バーべーキューの時ならば焼いた肉の方が絶対に美味い。フランス料理は品の高いレストランで食べるようなものだと私は思っている。
+　飲食というのは味ではなくシチュエーションこそが大事なのだと常日頃思っている。
+　だから居酒屋などに行くと、必要以上にお酒を飲んでしまうということもたまにはある。
+　あるにはあるが、ここしばらくは飲み過ぎるということはなかった。
+　しかし、味覚と嗅覚は確実に酒を思いだしている。
+「――――」
+　耳鳴りがこれほど酷いのだ。
+　酒を、飲み過ぎたのかもしれない
+　だが、これだけ体に影響することが今まであっただろうか。酒を飲み過ぎたとしても、せいぜいがくらくらするくらいだ。酒をよく飲んでいた時期は付き合いで飲み比べをしたり、何度も注文してがぶがぶと飲み干してはトイレに立て籠もったりしたことがあった。その時でさえ軽く眩暈と気持ち悪さが混ざって寝ようにも寝れないし吐こうにも吐けないという状況が続いただけで、ギザギザガミガミと頭が痛むというのはなかった。だから、酒のせいとは思えない。
+　しかし、酒が原因のような気がするのはなぜだ。
+　いや、確実に酒が原因だ。
+　ジョッキを飲み干した後にくらりと来たのだ。これは間違いない。
+　そして――田宮の声が。
+　そうだ。
+　田宮と一緒に居酒屋で飲んでいたのだ。
+　田宮が借金がなんだと言っていて、私は金庫の暗証番号のヒントを教えたはずだ。それで私は根回しをしないといけないと考えていたはずだ。
+　となると、居酒屋で寝てしまったということだろうか。
+　ならば、どうしてこんな訳の分からない場所にいることになるのだ。
+　田宮はどうしたのか。
+　田宮が最後に何か言っていたような気がする。
+　なんだったか。
+　――金庫を開けられなかった時の保険として――
+　保険としてなんだ。何か言っていた気がするのだが。
+　――しばらく寝ててくださいっす――
+　田宮は寝ている私を置いて行ったということか。あの田宮がか。善人の塊のような男だとあの居酒屋で思ったはずだったが。寝かせて置こうという配慮だったのだろうか。だが、それでもこの場所がどこかは分からない。
+　――致死量ではないはずっすけど――
+　致死量？
+　何の話だ。
+　――転生するはずっすから安心して欲しいっす――
+　転生？
+　確か、居酒屋に入った時に田宮が言っていたか。
+　死んだら転生すると。
+　関係があるのか？
+　頭が痛い。
+　いくら考えても今の状況がどうなっているのか分からない。
+　もはやどうにも。
+「――様！」
+　耳鳴りに言葉が混じって聞こえた。
+　キーンと鳴っている音に鳴れたのだろうか。たった一文字だけはっきりと聞こえたのだ。
+「――様！！」
+　近くに誰かいるのか？
+「古出様！　聞こえていますか！？」
+　多少ノイズがきついが、私の名前を呼んでいることは分かった。
+　だから、
+「あ、ああ」
+　と答えた。同時に、自分の声が頭に響く。
+「ふぅー。やっと返事があった」
+　女性の声だ。この声も少し頭に響くが、それでも安心感に包まれる。
+　うっすらと目を開けると、視覚が世界をはっきり捉えていた。真っ暗闇な空間にいるのは変わらないらしいが、これまでとの大きな違いが一つある。女性がはっきりと見えるのだ。彼女は倒れている私を覗き込んでいる。
+　黒の長髪がさらりと垂れ下がっている。辺りは暗いが輪郭がぼんやりと見える。真っ暗なのに姿形がこれほど綺麗に見えるということはどこかに光源があると考えられる。だが、それならば暗い空間は闇ではなく、黒一色の空間だということになるのだろうか。
+　謎は解けずじまいだ。
+「すま、ない。少々頭が痛むのだ」
+　自分の声の脳内反響に耐えながら、事情を説明する。
+「酒を飲み過ぎたのか何なのかはわからないが、記憶も曖昧なのだ。すまないが、ここは一体――」
+　体を起こそうとして、倒れそうになる。
+「おっと！　大丈夫ですか！」
+「あ、ああ」
+　大丈夫ではない。だが、見知らぬ女性に迷惑をかけるわけにも。
+「あれ？　私、何か間違えちゃった？　ちゃんと呪文をかけたはずなんだけど」
+　黒髪の女性はそう言うと、何か呟き始めた。リズムがあるからには言葉なのだろうが、日本語でも英語でもない。どことなく柔らかい発声が続く。
+　呪文と言ったからにはまじないの類か。
+　何かを唱えて痛みが引くというのは御伽噺の世界だ。
+　だが、痛みが引くのならば何でも良い。
+「――」
+　耳鳴り。
+　この大事な時に、ノイズがひどくなってきた。
+　これでは、コミュニケーションさえ。
+　しかし――意外な事が起きた。
+　黒髪の女性が私の額の上に手を置いてくれてから、なぜか痛みがすぅっと引いていったのだ。
+　目が覚めてからの苦痛が嘘のようである。
+「もうしばらくこうしてますからね」
+　耳鳴りが静まっていく。
+「一体何が」
+「さっき自己紹介とかしてたんですけど、覚えてません？」
+　彼女の声が鮮明に聞こえる。澄んだ声をしている。
+　すまない、と返答すると、女性はにっこりと笑った。
+「いえいえ、こちらこそ。私のミスがあったみたいで辛い思いをさせてしまったようです」
+　数秒して、
+「はいこれでおわりっと」
+　と彼女は言いながら、掌をひらひらさせた。手の動きの意味は分からなかったが、終わったという合図だろうか。
+　間違いなく、彼女の翳してくれた手は私の痛みを取り払ってくれたようだ。
+「ああ」
+　体を起こしても痛みはない。
+　正座をしていた彼女の方に向き直り、合わせるように正座で座り直した。
+　視界にははっきりと闇と女性の二つだけが映っていた。
+　すっかり痛みは引いたのに、この場所からは開放されないらしい。
+「その、ありがとう。ひどかった頭痛が直ったみたいだ。それで、君は一体何者なんだい？」
+　改めて聞くのも気が引けた。
+　なぜなら、初めからこの女性は隣にいたのかもしれなかったからだ。
+　つまり延々と無視していたことになる。それはとても申し訳が立たない。
+「あはは。えーと何も覚えてませんか？　一応いろいろ説明してたんですが。この世界のこととか私のこととか」
+　申し訳が立たない。
+　しかし、今なんと言った。
+　――この世界のこととか
+　不思議な表現だ。その表現はまるで、私の知っている世界とは異なる世界であるような言いぶりだ。事実そうなのか、それとも彼女の言い回しが特殊なだけか。
+「すまない。申し訳ないが、もう一度説明をお願いしてもいいだろうか。ここは一体どこなのだ」
+　私の声もすっかり元通りだ。水を飲んでいないのにガラガラな声は治っていた。
+　それでは最初から行きますね、と言うと彼女はコホンと咳払いをした。黒髪が揺れた。
+「ようこそ。古出剛三郎様。ここは――死後の世界です」
+「死後？」
+「はい。古出様は既に死んでいます」
+　
+　
+　
+　
+　
+　
+　</p>
+</div>
+                <div id="book-endText">死後　了</div>
+                <br><hr>
+            </div>
+        </div>
+        <div id="book-right"></div>
+    </div>
+    <div id="book-footer"></div>
+    <div id="book-overlay"></div>
+</article><div id="errorText">ERROR: 指定された前章のURLが見つかりません</div><div id="book-ui-middle">
+    <div class="book-ui-group">
+        <input type="button" value="次章" id="page-nextLink" onclick="location.href=''"/>
+    </div>    
+    <div class="book-ui-group">
+        <input type="button" value="集中モード切り替え(F)"  id="readModeButton" />
+    </div>
+    <div class="book-ui-group">
+        <input type="button" value="前章" id="page-prevLink" onclick="location.href=''"disabled/>
+    </div>
+</div>
+  
+<div id="book-ui-footer">
+    <details>
+        <summary>Debug & HowTo</summary>
+        <div class="book-ui-group">
+            <input type="button" value="スクロール位置取得"  id="getScroll" />
+            <span id="scrollLeftLabel"></span> 
+        </div>
+        <br>
+        <hr>
+        <div>推奨</div>
+        <div>　fontSize: 18</div>
+        <div>　Spread(見開き) </div>
+        <div>　※推奨以外でも見れますので環境に合せてください。 </div>
+        <br>
+        <div>諸注意</div>
+        <div>　ページ数は fontSize と 見開きor半分サイズ の組み合わせで無限に変動する。</div>
+        <div>　[18 S H] は Spread(見開き) と Half(半分) の時に丁度良いフォントサイズを意味する。</div>
+        <br>
+        <hr>
+        <div>次章/前章 (あとがき など）</div>
+        <div>　各種設定を引き継いで前後のお話にページ遷移します。</div>
+        <div>　引継ぎ設定: 集中モード, color, fontSize, サイズ</div>
+        <div>　※タブやウィンドウを閉じると session は破棄されます。</div>
+        <div>　　「session消去」ボタンを押すと引継ぎ設定をリセット出来ます。</div>
+        <br>
+        <hr>
+        <div>Mouse</div>
+        <div>　クリック（左側/右側）: ページ進め/戻り</div>
+        <br>
+        <div>Key</div>
+        <div>　左右キー: ページ進め/戻り</div>
+        <div>　上下キー: フォントサイズ上げ/下げ</div>
+        <div>　Lキー: ライトテーマ</div>
+        <div>　Dキー: ダークテーマ</div>
+        <div>　Mキー: 横長サイズ</div>
+        <div>　Sキー: 見開きサイズ</div>
+        <div>　Hキー: 半分サイズ（スマホなどで？）</div>
+        <div>　Fキー: 集中モード</div>
+        <br>
+        <div>Touch(スマホ)</div>
+        <div>　スワイプ（→/←）: ページ進め/戻り</div>
+        <br>
+        <div>例</div>
+        <div>　dark にして multi にして 集中モード ( Dキー > Mキー > Fキー ) </div>
+    </details>
+</div>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] JQuery : animate -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- novel.js -->
+    <script type="text/javascript" src="/assets/js/novel.js"></script></body>
+
+</html>

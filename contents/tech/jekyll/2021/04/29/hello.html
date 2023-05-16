@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>記事の予約投稿2 自動ビルド | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="記事の予約投稿2 自動ビルド" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/jekyll/2021/04/29/hello.html" />
+<meta property="og:url" content="/contents/tech/jekyll/2021/04/29/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-29T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="記事の予約投稿2 自動ビルド" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-29T12:38:04+00:00","datePublished":"2021-04-29T12:38:04+00:00","description":"どこまでも逝こう。","headline":"記事の予約投稿2 自動ビルド","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/jekyll/2021/04/29/hello.html"},"url":"/contents/tech/jekyll/2021/04/29/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">記事の予約投稿2 自動ビルド</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-29T12:38:04+00:00" itemprop="datePublished">Apr 29, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#前回">前回</a><ul><li><a href="#ビルド">ビルド</a></li><li><a href="#github-action">github action</a></li></ul></li><li><a href="#設定">設定</a><ul><li><a href="#ブランチ構成">ブランチ構成</a></li><li><a href="#cron">cron</a></li><li><a href="#jekyll-action">jekyll-action</a></li></ul></li><li><a href="#成果">成果</a></li></ul></details>
+    <h2 id="前回">前回</h2>
+<p>　記事の予約投稿機能を追加したわけだが、使ってみるとある問題があった。</p>
+
+<p>　というのも、指定時刻を過ぎても記事への導線が作られない。</p>
+
+<p>　なんでだろうと思ったが、実に単純な話で、これはビルドタイミングの話であったわけだ。</p>
+
+<h3 id="ビルド">ビルド</h3>
+<p>　標準では、リポジトリに push したタイミングでビルドが走る。つまり、この時の時間を基準にして静的ページを生成するため、未来の記事への導線は一生作られないということになる（ページは生成されているが、トップページなどでは一生導線が作られない）</p>
+
+<p>　そこで、調べてみると、指定された時刻に自動ビルドするように変更出来ることが分かった。</p>
+
+<h3 id="github-action">github action</h3>
+<p>　github のページを開くと、どこかに github action とかいうのがある。仮に jekyll を使っていたならば、推奨機能として github action ページにてビルド設定の導入例を見ることが出来るだろう。</p>
+
+<h2 id="設定">設定</h2>
+<p>　<code class="language-plaintext highlighter-rouge">.github/workflows/jekyll.yml</code> というファイルを作る。</p>
+
+<p>　内容は、以下のような感じ。</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Testing the GitHub Pages publication</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>
+  <span class="na">schedule</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">cron</span><span class="pi">:</span>  <span class="s2">"</span><span class="s">0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">jekyll</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-16.04</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+
+    <span class="c1"># Use GitHub Actions' cache to shorten build times and decrease load on servers</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/cache@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s">vendor/bundle</span>
+        <span class="na">key</span><span class="pi">:</span> <span class="s">${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}</span>
+        <span class="na">restore-keys</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">${{ runner.os }}-gems-</span>
+
+    <span class="c1"># Standard usage</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span>  <span class="s">helaili/jekyll-action@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">token</span><span class="pi">:</span> <span class="s">${{ secrets.GITHUB_TOKEN }}</span>
+        <span class="na">target_branch</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gh-pages'</span>
+</code></pre></div></div>
+
+<h3 id="ブランチ構成">ブランチ構成</h3>
+<ul>
+  <li>master ブランチ
+    <ul>
+      <li>ここに普段のファイルを入れておく。_config.yml とかあるディレクトリ</li>
+    </ul>
+  </li>
+  <li>gh-pages ブランチ
+    <ul>
+      <li>master で jekyll ビルドをして、その結果をこの gh-pages に格納する。</li>
+      <li>github page で公開するブランチも gh-pages に設定しておくこと。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　元々は master を公開ブランチにしていたのだが、今回の記事の自動投稿のために、 gh-pages というブランチを新規に作成して、これを公開するようにした。つまり、ビルド済みのページを公開ブランチに設定したわけである。</p>
+
+<p>　masterのまま出来ないかをいろいろ調べたり試したのだが、上手くいかなかった。上手くいったのはこの構成だった。</p>
+
+<h3 id="cron">cron</h3>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="pi">-</span> <span class="na">cron</span><span class="pi">:</span>  <span class="s2">"</span><span class="s">0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+</code></pre></div></div>
+
+<p>　これはUTCで設定する必要がある。日本時間は UTC + 9 時間。この設定では 24時（深夜0時） に自動ビルドしてくれることになる。時間を設定する時はUTCにだけ注意しよう。</p>
+
+<h3 id="jekyll-action">jekyll-action</h3>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># Standard usage</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span>  <span class="s">helaili/jekyll-action@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">token</span><span class="pi">:</span> <span class="s">${{ secrets.GITHUB_TOKEN }}</span>
+        <span class="na">target_branch</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gh-pages'</span>
+</code></pre></div></div>
+
+<p>　ちょっと詳しくないのだが、誰かが作ってくれてたものっぽい。感謝。調べたら出てきます。上手く動かない人や実装が気になる方は調べるべし。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">${{ secrets.GITHUB_TOKEN }}</code> というのをどこかに設定しないといけないといった記事もあったが、それは古い情報で、現在はデフォルトでこの変数が存在していて使える。特に何も考えず、書いたら使えるので安心してほしい。</p>
+
+<h2 id="成果">成果</h2>
+<p>　深夜0時に自動ビルドしてくれるようになった。</p>
+
+<p>　これで、予め未来の記事を投稿しておいたものが、毎日自動で公開される（私のサイトの場合は、記事への導線が出来るという話。URL叩けば未来の記事にもアクセスできる）</p>
+
+<p>　良かった。設定ファイルをコミットして github action の動きを確認しないと行けなくて結構面倒だった。でも、こうして完成したらやっぱり非常に便利でやったかいがある。</p>
+
+<p>　ブログがまた使いやすくなってしまった。はい。では、この辺で。</p>
+
+  </div><a class="u-url" href="/contents/tech/jekyll/2021/04/29/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

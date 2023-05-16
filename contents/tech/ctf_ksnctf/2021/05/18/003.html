@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ksnctf 003 Crawling Chaos | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="ksnctf 003 Crawling Chaos" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/ctf_ksnctf/2021/05/18/003.html" />
+<meta property="og:url" content="/contents/tech/ctf_ksnctf/2021/05/18/003.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-18T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ksnctf 003 Crawling Chaos" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-05-18T12:38:04+00:00","datePublished":"2021-05-18T12:38:04+00:00","description":"どこまでも逝こう。","headline":"ksnctf 003 Crawling Chaos","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/ctf_ksnctf/2021/05/18/003.html"},"url":"/contents/tech/ctf_ksnctf/2021/05/18/003.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ksnctf 003 Crawling Chaos</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-18T12:38:04+00:00" itemprop="datePublished">May 18, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#ksnctf-003-crawling-chaos">ksnctf 003 Crawling Chaos</a><ul><li><a href="#謎解き">謎解き</a></li><li><a href="#解く">解く</a></li></ul></li><li><a href="#所感">所感</a></li></ul></details>
+    <h2 id="ksnctf-003-crawling-chaos">ksnctf 003 Crawling Chaos</h2>
+<ul>
+  <li>問題公開日: 2012/05/24</li>
+  <li>ジャンル: web</li>
+</ul>
+
+<h3 id="謎解き">謎解き</h3>
+
+<p>　正しい入力をすればFLAGを取得できそうな入力フォームがある。</p>
+
+<p>　F12 を押して devloper tools を開いてソースコードを見てみると、目を疑う光景が広がっていた。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">),(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="o">=-!!</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">).</span><span class="nx">にゃー</span><span class="p">,(</span><span class="nx">〳ᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">),....</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>　入力フォームの挙動は javascript で書かれているはずであり、つまりは <code class="language-plaintext highlighter-rouge">&lt;script&gt;&lt;/script&gt;</code> にあるはずなのだが、そこには愉快な顔文字が並んでいるだけであった。</p>
+
+<p>　どうして動いているのかさっぱり分からないが、ともかくこれらが javascript と同等の働きをしていると考えないとサイトの挙動を説明できない。取っ掛かりの見当すらつかないのだが、これを解読するのが今回の問題と考えられる。</p>
+
+<p>　カンマ区切りで改行してみると、幾分見やすくなった。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">),</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="o">=-!!</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">).</span><span class="nx">にゃー</span><span class="p">,</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">),</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">).</span><span class="nx">〳にゃー</span><span class="o">=-</span> <span class="o">-!</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="p">,</span>
+    <span class="p">...</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">=</code> を使っているわけだから、左辺に右辺を代入しているのだろう。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">(ᒧᆞωᆞ) = (/ᆞωᆞ/)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">hoge = 10</code></li>
+</ul>
+
+<p>　みたいな関係があると想像してみる。そこでもしやと思った。</p>
+
+<p>　仮に<code class="language-plaintext highlighter-rouge">(ᒧᆞωᆞ)</code>が変数なのであれば、 <code class="language-plaintext highlighter-rouge">console.log</code> で値を確認出来るのではないか、と。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">),</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">ᒧᆞωᆞ</span><span class="p">)),</span>
+    <span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="o">=-!!</span><span class="p">(</span><span class="sr">/ᆞωᆞ/</span><span class="p">).</span><span class="nx">にゃー</span><span class="p">,</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="p">),</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">),</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">〳ᆞωᆞ</span><span class="p">)),</span>
+    <span class="p">(</span><span class="nx">〳ᆞωᆞ</span><span class="p">).</span><span class="nx">〳にゃー</span><span class="o">=-</span> <span class="o">-!</span><span class="p">(</span><span class="nx">ᒧᆞωᆞ</span><span class="p">).</span><span class="nx">ᒧうー</span><span class="p">,</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="nx">〳ᆞωᆞ</span><span class="p">).</span><span class="nx">〳にゃー</span><span class="p">),</span>
+    <span class="p">...</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>　入れてみるとなんだかバカなことをやっているんじゃないかと思えてきたのだが、なんと正解だったのだからもうどうにでもなれである。</p>
+
+<p>　出力結果は以下である。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="nx">ᆞωᆞ</span><span class="o">/</span>
+<span class="o">-</span><span class="mi">0</span>
+<span class="o">/</span><span class="nx">ᆞωᆞ</span><span class="o">/</span>
+<span class="mi">1</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>　console.log が効いたので、変数という事で良さそうだ。というわけで片っ端から console.log で出力してみたところ、現れた。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">(ᒧᆞωᆞ).ᒧうーｰｰｰー</code> の中身は以下の <code class="language-plaintext highlighter-rouge">javascript</code> であった。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">form</span><span class="dl">"</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="text"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">195</span><span class="p">,</span><span class="mi">284</span><span class="p">,</span><span class="mi">475</span><span class="p">,</span><span class="mi">612</span><span class="p">,</span><span class="mi">791</span><span class="p">,</span><span class="mi">896</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">850</span><span class="p">,</span><span class="mi">737</span><span class="p">,</span><span class="mi">1332</span><span class="p">,</span><span class="mi">1469</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span><span class="mi">1470</span><span class="p">,</span><span class="mi">832</span><span class="p">,</span><span class="mi">1785</span><span class="p">,</span><span class="mi">2196</span><span class="p">,</span><span class="mi">1520</span><span class="p">,</span><span class="mi">1480</span><span class="p">,</span><span class="mi">1449</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="nx">t</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+            <span class="nx">f</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="nx">t</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="nx">f</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">(」・ω・)」うー!(/・ω・)/にゃー!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">f</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">No</span><span class="dl">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>　良く良く見れば、<code class="language-plaintext highlighter-rouge">&lt;head&gt;&lt;/head&gt;</code> で JQuery を読み込んでいたわけで、ちゃんと使っていたわけである。ここまで来てもいろいろ信じられないことが多いのだが、とにかくここまで来た。</p>
+
+<p>　フォームを押した時の挙動が記されており、配列pから生成した値と入力値が全文字で一致したら<code class="language-plaintext highlighter-rouge">うーにゃー</code>のアラートを出してくれるらしい。</p>
+
+<p>　おそらく、その入力値がフラグなのだろう。</p>
+
+<p>　これでやることが明確になった。</p>
+
+<h3 id="解く">解く</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span> <span class="nx">t</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="nx">f</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>　入力した文字を一文字ずつ(t)に対して、 <code class="language-plaintext highlighter-rouge">t.charCodeAt(i)*(i+1)</code> の計算をした値が <code class="language-plaintext highlighter-rouge">p[i]</code> と一致すれば良い。</p>
+
+<p>　従って、以下のように変形していける。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">t.charCodeAt(i)*(i+1) == p[i]</code> : 両辺を (i+1) で割る ↓</li>
+  <li><code class="language-plaintext highlighter-rouge">t.charCodeAt(i) == p[i] / (i+1)</code> : 両辺を charCode で割る（？）的な ↓</li>
+  <li><code class="language-plaintext highlighter-rouge">t = String.fromCharCode(p[i] / (i+1))</code> : 完成。</li>
+</ul>
+
+<p>　即ち、p配列の要素全てに上記の計算を行った値を出力すれば謎が解けるはずである。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">195</span><span class="p">,</span><span class="mi">284</span><span class="p">,</span><span class="mi">475</span><span class="p">,</span><span class="mi">612</span><span class="p">,</span><span class="mi">791</span><span class="p">,</span><span class="mi">896</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">850</span><span class="p">,</span><span class="mi">737</span><span class="p">,</span><span class="mi">1332</span><span class="p">,</span><span class="mi">1469</span><span class="p">,</span><span class="mi">1120</span><span class="p">,</span><span class="mi">1470</span><span class="p">,</span><span class="mi">832</span><span class="p">,</span><span class="mi">1785</span><span class="p">,</span><span class="mi">2196</span><span class="p">,</span><span class="mi">1520</span><span class="p">,</span><span class="mi">1480</span><span class="p">,</span><span class="mi">1449</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s2">`? = </span><span class="p">${</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span><span class="s2"> / </span><span class="p">${(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span><span class="s2"> = </span><span class="p">${</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span><span class="s2"> : </span><span class="p">${</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))}</span><span class="s2">`</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　出力結果は想定通りの結果だった。FLAGが出てきて、クリア。</p>
+
+<h2 id="所感">所感</h2>
+
+<p>　謎は解けたが、うーにゃーで <code class="language-plaintext highlighter-rouge">javascript</code> と同等の機能になっているという謎は未だ分かっていない。調べようにも調べ方が分からない。</p>
+
+<p>　この問題に含まれていた謎は、二つだろう。</p>
+
+<ul>
+  <li>うーにゃーがjavascriptと同等の機能を実現していること</li>
+  <li>逆算の仕方</li>
+</ul>
+
+<p>　2つ目は数式の変換だけでありそれほど苦ではなかったが、1つ目は一種の閃きに助けられた。</p>
+
+<p>　規則性を見出す点は crypto に近かったから、web問らしさはないのかもしれない。</p>
+
+<p>　web問というのはネットワークパケットを解析したりするのだろうか、さてわからない。</p>
+
+<p>　ともかくこれで2問目だ。実質3問目ということで良いか。</p>
+
+<p>　うーにゃーの謎を残したが、先へ進もうと思う。</p>
+
+<p>　FLAGを取る感覚が随分と分かってきた気がする。この調子で次もぱぱっと解いてしまおう。いざ。</p>
+
+  </div><a class="u-url" href="/contents/tech/ctf_ksnctf/2021/05/18/003.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

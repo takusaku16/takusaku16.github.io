@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>javascript で非同期通信 | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="javascript で非同期通信" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/javascript/2021/04/10/hello.html" />
+<meta property="og:url" content="/contents/tech/javascript/2021/04/10/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-10T12:24:34+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="javascript で非同期通信" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-10T12:24:34+00:00","datePublished":"2021-04-10T12:24:34+00:00","description":"どこまでも逝こう。","headline":"javascript で非同期通信","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/javascript/2021/04/10/hello.html"},"url":"/contents/tech/javascript/2021/04/10/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">javascript で非同期通信</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-10T12:24:34+00:00" itemprop="datePublished">Apr 10, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#なぜ">なぜ</a></li><li><a href="#非同期通信">非同期通信</a><ul><li><a href="#コールバック">コールバック</a><ul><li><a href="#コールバック地獄">コールバック地獄</a></li></ul></li><li><a href="#promise">Promise</a></li><li><a href="#asyncawait">async/await</a></li></ul></li><li><a href="#非同期通信の実装">非同期通信の実装</a><ul><li><a href="#settimeout">setTimeout</a></li><li><a href="#xmlhttprequest">XMLHttpRequest</a></li><li><a href="#jqueryajax">JQuery.ajax</a></li><li><a href="#fetch-api">Fetch API</a></li><li><a href="#axios">axios</a></li></ul></li><li><a href="#514の非同期--3の記法">5(1+4)の非同期 + 3の記法</a></li><li><a href="#まとめ">まとめ</a></li></ul></details>
+    <h2 id="なぜ">なぜ</h2>
+<p>　Novel ページのビューアーが一段落して、次に何か触ろうかと思い、 Youtube API でも触ってみようかと思ったら、非同期通信を使ってAPIを呼び出すらしく、それが最高に分からない、だからいろいろ調べた。</p>
+
+<p>　ちなみに、非同期通信じゃなくて同期通信でAPIを呼び出すことも出来るようだが、サーバーのレスポンスが遅かった場合、画面上ではフリーズしたみたいになる（らしい）ので、非同期通信でAPIを呼び出すのが一般的である（らしい）。</p>
+
+<p>　否が応でも非同期通信とやらを知る必要が出てきてしまったわけである。</p>
+
+<h2 id="非同期通信">非同期通信</h2>
+<p>　非同期通信とは、処理の終了を待たないで次の処理を実行する、ということで良いだろう。</p>
+
+<p>　通常、1行目の処理が完了してから2行目の処理を実行する。1行目に<code class="language-plaintext highlighter-rouge">"Hello"</code>, 2行目に<code class="language-plaintext highlighter-rouge">"World"</code>と来たら、出力は<code class="language-plaintext highlighter-rouge">Hello World</code> となる。</p>
+
+<p>　ここで、1行目だけを非同期の処理にした場合、1行目の処理の完了を待たずに2行目の処理が実行されるわけなので、出力は<code class="language-plaintext highlighter-rouge">World Hello</code>のようになってしまう、という話である。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">Hello World</code> だろうが、 <code class="language-plaintext highlighter-rouge">World Hello</code> だろうがどっちでも構わない。処理さえ完了してくれればいいんだというのなら問題ない。並列処理させておけば良い。しかし、1行目を非同期にした状態でなおかつ <code class="language-plaintext highlighter-rouge">Hello World</code> と順番に出力されなくてはならないのだ、という時には何か手を打たなくてはいけない。</p>
+
+<p>　そこで、コールバックという手法を用いることになる。</p>
+
+<h3 id="コールバック">コールバック</h3>
+<p>　コールバックとは、ある関数内で別の関数を実行するように外から指定する手法である。つまりは関数を渡してそれを関数内で呼び出してもらうわけである。この関数をコールバック関数と呼ぶらしいのだが、C言語で言えば関数ポインタなわけでこっちの方が個人的にはわかりやすい。ともあれ、コールバック関数を渡すことで、非同期処理の問題点を解決する。</p>
+
+<p>　1行目の <code class="language-plaintext highlighter-rouge">Hello</code> にコールバック関数を渡す、この時、渡すコールバック関数の中で <code class="language-plaintext highlighter-rouge">World</code> と出力するようにしておくのである。そうすれば、<code class="language-plaintext highlighter-rouge">Hello</code> の出力処理が終わろうが終わるまいが、 <code class="language-plaintext highlighter-rouge">World</code> が出力されるのは必ず、<code class="language-plaintext highlighter-rouge">Hello</code> の後なわけだから、 <code class="language-plaintext highlighter-rouge">Hello World</code> という文字列が完成する。</p>
+
+<p>　これで何も問題はない。と思われたが、コールバック地獄という状態に遭遇することになる。</p>
+
+<h4 id="コールバック地獄">コールバック地獄</h4>
+<p>　例えば、<code class="language-plaintext highlighter-rouge">Hello World Hoge Fuga</code> と出力したかったとした場合、</p>
+
+<ul>
+  <li>Hello には World を出力するコールバック関数を</li>
+  <li>World には Hoge を出力するコールバック関数を</li>
+  <li>Hoge には Fuga を出力するコールバック関数を</li>
+</ul>
+
+<p>　渡すことで実現出来る。</p>
+
+<p>　一つここで加えておくが、 World 以降も非同期になった事にしてほしい。どっかに <code class="language-plaintext highlighter-rouge">Hello</code> を貰いに行った（非同期通信）後に、 <code class="language-plaintext highlighter-rouge">World</code> を貰いに行って（非同期通信）、 <code class="language-plaintext highlighter-rouge">Hoge</code> <code class="language-plaintext highlighter-rouge">Fuga</code> も同様に貰いに行った（非同期通信）という話になったと考えてほしい。</p>
+
+<p>　この状況を想定すると、関数のネスト状態が連続しているのがわかるだろうか。 最初のコールバックで <code class="language-plaintext highlighter-rouge">World</code> が出力され、次のコールバックで、とネストが深くなっていく。</p>
+
+<p>　これがコールバック地獄と呼ばれるものになる。</p>
+
+<p>　ネストは深いよりも浅い方が良い。別にネストが深かろうがわかるならいいじゃないかと思うかもしれないが、それならアセンブラとRubyを比較した時に、どっちでもやってることが一緒なんだからアセンブラで全部書けばいいじゃないか、と言っているのと同じことになる。ネストが浅い方が良いというのはつまり、分かりやすい方が良いという意味合いである。分かるか分からないかではない。</p>
+
+<p>　これを解決する手法として、 Promise が登場する。</p>
+
+<h3 id="promise">Promise</h3>
+<p>　Promise は新しい記法であり、端的に言えば、コールバック地獄を解決するものであり、さらに言えば、何らかの処理完了後に任意の処理を実行することが出来る仕組みと言える。</p>
+
+<p>　Promise はオブジェクトである。従って new するのだが、この時のコンストラクタに非同期通信を記述するのが一般的な使い方である。</p>
+
+<p>　コンストラクタで new されたタイミングで非同期通信が走る、今までならそのコンストラクタの最後にコールバック関数なるものを渡しているところだが、Promise ではその必要はない。</p>
+
+<p>　Promise の処理が完了した後に Promise は then メソッドを呼び出すことになっているのである。正確には resolve() 完了後だが。</p>
+
+<p>　従って、コールバック関数に書いていた処理は全て then メソッドに書けば良いことになる。この then メソッドは then メソッドを繋げることが出来る。 then(1つ目) の後に then(2つ目) の後に then(3つ目) という風にチェーン出来る。この then のチェーンはネストを深くすることなく書ける。</p>
+
+<p>　こうして、コールバック地獄（ネストが深くなる）は Promise の持つ then をチェーンする記法によって解決されたわけである。</p>
+
+<p>　めでたしめでたし、と言いたいところだが、コールバック地獄が解決すると新しい問題を発見してしまう。</p>
+
+<p>　非同期通信を実現する Promise と then というシステムは通常の同期通信の中に混じると、その特殊性が浮彫になっているよね、という話になった。簡単に言えば、非同期通信の記法が独特過ぎて、分かりづらいという話である。</p>
+
+<p>　それはコールバックの時からそうだろうという話でもあるのだが、コールバック関数という非同期通信らしさ（？）が失われたせいか、非同期通信分かりづらいと巷で大評判になって世界が崩壊してビックバンが起きた、とにかく分かりづらさが残っているとのことだった。</p>
+
+<p>　そこで、 async/await が登場する。</p>
+
+<h3 id="asyncawait">async/await</h3>
+<p>　async は非同期であることを示す修飾子であり、 await は非同期通信を完了するまで次の処理をしないことを示す修飾子である。</p>
+
+<p>　つまり、</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span> <span class="c1">// 'Hello' は非同期とする</span>
+<span class="dl">'</span><span class="s1">Wolrd</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<p>　と書くと <code class="language-plaintext highlighter-rouge">'Hello World'</code> と出力されるということである。</p>
+
+<p>　こうして、非同期な処理が同期的な処理に混じっても違和感はなくなった。</p>
+
+<p>　めでたしめでたし。</p>
+
+<p>　もちろん、待つ必要がないなら await をつける必要はないし、 then を付ける必要もないし、 コールバックを渡す必要もない。全ては、任意の非同期通信完了後に実行したい処理が連続で存在するという場合を楽で分かりやすくするための旅路であったわけだ。</p>
+
+<p>　ちなみに、 async/await は Promise オブジェクトの存在が前提になっているので、 Promise オブジェクトについて知っておくことは重要だろう。だが、Promise の理解にコールバックが役立つかどうかは分からない。歴史を知ることの方が意義深いかもしれない。</p>
+
+<p>　というわけで、ある特殊な状況についての話が続いたが、ここからは非同期通信を実現する技術というか機能についての話と歴史を見て行く。</p>
+
+<h2 id="非同期通信の実装">非同期通信の実装</h2>
+<p>　非同期通信、というか、非同期処理の実装で見れば、きっと誰もが知っているあの関数が原初と言えるだろう。</p>
+
+<p>　まずはそこから見て行こう。</p>
+
+<h3 id="settimeout">setTimeout</h3>
+<p>　指定時間後に任意の処理を実行する関数である。</p>
+
+<p>　これこそ非同期処理。</p>
+
+<p>　非同期処理なので、Promise のコンストラクタに setTimeout を書いたりしても then の効果を確認出来る。素晴らしい。</p>
+
+<p>　さて。物語は非同期通信へと続く</p>
+
+<h3 id="xmlhttprequest">XMLHttpRequest</h3>
+<p>　javascript でHTTP通信をするための標準搭載のAPIである。</p>
+
+<p>　全てはここから始まった。</p>
+
+<h3 id="jqueryajax">JQuery.ajax</h3>
+<p>　XMLHttpRequest のラッパー。</p>
+
+<h3 id="fetch-api">Fetch API</h3>
+<p>　javascript でHTTP通信をするための標準搭載のAPIである。</p>
+
+<p>　ライブラリを入れない場合は、XMLHttpRequest か Fetch API かという話になる。</p>
+
+<p>　Fetch API の方が新しい。</p>
+
+<h3 id="axios">axios</h3>
+<p>　Fetch API のラッパー。</p>
+
+<h2 id="514の非同期--3の記法">5(1+4)の非同期 + 3の記法</h2>
+<p>　細かい仕様の話は知らないので列挙に留まった。一応まとめ的な意味でもう一度列挙。</p>
+
+<ul>
+  <li>setTimeout</li>
+  <li>XMLHttpRequest</li>
+  <li>JQuery.ajax</li>
+  <li>Fetch API</li>
+  <li>axios</li>
+</ul>
+
+<p>　ブラウザ上で javascript を使って非同期（処理・通信）をするときの選択肢はこの5つと考えて差し支えないだろう。XMLHttpRequest から axios の4つはHTTP通信をするという点で共通しており、書き替えも出来る。具体的な書き替えについてはインターネット上に大量にあったので、そっちを探して見てみてほしい。</p>
+
+<p>　それぞれの方法毎に書き方の書き替えも出来る（はず）</p>
+
+<ul>
+  <li>コールバック(XMLHttpRequest ~ axios)</li>
+  <li>Promise(Fetch API, axios)</li>
+  <li>async/await(Fetch API, axios)</li>
+</ul>
+
+<p>　Fetch API が Promise オブジェクトを前提にしているので、コールバックで書き直すのは逆に大変かもしれない。</p>
+
+<h2 id="まとめ">まとめ</h2>
+<p>　非同期通信に現状の最新（2021/04）は <code class="language-plaintext highlighter-rouge">axios + async/await</code> と言えるだろう。（最新ではないかもしれないが）</p>
+
+<p>　ライブラリを使わない場合は <code class="language-plaintext highlighter-rouge">Fetch API + async/await</code> と言える。</p>
+
+<p>　別にどの組み合わせでも良いが、新しいAPIと新しい記法を使ったほうが、セキュリティや可読性の点で期待できる。</p>
+
+<p>　もしかしたら、古い書き方じゃないと対応出来ない状況というのもあるかもしれない。適材適所こそプログラムの神髄だと思うので、上手く選びたい。</p>
+
+<p>　Youtube Data API を触ることに関して言えば、 Fetch API で十分と思っているから、それでやってみる。複雑なことをしようとした時に Fetch API では複雑な書き方になったりするかもしれない。その時は axios に変えるべきだろうか。まあなった時に考えればいい。</p>
+
+<p>　というわけで、非同期通信について知見を深めた。</p>
+
+<p>　具体的なコードは一つもこの記事にないが、インターネット上に本当にたくさんあるので30ページぐらい雑に開いて見比べていけば、それだけで随分分かることが増えると思う。理解を深めたい人はそうしたり、リファレンスを見たりとまだまだ出来ることはある。</p>
+
+<p>　私の場合は、 XMLHttpRequest で書こうとして、 ajax で楽に書けるよってなって、 Promise で書けるよって知って、Fetch API を使うよってなって、 axios があるよってなって、 async/await もあるよって言われて、登場人物多すぎるだろおい、となって、いろいろ見て整理して、この記事に至る。漫画の1巻を読んだ後に10巻を読まされて4巻を発見してみたいに、時系列や種類分けも謎だったこともあって何が何だかわからなかったが、こうしてまとめてみると、歴史を紐解いた感じがして良い。ついに非同期通信という正体不明だった連載漫画の購読が許されたわけだ。思ったより長かった。</p>
+
+<p>　これでやっと Youtube Data API を呼び出せる。では。この辺で。</p>
+
+<p>　</p>
+
+  </div><a class="u-url" href="/contents/tech/javascript/2021/04/10/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

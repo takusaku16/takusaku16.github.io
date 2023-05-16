@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Rust | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Rust" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/pages/memo/unknown/b_rust.html" />
+<meta property="og:url" content="/pages/memo/unknown/b_rust.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Rust" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"どこまでも逝こう。","headline":"Rust","url":"/pages/memo/unknown/b_rust.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Rust</h1>
+  </header>
+
+  <div class="post-content"><details>
+        <summary>目次</summary><ul><li><a href="#rust">Rust</a><ul><li><a href="#思い出シート">思い出シート</a></li></ul></li><li><a href="#rust--ゲームプログラミング">Rust + ゲームプログラミング</a><ul><li><a href="#ゲームエンジン">ゲームエンジン</a></li><li><a href="#ecs">ECS</a></li><li><a href="#ゲームエンジンライブラリグラフィックスapi関係">ゲームエンジン・ライブラリ・グラフィックスAPI関係</a><ul><li><a href="#ゲームエンジン図">ゲームエンジン図🖼</a></li><li><a href="#ライブラリ図">ライブラリ図🖼</a></li></ul></li></ul></li><li><a href="#rust関連のサイト">Rust関連のサイト</a><ul><li><a href="#ゲームを定期公開しているさいと">ゲームを定期公開しているさいと</a></li><li><a href="#rustライブラリをまとめてくれてるページ">Rustライブラリをまとめてくれてるページ</a></li></ul></li></ul></details><h2 id="rust">Rust</h2>
+<p>　Rust</p>
+
+<h3 id="思い出シート">思い出シート</h3>
+<p>　忘れても振り返ればそこに確かにある思い出。</p>
+
+<ul>
+  <li>println! : ! は マクロ？
+    <ul>
+      <li>:</li>
+      <li>:</li>
+    </ul>
+  </li>
+  <li>xxxx.collect() : コレクションを作る？</li>
+  <li>エラー
+    <ul>
+      <li>except :</li>
+      <li>? : エラー値を返す</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>err</td>
+              <td>: クロージャー</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>unwrap : 包んでいる中身を返す</li>
+      <li>unwrap_or_else</li>
+      <li>is_err</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="rust--ゲームプログラミング">Rust + ゲームプログラミング</h2>
+<p>　ゲームエンジンを使うか、ライブラリを叩くか、APIを直で叩くか。</p>
+
+<h3 id="ゲームエンジン">ゲームエンジン</h3>
+<ul>
+  <li><a href="https://amethyst.rs/">Amethyst</a> : データ指向のゲームエンジン</li>
+  <li><a href="https://github.com/PistonDevelopers/piston">Piston</a> : モジュール方式のゲームエンジン</li>
+  <li><a href="https://github.com/ggez/ggez">ggez</a> : 軽量なgfx-rsベースの2Dゲームエンジン</li>
+  <li><a href="https://github.com/bevyengine/bevy">Beby</a> : データ駆動型ゲームエンジン</li>
+  <li><a href="https://github.com/VictoremWinbringer/Victorem">Victorem</a> : シンプルな2Dおよび3Dオンラインゲームのプロトタイプを作成するための簡単なUDPゲームサーバーおよびUDPクライアントフレームワーク</li>
+  <li><a href="https://github.com/unrust/unrust">unrsut</a> : 純粋なrustベースの（webgl 2.0 /ネイティブ）ゲームエンジン</li>
+  <li><a href="https://github.com/StarArawn/harmony">Haromoy</a> : wgpuを使用する最新の3D / 2Dゲームエンジン</li>
+  <li><a href="https://github.com/Ruddle/oxidator">oxidator</a> : RustとWebGPUで作成されたリアルタイム戦略ゲーム/エンジン</li>
+</ul>
+
+<h3 id="ecs">ECS</h3>
+<ul>
+  <li><a href="https://github.com/amethyst/specs">specs</a> : スペックパラレルECS</li>
+  <li><a href="https://github.com/amethyst/legion">legion</a> : 最小限のボイラープレートを備えた機能豊富な高性能ECSライブラリ</li>
+</ul>
+
+<h3 id="ゲームエンジンライブラリグラフィックスapi関係">ゲームエンジン・ライブラリ・グラフィックスAPI関係</h3>
+<p>　対象にした範囲が広すぎたので二つに分割して図式。bind とか wrapper とかよく分からなかったけど、いろいろ見たおかげで掴めた気がする。というかライブラリ多すぎ。javascriptはこれの比ではないんだろうと思うけど、にしても多い。</p>
+
+<p>　図に関して、図が煩雑になるため記載を避けた要素がいくつかあり。また、いくつかについてはカテゴライズに迷ったけど投げ入れてるのもあるので、視点や観点が変わると変わりうる。とりあえず、私的にこう思ったよの集合体としての図。</p>
+
+<h4 id="ゲームエンジン図">ゲームエンジン図🖼</h4>
+<div style="height: 236px; overflow: hidden;"><div style="margin-top:-130px;"><div class="mermaid">
+graph TD
+subgraph グラフィックスAPI
+    SomeGraphicsAPI
+    WebGPU
+    WebGL
+end
+subgraph ゲームエンジン
+    Godot
+    libtcod
+    Voxlap
+end
+subgraph Rustライブラリ
+    gfx-rs/gfx --&gt; SomeGraphicsAPI
+    subgraph _WebGPU
+        gfx-rs/wgpu --&gt; WebGPU
+    end
+end
+subgraph "Rustフレームワーク(ECS)"
+    BebyECS
+    legion
+    Specs
+end
+subgraph Rustゲームエンジン
+    piston
+    Victorem
+    Beby --&gt; BebyECS
+    amethyst --&gt; Specs
+    amethyst --&gt; gfx-rs/gfx
+    unrsut --&gt; WebGL
+    Haromoy --&gt; WebGPU
+    oxidator --&gt; WebGPU
+    ggez --&gt; gfx-rs/gfx
+    godot-rs --binding--&gt; Godot
+    tcod-rs --binding--&gt; libtcod
+    rust-voxlap --binding--&gt; Voxlap
+end
+</div></div></div>
+
+<h4 id="ライブラリ図">ライブラリ図🖼</h4>
+<div style="height: 300px; overflow: hidden;"><div style="margin-top:-220px;"><div class="mermaid">
+graph TD
+subgraph グラフィックスAPI
+    SomeGraphicsAPI
+    OpenGL
+    Vulkan
+    WebGPU
+end
+subgraph 開発ライブラリ_low
+    subgraph 2D
+        Cairo
+        NanoVG --&gt; OpenGL
+    end
+    subgraph ソフトウェアライブラリ
+        SDL2
+        SDL
+    end
+end
+subgraph 開発ライブラリ_high
+    subgraph ゲームライブラリ    
+        Allegro
+    end
+    Corange --&gt; SDL
+    Corange --&gt; OpenGL
+    SFML
+end
+subgraph Rustライブラリ
+    cairo --binding--&gt; Cairo
+    Corange-rs --binding--&gt; Corange
+    gfx-rs/gfx --&gt; SomeGraphicsAPI
+    rust-sdl2 --binding--&gt; SDL2
+    nanovg-rs --binding--&gt; NanoVG
+    RustAllegro --binding--&gt; Allegro
+    rust-sfml --binding--&gt; SFML
+    subgraph _OpenGL
+        gl-rs --binding--&gt; OpenGL
+        kiss3d --&gt; OpenGL
+        glow --&gt; OpenGL
+    end
+    subgraph _Vulkan
+        Vulkano --wrapper--&gt; Vulkan
+        Ash --wrapper--&gt; Vulkan
+    end
+    subgraph _WebGPU
+        gfx-rs/wgpu --&gt; WebGPU
+    end
+end
+</div></div></div>
+
+<h2 id="rust関連のサイト">Rust関連のサイト</h2>
+<h3 id="ゲームを定期公開しているさいと">ゲームを定期公開しているさいと</h3>
+<ul>
+  <li><a href="https://rust-gamedev.github.io/">rust-gamedev</a></li>
+</ul>
+
+<h3 id="rustライブラリをまとめてくれてるページ">Rustライブラリをまとめてくれてるページ</h3>
+<ul>
+  <li><a href="https://github.com/rust-unofficial/awesome-rust">awesome-rust</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script></body>
+
+</html>

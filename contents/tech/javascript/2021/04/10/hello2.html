@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Youtube Data API 触ってみた | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Youtube Data API 触ってみた" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/javascript/2021/04/10/hello2.html" />
+<meta property="og:url" content="/contents/tech/javascript/2021/04/10/hello2.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-10T12:25:14+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Youtube Data API 触ってみた" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-10T12:25:14+00:00","datePublished":"2021-04-10T12:25:14+00:00","description":"どこまでも逝こう。","headline":"Youtube Data API 触ってみた","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/javascript/2021/04/10/hello2.html"},"url":"/contents/tech/javascript/2021/04/10/hello2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Youtube Data API 触ってみた</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-10T12:25:14+00:00" itemprop="datePublished">Apr 10, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#できたもの">できたもの</a></li><li><a href="#youtube-data-api">Youtube Data API</a></li><li><a href="#api-key">API Key</a><ul><li><a href="#quota">Quota</a></li></ul></li><li><a href="#javascript">javascript</a><ul><li><a href="#解説">解説？</a></li></ul></li><li><a href="#おまけ">おまけ</a><ul><li><a href="#github-pages-だから-api-key-どうする">github pages だから API Key どうする</a></li><li><a href="#then">then</a></li></ul></li></ul></details>
+    <h2 id="できたもの">できたもの</h2>
+<p><a href="/pages/junk/test/youtube.html">junk/test/youtube</a></p>
+
+<p>※リンクが飛べない場合は、ヘッダーのメニューから探してください。どこかにはあるはず。</p>
+
+<h2 id="youtube-data-api">Youtube Data API</h2>
+<p>　別に何か目的があったわけではないが、触ってみるかと思い触ってみた。</p>
+
+<p>　前回の記事では、非同期通信について色々調べた。おかげさまで、今回はさくっと終われる。</p>
+
+<h2 id="api-key">API Key</h2>
+<p>　触るために必要なものは一つ。</p>
+
+<ul>
+  <li>API Key</li>
+</ul>
+
+<p>　これは GCP(Google Cloud Platform) に登録して、プロジェクトを作成して、認証情報ページに行くと、API Key と OAuth を選べるので、 API Key を選んで作成すると、完了である。</p>
+
+<p>　API の選択は Youtube Data API を選ぶ。</p>
+
+<p>　Key の制限は適当に。ローカルホストとかでもいいし、固定IPならIPアドレスでもいいだろう。使いたい範囲で。</p>
+
+<h3 id="quota">Quota</h3>
+<p>　Youtube Data API でリクエストを飛ばすと、GCP 上で Quota という値が加算されていく。標準だと 10,000 Quota を超えると超過制限を受けて API のレスポンスを受け取れなくなる。</p>
+
+<p>　時間が経つとまた使えるようになるので、24時間ぐらい経ってからまた投げてみると案外動いたりする。</p>
+
+<p>　Quota の量は、</p>
+
+<ul>
+  <li>GCPページ</li>
+  <li>＞ 左のナビゲーションメニュー</li>
+  <li>＞ IAMと管理</li>
+  <li>＞ 割り当て</li>
+</ul>
+
+<p>を開くと API 毎の Quota 量を確認出来る。</p>
+
+<p>　レスポンスが 403 の場合はおそらく超過なので確認すると良い。Quota に問題が無ければ、Key制限も疑うと良い。それでもだめなら、error.message をちゃんと読んでみて考えるしかないだろう。</p>
+
+<p>　ともかく、Quota には注意。作って動かしてを繰り返す場合は一度に送るリクエスト数を減らしておくと良いだろう。</p>
+
+<p>　諸注意も済んだところで API Key を使ってみよう。</p>
+
+<h2 id="javascript">javascript</h2>
+<p>　ブラウザ上からアクセスするので、javascript を使う。前回記事で非同期通信についてまとめたわけで、今回は <code class="language-plaintext highlighter-rouge">Fetch API + async/await</code> で組む。</p>
+
+<ul>
+  <li>1つ目はボタンを押した時に呼び出される関数 <code class="language-plaintext highlighter-rouge">update()</code></li>
+  <li>2つ目はリクエスト先のURLを作って、 Fetch API を使ってHTTP通信をして、jsonを取得する <code class="language-plaintext highlighter-rouge">getJsonFile()</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">status.ok</code> でなければ、エラー処理
+        <ul>
+          <li>サーバーエラー（500番台）</li>
+          <li>クライアントエラー（400番台）</li>
+        </ul>
+      </li>
+      <li>問題なければ、json を返す</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　<code class="language-plaintext highlighter-rouge">update()</code> についてはUI周りの操作を前後でしているが、その部分は略とした。</p>
+
+<p>　また、 <code class="language-plaintext highlighter-rouge">createTable()</code> についてもここでは解説しない。取得したデータをテーブルに落とし込んでいるだけなので、今回の本筋ではないからだ。気になる人は github でも見てみると良い。拙いので見て欲しくはないが。</p>
+
+<p>　動作は動作ページにて。動作ページはこの記事の冒頭にリンクを張ったので、そこから。</p>
+
+<p>　さて、では1つ目と2つ目を見て行こう。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">update</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="cm">/* --- 略 ---*/</span>
+
+    <span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">testJson</span> <span class="c1">// 疑似構造で初期化</span>
+
+    <span class="c1">// リクエスト（待ち）</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">apiKey</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="nx">json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getJsonFile</span><span class="p">()</span>
+
+    <span class="c1">// 組み立て</span>
+    <span class="nx">createTable</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> 
+
+    <span class="cm">/* --- 略 ---*/</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Youtube data api をjsonファイルで取得</span>
+<span class="kd">const</span> <span class="nx">getJsonFile</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/youtube/v3/search</span><span class="dl">"</span>
+    <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">key</span><span class="p">:</span> <span class="nx">apiKey</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">part</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id,snippet</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">q</span><span class="p">:</span> <span class="nx">inputText</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">maxResults</span><span class="p">:</span> <span class="nx">perPage</span><span class="p">,</span>
+        <span class="na">pageToken</span><span class="p">:</span> <span class="nx">pageToken</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">radioNodeList</span> <span class="o">=</span> <span class="nx">eventTypeBox</span><span class="p">.</span><span class="nx">eventType</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">radioNodeList</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">live</span><span class="dl">"</span> <span class="p">)</span> <span class="nx">params</span><span class="p">.</span><span class="nx">eventType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">live</span><span class="dl">'</span> 
+    <span class="kd">const</span> <span class="nx">qs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span>
+    
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">?</span><span class="p">${</span><span class="nx">qs</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// エラーハンドリング</span>
+            <span class="nx">apiKey</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">""</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">`requestlink: </span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">?</span><span class="p">${</span><span class="nx">qs</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+            <span class="kd">const</span> <span class="nx">code</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span>
+            <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="mi">400</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: INVALID_TOKEN\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="k">case</span> <span class="mi">401</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: UNAUTHORIZED\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="k">case</span> <span class="mi">500</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: INTERNAL_SERVER_ERROR\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="k">case</span> <span class="mi">502</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: BAD_GATEWAY\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="k">case</span> <span class="mi">403</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="k">case</span> <span class="mi">404</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: NOT_FOUND\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="na">default</span><span class="p">:</span>  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: UNHANDLED_ERROR\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="nx">errorText</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="解説">解説？</h3>
+<p>　見てもらったのが全てで特に語ることはない。が、一応。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">?</span><span class="p">${</span><span class="nx">qs</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>　ここで、Youtube Data API に対して HTTP通信 をしている。少しさかのぼるとURLを作っているところがある。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/youtube/v3/search</span><span class="dl">"</span>
+    <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">key</span><span class="p">:</span> <span class="nx">apiKey</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>  <span class="c1">// XXXXX-XXXXXXXXXXXXXXXXX</span>
+        <span class="na">part</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id,snippet</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">q</span><span class="p">:</span> <span class="nx">inputText</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="c1">// 'RTA'</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">maxResults</span><span class="p">:</span> <span class="nx">perPage</span><span class="p">,</span>    <span class="c1">// '20'</span>
+        <span class="na">pageToken</span><span class="p">:</span> <span class="nx">pageToken</span>    <span class="c1">// ''</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">radioNodeList</span> <span class="o">=</span> <span class="nx">eventTypeBox</span><span class="p">.</span><span class="nx">eventType</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">radioNodeList</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">live</span><span class="dl">"</span> <span class="p">)</span> <span class="nx">params</span><span class="p">.</span><span class="nx">eventType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">live</span><span class="dl">'</span> 
+    <span class="kd">const</span> <span class="nx">qs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span>  <span class="c1">// これ便利なのでぜひ。クエリ形式にしてくれます。</span>
+</code></pre></div></div>
+
+<p>　url の部分が基礎になる。以降の params ~ qs まではクエリを作っているに過ぎない。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">key: apiKey.value</code> のところでGCPで作った API Key を渡している。ここで使う。</p>
+
+<p>　細かいパラメータについてはリファレンスを参照。</p>
+
+<p>　Quota が超過している場合は、</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                <span class="k">case</span> <span class="mi">403</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>　を通る。エラー処理まで書くつもりはなかったが、超過のおかげで書くことになった。お作法は相変わらず分からないのだが、こんな感じで。</p>
+
+<p>　はい。大体そんな感じです。</p>
+
+<p>　これでAPIを使えた。やった。</p>
+
+<h2 id="おまけ">おまけ</h2>
+<p>　小ネタ。</p>
+
+<h3 id="github-pages-だから-api-key-どうする">github pages だから API Key どうする</h3>
+<p>　このブログは github pages + jekyll で作られている。</p>
+
+<p>　つまりサーバーサイドが使えないので API Key も直書きするしかないような気がしてくる。でもさすがに、直書きは良くないだろう。</p>
+
+<p>　というわけで、 API Key を記述したファイル( <code class="language-plaintext highlighter-rouge">_data/key.yml</code> )だけを <code class="language-plaintext highlighter-rouge">.gitignore</code> で除外することで対応した。</p>
+
+<p>　なので、 github 上に API Key の記述はないということになる。</p>
+
+<p>　そして、</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {% assign apiKey = site.data.key[0].youtubeApiKey %}
+  <span class="nt">&lt;span&gt;</span>API Key: <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"apiKey"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">value=</span><span class="s">"{{ apiKey }}"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"emptyButton"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">"button"</span><span class="nt">&gt;</span>空<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<p>　<code class="language-plaintext highlighter-rouge">_data/key.yml</code> を読み取って、入力ボックスに初期値として代入してある。</p>
+
+<p>　つまり、ローカル環境ではページを開くと入力済みの状態というわけだ。</p>
+
+<p>　これで簡単に使える。やったね。</p>
+
+<p>　ちなみに、ローカルホストじゃなくても、正しく API Key を入力ボックスに入力すると、ちゃんと動くようにもしてます。なので手元の API Key をコピペして使える。もちろん、私の API Key じゃないと動かないのだが。</p>
+
+<p>　あ。</p>
+
+<p>　もしかしたら、他の人が新しく作った API Key を入力したら動くかもしれない（ Key 制限でこのブログを許可していれば）</p>
+
+<p>　あー、なんか動く気がしてきた。インジェクション的なことが出来そうな気がする。</p>
+
+<p>　問題が起きても困るので、 github 上のは入力ボックスを消しておいた方が良いのかもしれない。</p>
+
+<p>　＞　消しておきました。</p>
+
+<p>　でももしかしたらインジェクションできるかもしれない。でもやらないでくれると助かります。</p>
+
+<p>　ともあれ、 API Key は <code class="language-plaintext highlighter-rouge">.gitignore</code> したよという話。</p>
+
+<h3 id="then">then</h3>
+<p>　async/await の記法で書いているが、最初は then で書いていた。そのパターンも載せておきます。</p>
+
+<p>　と思ったけど、 <code class="language-plaintext highlighter-rouge">update()</code> の前の状態は結構煩雑なので、こっちは async/await のままで。fetchのところだけ。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Youtube data api をjsonファイルで取得</span>
+<span class="kd">const</span> <span class="nx">getJsonFile</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/youtube/v3/search</span><span class="dl">"</span>
+    <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">key</span><span class="p">:</span> <span class="nx">apiKey</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">part</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id,snippet</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">q</span><span class="p">:</span> <span class="nx">inputText</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">maxResults</span><span class="p">:</span> <span class="nx">perPage</span><span class="p">,</span>
+        <span class="na">pageToken</span><span class="p">:</span> <span class="nx">pageToken</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">radioNodeList</span> <span class="o">=</span> <span class="nx">eventTypeBox</span><span class="p">.</span><span class="nx">eventType</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">radioNodeList</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">live</span><span class="dl">"</span> <span class="p">)</span> <span class="nx">params</span><span class="p">.</span><span class="nx">eventType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">live</span><span class="dl">'</span> 
+    <span class="kd">const</span> <span class="nx">qs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">?</span><span class="p">${</span><span class="nx">qs</span><span class="p">}</span><span class="s2">`</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// エラーハンドリング</span>
+            <span class="nx">apiKey</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">""</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">`requestlink: </span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">?</span><span class="p">${</span><span class="nx">qs</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">code</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span>
+                <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">case</span> <span class="mi">400</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: INVALID_TOKEN\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="k">case</span> <span class="mi">401</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: UNAUTHORIZED\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="k">case</span> <span class="mi">500</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: INTERNAL_SERVER_ERROR\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="k">case</span> <span class="mi">502</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: BAD_GATEWAY\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="k">case</span> <span class="mi">403</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: FORBIDDEN\nリクエスト上限に達しました。しばらく経ってからまた来てね\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="k">case</span> <span class="mi">404</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: NOT_FOUND\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                    <span class="na">default</span><span class="p">:</span>  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">: UNHANDLED_ERROR\n</span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="nx">errorText</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　はい。</p>
+
+<p>　async/await の方が return の意味が関数の返り値の意味に統一されるので良いですね。Promise への返り値の意味合いもあったので、分かりにくくて困ってた。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">update()</code> ですが、ここも async/await ではなかった時は、その後の処理は then をチェーンして書いていたわけです。今の方がわかりやすい。</p>
+
+<p>　めでたく then が消えて async/await だけになりました。コードの可読性も上がった。</p>
+
+<p>　良かった。非同期通信について調べたのは正解でした。</p>
+
+<p>　では。これにて。それでは。</p>
+
+
+  </div><a class="u-url" href="/contents/tech/javascript/2021/04/10/hello2.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

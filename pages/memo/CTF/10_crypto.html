@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>crypto | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="crypto" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/pages/memo/CTF/10_crypto.html" />
+<meta property="og:url" content="/pages/memo/CTF/10_crypto.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="crypto" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"どこまでも逝こう。","headline":"crypto","url":"/pages/memo/CTF/10_crypto.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">crypto</h1>
+  </header>
+
+  <div class="post-content"><details>
+        <summary>目次</summary><ul><li><a href="#crypto">crypto</a></li><li><a href="#暗号解読">暗号解読</a></li><li><a href="#古典暗号">古典暗号</a><ul><li><a href="#ポリュビオスの暗号表">ポリュビオスの暗号表</a></li><li><a href="#シーザー暗号">シーザー暗号</a></li><li><a href="#ヴィジュネル暗号">ヴィジュネル暗号</a></li><li><a href="#adfgvx暗号">ADFGVX暗号</a></li><li><a href="#rot13">ROT13</a></li></ul></li><li><a href="#近代暗号機械式暗号">近代暗号（機械式暗号）</a><ul><li><a href="#エニグマ">エニグマ</a><ul><li><a href="#戦争時の利用法">戦争時の利用法</a></li><li><a href="#暗号化側">暗号化側</a></li><li><a href="#復号側">復号側</a></li></ul></li></ul></li><li><a href="#現代暗号">現代暗号</a></li><li><a href="#-共通鍵暗号">└ 共通鍵暗号</a><ul><li><a href="#ブロック暗号">ブロック暗号</a><ul><li><a href="#ラウンド関数">ラウンド関数</a></li><li><a href="#ブロック暗号の利用モード">ブロック暗号の利用モード</a></li></ul></li><li><a href="#ストリーム暗号">ストリーム暗号</a></li></ul></li><li><a href="#-公開鍵暗号">└ 公開鍵暗号</a></li><li><a href="#その他">その他</a><ul><li><a href="#デジタル署名">デジタル署名</a></li><li><a href="#暗号学的ハッシュ関数">暗号学的ハッシュ関数</a></li><li><a href="#近いけど何か違うやつ">近いけど何か違うやつ</a></li><li><a href="#疑似乱数器">疑似乱数器</a></li></ul></li><li><a href="#攻撃">攻撃</a><ul><li><a href="#b-全数探索法">B 全数探索法</a></li><li><a href="#b-タイムメモリートレードオフ法">B タイムメモリートレードオフ法</a></li><li><a href="#b-暗号文一致攻撃誕生日攻撃">B 暗号文一致攻撃（誕生日攻撃）</a></li><li><a href="#b-辞書攻撃">B 辞書攻撃</a></li><li><a href="#s-差分解読法">S 差分解読法</a></li><li><a href="#s-線形解読法">S 線形解読法</a></li><li><a href="#s-高階差分攻撃">S 高階差分攻撃</a></li><li><a href="#s-補間攻撃">S 補間攻撃</a></li><li><a href="#s-分割攻撃">S 分割攻撃</a></li><li><a href="#s-関連鍵攻撃">S 関連鍵攻撃</a></li></ul></li><li><a href="#rsa暗号">RSA暗号</a></li><li><a href="#付録">付録</a></li></ul></details><h2 id="crypto">crypto</h2>
+
+<p>　暗号解読とか</p>
+
+<h2 id="暗号解読">暗号解読</h2>
+
+<p>　古典暗号・近代暗号では、暗号アルゴリズムと暗号鍵を秘匿としていた。</p>
+
+<p>　現代暗号では、暗号アルゴリズムは公開されており、暗号鍵だけを秘匿にするのが一般的。</p>
+
+<p>　解読の基本はブルートフォース。</p>
+
+<p>　古典暗号・近代暗号では統計学的アプローチとしての頻度分析が有効。</p>
+
+<p>　現代暗号においては、如何に探索対象を減らすアルゴリズムを作りだせるかが焦点。頻度分析等で暗号文の規則性を探すよりも、暗号アルゴリズムをよく理解することが近道。問題点を発見するか有効アルゴリズムを思いつくかの二択。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>分類</td>
+      <td>秘密</td>
+      <td>解読</td>
+    </tr>
+    <tr>
+      <td>古典暗号</td>
+      <td>・暗号アルゴリズム<br />・暗号鍵</td>
+      <td>頻度分析</td>
+    </tr>
+    <tr>
+      <td>近代暗号<br />（機械式）</td>
+      <td>・暗号アルゴリズム<br />・暗号鍵</td>
+      <td>頻度分析</td>
+    </tr>
+    <tr>
+      <td>現代暗号</td>
+      <td>暗号鍵</td>
+      <td>・暗号法の問題点を見つける<br />・暗号法に対して有効なアルゴリズムの構築</td>
+    </tr>
+    <tr>
+      <td>物理暗号</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="古典暗号">古典暗号</h2>
+<p>　<code class="language-plaintext highlighter-rouge">Hello</code> を暗号化した例も載せる。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>古典暗号</th>
+      <th>種別</th>
+      <th>時代</th>
+      <th>Hello</th>
+      <th>キー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ポリュビオス<br />の暗号表</td>
+      <td>換字式（単表、単一）</td>
+      <td>古代ギリシア</td>
+      <td>23 15 31 31 34</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>シーザー暗号</td>
+      <td>換字式（単表、単一）</td>
+      <td>古代ローマ</td>
+      <td>Ebill</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>ヴィジュネル暗号</td>
+      <td>換字式（多表）</td>
+      <td>15,16世紀<br />フランス</td>
+      <td>Rijvs</td>
+      <td>key</td>
+    </tr>
+    <tr>
+      <td>ADFGVX暗号</td>
+      <td>ポリュビオス<br />の暗号表 + 転置式</td>
+      <td>WWIドイツ</td>
+      <td>VFFADVFXXG</td>
+      <td>knowledge</td>
+    </tr>
+    <tr>
+      <td>ROT13</td>
+      <td>換字式（単表、単一）</td>
+      <td>1980年代</td>
+      <td>Aryyb</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="ポリュビオスの暗号表">ポリュビオスの暗号表</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">1</th>
+      <th style="text-align: center">2</th>
+      <th style="text-align: center">3</th>
+      <th style="text-align: center">4</th>
+      <th style="text-align: center">5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>1</strong></td>
+      <td style="text-align: center">A</td>
+      <td style="text-align: center">B</td>
+      <td style="text-align: center">C</td>
+      <td style="text-align: center">D</td>
+      <td style="text-align: center">E</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>2</strong></td>
+      <td style="text-align: center">F</td>
+      <td style="text-align: center">G</td>
+      <td style="text-align: center">H</td>
+      <td style="text-align: center">I , J</td>
+      <td style="text-align: center">K</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>3</strong></td>
+      <td style="text-align: center">L</td>
+      <td style="text-align: center">M</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: center">P</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>4</strong></td>
+      <td style="text-align: center">Q</td>
+      <td style="text-align: center">R</td>
+      <td style="text-align: center">S</td>
+      <td style="text-align: center">T</td>
+      <td style="text-align: center">U</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>5</strong></td>
+      <td style="text-align: center">V</td>
+      <td style="text-align: center">W</td>
+      <td style="text-align: center">X</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">Z</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>平文　: Hello
+鍵　　: -
+暗号文: 23 15 31 31 34
+</code></pre></div></div>
+
+<h3 id="シーザー暗号">シーザー暗号</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>通常　: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+暗号化: XYZABCDEFGHIJKLMNOPQRSTUVW
+</code></pre></div></div>
+
+<p>　いわゆる ROT3 である。3でなくても良いらしい。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>平文　: Hello
+鍵　　: 3
+暗号文: Ebiil
+</code></pre></div></div>
+
+<h3 id="ヴィジュネル暗号">ヴィジュネル暗号</h3>
+
+<p>　はみ出したけどしょうがない。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+      <th>G</th>
+      <th>H</th>
+      <th>I</th>
+      <th>J</th>
+      <th>K</th>
+      <th>L</th>
+      <th>M</th>
+      <th>N</th>
+      <th>O</th>
+      <th>P</th>
+      <th>Q</th>
+      <th>R</th>
+      <th>S</th>
+      <th>T</th>
+      <th>U</th>
+      <th>V</th>
+      <th>W</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A</strong></td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <td><strong>B</strong></td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td><strong>C</strong></td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <td><strong>D</strong></td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td><strong>E</strong></td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td><strong>F</strong></td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <td><strong>G</strong></td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td><strong>H</strong></td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+    </tr>
+    <tr>
+      <td><strong>I</strong></td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+    </tr>
+    <tr>
+      <td><strong>J</strong></td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td><strong>K</strong></td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <td><strong>L</strong></td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+    </tr>
+    <tr>
+      <td><strong>M</strong></td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <td><strong>N</strong></td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <td><strong>O</strong></td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <td><strong>P</strong></td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <td><strong>Q</strong></td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <td><strong>R</strong></td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <td><strong>S</strong></td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td><strong>T</strong></td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <td><strong>U</strong></td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td><strong>V</strong></td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+    </tr>
+    <tr>
+      <td><strong>W</strong></td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td><strong>X</strong></td>
+      <td>X</td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <td><strong>Y</strong></td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td><strong>Z</strong></td>
+      <td>Z</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+      <td>J</td>
+      <td>K</td>
+      <td>L</td>
+      <td>M</td>
+      <td>N</td>
+      <td>O</td>
+      <td>P</td>
+      <td>Q</td>
+      <td>R</td>
+      <td>S</td>
+      <td>T</td>
+      <td>U</td>
+      <td>V</td>
+      <td>W</td>
+      <td>X</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　鍵は任意のもので良い。今回は key としてみる。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>平文　: Hello
+鍵　　: key
+暗号文: Rijvs
+</code></pre></div></div>
+
+<ul>
+  <li>H - k -&gt; R</li>
+  <li>e - e -&gt; i</li>
+  <li>l - y -&gt; j</li>
+  <li>l - K -&gt; v</li>
+  <li>o - e -&gt; s</li>
+</ul>
+
+<p>　このように鍵(key)が繰り返される。</p>
+
+<h3 id="adfgvx暗号">ADFGVX暗号</h3>
+
+<ol>
+  <li>ポリュビオスの暗号表と同じ原理による暗号化（第一暗号文）</li>
+  <li>転置式による暗号化（第二暗号文）</li>
+</ol>
+
+<p>　まず、表を a~z, 0~9 の36文字でランダムに埋める。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">A</th>
+      <th style="text-align: center">D</th>
+      <th style="text-align: center">F</th>
+      <th style="text-align: center">G</th>
+      <th style="text-align: center">V</th>
+      <th style="text-align: center">X</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>A</strong></td>
+      <td style="text-align: center">d</td>
+      <td style="text-align: center">h</td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">m</td>
+      <td style="text-align: center">u</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>D</strong></td>
+      <td style="text-align: center">p</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">j</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">a</td>
+      <td style="text-align: center">o</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>F</strong></td>
+      <td style="text-align: center">i</td>
+      <td style="text-align: center">b</td>
+      <td style="text-align: center">z</td>
+      <td style="text-align: center">v</td>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">w</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>G</strong></td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">n</td>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">q</td>
+      <td style="text-align: center">k</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>V</strong></td>
+      <td style="text-align: center">f</td>
+      <td style="text-align: center">s</td>
+      <td style="text-align: center">l</td>
+      <td style="text-align: center">y</td>
+      <td style="text-align: center">c</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>X</strong></td>
+      <td style="text-align: center">t</td>
+      <td style="text-align: center">r</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">e</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">g</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　これを用いて第一暗号文を作る。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>平文　　　: Hello
+鍵　　　　: -
+第一暗号文: AFXGVFVFDX( AF XG VF VF DX )
+</code></pre></div></div>
+
+<p>　次に転置式暗号化を行うために鍵を定める。今回は鍵を knowledge としてみる。</p>
+
+<p>　knowledge から重複文字を消して knowledg とする。</p>
+
+<p>　アルファベット順に数字を割り振ると knowledg は 46785213 となり、これが転置鍵である。</p>
+
+<p>　そして、第一暗号文を転置鍵サイズ（8文字）で改行して表に書き出す。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>4</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>5</th>
+      <th>2</th>
+      <th>1</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>F</td>
+      <td>X</td>
+      <td>G</td>
+      <td>V</td>
+      <td>F</td>
+      <td>V</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　この表の数字の順に縦に読み出すと第二暗号文が得られる。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第一暗号文: AFXGVFVFDX( AF XG VF VF DX )
+鍵　　　　: knowledg
+転置鍵　　: 46785213
+第二暗号文: VFFADVFXXG( V F F AD V FX X G )
+</code></pre></div></div>
+
+<p>　ややこしいけど、出来た。</p>
+
+<h3 id="rot13">ROT13</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>通常　: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+暗号化: NOPQRSTUVWXYZABCDEFGHIJKLM
+</code></pre></div></div>
+
+<p>　13個ずれている。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>平文　: Hello
+鍵　　: 13
+暗号文: Aryyb
+</code></pre></div></div>
+
+<h2 id="近代暗号機械式暗号">近代暗号（機械式暗号）</h2>
+
+<p>　機械で作る暗号。その根底は古典暗号と変わらない。古典暗号に比べて、複雑な手順かつ高速になっただけとも言える。人力での解読は古典暗号と比較すると困難の極みと言える。</p>
+
+<h3 id="エニグマ">エニグマ</h3>
+
+<p>　一文字ずつ異なる換時表を用いる暗号。</p>
+
+<p>　平文を打ち込むと、ローターが一目盛り回転し、回路が変化する（換時表が変わる）。</p>
+
+<p>　また、プラグボードによって文字を交換できるため、プラグボードの指し方によっても変化する（換時表が変わる）。</p>
+
+<ul>
+  <li>ローターの初期パターン
+    <ul>
+      <li>初期3つ</li>
+      <li>後期には5つから3つ選ぶ</li>
+    </ul>
+  </li>
+  <li>プラグボードの組み合わせ（「A」と「J」にケーブルを指すと、文字が入れ替わる）
+    <ul>
+      <li>初期3つ</li>
+      <li>後期10つ</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　ローターの初期パターンとプラグボードの組み合わせによって作られた換時表の数は膨大なものになる。後期にはさらに数が増えている。</p>
+
+<p>　古典暗号を量的な側面で難度をあげたの近代暗号（機械式暗号）。頻度分析では追いつかない。初期パターンの配置情報の取得と機械によるブルートフォースが攻略の鍵となった。</p>
+
+<h4 id="戦争時の利用法">戦争時の利用法</h4>
+<p>　復号する際には、暗号化した時の初期ローターの文字を合わせて、暗号文を打ち込むことで復号出来る。</p>
+
+<p>　この仕組みのため、初期ローター文字を共有する必要があり、通信時の最初6文字はその共有に使われていた。</p>
+
+<p>　ローターは3つあり、「SEP」を初期としたとき、「SEP SEP」を暗号化した「GED OSO」を文頭に付けていたわけである。</p>
+
+<h4 id="暗号化側">暗号化側</h4>
+
+<ol>
+  <li>初期位置「AAA」</li>
+  <li>鍵（設定）を定める「SEP」</li>
+  <li>鍵を二度打ち込む「SEP SEP」と暗号化され「GED OSO」となり、メッセージの文頭にこれを付けて送る</li>
+  <li>初期位置を「SEP」（設定）にして、平文を暗号化する。</li>
+</ol>
+
+<h4 id="復号側">復号側</h4>
+
+<ol>
+  <li>初期位置「AAA」</li>
+  <li>文頭で送られてきた「GED OSO」を打ち込むと「SEP SEP」に復号される</li>
+  <li>初期位置を「SEP」（設定）にして、暗号文を復号化する。</li>
+</ol>
+
+<h2 id="現代暗号">現代暗号</h2>
+
+<p>　現代暗号になると、暗号アルゴリズムは公開され、暗号鍵を非公開にして運用する方針になる。暗号アルゴリズムが分かっても暗号鍵を推測するのが困難な仕組み。</p>
+
+<p>　その意味では、エニグマも、暗号アルゴリズム（換字表の変化）が分かっても、鍵（= 初期配置 = ローター、プラグボード）が不明だと復号が難しいので、現代暗号に近い気もする。ただ、エニグマは暗号ルゴリズムが非公開であったわけで、その事も含めて近代暗号（機械式暗号）と呼ばれるのだろう。</p>
+
+<p>　現代暗号の始まりは DES であるらしい（共通鍵暗号、ブロック暗号の一種）。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種別</th>
+      <th>暗号化</th>
+      <th>復号化</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>共通鍵暗号</td>
+      <td>共通鍵</td>
+      <td>共通鍵</td>
+      <td>暗号復号の両方に同じ鍵を用いる</td>
+    </tr>
+    <tr>
+      <td>公開鍵暗号</td>
+      <td>公開鍵</td>
+      <td>秘密鍵</td>
+      <td>暗号復号に異なる鍵を用いる</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　共通鍵暗号はその仕組みからシーザー暗号（鍵は何文字ずらすか）と同じことが分かる。ただし、シーザー暗号に比べて推測は困難で、鍵（共通鍵）さえ流出しなければ良いという方針に沿っている。このことが現代暗号に分類され所以である。</p>
+
+<p>　暗号アルゴリズムが抱える問題（脆弱性）を突くことで解読できるとかできないとか。暗号文を眺めて頻度分析をする古典暗号ではなく、アルゴリズムを知ることが解読の糸口になるのが現代暗号。</p>
+
+<h2 id="-共通鍵暗号">└ 共通鍵暗号</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>種別</th>
+      <th>処理単位</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ブロック暗号</td>
+      <td>固定長のデータ（ブロック）</td>
+    </tr>
+    <tr>
+      <td>ストリーム暗号</td>
+      <td>ビット・バイト</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="height: 470px; overflow: hidden;"><div style="margin-top:-40px;"><div class="mermaid">
+graph TD
+
+subgraph ストリーム信号
+    AA[鍵 k] --&gt; BB[[疑似乱数生成器 R]]
+    BB --&gt; CC["鍵ストリーム K=R(k)"]
+    CC --&gt; DD((XOR))
+    EE[平文] --&gt; DD
+    DD --&gt; FF[暗号文]
+end
+
+subgraph ブロック信号
+    A["平文ブロック(P1, P2, ..., Pn)"] --&gt; B[["暗号化アルゴリズム Ci = Ek(Pi)"]]
+    C[鍵 k] --&gt; B
+    B --&gt; D["暗号文ブロック(C1, C2, ..., Cn)"]
+end
+</div></div></div>
+
+<h3 id="ブロック暗号">ブロック暗号</h3>
+
+<ol>
+  <li>初期変換</li>
+  <li>ラウンド関数
+    <ul>
+      <li>Feistel構造</li>
+      <li>SPN構造</li>
+    </ul>
+  </li>
+  <li>最終変換</li>
+</ol>
+
+<div style="height: 190px; overflow: hidden;"><div style="margin-top:-70px;"><div class="mermaid">
+graph LR
+
+subgraph ブロック信号
+    AA[平文] --&gt; BB[[初期変換]]
+    BB --&gt; CC[[ラウンド関数]]
+    CC -.N回.-&gt; DD[[ラウンド関数]]
+    DD --&gt; EE[[最終変換]]
+    EE --&gt; FF[暗号文]
+    aa[鍵] --&gt; bb[[鍵スケジューリング]]
+    bb --&gt; cc[拡大鍵]
+    cc --&gt; BB
+    cc --&gt; CC
+    cc --&gt; DD
+    cc --&gt; EE
+    subgraph データランダム化
+        BB
+        CC
+        DD
+        EE
+    end
+end
+</div></div></div>
+
+<h4 id="ラウンド関数">ラウンド関数</h4>
+
+<p>Feistel構造</p>
+
+<ol>
+  <li>サブブロックAをF関数で非線形変換</li>
+  <li>サブブロックBを変換後のAとの排他的論理和によって変換</li>
+  <li>二つのサブブロックの位置を交換</li>
+  <li>1から繰り返し</li>
+</ol>
+
+<p>SPN構造</p>
+
+<ol>
+  <li>換字変換（ある数値と別のある数値を置き換える）</li>
+  <li>転置変換（ブロックの bit の位置を置き換える）</li>
+  <li>1から繰り返し</li>
+</ol>
+
+<h4 id="ブロック暗号の利用モード">ブロック暗号の利用モード</h4>
+<ul>
+  <li>ECB(Electronic Codebook)</li>
+  <li>CBC(Cipher Block Chaining)</li>
+  <li>CFB(Cipher Feedbacck)</li>
+  <li>OFB(Output Feedbacck)</li>
+  <li>CTR(Counter)</li>
+</ul>
+
+<p>暗号化の時・復号化の時のモード毎の差異。wikiの図が分かりやすいが、ここでは比較を意図。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mode</th>
+      <th>IN-Func (暗)</th>
+      <th>C (暗)</th>
+      <th>IN-Func (復)</th>
+      <th>P (復)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECB</td>
+      <td>P</td>
+      <td>OUT-F</td>
+      <td>C</td>
+      <td>OUT-F</td>
+    </tr>
+    <tr>
+      <td>CBC</td>
+      <td>・P(+)IV<br />・P(+)OUT-F(n-1)</td>
+      <td>OUT-F</td>
+      <td>C</td>
+      <td>・OUT-F(+)IV<br />・OUT-F(+)C(n-1)</td>
+    </tr>
+    <tr>
+      <td>CFB</td>
+      <td>・IV<br />・C(n-1)</td>
+      <td>OUT-F(+)P</td>
+      <td>・IV<br />・C(n-1)</td>
+      <td>OUT-F(+)C<br /></td>
+    </tr>
+    <tr>
+      <td>OFB</td>
+      <td>・IV<br />・OUT-F(n-1)</td>
+      <td>OUT-F(+)P</td>
+      <td>・IV<br />・OUT-F(n-1)</td>
+      <td>OUT-F(+)C<br /></td>
+    </tr>
+    <tr>
+      <td>CTR</td>
+      <td>Nonce + Counter</td>
+      <td>OUT-F(+)P</td>
+      <td>Nonce + Counter</td>
+      <td>OUT-F(+)C</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>P(PlainText): 平文</li>
+  <li>C(CipherText): 暗号文</li>
+  <li>(+): xor</li>
+  <li>IV(Initialization Vector): 初期化ベクトル</li>
+  <li>Nonce: 使い捨てのランダムな値</li>
+  <li>Counter: 1ずつ増える値</li>
+  <li>(n-1): 1つ前</li>
+  <li>Func: 暗号化関数</li>
+  <li>IN-Func: 暗号化関数の入力</li>
+  <li>OUT-F(OUT-Func): 暗号化関数の出力</li>
+</ul>
+
+<h3 id="ストリーム暗号">ストリーム暗号</h3>
+
+<p>疑似乱数生成器の違い。</p>
+
+<ul>
+  <li>LFSR(Linear Feedback Shift Register): 線形帰還シフトレジスタ</li>
+</ul>
+
+<p>気が向いたら詳しく調べる。</p>
+
+<h2 id="-公開鍵暗号">└ 公開鍵暗号</h2>
+<ul>
+  <li>素因数分解問題
+    <ul>
+      <li>RSA</li>
+    </ul>
+  </li>
+  <li>離散対数問題</li>
+  <li>ナップサック問題</li>
+  <li>ラティス問題</li>
+</ul>
+
+<h2 id="その他">その他</h2>
+<h3 id="デジタル署名">デジタル署名</h3>
+<ul>
+  <li>RSA署名</li>
+</ul>
+
+<h3 id="暗号学的ハッシュ関数">暗号学的ハッシュ関数</h3>
+<ul>
+  <li>MD2, MD4, MD5</li>
+  <li>SHA-0, SHA-1</li>
+  <li>SHA-2(SHA-224, SHA-256, SHA-384, SHA-512)</li>
+  <li>SHA-3</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">The quick brown fox jumps over the lazy dog</code> を変換した例</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種</th>
+      <th>変換例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MD2</td>
+      <td>03d85a0d629d2c442e987525319fc471</td>
+    </tr>
+    <tr>
+      <td>MD4</td>
+      <td>1bee69a46ba811185c194762abaeae90</td>
+    </tr>
+    <tr>
+      <td>MD5</td>
+      <td>9e107d9d372bb6826bd81d3542a419d6</td>
+    </tr>
+    <tr>
+      <td>SHA-1</td>
+      <td>2fd4e1c67a2d28fced849ee1bb76e7391b93eb12</td>
+    </tr>
+    <tr>
+      <td>SHA-256</td>
+      <td>d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592</td>
+    </tr>
+    <tr>
+      <td>SHA-3</td>
+      <td>d15dadceaa4d5d7bb3b48f446421d542e08ad8887305e28d58335795</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="近いけど何か違うやつ">近いけど何か違うやつ</h3>
+
+<p>※暗号化処理ではないけれども、置く場所がないので、一端ここに。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>分類（アルゴリズム）</th>
+      <th>関連</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>base64</td>
+      <td>エンコーディング</td>
+      <td>メールソフト</td>
+    </tr>
+    <tr>
+      <td>uu(uuencode)</td>
+      <td>エンコーディング</td>
+      <td>メールソフト</td>
+    </tr>
+    <tr>
+      <td>gzip</td>
+      <td>圧縮</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>暗号化アルゴリズムは「平文」「暗号文」「鍵」が必要</li>
+  <li>暗号学的ハッシュ関数は「平文」「暗号文」
+    <ul>
+      <li>基本的に「鍵」がない（SHA-256など）</li>
+      <li>「鍵」を使うのもある（HMACなど）</li>
+    </ul>
+  </li>
+  <li>この辺は「平文」「暗号文」のみ
+    <ul>
+      <li>だが、セキュリティ性能はない。データ伝送用のフォーマットだったりする。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="疑似乱数器">疑似乱数器</h3>
+
+<p>　を使ったのが、ワンタイムパッド、Nonce など</p>
+
+<h2 id="攻撃">攻撃</h2>
+<ul>
+  <li>Brute Force Method
+    <ul>
+      <li>全数探索法</li>
+      <li>タイムメモリートレードオフ法</li>
+      <li>暗号文一致攻撃（誕生日攻撃）</li>
+      <li>辞書攻撃</li>
+    </ul>
+  </li>
+  <li>Short Cut Method
+    <ul>
+      <li>差分解読法</li>
+      <li>線形解読法</li>
+      <li>高階差分攻撃</li>
+      <li>補間攻撃</li>
+      <li>分割攻撃</li>
+      <li>関連鍵攻撃</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="b-全数探索法">B 全数探索法</h3>
+<p>　入手した暗号文を候補となる鍵で順々に復号する手法。鍵長が n bit の場合、候補となる鍵の個数は 2^n 個となる。</p>
+
+<h3 id="b-タイムメモリートレードオフ法">B タイムメモリートレードオフ法</h3>
+<p>　暗号文と平文の対応が分かる索引表を用いる。これは送信される平文を予想可能な場合に利用する。</p>
+
+<h3 id="b-暗号文一致攻撃誕生日攻撃">B 暗号文一致攻撃（誕生日攻撃）</h3>
+<p>　「n bit のサイズのデータをランダムに 2^n/2 個集めたときに、その中に同じデータが 2 個以上存在する確率が約 0.5 になる」という性質（バースデー・パラドックスと呼ばれる）を利用した攻撃法。</p>
+
+<p>　同一の鍵によって生成された複数の暗号文の中から一致するものを探し出す。</p>
+
+<h3 id="b-辞書攻撃">B 辞書攻撃</h3>
+<p>　暗号文と平文のペアを用意して起き辞書のように利用する。</p>
+
+<h3 id="s-差分解読法">S 差分解読法</h3>
+<p>　絞り込み</p>
+
+<h3 id="s-線形解読法">S 線形解読法</h3>
+<h3 id="s-高階差分攻撃">S 高階差分攻撃</h3>
+<h3 id="s-補間攻撃">S 補間攻撃</h3>
+<h3 id="s-分割攻撃">S 分割攻撃</h3>
+<h3 id="s-関連鍵攻撃">S 関連鍵攻撃</h3>
+
+<h2 id="rsa暗号">RSA暗号</h2>
+
+<h2 id="付録">付録</h2>
+<ul>
+  <li>計算複雑性理論</li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script></body>
+
+</html>

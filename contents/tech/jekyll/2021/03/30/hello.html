@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>jekyllのヘッダー | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="jekyllのヘッダー" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/jekyll/2021/03/30/hello.html" />
+<meta property="og:url" content="/contents/tech/jekyll/2021/03/30/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-30T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="jekyllのヘッダー" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-03-30T12:38:04+00:00","datePublished":"2021-03-30T12:38:04+00:00","description":"どこまでも逝こう。","headline":"jekyllのヘッダー","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/jekyll/2021/03/30/hello.html"},"url":"/contents/tech/jekyll/2021/03/30/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">jekyllのヘッダー</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-03-30T12:38:04+00:00" itemprop="datePublished">Mar 30, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#header-を見てみた">header を見てみた</a></li><li><a href="#headerdefault">header(default)</a></li><li><a href="#headeroriginal-fix変数を持たせる">header(original: fix変数を持たせる)</a></li><li><a href="#headeroriginal_2-ディレクトリ名の文字列一致で">header(original_2: ディレクトリ名の文字列一致で)</a></li><li><a href="#結局ふぃるたー">結局ふぃるたー</a></li><li><a href="#どうやら">どうやら</a></li><li><a href="#収穫">収穫</a></li><li><a href="#はい">はい</a></li></ul></details>
+    <h2 id="header-を見てみた">header を見てみた</h2>
+<p>　<code class="language-plaintext highlighter-rouge">_includes/header.html</code> に項目を増やそうかと思って、増やしてみました。</p>
+
+<p>　いくつかテスト用にファイルを作っているので、それを踏まえてみてくださいますよう。</p>
+
+<h2 id="headerdefault">header(default)</h2>
+<p>　デフォルトの状態。下記部分はサイト全体のメタデータ（<code class="language-plaintext highlighter-rouge">site.pages</code>）のうち<code class="language-plaintext highlighter-rouge">path</code>のハッシュ値だけを取り出したものの配列を示している。</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">default_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">pages</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">map</span><span class="p">:</span><span class="w"> </span><span class="s2">"path"</span><span class="w"> </span><span class="p">-%}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>header/2021-03-27-episord_2.markdown</li>
+  <li>404.html</li>
+  <li>header/about.markdown</li>
+  <li>index.markdown</li>
+  <li>assets/main.scss</li>
+  <li>header/nya.markdown</li>
+  <li>header/test.markdown</li>
+  <li>feed.xml</li>
+</ul>
+
+<p>　pagesには見ての通り、headerに含めたいもの以外のページも含まれている。jekyll には <code class="language-plaintext highlighter-rouge">site.pages</code> と <code class="language-plaintext highlighter-rouge">site.posts</code> の2種類のうちどちらかに振り分けられて格納されている。記事（<code class="language-plaintext highlighter-rouge">posts</code>）以外（ = <code class="language-plaintext highlighter-rouge">pages</code> ）でもヘッダーだけの処理にしたいですね、せっかくなので。</p>
+
+<h2 id="headeroriginal-fix変数を持たせる">header(original: fix変数を持たせる)</h2>
+<p>　headerページに <code class="language-plaintext highlighter-rouge">fix</code> 変数を持たせてそれで判断させてみます。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">page</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">About</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/about/</span>
+<span class="na">fix</span><span class="pi">:</span> <span class="s">header</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>　上記のように fix 変数を追加します。おー。</p>
+
+<p>　そして、以下の <code class="language-plaintext highlighter-rouge">where</code> でフィルターをかける一手間を追加して、あとはデフォルトと同じ。
+　</p>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">default_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">pages</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"fix"</span><span class="p">,</span><span class="w"> </span><span class="s2">"header"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">map</span><span class="p">:</span><span class="w"> </span><span class="s2">"path"</span><span class="w">  </span><span class="p">-%}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>header/2021-03-27-episord_2.markdown</li>
+  <li>header/about.markdown</li>
+  <li>header/nya.markdown</li>
+  <li>header/test.markdown</li>
+</ul>
+
+<p>　良い感じですね。</p>
+
+<h2 id="headeroriginal_2-ディレクトリ名の文字列一致で">header(original_2: ディレクトリ名の文字列一致で)</h2>
+
+<p>　変数を持たせるという独自ルールを追加するのは簡単ですが、ディレクトリ構造を以下のようにしているならば、それを利用しても良さそうです。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s">header</span>
+        <span class="s">- 2021-03-27-episord_2.markdown</span>
+        <span class="s">- about.markdown</span>
+        <span class="s">- nya.markdown</span>
+        <span class="s">- test.markdown</span>
+</code></pre></div></div>
+
+<p>　ただし、フィルターのような機能はないようなので、for文のところで header を含むのかを判定する形で対応するしかなさそうです（見落としている可能性はあるが）</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">path</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">page_paths</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">path</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s2">"header"</span><span class="w"> </span><span class="p">-%}</span>
+            - <span class="p">{{</span><span class="w"> </span><span class="nv">path</span><span class="w"> </span><span class="p">}}</span>&lt;br&gt;
+        <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>header/2021-03-27-episord_2.markdown</li>
+  <li>header/about.markdown</li>
+  <li>header/nya.markdown</li>
+  <li>header/test.markdown</li>
+</ul>
+
+<p>　はい。これでもまあいいでしょう。</p>
+
+<h2 id="結局ふぃるたー">結局ふぃるたー</h2>
+<p>　変数でフィルターするのが無駄がない気がします。</p>
+
+<p>　ディレクトリ構造でもいいですが、構造を整理のために変える可能性は十分にあるわけで。あと if文 を追加しないといけないのもなんだか嫌ですね。一番初めにフィルターで利用する変数を絞り込む方が安心します。</p>
+
+<h2 id="どうやら">どうやら</h2>
+<p>　jekyll のテンプレートエンジン <code class="language-plaintext highlighter-rouge">Liquid</code> の構文を直接マークダウンファイルに記述しても反映されるみたい。超便利。</p>
+
+<h2 id="収穫">収穫</h2>
+<p>　where と組み合わせれば、任意の変数を持つページ一覧を作れる。よーしうれしいーぞー。</p>
+
+<h2 id="はい">はい</h2>
+<p>　そんなわけで。はい。またお会いしましょう。</p>
+
+
+  </div><a class="u-url" href="/contents/tech/jekyll/2021/03/30/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

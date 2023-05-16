@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>rpg2003とデータ指向とRustや雑記 | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="rpg2003とデータ指向とRustや雑記" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/diary/2021/04/18/hello.html" />
+<meta property="og:url" content="/contents/diary/2021/04/18/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-18T12:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="rpg2003とデータ指向とRustや雑記" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-18T12:38:04+00:00","datePublished":"2021-04-18T12:38:04+00:00","description":"どこまでも逝こう。","headline":"rpg2003とデータ指向とRustや雑記","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/diary/2021/04/18/hello.html"},"url":"/contents/diary/2021/04/18/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">rpg2003とデータ指向とRustや雑記</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-18T12:38:04+00:00" itemprop="datePublished">Apr 18, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#rpgツクール2003">RPGツクール2003</a><ul><li><a href="#自作〇〇と変数">自作〇〇と変数</a></li><li><a href="#構造体と配列">構造体と配列</a></li></ul></li><li><a href="#指向性">指向性</a><ul><li><a href="#オブジェクト指向">オブジェクト指向</a></li><li><a href="#データ指向">データ指向</a><ul><li><a href="#amethyst">Amethyst</a></li></ul></li></ul></li><li><a href="#記事の管理">記事の管理</a><ul><li><a href="#memo">Memo</a></li><li><a href="#展望">展望</a></li></ul></li><li><a href="#終わりに">終わりに</a></li></ul></details>
+    <h2 id="rpgツクール2003">RPGツクール2003</h2>
+<p>　2021年にもなって何をそんな古いゲームエンジンの話をしていると思う人もいるかもしれない。だが、事実としてRPGツクール2003は現役でかつかなり優秀なゲームエンジンであると思っている。それは追加パッチを当てることで強力になるが、仮に当てなくても十分に現役である。</p>
+
+<p>　後継のツクールは、グラフィックの向上・スクリプトによる実装・クロスプラットフォーム対応（ブラウザ等）をしているが、ゲームの作りの根本部分で言えば、それほど違いはない。むしろ様々な機能を内包したがために実行速度が遅くなったようにさえ感じている。</p>
+
+<p>　と語ったが、私は実際にツクールを通してゲームを完成させた試しはない。以前にXPに触れたことがあるが頓挫し、つい最近になって2003に触れたのだが、ここ一ヶ月ほどご無沙汰である。</p>
+
+<p>　ご無沙汰の理由についてはあまり言及したくはないが、強いてあげるとすれば、シナリオがまったく進まないことにあるのだが、まあそのことは今回は良いだろう。</p>
+
+<h3 id="自作〇〇と変数">自作〇〇と変数</h3>
+<p>　2003をする上で、自作メニューや自作戦闘を作ろうと思うと必ず触れることになる要素がある。</p>
+
+<p>　それは変数である。</p>
+
+<p>　この要素は2003に限った話ではないが、後継のツクールではスクリプトで記述した方が大抵の場合は楽と言える。2003では変数を一つ一つ指定して使う必要がありやや難儀だ。</p>
+
+<p>　2003で変数を使う時に最も難儀だと感じたのは変数の場所が不変であるということだ。</p>
+
+<p>　プログラミングにおいて、コンパイラが行ってくれる静的領域の確保を人間が事前に行う必要があるわけだ。実行時に確保される動的なメモリ領域というのも不可能であるが、利用するメモリ領域を想定してメモリ確保を行うことで、（実質的には静的だが）動的かのように利用することは出来る。（表現が適切かどうかは怪しいが、こうした認識に類似する物だとは思う）</p>
+
+<p>　C言語でさえメモリ確保は言語サポートなわけだが、ツクール2003の場合はメモリ確保を人間が行う必要がある。</p>
+
+<p>　このことは非常に難儀に感じたが、同時に自らの無知を知る機会（特にメモリについて）となったため触れて良かったように思う。</p>
+
+<p>　そして、それらのことを把握したうえで良いゲームを組み上げている人が一定数存在しており、そのゲームを魅力的に感じる層が確実に存在して、感動ゆえに触れてみたのが私である</p>
+
+<p>　そうして、2003に触れて、自作メニューでも作ってみるかと試行錯誤した時に、面白いことに気づいたわけである（これは少し前の話である）。</p>
+
+<p>　非常に単純であり面白さを感じない人もいるかもしれないが、私が面白いと感じたのは――構造体と配列の違いだ。</p>
+
+<h3 id="構造体と配列">構造体と配列</h3>
+<p>　これから語りたい事に焦点を当てて構造体と配列を定義するならば、構造体とは異なる型を集めた集合体であり。配列は同一の型を集めた集合体であると言える。</p>
+
+<p>　例えば、Enemyについて考えてみる。Enemy100体が(x,y)を動き hp も変化するような処理があったとすれば（この処理の意味は不明だが）</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">Enemy</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">hp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">Enemy</span> <span class="n">enemy</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">enemy</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">enemy</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">enemy</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">hp</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　のように、Enemy構造体が3つの変数(x,y,hp)を持ち、Enemy構造体の構造を持つenemyを100個宣言（構造体の配列）し、ループ構造で全てのenemyの変数を操作している。</p>
+
+<p>　これの視点を変えて、配列を中心に組み立ててみると、</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">enemy_x</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">enemy_y</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">enemy_hp</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">enemy_x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">enemy_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">enemy_hp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>　のようになる。配列が3つ並ぶ形になる。</p>
+
+<p>　この二つの違いは、メモリ確保の形に違いが出る。</p>
+
+<p>　構造体の場合のメモリは、</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="err">構造体パターン</span>   <span class="err">配列パターン</span>
+<span class="p">[</span><span class="mo">0000</span><span class="p">]</span>  <span class="n">enemy</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span>      <span class="n">enemy_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mo">0001</span><span class="p">]</span>  <span class="n">enemy</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span>      <span class="n">enemy_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mo">0002</span><span class="p">]</span>  <span class="n">enemy</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">hp</span>     <span class="n">enemy_x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mo">0003</span><span class="p">]</span>  <span class="n">enemy</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span>      <span class="n">enemy_x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mo">0004</span><span class="p">]</span>  <span class="n">enemy</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span>      <span class="n">enemy_x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mo">0005</span><span class="p">]</span>  <span class="n">enemy</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">hp</span>     <span class="n">enemy_x</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+        <span class="err">……</span>              <span class="err">……</span>
+</code></pre></div></div>
+
+<p>　のようになる。構造体の場合、xからxまでの距離は3つになり、配列の場合はxからxまでの距離は1つである。これは明らかに配列の場合の方が処理速度が速いと言える。</p>
+
+<p>　これはプログラミングにおける話ではあるが、ツクール上でもやはり速い。というのは拡張パッチを当てることで『配列操作』のイベントコマンド一つで（ステップ数1で）処理することが出来るからだ。（配列操作を使わない場合であれば、+1加算しようが+3加算しようが変わらないから、どちらのメモリ構造でも一緒だろうが）</p>
+
+<p>　つまり、ツクールで処理速度を気にして変数に触れるのならば、この二つのパターンのどちらを使うべきかをよく吟味すべきだと言える。</p>
+
+<h2 id="指向性">指向性</h2>
+<p>　私は、C言語に触れて手続き型を知り、C++に触れてオブジェクト指向を知り、その他言語に触れるにしても、いまやオブジェクト指向で溢れているわけなので、それこそが良いことだと思っていた。多くの場合では良いことだろう。</p>
+
+<p>　ただ、ゲームについて言えば、どうなのだろうか。</p>
+
+<h3 id="オブジェクト指向">オブジェクト指向</h3>
+<p>　さて、世間にはオブジェクト指向型と呼ばれる設計手法が存在する。端的に言えば最小単位をオブジェクトとして捉える考え方であり、先の例ならば、enemy構造体が100個あるというのはenemyというオブジェクトが100個あるということを示している。</p>
+
+<p>　これはenemy_x[i]と考えるよりも enemy を理解しやすいだろう。処理を考えるときにも enemy 毎に扱うならば実に簡潔で理想的だ。</p>
+
+<p>　ただし、ゲームを一度作ってみると分かるのだが、事はそれほど単純ではない。</p>
+
+<p>　enemy.x と item.x と player.x と map.x と言った風に、オブジェクトで完結せず、複数のオブジェクトの特定の変数（ここではx）にアクセスして計算をしたい時が平気で現れる。位置ならば衝突判定かもしれないし、経路探索かもしれない。特定の位置にいた時にアイテムの所有者にリジェネ効果が入るかもしれない。</p>
+
+<p>　オブジェクトを跨ぐ場合、構造体パターンだと無駄が多いと感じ始めることだろう。例えば、enemyが x,y,hp,atk,def,int,spd,name,type,fire,ice,wind,… など様々な変数を所有していたとして、構造体の場合はオブジェクト毎にアクセスすることになるから、参照するためにしなくても良い処理を入れなければならなくなる。</p>
+
+<p>　enemey[1] -&gt; enemy[2] の場合、全変数に対して距離分を加算しなくてはならない。xに対しての加算だけで良いのに！</p>
+
+<p>　これはあまりにも無駄が多い。</p>
+
+<p>　では、例えば、配列パターンでメモリを確保していたならどうだろうか。enemy_x, item_x, player_x, map_x のように配列毎に並んでいたならばことは単純だ。どれだけ敵の数やアイテムの数が増えようとも、位置に対しての処理は常に1加算することで次の要素にアクセスできる。</p>
+
+<p>　これは構造体パターンと比較すれば圧倒的に良い。処理速度において必ず成果を残すだろう。</p>
+
+<h3 id="データ指向">データ指向</h3>
+<p>　構造体パターンをオブジェクト指向と呼ぶとするならば、配列パターンはデータ指向と言える、のではなかろうか。</p>
+
+<p>　データ指向という単語は正に今日知った言葉なので、正確性に欠けるのだが、ツクール上でのメモリの持ち方についての個人的見解を見事に表現しているような気がして、いてもたってもいられずこうして記事に書き起こしている。</p>
+
+<p>　オブジェクト指向はオブジェクトを中心に考えるのだが、データ指向はデータを中心に考えるのだそうだ。</p>
+
+<p>　であれば、enemy_x のようにして考えるのはデータ指向ではなかろうか。</p>
+
+<p>　オブジェクトを跨ぐような処理が多すぎる場合（ゲームのようなサービスの場合）、オブジェクト指向よりデータ指向で考えた方が無駄が少なく開発出来るのではないかと思うわけである。</p>
+
+<p>　ツクール2003を触った時にそんなことを思ったわけである（この時はデータ指向という言葉を知らなかった）</p>
+
+<h4 id="amethyst">Amethyst</h4>
+<p>　ここ数日、Rustという言語のチュートリアルを少しずつ読み進めている。</p>
+
+<p>　この言語で作られた Amethystというゲームエンジンがあるのだが、これがまさにデータ指向型なのである。</p>
+
+<p>　Rust という言語の厳格性やメモリの扱いに対して強い関心があってチュートリアルを読んでいたわけだが、どうやらデータ指向と相性が良いというような話がAmethystでされているようである（詳しくは知らないけれど）</p>
+
+<p>　ここに来て、データ指向という言葉を知り、ツクール上で思考を振り返り、Rustという言語との出会いとAmethystというゲームエンジンの存在に衝撃を受けるに至る。</p>
+
+<p>　データ指向がゲーム開発におけるベストプラクティスであるかは分からないが、私が感じ取っていた違和感を解決してくれるのがRustであると期待せずにはいられない。</p>
+
+<p>　Rustのチュートリアルもまだ途中でAmethystのチュートリアルにすら目を通してない私が実際に触れるのはまだまだ先になるだろうが、この感動は確かなものである。</p>
+
+<p>　これが私の感じた面白い事であったわけだ。</p>
+
+<p>　もう一つの面白い事として言えそうなのは、ツクール2003等で面白いゲームを世に送り出してくれている人たちのメモリ構造を見ることでどういう指向性を持っているかを見ることが出来るかもしれないということだ。F9を押す面白さが増えたと言える。やはりツクール2003は偉大なツールだ。</p>
+
+<h2 id="記事の管理">記事の管理</h2>
+<p>　ところで、話は変わってブログについて。</p>
+
+<p>　データデータと言ってきたが、実はブログ記事についてもデータ（？）の扱いに丁度悩み始めたところでもあって、これまた奇妙な巡り合せである。</p>
+
+<p>　さて。</p>
+
+<p>　このブログには Tech というカテゴリを設けているのだが、少し扱いに困ってきた。というのも、一時的にと作った Memo というページの存在だ。</p>
+
+<h3 id="memo">Memo</h3>
+<p>　Memo はなんとなく興味が出たことを調べて雑にまとめているページだ。後々に Tech 記事としてまとめようとも思っている。</p>
+
+<p>　ただし、多くの場合、 Memo の情報というのは単なるデータの集合体なのだ。</p>
+
+<p>　これが一体なぜ悩み繋がるのかと言うと、 Tech はデータの集合体ではなく、むしろデータを前提にしたようなメソッドの位置づけと感じているからである。</p>
+
+<p>　jekyll カテゴリではブログ全体の拡張の様子を綴っているつもりだし、Youtubeカテゴリについては API に触れてみたという記事を投稿している。</p>
+
+<p>　これらは動作でありメソッドであり、データの集合体ではないだろう。</p>
+
+<p>　となると、データはどこにまとめていくべきなのか。</p>
+
+<p>　果たして Tech だろうか。</p>
+
+<p>　そういう悩みに至っているわけである。</p>
+
+<h3 id="展望">展望</h3>
+<p>　新規に Lib(library) ページのようなものを作るのも悪くはないかもしれない。</p>
+
+<p>　とはいえ、ヘッダーメニューから Memo ページに一発でアクセスできるのがかなり気に入っている。自分で良く見返しているからだ。</p>
+
+<p>　だから、ページに分けるのは正直気が進まない。</p>
+
+<p>　丁度、デスクトップを整理しようとしてフォルダ分けしたけれど、結局アクセス方法はランチャーを使うことで落ち着いた時のようである。</p>
+
+<p>　ヘッダー以外にランチャーに当たるようなナビゲーションが欲しいのかもしれない。</p>
+
+<p>　いずれにせよ、どうまとめたものか。</p>
+
+<p>　Memo の行方は不明である。</p>
+
+<p>　データの扱い方が固まれば、 Tech の在り方も多少変わると思っている。</p>
+
+<p>　まあ、しかし、ゆっくり考えよう。</p>
+
+<h2 id="終わりに">終わりに</h2>
+<p>　ツクール2003でもゲームを作りたいが。</p>
+
+<p>　Amethystも学びたいが。</p>
+
+<p>　ブログも改善したいが。</p>
+
+<p>　今はRustをしっかり学ぶ時。チュートリアルを読んでいて、人間には早い言語なんじゃないかと思えることもしばしばあるが、読めるようにがんばりたい。まさに私は新しい言語を学んでいるのだと感じさせてくれることは、案外楽しいものである。</p>
+
+<p>　よしよし。</p>
+
+<p>　まとまりがなくてもいいとしたのがこの Diary カテゴリーである。</p>
+
+<p>　感じたことを素直に書き下ろすのは大切だ。</p>
+
+<p>　はい。では。このへんで。</p>
+
+  </div><a class="u-url" href="/contents/diary/2021/04/18/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

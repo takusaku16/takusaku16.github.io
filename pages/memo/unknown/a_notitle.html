@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>notitle | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="notitle" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/pages/memo/unknown/a_notitle.html" />
+<meta property="og:url" content="/pages/memo/unknown/a_notitle.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="notitle" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"どこまでも逝こう。","headline":"notitle","url":"/pages/memo/unknown/a_notitle.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">notitle</h1>
+  </header>
+
+  <div class="post-content"><details>
+        <summary>目次</summary><ul><li><a href="#storage">Storage</a></li><li><a href="#javascript">Javascript</a><ul><li><a href="#非同期">非同期</a></li><li><a href="#promise-asyncawaitとは">Promise（, async/await）とは</a><ul><li><a href="#非同期通信完了後に処理を実行させるには">非同期通信完了後に処理を実行させるには</a></li></ul></li></ul></li><li><a href="#apiサーバー">APIサーバー</a><ul><li><a href="#cors">CORS</a></li></ul></li><li><a href="#リアルタイム双方向通信">リアルタイム双方向通信</a><ul><li><a href="#httpプロトコル-でがんばる">HTTPプロトコル でがんばる</a></li><li><a href="#現状の代表格二人組">現状の代表格二人組</a></li><li><a href="#期待の新人">期待の新人</a></li></ul></li><li><a href="#http">HTTP</a></li><li><a href="#すとりーみんぐ">すとりーみんぐ</a><ul><li><a href="#プロトコル">プロトコル</a><ul><li><a href="#7-アプリケーション層">7. アプリケーション層</a></li><li><a href="#4-トランスポート層">4. トランスポート層</a></li></ul></li><li><a href="#動画形式映像コンテナ">動画形式（映像コンテナ）</a></li><li><a href="#コーデック">コーデック</a></li><li><a href="#とどけかた">とどけかた</a></li><li><a href="#構成図">構成図🖼</a></li></ul></li><li><a href="#ねとらじ">ねとらじ🖼</a></li><li><a href="#ライセンス">ライセンス</a><ul><li><a href="#ossライセンス">OSSライセンス</a></li><li><a href="#gpl-互換性">GPL 互換性</a></li></ul></li><li><a href="#インターネットの基礎">インターネットの基礎</a><ul><li><a href="#ネットワークアーキテクチャ">ネットワークアーキテクチャ</a></li><li><a href="#通信">通信</a><ul><li><a href="#アプリケーションから始まりアプリケーションで終わる">アプリケーションから始まりアプリケーションで終わる</a></li><li><a href="#webブラウザの階層間の関連付け">Webブラウザの階層間の関連付け</a></li><li><a href="#プロトコルのヘッダ識別情報">プロトコルのヘッダ（識別情報）</a></li></ul></li></ul></li><li><a href="#webサーバー">Webサーバー</a><ul><li><a href="#プロキシ">プロキシ</a></li><li><a href="#リバースプロキシ">リバースプロキシ</a></li><li><a href="#負荷分散">負荷分散</a></li></ul></li><li><a href="#windowsアプリケーション">Windowsアプリケーション</a><ul><li><a href="#net-原初">.NET 原初</a></li><li><a href="#net-派生">.NET 派生</a></li><li><a href="#xx-studio">XX Studio</a></li></ul></li><li><a href="#グラフィックス-api-関連図">グラフィックス API 関連図🖼</a></li><li><a href="#クラウドサービス">クラウドサービス</a><ul><li><a href="#コンピュートリソース">コンピュートリソース</a></li><li><a href="#ストレージ">ストレージ</a></li><li><a href="#データベースサービス">データベースサービス</a></li><li><a href="#ネットワーク">ネットワーク</a></li><li><a href="#アプリケーション開発">アプリケーション開発</a></li><li><a href="#運用管理">運用管理</a></li><li><a href="#セキュリティ">セキュリティ</a></li><li><a href="#機械学習iotモバイル">機械学習、IoT、モバイル</a></li><li><a href="#メモ補足">メモ補足</a></li></ul></li><li><a href="#directx">DirectX</a><ul><li><a href="#基礎俯瞰図">基礎俯瞰図🖼</a></li><li><a href="#コンポーネント分類図">コンポーネント分類図🖼</a></li></ul></li><li><a href="#オーディオapi">オーディオAPI</a><ul><li><a href="#オーディオapi俯瞰図">オーディオAPI俯瞰図🖼</a></li></ul></li><li><a href="#コンピュータグラフィックス">コンピュータグラフィックス</a><ul><li><a href="#描画パイプライン">描画パイプライン🖼</a></li><li><a href="#補足-コンピュートシェーダー">補足 コンピュートシェーダー</a></li></ul></li><li><a href="#シェーディング">シェーディング</a></li><li><a href="#テクスチャ">テクスチャ</a></li></ul></details><h2 id="storage">Storage</h2>
+<p>　保存場所</p>
+
+<ul>
+  <li>Local Storage
+    <ul>
+      <li>永続的</li>
+      <li>javascript</li>
+    </ul>
+  </li>
+  <li>Session Storage
+    <ul>
+      <li>タブやウィンドウを閉じたら</li>
+      <li>javascript</li>
+    </ul>
+  </li>
+  <li>Cookie
+    <ul>
+      <li>タブやウィンドウを閉じたら or 期限指定可</li>
+      <li>サーバー言語っぽい</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="javascript">Javascript</h2>
+<p>　謎。</p>
+
+<h3 id="非同期">非同期</h3>
+<ul>
+  <li>Ajax(Asynchronous JavaScript + XML)
+    <ul>
+      <li>ウェブブラウザ内で非同期通信を行いながらインターフェイスの構築を行うプログラミング手法</li>
+      <li>パーツ
+        <ul>
+          <li>XMLHttpRequest: ブラウザ上でサーバーとHTTP通信を行うためのAPI</li>
+          <li>Javascript: XMLHttpRequest が定義済み（組み込みオブジェクト）の言語</li>
+          <li>DOM: 文書の構造をメモリ内に表現, データを「ツリー構造」で持つ
+            <ul>
+              <li>HTML: html</li>
+              <li>XML: <code class="language-plaintext highlighter-rouge">&lt;小説&gt;人食いの鬼助&lt;/小説&gt;</code> みたいな構造のやーつ</li>
+            </ul>
+          </li>
+          <li>JSON: これを元に Javascript を使って HTML XML をメモリに表現した DOM をいじるのが一般的らしい。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>種類
+    <ul>
+      <li>setTimeout
+        <ul>
+          <li>最も基礎的</li>
+        </ul>
+      </li>
+      <li>XMLHttpRequest
+        <ul>
+          <li>標準搭載（原初）</li>
+          <li>コールバック地獄の問題
+            <ul>
+              <li>Promise/then によって解決出来る。</li>
+              <li>async/await によってさらに直感的になる。</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>JQuery
+        <ul>
+          <li>XMLHttpRequest のラッパー $.ajax</li>
+        </ul>
+      </li>
+      <li>Fetch api
+        <ul>
+          <li>標準搭載（Promiseによる実装）
+            <ul>
+              <li>XMLHttpRequest のように非同期通信可能</li>
+              <li>Promise による実装のため XMLHttpRequest より簡易に書ける</li>
+              <li>async/await でさらに直感的になる。</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>axios
+        <ul>
+          <li>Promiseを返すのラッパー</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="promise-asyncawaitとは">Promise（, async/await）とは</h3>
+<p>XMLHttpRequest などで非同期通信を実装することを考える。</p>
+
+<ul>
+  <li>非同期通信
+    <ul>
+      <li>非同期通信は実行順が書いた順にならない</li>
+      <li>非同期通信完了後に実行したい処理はコールバック関数として渡しておくことにする。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>ここで重要なのは、非同期通信完了後に実行したい処理が存在するということ。</p>
+
+<h4 id="非同期通信完了後に処理を実行させるには">非同期通信完了後に処理を実行させるには</h4>
+<ul>
+  <li>コールバック
+    <ul>
+      <li>関数を渡し、処理の最後に渡した関数を呼び出す（これがコールバック関数）</li>
+      <li>ただし、非同期通信を順番に連続して行いたい場合、コールバック地獄（ネストが深くなる）が発生。</li>
+      <li>これを解決するための仕組みが現れる。</li>
+    </ul>
+  </li>
+  <li>Promise 構文でもっと簡単に書ける！
+    <ul>
+      <li>コールバック地獄が見やすいコードになる。安心安全。</li>
+      <li>then: promise 実行
+        <ul>
+          <li>成功(resolve): resolve を実行</li>
+          <li>失敗(reject): reject を実行</li>
+        </ul>
+      </li>
+      <li>ただし、通常のコード（同期通信）と比較すると、やはり見栄えが特殊。</li>
+      <li>これを解決するための仕組みが現れる。</li>
+    </ul>
+  </li>
+  <li>async/await 構文でもっと簡単に書ける！！
+    <ul>
+      <li>async: 非同期関数を定義する関数宣言。</li>
+      <li>await: Promiseの終了を待つようになる。async の中でのみ使える。非同期処理とは一体。</li>
+      <li>async function : 最終的に Promise を返す（これ注意）
+        <ul>
+          <li>成功(戻り値あり): resolve する</li>
+          <li>失敗(例外, throw): reject する</li>
+        </ul>
+      </li>
+      <li>非同期通信を同期通信の中でも違和感なく使える。非同期通信を同期通信かの如く書ける。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="apiサーバー">APIサーバー</h2>
+<p>　自前のAPIサーバーが欲しいがよくわからない。github pages からアクセスできるのがあると便利そうだと思って調べたが迷宮入り。</p>
+
+<ul>
+  <li>httpd
+    <ul>
+      <li>apache とか nginx とかで多分やる</li>
+    </ul>
+  </li>
+  <li>firewall
+    <ul>
+      <li>受信規則で特定ポートを許可する必要が多分ある</li>
+    </ul>
+  </li>
+  <li>ipAddres（固定/動的）
+    <ul>
+      <li>ipconfig -&gt; ipv4 : プライベートIPアドレス(LAN)</li>
+      <li>Router の ipv4 : グローバルIPアドレス(WAN) : from プロバイダ</li>
+    </ul>
+  </li>
+  <li>名前解決
+    <ul>
+      <li>127.0.0.1 localhost : ローカル（C:\Windows\System32\drivers\etc\hosts）</li>
+      <li>DNSサーバー様 : グローバル（登録してつかうっぽい）</li>
+    </ul>
+  </li>
+  <li>※
+    <ul>
+      <li>自前のAPIサーバーを別で立てる場合はCORSを考慮する必要あり
+        <ul>
+          <li>html の script タグで CDN から提供されているライブラリを呼び出す時には CORS を気にしなくて良い。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cors">CORS</h3>
+<ul>
+  <li>概要
+    <ul>
+      <li>自分と異なるオリジン（プロトコル://ドメイン:ポート）にリクエストすることを標準で制限</li>
+      <li>単純リクエストはCORSの制約を受けず全てのドメインからアクセス出来る(Access-Control-Allow-Origin: *)</li>
+      <li>プリフライトリクエストはCORSの制約を受ける</li>
+    </ul>
+  </li>
+  <li>解除
+    <ul>
+      <li>サーバー側でクライアントのオリジンを許可するヘッダーを付与すると制約を解除できる</li>
+      <li>CORS の制約を受ける場合は一旦サーバーを経由して解除しないといけない（クライアントだとヘッダー付与できない）</li>
+    </ul>
+  </li>
+  <li>WebAPI
+    <ul>
+      <li>CORS 制約あり（あった）
+        <ul>
+          <li>にこにこの api/v2/snapshot</li>
+        </ul>
+      </li>
+      <li>CORS 制約なし（なかった）
+        <ul>
+          <li>Youtube Data API
+            <ul>
+              <li>APIキーを利用。（認証方式は CORS には関係ない、かな）</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>おまけ
+    <ul>
+      <li>JSONP
+        <ul>
+          <li>script タグにコールバックを仕込む荒業。あぶないけどおもしろい。</li>
+        </ul>
+      </li>
+      <li>chrome extension
+        <ul>
+          <li>CORS を無視できるのがある。あぶない。</li>
+        </ul>
+      </li>
+      <li>chrome の security を外す
+        <ul>
+          <li>オプションに指定すると外せる。あぶ。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="リアルタイム双方向通信">リアルタイム双方向通信</h2>
+<h3 id="httpプロトコル-でがんばる">HTTPプロトコル でがんばる</h3>
+<ul>
+  <li>ポーリング
+    <ul>
+      <li>クライアントが一定間隔でサーバに問い合わせをし続ける</li>
+      <li>デメリット: 画面全部を取得し直してくるため無駄が多い</li>
+    </ul>
+  </li>
+  <li>Ajax
+    <ul>
+      <li>クライアントが一定間隔でサーバに問い合わせをし続ける</li>
+      <li>画面の更新部分だけ取得してくる。</li>
+      <li>メリット: 無駄が減った</li>
+      <li>デメリット: 更新が無くても問い合わせること</li>
+    </ul>
+  </li>
+  <li>ロングポーリング（Comet）
+    <ul>
+      <li>サーバー側は更新があるまでリクエストに対してレスポンスを返さない</li>
+      <li>更新があればレスポンスを返し、クライアントは再度リクエストを投げて通信を張る
+        <ul>
+          <li>レスポンスを返すとHTTP通信は通信を閉じてしまうため</li>
+        </ul>
+      </li>
+      <li>メリット: 更新がない時は更新しない</li>
+      <li>デメリット: サーバーの更新頻度が早いと更新を正しく受け取れない場合がある・通信を張るコスト</li>
+    </ul>
+  </li>
+  <li>SSE(Server-Sent Event)
+    <ul>
+      <li>レスポンスを返さず、代わりに chunk を送信する。</li>
+      <li>メリット: 更新頻度が速くても大丈夫・通信を張り直さない</li>
+      <li>デメリット:
+        <ul>
+          <li>HTTP通信を張り続けるため、CPU使用率に影響</li>
+          <li>Server-Clientの構造。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="現状の代表格二人組">現状の代表格二人組</h3>
+<ul>
+  <li>WebSocket
+    <ul>
+      <li>TCP上に構築されたプロトコル（WebSocketプロトコル）（HTTPではない）</li>
+      <li>メリット:
+        <ul>
+          <li>Server-Client方式・Client-Server方式の両方出来る</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>WebRTC
+    <ul>
+      <li>WebRTCの中の通信規格でP2Pの接続相手と通信を行う javascript のAPI</li>
+      <li>ウェブでUDP通信
+        <ul>
+          <li>映像配信・クラウドゲーミングに良い。</li>
+        </ul>
+      </li>
+      <li>メリット:
+        <ul>
+          <li>Peer-to-Peer方式（サーバーがいらない）（ブラウザがあれば良い）</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="期待の新人">期待の新人</h3>
+<ul>
+  <li>WebTransport
+    <ul>
+      <li>QUICプロトコル（両方の良いとこ取り）
+        <ul>
+          <li>UDPの上に構築されたプロトコル（WebRTC）</li>
+          <li>到達の保証付き（TCP的）（WebSocket）</li>
+        </ul>
+      </li>
+      <li>Server-Client方式・Client-Server方式の両方出来る</li>
+      <li>WebRTCの要件をWebSocket的に扱えるようになる。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="http">HTTP</h2>
+<ul>
+  <li>HTTP/2
+    <ul>
+      <li>プロトコル: TCP</li>
+    </ul>
+  </li>
+  <li>HTTP/3
+    <ul>
+      <li>プロトコル: QUIC(UDPベース)</li>
+      <li>[7]HTTP/3 &gt; [4.5]QUIC(TLS含) &gt; [4]UDP &gt; [3]IP
+        <ul>
+          <li>[7] アプリケーション層
+            <ul>
+              <li>HTTP/3</li>
+            </ul>
+          </li>
+          <li>[5] セッション層
+            <ul>
+              <li>TLS</li>
+            </ul>
+          </li>
+          <li>[4.5] ???
+            <ul>
+              <li>QUIC(TLS機能も含むので、間にある感じする)</li>
+            </ul>
+          </li>
+          <li>[4] トランスポート層
+            <ul>
+              <li>UDP</li>
+            </ul>
+          </li>
+          <li>[3] ネットワーク層
+            <ul>
+              <li>IP</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="すとりーみんぐ">すとりーみんぐ</h2>
+<p>　仕組みよくわからないけど視聴してるよね。調べても分からん。</p>
+
+<h3 id="プロトコル">プロトコル</h3>
+<h4 id="7-アプリケーション層">7. アプリケーション層</h4>
+<p>HTTP ベース（TCPベース）</p>
+
+<ul>
+  <li>HLS (HTTP Live Streaming)</li>
+  <li>MPEG-DASH (Dynamic Adaptive Streaming over HTTP)</li>
+</ul>
+
+<h4 id="4-トランスポート層">4. トランスポート層</h4>
+<p>TCP/UDP ベース</p>
+
+<ul>
+  <li>RTMP (RealTime Messaging Protocol)
+    <ul>
+      <li>TCPベース</li>
+      <li>再生に専用プラグラインが必要</li>
+      <li>HTTP ではないため、Webサーバーでコンテンツ配信は出来ない。</li>
+      <li>RTMPサーバーが必要。</li>
+    </ul>
+  </li>
+  <li>WebRTC
+    <ul>
+      <li>UDPベース</li>
+      <li>P2P</li>
+    </ul>
+  </li>
+  <li>FTL
+    <ul>
+      <li>UDPベース</li>
+      <li>Mixirが頑張っていた。</li>
+    </ul>
+  </li>
+  <li>SRT
+    <ul>
+      <li>UDPベース</li>
+      <li>TCP的な保証付き。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>※RTP: UDPをベースにしたプロトコル。VoIP等の基盤。</p>
+
+<h3 id="動画形式映像コンテナ">動画形式（映像コンテナ）</h3>
+<ul>
+  <li>WMV</li>
+  <li>FLV</li>
+</ul>
+
+<h3 id="コーデック">コーデック</h3>
+<ul>
+  <li>H.264 (AVC = Advanced Video Coding)</li>
+  <li>H.265 (HEVC = High Efficiency Video Coding)</li>
+</ul>
+
+<h3 id="とどけかた">とどけかた</h3>
+<ul>
+  <li>1 友達に届ける
+    <ul>
+      <li>準備:
+        <ul>
+          <li>ローカルホストでサーバー立ち上げ</li>
+          <li>ポート開放</li>
+        </ul>
+      </li>
+      <li>送信:
+        <ul>
+          <li>ローカルホストに映像を送信</li>
+        </ul>
+      </li>
+      <li>受信:
+        <ul>
+          <li>グローバルIPアドレスを直接指定して受信</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>2 ストリーミングサイト
+    <ul>
+      <li>送信:
+        <ul>
+          <li>ライブストリーミングサイトに映像を送信</li>
+        </ul>
+      </li>
+      <li>受信:
+        <ul>
+          <li>ユーザーはライブストリーミングサイトを経由して受信</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="構成図">構成図🖼</h3>
+<p>　Flash系列ならRTMPを再生できるので、WindowsMediaPlayerで直接再生するか、ブラウザに搭載されたFlashPlayer（もう死んだが）で見るかが出来る。</p>
+
+<p>　でも、スタンダードはHLS形式。OBSはRTMPで伝送するので、HLSに変換が必要。HLSはCDNとの相性が良いとか。ブラウザで標準で視聴出来るように整備されているので、安心はHLS。YoutubeはRTMPとHLSを選べた気がする。</p>
+
+<p>※図は割と主観による略式が中心で、情報の正確性も保証出来ないので注意（この図以外も全部そう）。</p>
+
+<div class="mermaid">
+graph TD
+
+subgraph リスナー
+    subgraph 再生媒体
+        WindowsMediaPlayer
+        subgraph ブラウザ
+            FlashPlayer
+            subgraph HTML5
+                videoタグ
+            end
+        end
+    end
+end
+subgraph 配信者
+    OBS
+end
+subgraph サーバー
+    RTMP形式
+    HLS形式
+    RTMP形式　--"HLSに変換"--&gt; HLS形式
+end
+
+OBS --"push(rtmp)"--&gt; RTMP形式
+WindowsMediaPlayer --"pull(rtmp)"--&gt; RTMP形式
+FlashPlayer --"pull(rtmp)"--&gt; RTMP形式
+videoタグ --"pull(hls)"--&gt; HLS形式
+</div>
+
+<h2 id="ねとらじ">ねとらじ🖼</h2>
+<p>　ストリーミング配信について調べてたんですが、そういやねとらじもあったなぁと思って、簡易に構成をまとめた。想像に身を委ねたので合ってるかは分からない。放送用ソフトのBelugaはWinsock使ってTCPコネクションを作ってるのは分かったけど、詳しく中身見てない。ので、怪しい図。視聴は winamp 一択だ、今でも音楽プレイヤーとして使ってる人は減ったんだろうなと思いを馳せる。</p>
+
+<p>　ところで、Youtube版の Dolphin とか欲しかったんだけど、 Youtube Data API はクオータ制限あるし、番組数が多すぎてオフセット指定する形だし、Youtubeヘッドラインツールは厳しい。一覧が好きなんだがなあ。</p>
+
+<div class="mermaid">
+graph TD
+
+subgraph リスナー
+    subgraph 再生媒体
+        subgraph HTML5
+            videoタグ
+        end
+        winamp
+    end
+    subgraph 番組一覧
+        ブラウザ
+        Dolphin
+    end
+    videoタグ -.-&gt; ブラウザ
+    winamp -.-&gt; Dolphin
+end
+subgraph 配信者
+    Beluga
+end
+subgraph サーバー
+    ねとらじ
+end
+
+ブラウザ --"pull(http)"--&gt; ねとらじ
+Dolphin --"pull(?)"--&gt; ねとらじ
+Beluga --"push(tcp)"--&gt; ねとらじ
+</div>
+
+<h2 id="ライセンス">ライセンス</h2>
+<p>著作権だそうです。</p>
+
+<ul>
+  <li>コピーライト
+    <ul>
+      <li>許可がないと、特定の人でも自由に複製・変更できない</li>
+      <li>商用系はこれ。お馴染み。</li>
+    </ul>
+  </li>
+  <li>コピーレフト
+    <ul>
+      <li>許可がなくても、不特定多数の人が自由に複製・変更できる</li>
+      <li>OSSは大体これ。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ossライセンス">OSSライセンス</h3>
+<ul>
+  <li>コピーレフト
+    <ul>
+      <li>GPL
+        <ul>
+          <li>制作物も GPL</li>
+          <li>制作過程で組み合わせた他のソフトウェアにも GPL と同等の条件を適応する</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>準コピーレフト
+    <ul>
+      <li>LGPL
+        <ul>
+          <li>制作物も LGPL</li>
+          <li>制作過程で組み合わせた他のソフトウェアには適応されない
+            <ul>
+              <li>LGPL は他の OSS ライセンスと安心して組み合わせられる。</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>非コピーレフト
+    <ul>
+      <li>BSD, MIT
+        <ul>
+          <li>制作物は BSD, MIT じゃなくても良い</li>
+          <li>制作過程で組み合わせた他のソフトウェアには適応されない</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="gpl-互換性">GPL 互換性</h3>
+<ul>
+  <li>GPL と Ms-PL は互換性がない
+    <ul>
+      <li>GPL  : 制作物も GPL</li>
+      <li>Ms-PL: 非コピーレフト。ただし、特定条件下では 制作物も Ms-PL (準コピーレフト？)
+        <ul>
+          <li>特定条件下 - コードをソースコードの形で配布する場合</li>
+        </ul>
+      </li>
+      <li>両立出来ない場合が存在する（非互換）</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　らしい、っぽい。GPLは自由な制約故に、組み合わせられないOSSが存在する。</p>
+
+<h2 id="インターネットの基礎">インターネットの基礎</h2>
+<p>　なんかもう何もかも分からなくなったので基礎からしっかり。</p>
+
+<h3 id="ネットワークアーキテクチャ">ネットワークアーキテクチャ</h3>
+<ul>
+  <li>OSI参照モデル（7層モデル）
+    <ul>
+      <li>層を分け過ぎたとかなんとかで普及せず。</li>
+    </ul>
+  </li>
+  <li>TCP/IP階層モデル（4層モデル）
+    <ul>
+      <li>よく分からんが超普及。</li>
+      <li>TCPとIPを使ったプロトコルが現在のインターネットの標準。</li>
+      <li>流行った構成がそのまま4層モデルになった。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="通信">通信</h3>
+<p>　いろいろ通信について</p>
+
+<h4 id="アプリケーションから始まりアプリケーションで終わる">アプリケーションから始まりアプリケーションで終わる</h4>
+<ul>
+  <li>Webブラウザ(Chrome, Firefox, …) -&gt; Webサーバーアプリケーション(Apache, IIS, …)
+    <ul>
+      <li>HTTPプロトコル</li>
+    </ul>
+  </li>
+  <li>メールソフト -&gt; メール？（分からないけどそゆこと）
+    <ul>
+      <li>SMTPプロトコル, POP3プロトコル</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="webブラウザの階層間の関連付け">Webブラウザの階層間の関連付け</h4>
+<ol>
+  <li>http://www.hello-internet.com/
+    <ul>
+      <li>HTTP プロトコル : アプリケーション層</li>
+    </ul>
+  </li>
+  <li>ポート番号 80 (Webブラウザはこれと決まっている)
+    <ul>
+      <li>TCP プロトコル : トランスポート層</li>
+    </ul>
+  </li>
+  <li>IPアドレス( 222.222.222.222 ) 的な
+    <ul>
+      <li>IP プロトコル : インターネット層</li>
+      <li>名前解決でIPアドレスを特定</li>
+    </ul>
+    <ul>
+      <li>DNSサーバーに http://www.hello-internet.com/ を尋ねると</li>
+      <li>IPアドレスは 222.222.222.222 だよって返してくれる
+      - 動的/静的</li>
+      <li>グローバルIPアドレス(LAN側)
+        <ul>
+          <li>DHCPが動的にIPアドレスを付与してくれている</li>
+          <li>固定IPアドレスにしたい場合は自分で設定する</li>
+        </ul>
+      </li>
+      <li>プライベートIPアドレス(WAN側)
+        <ul>
+          <li>ISP(Internet Service Provider) が割り振ってくれる</li>
+          <li>動的か静的かは契約プランによる。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>MACアドレス( 87-16-FF-DA-BB-C4 ) 的な
+    <ul>
+      <li>イーサネット プロトコル : ネットワークインターフェース層</li>
+      <li>アドレス解決でMACアドレスを特定</li>
+    </ul>
+    <ul>
+      <li>ARPサーバーに 222.222.222.222 を尋ねると</li>
+      <li>MACアドレスは 87-16-FF-DA-BB-C4 だよって返してくれる</li>
+    </ul>
+  </li>
+  <li>Webサーバーに到達( 87-16-FF-DA-BB-C4 )
+    <ul>
+      <li>WebサーバーのWebサーバーアプリケーションでHTTPリクエストを処理</li>
+      <li>HTTPレスポンスとファイルを返す</li>
+    </ul>
+  </li>
+  <li>Webブラウザに戻ってくる
+    <ul>
+      <li>ページが表示される。</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="プロトコルのヘッダ識別情報">プロトコルのヘッダ（識別情報）</h4>
+<ol>
+  <li>イーサネット -&gt; IP, ARP : 0x0800(タイプコード)
+    <ul>
+      <li>スイッチも参照する</li>
+    </ul>
+  </li>
+  <li>IP -&gt; TCP, UDP : 6, 17(プロトコル番号)
+    <ul>
+      <li>ルーターも参照する</li>
+    </ul>
+  </li>
+  <li>TCP -&gt; HTTP, DNS, FTP : 80, 53, 20/21(ポート番号)
+    <ul>
+      <li>ファイアウォールも参照する</li>
+    </ul>
+  </li>
+</ol>
+
+<p>※ポート開放について</p>
+
+<ol>
+  <li>ファイアウォールの許可が必要</li>
+  <li>ルーターでポート変換を設定
+    <ul>
+      <li>外からのリクエスト -&gt; 内へのリクエスト に変換する時、</li>
+      <li>ルーターはどのポートに投げればいいかわからない時は破棄するらしい。</li>
+      <li>ルーターにどのポートに投げればいいかを教えると伝送してくれる。
+        <ul>
+          <li>Webは80番を使うと決まっているので、特に設定は必要ない、ということだな？</li>
+          <li>ルーターなしで直刺しなら、2の手順は不要</li>
+          <li>二重ルーターなら、両方でポート変換しないといけない（まず不可能だが理論的には）</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="webサーバー">Webサーバー</h2>
+<ul>
+  <li>Apache
+    <ul>
+      <li>基礎</li>
+    </ul>
+  </li>
+  <li>Nginx
+    <ul>
+      <li>メモリを効率的に使用できる。処理速度が非常に高速。</li>
+    </ul>
+  </li>
+  <li>IIS
+    <ul>
+      <li>Windowsベース</li>
+    </ul>
+  </li>
+  <li>Node.js
+    <ul>
+      <li>javascript 実行環境</li>
+    </ul>
+  </li>
+  <li>HTTP: 80</li>
+  <li>
+    <p>HTTPS: 443</p>
+  </li>
+  <li>ユーザー</li>
+  <li>プロキシ
+    <ul>
+      <li>ユーザーの代理となるサーバー</li>
+      <li>キャッシュによる高速化が基本</li>
+      <li>他
+        <ul>
+          <li>ユーザー認証（利用制限）</li>
+          <li>匿名性</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>インターネット</li>
+  <li>リバースプロキシ
+    <ul>
+      <li>キャッシュしたコンテンツを配信する仕組み
+        <ul>
+          <li>Webサーバーの代理（身代わり）となって動くサーバー</li>
+        </ul>
+      </li>
+      <li>セキュリティ向上、負荷分散の役割も担えるように現在は拡張されている。
+        <ul>
+          <li>ロードバランサー
+            <ul>
+              <li>特定宛先のアクセスを複数サーバに分散する仕組み（Webサーバー）</li>
+              <li>ロードバランサー &gt; リバースプロキシ</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>CDN: CloudFlare</li>
+    </ul>
+  </li>
+  <li>Webサーバー</li>
+</ul>
+
+<h3 id="プロキシ">プロキシ</h3>
+<h3 id="リバースプロキシ">リバースプロキシ</h3>
+<h3 id="負荷分散">負荷分散</h3>
+
+<ul>
+  <li>DNSラウンドロビン</li>
+  <li>ロードバランサー
+    <ul>
+      <li>リクエストの処理はロードバランサーで振り分けられたWebサーバがする</li>
+    </ul>
+  </li>
+  <li>リバースプロキシ
+    <ul>
+      <li>リクエストの処理はリバースプロキシがする。</li>
+      <li>リクエストによる振り分けを実現できる
+        <ul>
+          <li>静的コンテンツ用Webサーバーに振り分け</li>
+          <li>動的コンテンツ用Webサーバーに振り分け</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>関連項目
+    <ul>
+      <li>プロキシ</li>
+      <li>Squid - リバースプロキシとしても使えるプロキシサーバ</li>
+      <li>Apache HTTP Server - リバースプロキシとして使われることもある</li>
+      <li>Lighttpd - 負荷分散機能付きのリバースプロキシとして利用可能</li>
+      <li>Varnish Cache - オープンソースのリバースプロキシ</li>
+      <li>nginx - リバースプロキシ兼Webサーバ</li>
+    </ul>
+  </li>
+  <li>外部リンク
+    <ul>
+      <li>SwitchFlow Reverse Proxy - Linux 用 C++ リバースプロキシ</li>
+      <li>Perlbal - Perlベースのリバースプロキシ/ロードバランサー/Webサーバ</li>
+      <li>PortFusion - オープンソースのリバースプロキシ</li>
+      <li>Pound - 負荷分散のためのリバースプロキシ</li>
+      <li>YXORP - ファイアウォール兼リバースプロキシ。GPL</li>
+    </ul>
+  </li>
+  <li>キャッシュサーバー
+    <ul>
+      <li>memcached</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Webサーバに通す前に処理しておきたいことがある。</p>
+<ul>
+  <li>セキュリティ</li>
+  <li>暗号化/SSL高速化</li>
+  <li>負荷分散</li>
+  <li>変化しないコンテンツのキャッシュ</li>
+  <li>圧縮</li>
+  <li>速度の調整</li>
+  <li>仮想的なサーバ統合
+https://ja.wikipedia.org/wiki/リバースプロキシ</li>
+</ul>
+
+<p>　つまり位置的にはリバースプロキシである。だが、リバースプロキシだからしなくてはならないということではない。リバースプロキシの位置（Webサーバに通す前）でしておきたいことと考えた方が無理がない。〇〇はリバースプロキシであると表現するよりも、リバースプロキシの位置で〇〇は△△の処理を行うよね、と言ったほうが誤解を少なく出来るだろう。いやうん、どうなんだろう。</p>
+
+<p>　負荷分散がしたい場合には、ロードバランサーか負荷分散機能を持つ多機能Webサーバ（リバースプロキシ）かという選択肢にはなる。本当に負荷分散だけがしたいのならロードバランサーで十分なわけである。</p>
+
+<p>全然違いました。</p>
+
+<ul>
+  <li>L2スイッチ（MACアドレス）
+    <ul>
+      <li>スイッチングハブ</li>
+      <li>リピータハブ</li>
+    </ul>
+  </li>
+  <li>L3スイッチ（IPアドレス）
+    <ul>
+      <li>ルーター</li>
+    </ul>
+  </li>
+  <li>L4スイッチ（プロトコルヘッダ内のポート番号、セッションシーケンス番号）
+    <ul>
+      <li>ロードバランサー</li>
+    </ul>
+  </li>
+  <li>L7スイッチ
+    <ul>
+      <li>リバースプロキシ</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>ロードバランサ（LB ）でリバースプロキシへ負荷分散</li>
+  <li>リバースプロキシ(Reverse Proxy)でSSLクライアント認証</li>
+</ol>
+
+<p>ロードバランサが一台、リバースプロキシが複数台、Webサーバーが役割毎にある（？）</p>
+
+<p>負荷分散の仕方</p>
+<ul>
+  <li>ロードバランサ（負荷分散の専門家）（L4）
+    <ul>
+      <li>L4スイッチというネットワーク機器</li>
+    </ul>
+  </li>
+  <li>リバースプロキシ（負荷分散以外も出来る）（L7）
+    <ul>
+      <li>Webサーバー。</li>
+      <li>HTTPリクエストも見たうえで送信先サーバーを選択できる。</li>
+      <li>HTTPロードバランサ</li>
+    </ul>
+  </li>
+</ul>
+
+<p>うまくまとまらない。Webサーバーというかプロキシというか負荷分散というか概念がまあふわふわしてる。そのうちまた調べる。</p>
+
+<h2 id="windowsアプリケーション">Windowsアプリケーション</h2>
+<ul>
+  <li>WinAPI(C/C++)</li>
+  <li>MFC(C/C++)
+    <ul>
+      <li>WinAPIのラッパーしたフレームワーク</li>
+    </ul>
+  </li>
+  <li>Windowsフォームアプリケーション（.NET）
+    <ul>
+      <li>C++/CLI or C# で開発可能</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="net-原初">.NET 原初</h3>
+<ul>
+  <li>.NET Framework
+    <ul>
+      <li>原初</li>
+      <li>共通言語基盤（CLI）
+        <ul>
+          <li>.NET Frameworkの基幹を構成する実行コードや実行環境などについてマイクロソフトが策定した仕様</li>
+        </ul>
+      </li>
+      <li>共通言語ランタイム（CLR）
+        <ul>
+          <li>共通言語基盤 (CLI) の実装の一つ（Microsoft作）。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="net-派生">.NET 派生</h3>
+<ul>
+  <li>.NET CORE
+    <ul>
+      <li>OSS</li>
+      <li>クロスプラットフォーム</li>
+      <li>Microsoftのサポートが手厚い。.NETの実質的後継</li>
+    </ul>
+  </li>
+  <li>MONO
+    <ul>
+      <li>OSS</li>
+      <li>クロスプラットフォーム
+        <ul>
+          <li>WinAPIが元であるためWindows限定だったが、MONOはWindows以外でも使える。</li>
+        </ul>
+      </li>
+      <li>CLIの実装の一つでもある</li>
+    </ul>
+  </li>
+  <li>xamarin
+    <ul>
+      <li>iOS/Androidのクロスプラットフォーム開発向け</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="xx-studio">XX Studio</h3>
+<ul>
+  <li>Visual Studio: .NET の開発環境</li>
+  <li>XamarinStudio: Mono の開発環境</li>
+</ul>
+
+<h2 id="グラフィックス-api-関連図">グラフィックス API 関連図🖼</h2>
+<p>　DirectX や OpenGL とかの関係性が分からなかったので図式化。間違いもあるかもしれない。調べた限りではこんな感じらしい。</p>
+
+<p>　点線( - - - )は派生みたいなイメージ。VulkanはOpenGLと密接な関係。WebGPU（現在いろいろ策定中）はWebGLの強い版。</p>
+
+<p>　OpenCL などはGPGPU用の統合開発環境っぽい。煩雑になるので図示はしなかったが、 図示するならDirectXやOpenGLに繋がる。グラフィックスAPIを使うためのまとまった開発環境。</p>
+
+<div style="height: 470px; overflow: hidden;"><div style="margin-top:-260px;"><div class="mermaid">
+graph TD
+
+subgraph 実行環境
+    Windows
+    Linux
+    subgraph Apple
+        Mac
+        iOS
+    end
+    Android
+    PS3
+    3DS
+    ブラウザ
+    Apple製品    
+    subgraph IDE[IDE for GPGPU]
+        CUDA
+        OpenCL
+        DirectCompute
+    end
+end
+
+subgraph プログラミング言語
+    javascript
+end
+
+subgraph コンピュータグラフィックスAPI
+    O_GL[OpenGL]
+    O_ES[OpenGL ES]
+    DirectX
+    WebGL
+    WebGPU
+    G_API[DirectX, OpenGL, Vulkan, Metal]
+    Vulkan
+    Metal
+    O_ES ---&gt; O_GL
+    WebGL ---&gt; O_ES
+    WebGL -.-&gt; WebGPU
+    WebGPU --&gt; G_API
+end
+
+subgraph シェーディング言語
+    Cg
+    HLSL
+    GLSL
+    MSL
+    SW[SPIR-V, WHLSL]
+end
+
+Windows --&gt; DirectX
+Windows --&gt; O_GL
+Linux --&gt; O_GL
+Android --&gt; O_ES
+PS3 --&gt; O_ES
+3DS --&gt; O_ES
+ブラウザ --&gt; javascript
+javascript --&gt; WebGL
+iOS --&gt; O_ES
+Mac --&gt; O_GL
+Apple製品 --&gt; Metal
+
+DirectX --&gt; HLSL
+DirectX --&gt; Cg
+O_GL --&gt; Cg
+O_GL --&gt; GLSL
+O_GL -.-&gt; Vulkan
+Vulkan --&gt; GLSL
+Metal --&gt; MSL
+
+G_API --&gt; SW
+</div></div></div>
+
+<p>　意味合い</p>
+
+<ul>
+  <li>①ブラウザで何かしたいな -&gt; javascript で -&gt; WebGL を使えばいいのか -&gt; 内部的には OpenGL ES を使ってるっぽい -&gt; ま、とりあえずシェーディング言語は GLSL を使うことになりそうかな（みたいな感じです）</li>
+  <li>②Rust で何かするか -&gt; なんか vulkan って出てきたけど、何 -&gt; OpenGL に関係した何からしい -&gt; へぇ</li>
+</ul>
+
+<p>　DirectXについての補足ですが、DirectXはWinAPIの一種（なのかな）。WinAPIはWindowsアプリケーションを作るためのもの。なのでグラフィック以外の機能もDirectXは持っている。OpenGLと比較する場合は、DirectXの中の <code class="language-plaintext highlighter-rouge">Direct2D/3D</code> と比較することになる。</p>
+
+<h2 id="クラウドサービス">クラウドサービス</h2>
+
+<p>　名称だけざっと一覧が見たかったのでまとめ。GCPってGoogleから始まるんじゃなくて Cloud から始まるのか。把握した。</p>
+
+<p><code class="language-plaintext highlighter-rouge">Compute Engine</code> で <code class="language-plaintext highlighter-rouge">Cloud Functions</code> を使って <code class="language-plaintext highlighter-rouge">Cloud Storage</code> に入れたファイルを <code class="language-plaintext highlighter-rouge">Cloud CDN</code> で保持。という言葉の意味がこれで分かった。良かった。</p>
+
+<h3 id="コンピュートリソース">コンピュートリソース</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>仮想サーバー</td>
+      <td>Amazon EC2</td>
+      <td>Azure Virtual Machine</td>
+      <td>Compute Engine</td>
+    </tr>
+    <tr>
+      <td>ベアメタルサーバー</td>
+      <td>Amazon EC2 Bare Metal Instance</td>
+      <td>Azure Bare Metal Servers</td>
+      <td>Bare Metal Solution</td>
+    </tr>
+    <tr>
+      <td>コンテナ環境</td>
+      <td>Amazon Elastic Container Service<br />Amazon Elastic Kubernetes Service<br />AWS Fargate</td>
+      <td>Azure Container Instance<br />Azure Kubernetes Service</td>
+      <td>Kubernetes Engine<br />Cloud Run</td>
+    </tr>
+    <tr>
+      <td>アプリケーション基盤</td>
+      <td>AWS Elastic Beanstalk</td>
+      <td>Azure Web Apps</td>
+      <td>App Engine</td>
+    </tr>
+    <tr>
+      <td>サーバーレス</td>
+      <td>Amazon Lambda</td>
+      <td>Azure Functions</td>
+      <td>Cloud Functions</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="ストレージ">ストレージ</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ブロックストレージ</td>
+      <td>Amazon Elastic Block Storage</td>
+      <td>Azure Disk Storage</td>
+      <td>Persistent Disk</td>
+    </tr>
+    <tr>
+      <td>ファイルストレージ</td>
+      <td>Amazon Elastic File System</td>
+      <td>Azure Files</td>
+      <td>FileStore</td>
+    </tr>
+    <tr>
+      <td>オブジェクトストレージ</td>
+      <td>Amazon S3<br />Amazon Glacier</td>
+      <td>Azure Blob Storage<br />Azure Archive Stroage</td>
+      <td>Cloud Storage</td>
+    </tr>
+    <tr>
+      <td>大容量データ移行サービス</td>
+      <td>AWS Snowball<br />AWS Snowball Edge<br />AWS Snowmobile</td>
+      <td>Azure Data Box</td>
+      <td>Transfer Appliance</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="データベースサービス">データベースサービス</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リレーショナルデータベース</td>
+      <td>Amazon RDS<br />Amazon Aurora</td>
+      <td>Azure SQL Database<br />Azure Database for MySQL/PostgreSQL</td>
+      <td>Cloud SQL<br />Cloud Spanner</td>
+    </tr>
+    <tr>
+      <td>NoSQL</td>
+      <td>Amazon DynamoDB</td>
+      <td>Azure Cosmos DB</td>
+      <td>Cloud Datastore</td>
+    </tr>
+    <tr>
+      <td>データウェアハウス</td>
+      <td>Amazon Redshift</td>
+      <td>Azure Synapse Analytics</td>
+      <td>BigQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="ネットワーク">ネットワーク</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>仮想ネットワーク</td>
+      <td>Amazon VPC</td>
+      <td>Virtual Network</td>
+      <td>Virtual Private Cloud</td>
+    </tr>
+    <tr>
+      <td>ロードバランサー</td>
+      <td>Elastic Load Balancing</td>
+      <td>Azure Load Balancer<br />Azure Application Gateway</td>
+      <td>Cloud Load Balancing</td>
+    </tr>
+    <tr>
+      <td>DNS</td>
+      <td>Amazon Route53</td>
+      <td>Azure DNS</td>
+      <td>Cloud DNS</td>
+    </tr>
+    <tr>
+      <td>CDN</td>
+      <td>Amazon CloudFront</td>
+      <td>Azure CDN</td>
+      <td>Cloud CDN</td>
+    </tr>
+    <tr>
+      <td>VPN</td>
+      <td>Amazon VPN</td>
+      <td>Azure VPN Gateway</td>
+      <td>Cloud VPN</td>
+    </tr>
+    <tr>
+      <td>専用線接続</td>
+      <td>Amazon Direct Connect</td>
+      <td>Azure Express Route</td>
+      <td>Cloud InterConnect</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="アプリケーション開発">アプリケーション開発</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>コード管理</td>
+      <td>AWS CodeCommit</td>
+      <td>Azure Repos</td>
+      <td>Cloud Source Repositories</td>
+    </tr>
+    <tr>
+      <td>CI/CD</td>
+      <td>AWS CodeBuild<br />AWS CodeDeploy<br />AWS Code Pipeline</td>
+      <td>Azure Pipelines</td>
+      <td>Cloud Build</td>
+    </tr>
+    <tr>
+      <td>IDE</td>
+      <td>AWS Cloud9</td>
+      <td>Visual Studio</td>
+      <td>Cloud Code</td>
+    </tr>
+    <tr>
+      <td>SDK</td>
+      <td>AWS SDK</td>
+      <td>Azure SDK Visual Studio</td>
+      <td>Cloud SDK</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="運用管理">運用管理</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サービス管理</td>
+      <td>AWS Management Console<br />AWS Command Line Interface</td>
+      <td>Azure Portal<br />Azure Command Line Interface<br />Azure PowerShell<br />Azure Cloud Shell</td>
+      <td>Cloud Console<br />Cloud Shell<br />Cloud APIs</td>
+    </tr>
+    <tr>
+      <td>監視、ロギング</td>
+      <td>Amazon CloudWatch</td>
+      <td>Azure Monitor<br />Log Analytics</td>
+      <td>Cloud Monitoring<br />Cloud Logging<br />Cloud Trace<br />Error Reporting<br />Cloud Debugger</td>
+    </tr>
+    <tr>
+      <td>環境構築自動化</td>
+      <td>AWS CloudFormation</td>
+      <td>Azure Building Blocks</td>
+      <td>Cloud Deployment Manager</td>
+    </tr>
+    <tr>
+      <td>構成管理</td>
+      <td>AWS Config</td>
+      <td>Azure Portal</td>
+      <td>Cloud Security Scanner<br />Cloud IAM</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="セキュリティ">セキュリティ</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>権限管理</td>
+      <td>AWS Identity and Access Management</td>
+      <td>Azure Active Directory</td>
+      <td>Cloud IAM</td>
+    </tr>
+    <tr>
+      <td>SSL証明書</td>
+      <td>AWS Certificate Manager</td>
+      <td>App Service</td>
+      <td>Cloud Load Balancing</td>
+    </tr>
+    <tr>
+      <td>鍵管理</td>
+      <td>AWS Key Management Service<br />AWS CloudHSM</td>
+      <td>Azure Key Vault</td>
+      <td>Cloud Key Management Service</td>
+    </tr>
+    <tr>
+      <td>ネットワークセキュリティ</td>
+      <td>Security Group<br />ネットワークACL<br />AWS Firewall Manager<br />AWS Shield<br />AWS WAF</td>
+      <td>Azure Firewall<br />Azure Firewall Manager<br />Azure DDoS Protection<br />Azure WAF</td>
+      <td>Firewall Rule<br />Cloud Armor</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="機械学習iotモバイル">機械学習、IoT、モバイル</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>AWS</th>
+      <th>Azure</th>
+      <th>GCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>機械学習</td>
+      <td>Amazon Lex<br />Amazon Comprehend<br />Amazon Polly<br />Amazon Recognition<br />Amazon Recognition Video<br />Amazon Machine Learning</td>
+      <td>LUIS<br />Azure Bot Service<br />Azure Speech Recognition API<br />Bing Speech API<br />Emotion API<br />Face API<br />Computer Vision API<br />Azure Machine Learning</td>
+      <td>Natural Language API<br />Cloud Text-to-Speech<br />Translation API<br />Speech API<br />Vision API<br />Cloud Video Intelligence<br />Cloud Machine Learning Services</td>
+    </tr>
+    <tr>
+      <td>IoT</td>
+      <td>AWS IoT Platform<br />AWS IoT Button</td>
+      <td>Azure IoT Platform<br />Azure Sphere</td>
+      <td>Google Cloud IoT</td>
+    </tr>
+    <tr>
+      <td>モバイル</td>
+      <td>AWS Mobile Hub</td>
+      <td>Azure Mobile Apps</td>
+      <td>Firebase</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="メモ補足">メモ補足</h3>
+<p>　DirectX や DXlib もRustから呼び出せる。Rust とどのグラフィックライブラリを組み合わせて使うかは自由。</p>
+
+<h2 id="directx">DirectX</h2>
+<p>　本当は Vulkan について調べたいけど、英語わからん。なので一旦保留。ずっとWindowsを使ってきた人生ということで、DirectX について調べてみようかと。</p>
+
+<h3 id="基礎俯瞰図">基礎俯瞰図🖼</h3>
+<div class="mermaid">
+graph LR
+
+subgraph ゲーム開発者
+    アプリケーション
+end
+subgraph Microsoft
+    DirectX
+end
+subgraph ハードウェア製造者
+    デバイスドライバ
+    ハードウェア
+end
+
+アプリケーション --命令--&gt; DirectX
+DirectX --命令--&gt; デバイスドライバ
+デバイスドライバ --命令--&gt; ハードウェア
+</div>
+
+<h3 id="コンポーネント分類図">コンポーネント分類図🖼</h3>
+<div style="height: 112px; overflow: hidden;"><div style="margin-top:-28px;"><div class="mermaid">
+graph TD 
+
+subgraph "DirectX Graphics"
+    subgraph "Direct3D(D3D)"
+        DirectCompute
+        DirectML
+    end
+    DXGI["DirectX Graphics Infrastructure(DXGI)"]
+    D2D["Direct2D(D2D)"]
+    DirectWrite
+end
+</div></div></div>
+
+<div style="height: 76px; overflow: hidden;"><div style="margin-top:-18px;"><div class="mermaid">
+graph TD 
+
+subgraph "DirectX Audio"
+    XAudio1,2
+    X3DAudio
+    XACT
+    DirectSound
+    DS3D["DirectSound3D(DS3D)"]
+    DirectMusic
+end
+</div></div></div>
+
+<div style="height: 80px; overflow: hidden;"><div style="margin-top:-22px;"><div class="mermaid">
+graph TD 
+
+subgraph 入力
+    DirectInput
+    XInput
+end
+subgraph 動画
+    DXVA["DirectX Video Acceleration(DXVA)"]
+end
+subgraph メディア
+    DirectAnimation
+    DMO["DirectX Media Objects"]
+end
+subgraph ネットワーク
+    DirectPlay
+end
+subgraph セットアップ
+    DirectSetup
+end
+</div></div></div>
+
+<h2 id="オーディオapi">オーディオAPI</h2>
+<p>　グラフィックAPIをまとめてオーディオAPIをまとめないというのも変な話だと思ったので、一応、俯瞰してみた。しかしながら、各SDKの違いはよく分からない。基本的に C++ API でクロスプラットフォームっぽい。</p>
+
+<p>　ブラウザでは、javascript で Web Audio API を使えるらしい。とはいえ、図の中に雑に放り投げて置いた。違いが言語ぐらいしか分からなかったので、分類出来ない。音とは。</p>
+
+<h3 id="オーディオapi俯瞰図">オーディオAPI俯瞰図🖼</h3>
+<div style="height: 190px; overflow: hidden;"><div style="margin-top:-54px;"><div class="mermaid">
+graph TD
+
+subgraph オーディオAPI
+    OpenAL --fork--&gt; OS[OpenAL Soft]
+    subgraph OSS
+        OS
+    end
+    subgraph DirectX
+        XAudio
+    end
+    subgraph 主流
+        Wwise
+        FMOD
+        CRI[CRI ADX2]
+    end
+    subgraph 他
+        irrKlang
+    end
+    subgraph "ブラウザ(JS)"
+        WA[Web Audio API]
+    end
+end
+</div></div></div>
+
+<h2 id="コンピュータグラフィックス">コンピュータグラフィックス</h2>
+<p>　シェーダーが分からなかったので、CGとDirectXの両サイドから関連付けてまとめてみた。多少は分かった。</p>
+
+<p>　一応、CPUとGPUで違いますよという大前提だけ共有。</p>
+
+<ul>
+  <li>C++ がCPU上で動く実行ファイルを生成
+    <ul>
+      <li>CPU: どんな計算も可</li>
+    </ul>
+  </li>
+  <li>HLSL(シェーディング言語) はGPU上で動く実行ファイルを生成
+    <ul>
+      <li>GPU: 描画処理の計算。HLSLを書く即ち描画処理を書くこと（多分）</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　余談だが、シェーダーが出来る前は描画処理は用意された手法のみだったが、今は様々な手法によって描画処理をプログラマが実装出来る時代だそうです。嬉しい時代だ。</p>
+
+<p>　さて、プログラムが描画されるまでの簡単な流れを図にした。DirectX準拠なので、OpenGLだとシェーダーの名前や種類が多少違う。でも流れは多分一緒。</p>
+
+<h3 id="描画パイプライン">描画パイプライン🖼</h3>
+<div class="mermaid">
+graph TD
+
+subgraph "描画パイプライン(簡易)"
+    頂点デー["頂点データ(ポリゴン)"] --&gt; 頂点シェ[頂点シェーダ]
+    頂点シェ:::coordinate_system --&gt; テッセレ[テッセレーション]
+    テッセレ:::shader --&gt; ジオメトリシェ[ジオメトリシェーダ]
+    ジオメトリシェ:::shader --ラスタ化--&gt; ピクセルシェ[ピクセルシェーダ]
+    ピクセルシェ:::pixel_shader --レンダリングバッファ--&gt; レンダリングターゲット
+    レンダリングターゲット:::render_backend --描画処理--&gt; デジ画像[デジタル画像]
+end
+
+subgraph 描画パイプライン
+    頂点データ["頂点データ(ポリゴン)"] --投影--&gt; モデリング座標系["形状モデル(モデリング座標系)"]
+
+    subgraph レンダリング
+        subgraph "ベクタ(線分)"
+            subgraph "頂点シェーダ"
+                subgraph "座標変換(MVP)"
+                    モデリング座標系:::coordinate_system --"モデリング変換(M)"--&gt; ワールド座標系["形状モデル(ワールド座標系)"]
+                    ワールド座標系:::coordinate_system --"視野変換(V)"--&gt; カメラ座標系["形状モデル(カメラ座標系)"]
+                    カメラ座標系:::coordinate_system --"投影変換(P)"--&gt; 投影座標系["形状モデル(投影座標系)"]
+                end
+                
+                投影座標系:::coordinate_system --"隠面消去(カリング)"--&gt; 隠面モデル["隠面消去された形状モデル"]
+
+            end
+        end
+
+        subgraph "テッセレーション"
+            隠面モデル:::format_model --&gt; ハルシェーダ
+            ハルシェーダ:::shader --制御点算出--&gt; テッセレータ
+            テッセレータ:::shader --ポリゴン分割--&gt; ドメインシェーダ
+            ドメインシェーダ:::shader --分割したポリゴンの頂点座標算出--&gt; ポリゴン分割済み形式モデル
+        end
+
+        subgraph "ジオメトリシェーダ"
+            ポリゴン分割済み形式モデル:::format_model --&gt; ジオ[ジオメトリシェーダ]
+            ジオ:::shader --頂点数の増減--&gt; 頂点数増減済み形式モデル
+        end
+
+        subgraph "座標変換(U)"
+            頂点数増減済み形式モデル:::format_model --"ビューポート変換(U) + クリッピング"--&gt; デバイス座標系["形状モデル(デバイス座標系)"]
+        end
+
+        デバイス座標系:::coordinate_system --"ラスタ化(線分-&gt;画素)(線形補間 + 頂点カラー補間)"--&gt; ラスタ
+
+        subgraph "ラスタ(画素)"
+            subgraph "ピクセルシェーダ"
+                ラスタ:::pixel_shader --シェーディング--&gt; 陰影["物体表面に光の濃淡(陰影)"]
+                陰影:::pixel_shader --シャドウイング--&gt; 影
+                影:::pixel_shader --マッピング--&gt; テクスチャ["模様(テクスチャ)"]
+            end
+        end
+    end
+
+    subgraph レンダーバックエンド
+        テクスチャ:::pixel_shader --アルファテスト--&gt; RT_a["レンダリングターゲット（透明色除外）"]
+        RT_a:::render_backend --"深度テスト(奥行き比較)"--&gt; RT_b["レンダリングターゲット（奥は除外）"]
+        RT_b:::render_backend --ステンシルテスト--&gt; RT_c["レンダリングターゲット（マスク）"]
+    end
+    
+    RT_c:::render_backend --描画処理--&gt; デジタル画像
+end
+
+classDef coordinate_system fill:#f96;
+classDef format_model fill:#6f9;
+classDef shader fill:#69f;
+classDef pixel_shader fill:#bd0;
+classDef render_backend fill:#0fd;
+</div>
+
+<h3 id="補足-コンピュートシェーダー">補足 コンピュートシェーダー</h3>
+<p>　CPUでもGPUでもなく、GPGPU専用のシェーダー。</p>
+
+<p>　GPGPUというのは、GPU（描画処理専門）を描画処理以外にも使おうという目的で作られたもの。</p>
+
+<p>　CPUは逐次処理に強く、GPUは並列処理に強い。GPGPUも並列処理に強い。</p>
+
+<p>　コンピュートシェーダーは通常の描画パイプラインに乗らない。</p>
+
+<h2 id="シェーディング">シェーディング</h2>
+<ol>
+  <li>diffuse(拡散)(反射)(直接光)</li>
+  <li>オリジナル</li>
+  <li>noraml(法線)</li>
+  <li>specular(鏡面)(反射)(直接光)</li>
+  <li>toon(ランプシェーダー)</li>
+</ol>
+
+<p>　みたいな構成がアニメ風になるっぽい。ゲーム毎に切り替えるのは2番だけで良くなるように設計すると。</p>
+
+<p>　非写実的レンダリング。</p>
+
+<h2 id="テクスチャ">テクスチャ</h2>
+<p>　GPU用の圧縮フォーマット。PNGやJPEGをGPUだと読み込めないらしい。</p>
+
+<ul>
+  <li>DXTC : PC</li>
+  <li>ETC2 : Android</li>
+  <li>Crunch : DXTC, ETC2 をさらに圧縮した形
+    <ul>
+      <li>DXTC, ETC2 はPNGやJPEGに比べてファイルサイズが大きくなるが、Crunch だと小さく出来る。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>　これ、WebGLの話？　またそのうち詳しく。</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script></body>
+
+</html>

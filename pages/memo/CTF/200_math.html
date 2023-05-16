@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>math | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="math" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/pages/memo/CTF/200_math.html" />
+<meta property="og:url" content="/pages/memo/CTF/200_math.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="math" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"どこまでも逝こう。","headline":"math","url":"/pages/memo/CTF/200_math.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">math</h1>
+  </header>
+
+  <div class="post-content"><details>
+        <summary>目次</summary><ul><li><a href="#数学">数学</a></li><li><a href="#群論">群論</a></li><li><a href="#一つの演算子による二項演算">一つの演算子による二項演算</a><ul><li><a href="#規則">規則</a></li><li><a href="#集合">集合</a></li></ul></li><li><a href="#二つの演算子による二項演算">二つの演算子による二項演算</a><ul><li><a href="#規則-1">規則</a></li><li><a href="#集合-1">集合</a></li></ul></li><li><a href="#巡回群">巡回群</a><ul><li><a href="#剰余">剰余</a></li><li><a href="#冪剰余">冪剰余</a></li><li><a href="#素数による冪剰余">素数による冪剰余</a></li></ul></li><li><a href="#rsa">RSA</a><ul><li><a href="#rsa-1">RSA</a><ul><li><a href="#rsa解読">RSA解読</a></li></ul></li><li><a href="#一般">一般</a></li><li><a href="#θ-bpq-ωanx---x-mod-n">Θ( b,p,q, Ω(a,n,X) ) ≡ X mod n</a></li></ul></li><li><a href="#はい">はい</a></li><li><a href="#計算複雑性">計算複雑性</a></li><li><a href="#計算困難問題">計算困難問題</a></li></ul></details><h2 id="数学">数学</h2>
+<p>　私は数学の人じゃないですが、前から気になってたあれやこれやを見てみる。</p>
+
+<h2 id="群論">群論</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>群</th>
+      <th>説明</th>
+      <th>誤解を呼ぶ偏見</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>アーベル群</td>
+      <td>二項演算の上でいくつかの規則を満たす集合</td>
+      <td>+, -, ×, ÷</td>
+    </tr>
+    <tr>
+      <td>巡回群</td>
+      <td>ただ一つの数(元)で生成される集合</td>
+      <td>^n(冪), mod(剰余), √(根)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>二項演算</strong>は二つの数から新たな数を決定する規則( 2 + 3 = 5 )</p>
+
+<p>一般に群論と言えば、アーベル群などの群（半群、モノイドなど）を議論する。これは一般に代数系（代数的構造を持つ集合）を扱うためである。代数的構造は集合に定まっている算法や作用によって決まる構造のこと。</p>
+
+<p>即ち、アーベル群はある演算（二項演算）によって決まる代数的構造と言える。つまり、 2 + 3 = 5 といった馴染み深い構造である。</p>
+
+<p>これとは別に二項演算によって決まらない群はいくつも存在するようで、暗号解読に関係する巡回群についても、ここではまとめていく。</p>
+
+<p>誤解を恐れずに言えば、アーベル群は<strong>演算子 +, -, ×, ÷ に関係する群</strong>である。</p>
+
+<p>ただし、<strong>除法(÷)</strong>についてはゼロ除算の問題があるため、非零元(0以外)で規則を定義することで除法を扱う。などなど一言で言いきれない要素もありつつ。</p>
+
+<p>また、巡回群は<strong>冪・剰余(余り)・根に関係する群</strong>である（と思う）</p>
+
+<h2 id="一つの演算子による二項演算">一つの演算子による二項演算</h2>
+
+<h3 id="規則">規則</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>説明</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>閉性</td>
+      <td>演算対象と演算結果の両方が同じ集合に含まれる</td>
+      <td>2 + 3 = 5</td>
+    </tr>
+    <tr>
+      <td>単位律</td>
+      <td>数を組み合わせても変化しない数（単位元）を持つ</td>
+      <td>2 + 0 = 2</td>
+    </tr>
+    <tr>
+      <td>可逆律</td>
+      <td>どの数も逆とみなせる数（逆元）を持つ</td>
+      <td>2 + (-2) = 0</td>
+    </tr>
+    <tr>
+      <td>結合律</td>
+      <td>同一演算子の演算順序の変化が結果に影響しない</td>
+      <td>(2+2)+1 = 2+(2+1)</td>
+    </tr>
+    <tr>
+      <td>消約律</td>
+      <td>左辺と右辺で同一の数を両辺から割れる（消約）</td>
+      <td>ba = ca -&gt; b = c</td>
+    </tr>
+    <tr>
+      <td>可換律</td>
+      <td>二つの数を入れ替えても結果に影響しない</td>
+      <td>2 + 3 = 3 + 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>※<strong>単位元</strong>(中立元)、<strong>結合律</strong>（結合法則）、<strong>消約律</strong>（簡約律、消去律）、<strong>可換律</strong>（交換法則、交換律）</p>
+
+<p>※<strong>零元</strong>（加法単位元）、<strong>反数</strong>(加法逆元)</p>
+
+<h3 id="集合">集合</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>集合</th>
+      <th style="text-align: center">閉性</th>
+      <th style="text-align: center">結合律</th>
+      <th style="text-align: center">単位律</th>
+      <th style="text-align: center">可逆律</th>
+      <th style="text-align: center">消約律</th>
+      <th style="text-align: center">可換律</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マグマ(亜群)</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td>準群(擬群)</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td>擬群(Loop)</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td>半群</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td>モノイド</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+      <td style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td>群</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">×</td>
+    </tr>
+    <tr>
+      <td>アーベル群(可換群)</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+      <td style="text-align: center">○</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="二つの演算子による二項演算">二つの演算子による二項演算</h2>
+
+<p><strong>半環</strong>は加法について可換モノイドであり乗法についてモノイドであり分配法則を満たす集合を指す。</p>
+
+<p><strong>可換半環</strong>は乗法について可換モノイドである半環を指す。</p>
+
+<p><strong>自然数全体ℕは可換半環の性質を持つ</strong>ことで知られる。</p>
+
+<p><strong>環（非可換環）</strong>は加法についてアーベル群であり乗法についてモノイドであり分配法則を満たす集合を指す。</p>
+
+<p><strong>単位環</strong>は乗法についてモノイドである環を指す（乗法について半群である集合を環と呼ぶ流儀があり、この場合にこれと区別するために単位環と呼ぶ。ここでは環と単位環は同じく乗法についてモノイドとして扱うが、用語を網羅的に扱いため単位環についても記した）</p>
+
+<p><strong>可換環</strong>は乗法について可換モノイドである環を指す。</p>
+
+<p><strong>整数全体ℤは環（可換環）の性質を持つ</strong>ことで知られる。</p>
+
+<p><strong>整域</strong>は乗法に置いて非零元(0以外)で消約律が満足する可換環（零因子を持たない可換環）。</p>
+
+<p><strong>斜体（非可換体、可除環）</strong>は加法についてアーベル群であり、乗法についてモノイドであり、乗法について非零元が群をなし、分配法則を満たす集合を指す（= 可換環とは乗法について非零元で可逆律と消約律を満たす(除法が可能な)環）。</p>
+
+<p><strong>体（可換体）</strong>は乗法についてアーベル群である斜体。</p>
+
+<p>抽象代数学では<strong>四則演算が自由にできる集合のことを体</strong>と呼ぶ。</p>
+
+<p><strong>有理数全体ℚ、実数全体ℛ、複素数全体ℂなどは全て体の性質を持つ</strong>。</p>
+
+<h3 id="規則-1">規則</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>説明</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>分配性</td>
+      <td>積は和に対して分配的である</td>
+      <td>2*(3 + 4) = 2*3 + 2*4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>※<strong>分配性</strong>（分配法則）</p>
+
+<h3 id="集合-1">集合</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>集合</th>
+      <th style="text-align: center">閉性</th>
+      <th style="text-align: center">結合律</th>
+      <th style="text-align: center">単位律</th>
+      <th style="text-align: center">可逆律</th>
+      <th style="text-align: center">消約律</th>
+      <th style="text-align: center">可換律</th>
+      <th style="text-align: center">分配性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>半環</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">× ×</td>
+      <td style="text-align: center">× ×</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>可換半環</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">× ×</td>
+      <td style="text-align: center">× ×</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>環(非可換環)</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>単位環</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>可換環</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>整域</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">○ △</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>斜体(可除環)</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ △</td>
+      <td style="text-align: center">○ △</td>
+      <td style="text-align: center">○ ×</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+    <tr>
+      <td>体(可換体)</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">○ △</td>
+      <td style="text-align: center">○ △</td>
+      <td style="text-align: center">○ ○</td>
+      <td style="text-align: center">- ○</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>※(加法, 乗法) = (○, ○) = ○ ○ と記している。乗法については 0 を含める場合は ○ とし、含めない場合は△とする</p>
+
+<p>※環の乗法について半群で扱う場合（環と単位環を区別する場合）は環の単位律 → ○ ×</p>
+
+<h2 id="巡回群">巡回群</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>式</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>g^n (n ∈ ℤ)</td>
+      <td>2^3 = 8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>g を<strong>生成元（原始元）</strong>と呼ぶ。</p>
+
+<p>群Gにおいて、g^n の結果が群Gに含まれる数（元）であれば、群Gは巡回群Gである。</p>
+
+<p>g を整数全体ℤ とした場合、無限巡回群となる（巡回しない巡回群）。例えば 2^n の時 n の値がいくつであっても結果は整数になることを意味する。</p>
+
+<p>従って、巡回する巡回群を扱う代表例は剰余を導入したものである。</p>
+
+<h3 id="剰余">剰余</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>式</th>
+      <th>説明</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a ≡ b mod n ( n &gt;= 2)</td>
+      <td>二つの整数 a, b が 法n に関して合同である。</td>
+      <td>2 ≡ 3 mod n</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>剰余に着目した算術を<strong>合同算術</strong>と呼ぶ。</p>
+
+<p>例えば、2を法(n=2)にすると剰余は{0,1}の<strong>巡回群</strong>をなす（何を割っても余りは0か1）</p>
+
+<p>剰余が等しい整数を集めたものを n を法とする<strong>剰余類（合同類）</strong>と呼ぶ。2を法とする合同類は{0,1}の巡回群を指す。</p>
+
+<p>環の性質を持つ剰余類を<strong>剰余類環（合同類環）</strong>と呼ぶ。</p>
+
+<p>n を法とする剰余類環を <strong>Z/nZ, Z/n, Zn</strong> と表記する。従って Z/2Z = {0, 1} は法2の剰余類環を示す。</p>
+
+<p>16ビット(2^16 = 65536)整数の全体は剰余類環 Z/65536Z となる。</p>
+
+<h3 id="冪剰余">冪剰余</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>式</th>
+      <th>説明</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>c ≡ b^e mod m ( n &gt;= 2)</td>
+      <td>m を法とする b の e 冪剰余</td>
+      <td>8 ≡ 5^3 mod 13</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>b, e, m から c を求めるのは log(b) + log(e) + log(m) の<strong>多項式時間</strong>で計算可能。</p>
+
+<p>m, c, b から e を求めるのは<strong>離散対数問題</strong>と呼ばれ<strong>多項式時間で計算不可能</strong>。</p>
+
+<h3 id="素数による冪剰余">素数による冪剰余</h3>
+
+<h2 id="rsa">RSA</h2>
+<ol>
+  <li>p, q : ( p≠q ) 素数 p,q を用意</li>
+  <li>n = pq : となる n を定義</li>
+  <li>e : ( e≠(p-1)(q-1) ) となる e を用意</li>
+  <li>ed ≡ 1 mod (p-1)(q-1) : となる d を計算する</li>
+  <li>鍵
+    <ol>
+      <li>公開鍵(e,n)   の暗号化写像 c = Enc(m) = Ω(e,n,m) = Ω(e,p,q,m) = m^e mod n : 公開</li>
+      <li>秘密鍵(d,p,q) の復号化写像 m = Dec(c) = Θ(d,n,c) = Θ(d,p,q,c) = c^d mod n : 非公開</li>
+    </ol>
+  </li>
+</ol>
+
+<ul>
+  <li>オイラーのφ関数(トーシェント関数)</li>
+  <li>フェルマーの小定理</li>
+  <li>ユークリッドの互除法</li>
+</ul>
+
+<p>公開鍵(a,n) は公開情報だが、n=pq は<strong>素因数分解問題</strong>のため秘密鍵(b,p,q)の安全性が高いと言える。</p>
+
+<p>仮に n=pq の素因数分解が出来た場合 ab ≡ 1 mod (p-1)(q-1) を用いて b を導出することで、秘密鍵(b,p,q)を導き出せる。</p>
+
+<p>ここで、Θ( b,p,q, Ω(a,n,X) ) ≡ X mod n が成り立つ事も重要である。</p>
+
+<h3 id="rsa-1">RSA</h3>
+<ul>
+  <li>公開鍵(e,n)   の暗号化写像 c = Ω(e,n,m)   = m^e mod n : 公開　　暗号化（平文mから暗号文c）</li>
+  <li>
+    <p>秘密鍵(d,p,q) の復号化写像 m = Θ(d,p,q,c) = c^d mod n : 非公開　復号化（暗号文cから平文m）</p>
+  </li>
+  <li>
+    <p>n = pq</p>
+  </li>
+  <li>ed ≡ 1 mod (p-1)(q-1)
+    <ul>
+      <li>ed−k(p−1)(q−1)=1</li>
+    </ul>
+  </li>
+  <li>
+    <p>d  ≡ e^-1 mod (p-1)(q-1)</p>
+  </li>
+  <li>m = Θ( d,p,q, Ω(e,n,m) ) ≡ m mod n</li>
+</ul>
+
+<h4 id="rsa解読">RSA解読</h4>
+<ul>
+  <li>前提
+    <ul>
+      <li>公開情報 c, e, n である。</li>
+      <li>非公開情報 m, d, p, q である。この内 d が分かれば m を求められる。</li>
+    </ul>
+  </li>
+  <li>d の導出（m の導出）
+    <ul>
+      <li>素因数分解
+        <ul>
+          <li>(n) から d</li>
+          <li><code class="language-plaintext highlighter-rouge">n = pq</code> から p, q を導出</li>
+          <li><code class="language-plaintext highlighter-rouge">ed−k(p−1)(q−1)=1</code> から d を導出</li>
+        </ul>
+      </li>
+      <li>Low Private-Exponent Attack(Wiener’s Attack)
+        <ul>
+          <li>(e,n) から d</li>
+          <li><code class="language-plaintext highlighter-rouge">e/n = (k(1-δ))/d</code> δ が十分に小さければ、 d を導出可能</li>
+        </ul>
+      </li>
+      <li>Common Modulus Attack
+        <ul>
+          <li>(e1,n,c1), (e2,n,c2) から m</li>
+        </ul>
+      </li>
+      <li>Common Private Exponent Attack
+        <ul>
+          <li>(e1,n1,d), (e2,n2,d) から d</li>
+        </ul>
+      </li>
+      <li>Hastad’s broadcast Attack
+        <ul>
+          <li>(e,n1,c1),(e,n2,c2),…,(e,nk,ck)  から m</li>
+        </ul>
+      </li>
+      <li>Franklin-Reiter Related Message Attack
+        <ul>
+          <li>(m2=am1+b,a,b),(e,n,c1,c2) から m1</li>
+        </ul>
+      </li>
+      <li>Coppersmith’s short pad Attack
+        <ul>
+          <li>(m,k=n/(e^2),m1=(2^k)m+r1,m2=(2^k)m+r2),(e,n,c1,c2) から m</li>
+        </ul>
+      </li>
+      <li>Partial-key exposure Attack / High-bit known Attack / Low-bit known attack
+        <ul>
+          <li>(d,p,q)一部 から d,p,q それぞれ全体を復号する</li>
+        </ul>
+      </li>
+      <li>LSB Leak Attack
+        <ul>
+          <li>(cの値の偶奇),二部探索木 から m</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="一般">一般</h3>
+<ul>
+  <li>n = pq</li>
+  <li>ab ≡ 1 mod (p-1)(q-1)</li>
+  <li>
+    <p>b  ≡ a^-1 mod (p-1)(q-1) : モジュラ逆数</p>
+  </li>
+  <li>公開鍵(a,n)   の暗号化写像 Ω(a,n,X)   = X^a mod n : 公開</li>
+  <li>
+    <p>秘密鍵(b,p,q) の復号化写像 Θ(b,p,q,Y) = Y^b mod n : 非公開</p>
+  </li>
+  <li>
+    <p>Θ( b,p,q, Ω(a,n,X) ) ≡ X mod n</p>
+  </li>
+  <li>b = qa + r  : b を a で割った商 q と余り r [ユークリッドの除法（剰余付き除法、整除法）]</li>
+  <li>b ≡ r mod a : b を a で割った余り r [剰余演算（モジュロ）、合同算術）]</li>
+</ul>
+
+<h3 id="θ-bpq-ωanx---x-mod-n">Θ( b,p,q, Ω(a,n,X) ) ≡ X mod n</h3>
+
+<ul>
+  <li>Θ( b,p,q, Ω(a,n,X) )</li>
+  <li>= Y^b mod n : Y に Ω(a,n,X) を代入</li>
+  <li>= (X^a mod n)^b mod n : mod は外に出せるっぽい（同一性）</li>
+  <li>≡ (X^a)^b mod n</li>
+  <li>≡ X^ab mod n</li>
+</ul>
+
+<p>ab ≡ 1 mod (p-1)(q-1) は ab を (p-1)(q-1) で割った余りが 1 であることを意味する。従って、</p>
+
+<ul>
+  <li>ab = 1 + k(p-1)(q-1) : 整数k</li>
+</ul>
+
+<p>と出来る。</p>
+
+<p>即ち、</p>
+
+<ul>
+  <li>X^ab mod n</li>
+  <li>≡ X^( 1 + k(p-1)(q-1) ) mod n</li>
+  <li>≡ X * X^( k(p-1)(q-1) ) mod n</li>
+  <li>≡ X * ( X^(p-1)(q-1) )^k mod n</li>
+</ul>
+
+<p>となる。ところで、</p>
+
+<ul>
+  <li>X^(p-1)(q-1) ≡ 1 mod n : ただし (X ≠ 0)</li>
+</ul>
+
+<p>が証明されている。これを用いると、</p>
+
+<ul>
+  <li>≡ X * ( 1 )^k mod n</li>
+  <li>≡ X mod n</li>
+</ul>
+
+<p>となり、</p>
+
+<ul>
+  <li>Θ( b,p,q, Ω(a,n,X) ) ≡ X mod n</li>
+</ul>
+
+<p>が成り立つ。</p>
+
+<hr />
+<h2 id="はい">はい</h2>
+<ul>
+  <li>合同算術</li>
+  <li>整域</li>
+  <li>整数環</li>
+  <li>剰余類環</li>
+  <li>乗法群</li>
+  <li>剰余環</li>
+  <li>商群（剰余群、因子群）</li>
+  <li>巡回群</li>
+  <li>冪剰余</li>
+</ul>
+
+<h2 id="計算複雑性">計算複雑性</h2>
+
+<h2 id="計算困難問題">計算困難問題</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>問題</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>素因数分解</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>離散対数問題</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>ナップサック問題</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script></body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>category と 目次 | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="category と 目次" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/jekyll/2021/04/01/hello.html" />
+<meta property="og:url" content="/contents/tech/jekyll/2021/04/01/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-01T13:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="category と 目次" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-01T13:38:04+00:00","datePublished":"2021-04-01T13:38:04+00:00","description":"どこまでも逝こう。","headline":"category と 目次","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/jekyll/2021/04/01/hello.html"},"url":"/contents/tech/jekyll/2021/04/01/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">category と 目次</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-01T13:38:04+00:00" itemprop="datePublished">Apr 1, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#category-の導入">category の導入</a></li><li><a href="#_includesheaderpartshtml-before">_includes/header/parts.html (before)</a></li><li><a href="#_includesheaderpartshtml-after">_includes/header/parts.html (after)</a></li><li><a href="#見ての通り">見ての通り</a></li><li><a href="#記事例">記事例</a></li><li><a href="#headertechmarkdown-カテゴリー配列を渡すところ">header/tech.markdown （カテゴリー配列を渡すところ）</a></li><li><a href="#見ての通りり">見ての通りり</a></li><li><a href="#ところで目次">ところで、目次。</a></li><li><a href="#はい">はい。</a></li></ul></details>
+    <h2 id="category-の導入">category の導入</h2>
+<p>　jekyll には元々 <code class="language-plaintext highlighter-rouge">category</code> という項目がある。標準（ theme: <code class="language-plaintext highlighter-rouge">minima</code> ）だと出し分けたりのデザインになっていない。というわけで、出し分けられるようにします。</p>
+
+<p>　現状だと、 <code class="language-plaintext highlighter-rouge">Diary</code> <code class="language-plaintext highlighter-rouge">Tech</code> <code class="language-plaintext highlighter-rouge">Novel</code> の3つの記事タイプが存在し、カテゴリーはその各タイプの下に広がる分類をに位置付けたいと思います。 本来はタイプなんて作らないでカテゴリーで対応するのかは分からないですが、必要な概念があれば自由に付けたり外したり出来るのが <code class="language-plaintext highlighter-rouge">jekyll</code> なんですね。え？　他のでも出来るって？　さ、やっていきましょう。</p>
+
+<h2 id="_includesheaderpartshtml-before">_includes/header/parts.html (before)</h2>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">posts</span><span class="p">.</span><span class="nf">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">-%}</span>
+&lt;ul class="post-yp-list"&gt;
+
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">include.posts</span><span class="w"> </span><span class="p">-%}</span>
+    &lt;li&gt;
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">minima</span><span class="p">.</span><span class="nv">date_format</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span><span class="s2">"%b %-d, %Y"</span><span class="w"> </span><span class="p">-%}</span>
+        &lt;span class="post-meta"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">date</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="p">}}</span>&lt;/span&gt;
+        &lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">relative_url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">escape</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;
+    &lt;/li&gt;
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h2 id="_includesheaderpartshtml-after">_includes/header/parts.html (after)</h2>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">posts</span><span class="p">.</span><span class="nf">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">minima</span><span class="p">.</span><span class="nv">date_format</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span><span class="s2">"%b %-d, %Y"</span><span class="w"> </span><span class="p">-%}</span>
+&lt;ul class="post-yp-list"&gt;
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">include.categories</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">posts_cateogry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"category"</span><span class="p">,</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">posts_cateogry</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">empty</span><span class="w"> </span><span class="p">-%}</span>
+            <span class="p">{%-</span><span class="w"> </span><span class="nt">continue</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">-%}</span>
+
+        &lt;h4&gt;
+            <span class="p">{{</span><span class="w"> </span><span class="nv">category</span><span class="w"> </span><span class="p">}}</span>
+        &lt;/h4&gt;
+
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">posts_cateogry</span><span class="w"> </span><span class="p">-%}</span>
+        &lt;li&gt;
+            &lt;span class="post-meta"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">date</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="p">}}</span>&lt;/span&gt;
+            &lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">relative_url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">escape</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;
+        &lt;/li&gt;
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+        
+        &lt;br&gt;
+
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h2 id="見ての通り">見ての通り</h2>
+<p>　渡されるカテゴリー配列を一つずつ回す。一致するカテゴリーの記事だけにフィルターをかける。適合した記事を表示。</p>
+
+<p>　基本的に、 <code class="language-plaintext highlighter-rouge">category は1つの記事につき1つという仕様</code> で組みます。複数付けることも出来ますが、良い表示形式が浮かばないので。</p>
+
+<p>　記事の要素を加えたい場合は <code class="language-plaintext highlighter-rouge">tag</code> の概念を導入しようかと思います。今はまだ記事が少ないこともあって <code class="language-plaintext highlighter-rouge">tag</code> がなくても問題ないと思っています。</p>
+
+<p>　ということで、各記事と、カテゴリを渡すところを。</p>
+
+<h2 id="記事例">記事例</h2>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span>   <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span>    <span class="s2">"</span><span class="s">jekyllのhome.html"</span>
+<span class="na">date</span><span class="pi">:</span>     <span class="s">2021-03-31 22:38:04 +0900</span>
+<span class="na">type</span><span class="pi">:</span>     <span class="s">tech</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">jekyll</span>
+</code></pre></div></div>
+
+<h2 id="headertechmarkdown-カテゴリー配列を渡すところ">header/tech.markdown （カテゴリー配列を渡すところ）</h2>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: page
+title:  "Tech"
+permalink: /tech/
+fix: header
+order: 2
+---
+
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="s2">", jekyll"</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="s2">", 麻雀"</span><span class="w"> </span><span class="p">-%}</span>
+
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tech"</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="w"> </span><span class="s2">", "</span><span class="w"> </span><span class="p">-%}</span>
+
+</code></pre></div></div>
+
+<h2 id="見ての通りり">見ての通りり</h2>
+<p>　各記事には <code class="language-plaintext highlighter-rouge">category</code> を1つ指定。</p>
+
+<p>　配列を渡すところでは、カテゴリー配列を作って、渡しているだけですね。</p>
+
+<p>　ディレクトリ構造から自動で <code class="language-plaintext highlighter-rouge">category</code> を判別してやる方法も考えましたが、 <code class="language-plaintext highlighter-rouge">contains</code> で全記事を比較しないといけないので、それならフィルターかなぁと結局なってしまいました。いちいち指定するのは大変ですね。大変だけど、まあいいか。</p>
+
+<p>　カテゴリー配列の部分ですが、 <code class="language-plaintext highlighter-rouge">append</code> で作ってます。 <code class="language-plaintext highlighter-rouge">"jekyll, 麻雀"</code> という風に初期化代入も出来ますが、カテゴリーの順番を行を入れ替えるだけで替えられた方が嬉しかったので、 <code class="language-plaintext highlighter-rouge">append</code> を使っています。</p>
+
+<p>　そんなわけでカテゴリーの表示は完了しました。これで記事のタイプ毎にたくさんのカテゴリーを作っていけますね。</p>
+
+<h2 id="ところで目次">ところで、目次。</h2>
+<p>　話は変わって、目次機能が欲しいと思ったので調べてみました。さすがに作り方が思いつかなかった。調べてみると、 <code class="language-plaintext highlighter-rouge">toc.html</code> をDLしてインクルードしたら使えるよっていう素晴らしいのがありました。プラグインではないらしい。</p>
+
+<p>　中をのぞいてみると、 <code class="language-plaintext highlighter-rouge">Liquid</code> で見出しタグを拾って目次を生成しているみたい。こういうことが出来るとは。可能性は無限大。</p>
+
+<p>　気が向いた時に中を覗いてみようかなぁと思ってますが、結構読むのは大変かもしれない。まだこの構文に慣れてない。</p>
+
+<p>　目次については特筆しません。私の作ったものではないので。</p>
+
+<h2 id="はい">はい。</h2>
+<p>　ということでカテゴリーの概念の導入と目次の導入をしました。</p>
+
+<p>　ここまで出来たらブログで欲しい機能は大体できた気もします。タイプに応じて好きなカテゴリーで記事を書ける状態。デザインを整えるとか、途中で書きましたが、 <code class="language-plaintext highlighter-rouge">tag</code> の概念を導入するとかですかね。</p>
+
+<p>　いずれにせよ。 <code class="language-plaintext highlighter-rouge">jekyll</code> はマークダウンファイルで記事を管理できるのがやっぱり良いですね。助かる。</p>
+
+<p>　ではこの辺で。</p>
+
+
+  </div><a class="u-url" href="/contents/tech/jekyll/2021/04/01/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

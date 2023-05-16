@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ctf | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="ctf" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/pages/memo/CTF/00_ctf.html" />
+<meta property="og:url" content="/pages/memo/CTF/00_ctf.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ctf" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"どこまでも逝こう。","headline":"ctf","url":"/pages/memo/CTF/00_ctf.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">ctf</h1>
+  </header>
+
+  <div class="post-content"><details>
+        <summary>目次</summary><ul><li><a href="#解決プロセス">解決プロセス</a></li><li><a href="#pwn">pwn</a></li><li><a href="#crypto">crypto</a></li></ul></details><h2 id="解決プロセス">解決プロセス</h2>
+
+<p>　ジャンル全体で共通する流れ。攻撃などは例。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>攻撃</th>
+      <th>脆弱性</th>
+      <th>セキュリティ</th>
+      <th>識別</th>
+      <th>対象</th>
+      <th>知識</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pwn</td>
+      <td>ROP</td>
+      <td>BoF</td>
+      <td>NX, ASLR</td>
+      <td>x86<br />ELF</td>
+      <td>ファイル</td>
+      <td>・アーキテクチャ<br />・</td>
+    </tr>
+    <tr>
+      <td>crypto</td>
+      <td>全数探索</td>
+      <td>鍵長</td>
+      <td>計算量的安全性</td>
+      <td>DES</td>
+      <td>暗号</td>
+      <td>・暗号解読<br />・計算理論<br />・</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　まず、<strong>＜知識＞</strong>を使って<strong>＜対象＞</strong>を<strong>＜識別＞</strong>する。</p>
+
+<p>　次に、それがどんな<strong>＜セキュリティ＞</strong>によって守られているかを理解する。</p>
+
+<p>　次に、それがどんな<strong>＜脆弱性＞</strong>を抱えているかを理解する。</p>
+
+<p>　次に、それの<strong>＜セキュリティ＞</strong>と<strong>＜脆弱性＞</strong>を加味して有効な<strong>＜攻撃＞</strong>を選定する。</p>
+
+<p>　最後に、実際にエクスプロイトを作成し、FLAGを獲得する。</p>
+
+<h2 id="pwn">pwn</h2>
+
+<h2 id="crypto">crypto</h2>
+<p>　暗号解読の基本は全数探索（ブルートフォース攻撃）。</p>
+
+<p>　暗号アルゴリズムによっては全数探索よりも早いショートカット法が存在することもある。</p>
+
+<p>　「平文」「暗号文」「鍵」「暗号化アルゴリズム」などどの情報を持っているかで変わる。</p>
+
+<p>　鍵や暗号化アルゴリズムが不明で暗号文のみの場合は、暗号学的ハッシュ関数やエンコーディング方式（Base64）を疑う必要もある。</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script></body>
+
+</html>

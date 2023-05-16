@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>jekyllのhome.html | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="jekyllのhome.html" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/jekyll/2021/03/31/hello.html" />
+<meta property="og:url" content="/contents/tech/jekyll/2021/03/31/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-31T13:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="jekyllのhome.html" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-03-31T13:38:04+00:00","datePublished":"2021-03-31T13:38:04+00:00","description":"どこまでも逝こう。","headline":"jekyllのhome.html","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/jekyll/2021/03/31/hello.html"},"url":"/contents/tech/jekyll/2021/03/31/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">jekyllのhome.html</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-03-31T13:38:04+00:00" itemprop="datePublished">Mar 31, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#homeを見た">homeを見た</a></li><li><a href="#before-homehtml-">before( home.html )</a></li><li><a href="#after-homehtml-">after( home.html )</a></li><li><a href="#include-機能">include 機能</a></li><li><a href="#_includeshomepartshtml">_includes/home/parts.html</a></li><li><a href="#もっと見るボタン">もっと見るボタン</a></li><li><a href="#一覧ページ-daiary-の例-headerdiarymarkdown-">一覧ページ daiary の例( header/diary.markdown )</a></li><li><a href="#_includesheaderpartshtml">_includes/header/parts.html</a></li><li><a href="#はい">はい。</a></li><li><a href="#プラグインは">プラグインは……</a></li><li><a href="#こういう記録を残しているのは">こういう記録を残しているのは</a></li></ul></details>
+    <h2 id="homeを見た">homeを見た</h2>
+<p>　記事と言っても種類が欲しい。今回はカテゴリーよりも一つ上位の部分で分けたい。</p>
+
+<p>　その場合、home では各種類毎に新着記事が出てたらいいなぁと思ったので、それをやる。</p>
+
+<h2 id="before-homehtml-">before( home.html )</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: default
+---
+ 
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"home"</span><span class="nt">&gt;</span>
+    {%- if page.title -%}
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"page-heading"</span><span class="nt">&gt;</span>{{ page.title }}<span class="nt">&lt;/h1&gt;</span>
+    {%- endif -%}
+ 
+    {{ content }}
+ 
+    <span class="c">&lt;!-- 今回はここから ---------------------------------------------------------&gt;</span>
+    {%- if site.posts.size &gt; 0 -%}
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"post-list-heading"</span><span class="nt">&gt;</span>{{ page.list_title | default: "Posts" }}<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"post-list"</span><span class="nt">&gt;</span>
+        {%- for post in site.posts -%}
+        <span class="nt">&lt;li&gt;</span>
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-meta"</span><span class="nt">&gt;</span>{{ post.date | date: date_format }}<span class="nt">&lt;/span&gt;</span>
+            {%- for category in post.categories -%}
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-meta"</span><span class="nt">&gt;</span>/{{ category }}<span class="nt">&lt;/span&gt;</span>
+            {%- endfor -%}
+            <span class="nt">&lt;h3&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"post-link"</span> <span class="na">href=</span><span class="s">"{{ post.url | relative_url }}"</span><span class="nt">&gt;</span>
+                {{ post.title | escape }}
+            <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/h3&gt;</span>
+            {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+            {%- endif -%}
+        <span class="nt">&lt;/li&gt;</span>
+        {%- endfor -%}
+    <span class="nt">&lt;/ul&gt;</span>
+ 
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"rss-subscribe"</span><span class="nt">&gt;</span>subscribe <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ "</span><span class="err">/</span><span class="na">feed.xml</span><span class="err">"</span> <span class="err">|</span> <span class="na">relative_url</span> <span class="err">}}"</span><span class="nt">&gt;</span>via RSS<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+    {%- endif -%}
+    <span class="c">&lt;!-- ここまで ---------------------------------------------------------------&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="after-homehtml-">after( home.html )</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: default
+---
+ 
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"home"</span><span class="nt">&gt;</span>
+    {%- if page.title -%}
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"page-heading"</span><span class="nt">&gt;</span>{{ page.title }}<span class="nt">&lt;/h1&gt;</span>
+    {%- endif -%}
+ 
+    {{ content }}
+ 
+    <span class="c">&lt;!-- 今回はここから ---------------------------------------------------------&gt;</span>
+    {%- assign posts_diary = site.posts | where: "type", "diary" -%}
+    {%- assign posts_tech  = site.posts | where: "type", "tech"  -%}
+    {%- assign posts_novel = site.posts | where: "type", "novel" -%}
+
+    {% include home/parts.html posts=posts_diary type="diary" limit=2 %}
+    {% include home/parts.html posts=posts_tech  type="tech"  limit=2 %}
+    {% include home/parts.html posts=posts_novel type="novel" limit=2 %}
+    <span class="c">&lt;!-- ここまで ---------------------------------------------------------------&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="include-機能">include 機能</h2>
+<p>　インクルードという機能が Liquid にあった。元の部分は <code class="language-plaintext highlighter-rouge">home/parts.html</code> に抜き出して、渡された変数に応じて表示する記事を変更するという実装にした。</p>
+
+<h2 id="_includeshomepartshtml">_includes/home/parts.html</h2>
+<p>　<code class="language-plaintext highlighter-rouge">include.xxxx</code> の部分が変数に置き換えたところ。</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">posts</span><span class="p">.</span><span class="nf">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">-%}</span>
+&lt;h2 class="post-list-heading"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">list_title</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">type</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">capitalize</span><span class="w"> </span><span class="p">}}</span>&lt;/h2&gt;
+&lt;ul class="post-list"&gt;
+ 
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">include.posts</span><span class="w"> </span><span class="na">limit</span><span class="o">:</span><span class="w"> </span>include.limit<span class="w"> </span><span class="p">-%}</span>
+    &lt;li&gt;
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">minima</span><span class="p">.</span><span class="nv">date_format</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span><span class="s2">"%b %-d, %Y"</span><span class="w"> </span><span class="p">-%}</span>
+        &lt;span class="post-meta"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">date</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="p">}}</span>&lt;/span&gt;
+ 
+        &lt;h3&gt;
+            &lt;a class="post-link" href="<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">relative_url</span><span class="w"> </span><span class="p">}}</span>"&gt;
+                <span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">escape</span><span class="w"> </span><span class="p">}}</span>
+            &lt;/a&gt;
+        &lt;/h3&gt;
+ 
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">show_excerpts</span><span class="w"> </span><span class="p">-%}</span>
+        <span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">excerpt</span><span class="w"> </span><span class="p">}}</span>
+        <span class="p">{%-</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">-%}</span>
+    &lt;/li&gt;
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+ 
+    &lt;a class="post-moreread-link" href="/<span class="p">{{</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">type</span><span class="w"> </span><span class="p">}}</span>"&gt;
+        もっと見る
+    &lt;/a&gt;
+ 
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h2 id="もっと見るボタン">もっと見るボタン</h2>
+<p>　ついでに、 <code class="language-plaintext highlighter-rouge">もっと見る</code> ボタンも実装した。現在は <code class="language-plaintext highlighter-rouge">limit=2</code> としており、即ち新着記事を最大2つまでしか表示しないようにしている。3つ以上過去の記事を見たい場合は、各種類の一覧ページへ飛ぶようにした。</p>
+
+<p>　これは、jekyllのヘッダー記事の話の続きであるが、ヘッダーに各種類の一覧ページへ飛べるリンクを用意したので、 <code class="language-plaintext highlighter-rouge">もっと見る</code> を押した時のリンク先はそこである。</p>
+
+<p>　<code class="language-plaintext highlighter-rouge">post-moreread-link</code> というスタイルを新たに追加しているが、中央寄せしている程度で特筆すべき点はない。</p>
+
+<h2 id="一覧ページ-daiary-の例-headerdiarymarkdown-">一覧ページ daiary の例( header/diary.markdown )</h2>
+<p>　先ほどと同じように、 <code class="language-plaintext highlighter-rouge">header/parts.html</code> を作成して、それをインクルードする形式とした。マークダウンファイルに直接 Liquid の記法を入れてしまうのは少し気持ち悪いのだが、個人の範疇でかつ複雑ではないということでここでは見過ごすことにした。</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: post
+title:  "Diary"
+permalink: /diary/
+fix: header
+order: 1
+---
+　
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">posts_diary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"diary"</span><span class="w"> </span><span class="p">-%}</span>
+　
+<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>header/parts.html<span class="w"> </span><span class="na">posts</span><span class="o">=</span><span class="nv">posts_diary</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s2">"diary"</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<h2 id="_includesheaderpartshtml">_includes/header/parts.html</h2>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">posts</span><span class="p">.</span><span class="nf">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">-%}</span>
+&lt;ul class="post-yp-list"&gt;
+
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">include.posts</span><span class="w"> </span><span class="p">-%}</span>
+    &lt;li&gt;
+        <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">minima</span><span class="p">.</span><span class="nv">date_format</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">default</span><span class="p">:</span><span class="w"> </span><span class="s2">"%b %-d, %Y"</span><span class="w"> </span><span class="p">-%}</span>
+        &lt;span class="post-meta"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">date</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">date</span><span class="p">:</span><span class="w"> </span><span class="nv">date_format</span><span class="w"> </span><span class="p">}}</span>&lt;/span&gt;
+        &lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">relative_url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">escape</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;
+    &lt;/li&gt;
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">-%}</span>
+
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<h2 id="はい">はい。</h2>
+<p>　新しく <code class="language-plaintext highlighter-rouge">post-yp-list</code> というスタイルを作ったが、これも別に特筆すべきことはない。</p>
+
+<p>　以上で、記事の種類を分けて、新着記事出し・専用の一覧ページを用意することが出来た。</p>
+
+<p>　もう少し融通が効かないと思っていたのだが、結構やりたいことが出来ることに気づいて楽しくなってきた。</p>
+
+<h2 id="プラグインは">プラグインは……</h2>
+<p>　github pages だとプラグインが使えないのだそうだが、むしろ私にとっては好都合である。余りにも複雑なことなら頼りたいが、出来ることなら拙い知識でもいいから自分で組み立てたい。仮にプラグインを使える github pages だった場合、どうしてプラグインを使わないんだって周りに言われることだろう。そのことを考慮する必要もないのも非常に良い。プラグインを使った方が楽とか安全だとか効率的だとかそういうのには、少なくともこのブログを立てた時の私の心境から見ると、何の価値もない。助かる。</p>
+
+<h2 id="こういう記録を残しているのは">こういう記録を残しているのは</h2>
+<p>　ちなみに、こうして記録を残しているのは未来の自分に対してであり、皆にも経験があるだろう黒板を書き写したのに一度も開かれないノートのような位置付けである。</p>
+
+<p>　ともかく、文章としてアウトプット出来る領域というのが、私にとっては非常に重要であり、楽しくもあり、続けられることなのである。</p>
+
+<p>　というわけで、前回は header を。今回は home を見てみました。実は home にあった RSS を footer に移したのだが、別段気になることはなかった。</p>
+
+<p>　さあ。あとは記事を書くだけだ！　という気分ではあるのだが、カテゴリ分けの部分も可視化して行きたい。次回がそれになるかは分からないが、いずれそれもやりたい。ただし、カテゴリが多様化したり、記事の数が増えた時に恩恵があるわけで、いまやってもなぁというのが正直なところではある。でも、気になるからやりたいのはやりたい。</p>
+
+<p>　それでは。この辺で。</p>
+
+
+  </div><a class="u-url" href="/contents/tech/jekyll/2021/03/31/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

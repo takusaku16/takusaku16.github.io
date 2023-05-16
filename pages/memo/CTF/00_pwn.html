@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>pwn | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="pwn" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/pages/memo/CTF/00_pwn.html" />
+<meta property="og:url" content="/pages/memo/CTF/00_pwn.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="pwn" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"どこまでも逝こう。","headline":"pwn","url":"/pages/memo/CTF/00_pwn.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">pwn</h1>
+  </header>
+
+  <div class="post-content"><details>
+        <summary>目次</summary><ul><li><a href="#pwn">Pwn</a><ul><li><a href="#なんかまとめ">なんかまとめ🖼</a></li><li><a href="#考え方">考え方</a></li><li><a href="#思考と手順">思考と手順</a></li></ul></li><li><a href="#1-セキュリティ状態の確認">1. セキュリティ状態の確認</a><ul><li><a href="#11-概念">1.1 概念</a><ul><li><a href="#nxxdビットno-execute--execute-disable">NX/XDビット(No eXecute / eXecute Disable)</a></li><li><a href="#ascii-armor">ASCII Armor</a></li><li><a href="#aslraddress-space-layout-randomization">ASLR(Address Space Layout Randomization)</a></li><li><a href="#pieposition-independent-executable">PIE(Position-Independent Executable)</a></li><li><a href="#sspstack-smashing-protection--stackguard--canary">SSP(Stack Smashing Protection / StackGuard / canary)</a></li><li><a href="#relrorelocation-read-only">RELRO(RELocation Read-Only)</a></li></ul></li><li><a href="#12-有効化無効化">1.2 有効化/無効化</a><ul><li><a href="#nxxdビット設定">NX/XDビット　設定</a></li><li><a href="#ascii-armor設定">ASCII Armor　設定</a></li><li><a href="#aslr設定">ASLR　設定</a></li><li><a href="#pie設定">PIE　設定</a></li><li><a href="#ssp設定">SSP　設定</a></li><li><a href="#relro設定">RELRO　設定</a></li></ul></li><li><a href="#13-確認方法">1.3 確認方法</a><ul><li><a href="#nxxdビット確認">NX/XDビット　確認</a></li><li><a href="#ascii-armor確認">ASCII Armor　確認</a></li><li><a href="#aslr確認">ASLR　確認</a></li><li><a href="#pie確認">PIE　確認</a></li><li><a href="#ssp確認">SSP　確認</a></li><li><a href="#relro確認">RELRO　確認</a></li></ul></li><li><a href="#14-実体を見る">1.4 実体を見る</a><ul><li><a href="#nxxdビット実体">NX/XDビット　実体</a></li><li><a href="#ascii-armor実体">ASCII Armor　実体</a></li><li><a href="#aslr実体">ASLR　実体</a></li><li><a href="#pie実体">PIE　実体</a></li><li><a href="#ssp実体">SSP　実体</a></li><li><a href="#relro実体">RELRO　実体</a></li></ul></li></ul></li><li><a href="#2-脆弱性の探索">2. 脆弱性の探索</a><ul><li><a href="#bofバッファオーバーフロー">BoF(バッファオーバーフロー)</a></li><li><a href="#fsbformat-string-bug">FSB(Format String Bug)</a><ul><li><a href="#原理">原理</a></li><li><a href="#利用">利用</a></li><li><a href="#利用書き込み">利用（書き込み）</a></li><li><a href="#利用読み-infromation-leak">利用（読み）: Infromation Leak</a></li></ul></li><li><a href="#uafuse-after-free">UAF(use-after-free)</a></li></ul></li><li><a href="#3-攻撃計画の立案実行">3. 攻撃計画の立案・実行</a><ul><li><a href="#基本方針">基本方針</a></li></ul></li><li><a href="#付録">付録</a><ul><li><a href="#権限関連のコマンド">権限関連のコマンド</a><ul><li><a href="#etcpasswd">/etc/passwd</a></li><li><a href="#etcshadow">/etc/shadow</a></li><li><a href="#fd">fd</a></li></ul></li><li><a href="#解析関連のコマンド">解析関連のコマンド</a><ul><li><a href="#gdb">gdb</a></li></ul></li><li><a href="#x86-メモリ配置概念">x86 メモリ配置　概念</a></li></ul></li><li><a href="#参考">参考</a><ul><li><a href="#強力">強力</a></li><li><a href="#歴史基礎">歴史、基礎</a></li><li><a href="#補強">補強</a></li></ul></li></ul></details><h2 id="pwn">Pwn</h2>
+<p>　Pwn に取り組む上で押さえておきたい情報をまとめていく</p>
+
+<h3 id="なんかまとめ">なんかまとめ🖼</h3>
+<iframe width="740" height="164" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRqDBFhjvY-47Fx5QtCpGmICwyEfqhI9l26iXxPoe6gOyNTf6yL6wYPRjZ0s5_kIyIGv_iJ967kmtxI/pubhtml?widget=true&amp;headers=false"></iframe>
+<iframe width="740" height="400" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRqDBFhjvY-47Fx5QtCpGmICwyEfqhI9l26iXxPoe6gOyNTf6yL6wYPRjZ0s5_kIyIGv_iJ967kmtxI/pubhtml?widget=true&amp;headers=false"></iframe>
+
+<p>※チェックマークは分かった気がするやつ。ただし、表の情報を信じてはいけない。</p>
+
+<h3 id="考え方">考え方</h3>
+<p>　前提として何らかの脆弱性が必ずある。かつ、セキュリティでその脆弱性をカバー出来ていない。この2点を総合して、有効な攻撃手段が必ずある。</p>
+
+<p>　手の付け所が分からない場合は、</p>
+
+<ul>
+  <li>未知の脆弱性</li>
+  <li>未知のセキュリティ</li>
+  <li>未知の攻撃</li>
+</ul>
+
+<p>　のいずれかを疑うことで先に進める（と思われる）。未知というのは自分にとっての未知。</p>
+
+<h3 id="思考と手順">思考と手順</h3>
+
+<ol>
+  <li>セキュリティ状態の確認</li>
+  <li>脆弱性の探索</li>
+  <li>攻撃計画の立案・実行</li>
+</ol>
+
+<h2 id="1-セキュリティ状態の確認">1. セキュリティ状態の確認</h2>
+
+<ul>
+  <li>NX/XDビット(No eXecute / eXecute Disable)</li>
+  <li>ASCII Armor</li>
+  <li>ASLR(Address Space Layout Randomization)</li>
+  <li>PIE(Position-Independent Executable)</li>
+  <li>SSP(Stack Smashing Protection / StackGuard / canary)</li>
+  <li>RELRO(RELocation Read-Only)</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>サポート</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NX/XDビット</td>
+      <td>OS, コンパイラ(GCC)</td>
+    </tr>
+    <tr>
+      <td>ASCII Armor</td>
+      <td>OS</td>
+    </tr>
+    <tr>
+      <td>ASLR</td>
+      <td>OS</td>
+    </tr>
+    <tr>
+      <td>PIE</td>
+      <td>コンパイラ(GCC)</td>
+    </tr>
+    <tr>
+      <td>SSP</td>
+      <td>コンパイラ(GCC)</td>
+    </tr>
+    <tr>
+      <td>RELRO</td>
+      <td>コンパイラ(GCC)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="11-概念">1.1 概念</h3>
+
+<h4 id="nxxdビットno-execute--execute-disable">NX/XDビット(No eXecute / eXecute Disable)</h4>
+
+<p>プログラムが使用する各領域（data/bss, heap, stack）でのコード実行を不可能にする機能。</p>
+
+<ul>
+  <li>Windows
+    <ul>
+      <li>DEP(Data Execution Prevention)
+        <ul>
+          <li>ハードウェアDEP</li>
+          <li>ソフトウェアDEP(SafeSEH)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Linux
+    <ul>
+      <li>Exec shield</li>
+      <li>Pax</li>
+    </ul>
+  </li>
+</ul>
+
+<p>※Exec shield には ASCII Armor の機能も含まれている。</p>
+
+<p>※Exec shield/Pax には ASLR機能も含まれている。</p>
+
+<h4 id="ascii-armor">ASCII Armor</h4>
+
+<p>32bit版 Linux OS で共有ライブラリをメモリ上に配置する際に、最上位バイトが0x00である 0x00FFFFFF 以下のアドレスへ配置する。NULL文字(\0x00)を終端とみなす strcpy 等の攻撃の対策となる。</p>
+
+<h4 id="aslraddress-space-layout-randomization">ASLR(Address Space Layout Randomization)</h4>
+
+<p>プログラムが使用する各領域（heap, stack, 共有ライブラリ）の規定アドレスをランダム化する機能。</p>
+
+<p>※heap領域以降をランダム化</p>
+
+<h4 id="pieposition-independent-executable">PIE(Position-Independent Executable)</h4>
+
+<p>プログラムが使用する各領域（text, data/bss）の規定アドレスをランダム化する機能。</p>
+
+<h4 id="sspstack-smashing-protection--stackguard--canary">SSP(Stack Smashing Protection / StackGuard / canary)</h4>
+
+<p>スタック領域を保護するための機能。canaryの値が改ざんされているかどうかを判断する。坑道のカナリア。</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// スタック領域への展開を示すための例</span>
+<span class="kt">int</span> <span class="nf">hoge</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
+  <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">d</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="n">hoge</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    +---------------+
+    |               |
+    |               |     | 7. ローカル変数2(d)
+    |               |     | 6. ローカル変数1(c)
+    |               |     | 5. canary(SSP)  // コレ。勝手に積まれる。
+    |     stack     |     | 4. ebp値
+    |               |     | 3. call戻り先(リターンアドレス)
+    |               |     | 2. 引数1(a)
+    |               |     | 1. 引数2(b)
+    |               |
+    +---------------+ ↓ 0xFFFFFFFF
+</code></pre></div></div>
+
+<h4 id="relrorelocation-read-only">RELRO(RELocation Read-Only)</h4>
+
+<p>共有ライブラリ関数のアドレスを保持する GOT(Global Offset Table) 領域を読み取り専用にする機能。</p>
+
+<p>PLT(Procedure Linkage Table)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>lazy binding</th>
+      <th>.got</th>
+      <th>.got.plt</th>
+      <th>GOT overwrite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>No RELRO</td>
+      <td>-</td>
+      <td>rw-p</td>
+      <td>rw-p</td>
+      <td>〇</td>
+    </tr>
+    <tr>
+      <td>Partial RELRO</td>
+      <td>有効</td>
+      <td>r–p</td>
+      <td>r–p, rw-p</td>
+      <td>〇</td>
+    </tr>
+    <tr>
+      <td>Full RELRO</td>
+      <td>無効</td>
+      <td>r–p</td>
+      <td>-</td>
+      <td>✖</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>共有ライブラリ関数の呼び出し(Partial RELRO)</p>
+
+<ol>
+  <li>.text セクションで関数呼び出し</li>
+  <li>.plt セクションで関数呼び出し</li>
+  <li>.got.plt セクションで関数呼び出し
+    <ol>
+      <li>初回は動的リンカでアドレス解決</li>
+      <li>2回目以降はキャッシュを利用</li>
+    </ol>
+  </li>
+  <li>shard-object セクションで関数呼び出し</li>
+</ol>
+
+<p>共有ライブラリ関数の呼び出し(Full RELRO)</p>
+
+<ol>
+  <li>.text セクションで関数呼び出し</li>
+  <li>.plt セクションで関数呼び出し</li>
+  <li>.got セクションで関数呼び出し</li>
+  <li>shard-object セクションで関数呼び出し</li>
+</ol>
+
+<p>※ライブラリの種別</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>Linux, Windows</th>
+      <th>概要</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>静的ライブラリ</td>
+      <td><code class="language-plaintext highlighter-rouge">.a</code>,  <code class="language-plaintext highlighter-rouge">.lib</code></td>
+      <td>プログラム作成時にリンク</td>
+    </tr>
+    <tr>
+      <td>共有ライブラリ</td>
+      <td><code class="language-plaintext highlighter-rouge">.so</code>, <code class="language-plaintext highlighter-rouge">.dll</code></td>
+      <td>プログラム起動時 or 実行時(lazy)にリンク(binding)</td>
+    </tr>
+    <tr>
+      <td>動的ライブラリ</td>
+      <td><code class="language-plaintext highlighter-rouge">dlopen()</code>, <code class="language-plaintext highlighter-rouge">LoadLibrary()</code></td>
+      <td>プログラム動作中にリンク</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="12-有効化無効化">1.2 有効化/無効化</h3>
+
+<p><code class="language-plaintext highlighter-rouge">gcc -v</code> の <code class="language-plaintext highlighter-rouge">Configured with</code> が標準状態</p>
+
+<h4 id="nxxdビット設定">NX/XDビット　設定</h4>
+
+<ul>
+  <li>有効: gcc 標準で有効</li>
+  <li>無効: <code class="language-plaintext highlighter-rouge">gcc -z execstack</code></li>
+</ul>
+
+<h4 id="ascii-armor設定">ASCII Armor　設定</h4>
+
+<ul>
+  <li>32bit OS
+    <ul>
+      <li>有効: <code class="language-plaintext highlighter-rouge">kernel.exec-shield = 1</code></li>
+      <li>無効: <code class="language-plaintext highlighter-rouge">kernel.exec-shield = 0</code></li>
+    </ul>
+  </li>
+  <li>64bit OS
+    <ul>
+      <li>有効: 標準で有効？</li>
+      <li>無効: 設定ファイルをいじってサーバーを立ち上げ直すっぽい？</li>
+    </ul>
+  </li>
+</ul>
+
+<p>※Exec shield が有効なら ASCII armor も有効</p>
+
+<h4 id="aslr設定">ASLR　設定</h4>
+
+<ul>
+  <li>有効: <code class="language-plaintext highlighter-rouge">sudo sysctl -w kernel.randomize_va_space=2</code></li>
+  <li>無効: <code class="language-plaintext highlighter-rouge">sudo sysctl -w kernel.randomize_va_space=0</code></li>
+</ul>
+
+<h4 id="pie設定">PIE　設定</h4>
+
+<ul>
+  <li>有効: gcc 標準で有効</li>
+  <li>無効: <code class="language-plaintext highlighter-rouge">gcc -no-pie</code></li>
+</ul>
+
+<h4 id="ssp設定">SSP　設定</h4>
+
+<ul>
+  <li>有効: gcc 標準で有効</li>
+  <li>無効: <code class="language-plaintext highlighter-rouge">gcc -fno-stack-protector</code></li>
+</ul>
+
+<h4 id="relro設定">RELRO　設定</h4>
+
+<ul>
+  <li>デフォルト: Full RELRO</li>
+  <li>No RELRO: <code class="language-plaintext highlighter-rouge">gcc -Wl, -z, norelro</code></li>
+  <li>Partial RELRO: <code class="language-plaintext highlighter-rouge">gcc -Wl, -z, relro</code></li>
+  <li>Full RELRO: <code class="language-plaintext highlighter-rouge">gcc -Wl, -z, relro, -z, now</code></li>
+</ul>
+
+<p>※<code class="language-plaintext highlighter-rouge">-z, relro</code> がRELRO有効、<code class="language-plaintext highlighter-rouge">-z, now</code> が遅延バインド無効を意味する</p>
+
+<h3 id="13-確認方法">1.3 確認方法</h3>
+
+<p><code class="language-plaintext highlighter-rouge">checksec</code> を使うと簡単。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git clone https://github.com/slimm609/checksec.sh</code></li>
+  <li><code class="language-plaintext highlighter-rouge">./checksec --file=&lt;file name&gt;</code></li>
+</ul>
+
+<p>↓ オリジナル checksec (絶対抜けがあるので非推奨)</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">FILE</span><span class="o">=</span><span class="s2">"q4"</span><span class="p">;</span><span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"--- 1: NX"</span><span class="p">;</span>           readelf <span class="nt">-l</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>GNU_STACK<span class="p">;</span><span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"--- 2: RELRO"</span><span class="p">;</span>        readelf <span class="nt">-l</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>GNU_RELRO<span class="p">;</span><span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"--- 3: Lazy binding"</span><span class="p">;</span> readelf <span class="nt">-d</span> <span class="nv">$FILE</span> | <span class="nb">grep </span>BIND_NOW<span class="p">;</span><span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"--- 4: SSP, canary"</span><span class="p">;</span>  readelf <span class="nt">-s</span> <span class="nv">$FILE</span> | <span class="nb">grep</span> <span class="nt">-e</span> __stack_chk_fail <span class="nt">-e</span> __intel_security_cookie<span class="p">;</span><span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"--- 5: PIE"</span><span class="p">;</span>  file <span class="nv">$FILE</span> | <span class="nb">grep </span>shared<span class="p">;</span><span class="se">\</span>
+<span class="nb">echo</span> <span class="s2">"--- 6: ASLR"</span><span class="p">;</span>         sysctl kernel.randomize_va_space | <span class="nb">grep </span>2<span class="p">;</span>
+</code></pre></div></div>
+
+<p>※<code class="language-plaintext highlighter-rouge">FILE</code> は任意のファイル名</p>
+
+<p>↓ 個別に確認する手法</p>
+
+<h4 id="nxxdビット確認">NX/XDビット　確認</h4>
+
+<p><code class="language-plaintext highlighter-rouge">readelf -l &lt;file name&gt;</code> に <code class="language-plaintext highlighter-rouge">GNU_STACK</code> があれば有効</p>
+
+<h4 id="ascii-armor確認">ASCII Armor　確認</h4>
+
+<p>32bit版ならば <code class="language-plaintext highlighter-rouge">sysctl kernel.exec-shield</code> で確認できる。</p>
+
+<p>64bit版は、root権限があれば確認可能？ <code class="language-plaintext highlighter-rouge">dmesg | grep --color '[NX|DX]*protection'</code> で active なら有効。</p>
+
+<h4 id="aslr確認">ASLR　確認</h4>
+
+<p><code class="language-plaintext highlighter-rouge">sysctl kernel.randomize_va_space</code> or <code class="language-plaintext highlighter-rouge">cat /proc/sys/kernel/randomize_va_space</code></p>
+
+<ul>
+  <li>有効: <code class="language-plaintext highlighter-rouge">2</code></li>
+  <li>無効: <code class="language-plaintext highlighter-rouge">0</code></li>
+</ul>
+
+<h4 id="pie確認">PIE　確認</h4>
+
+<p><code class="language-plaintext highlighter-rouge">file &lt;file name&gt;</code></p>
+
+<ul>
+  <li>PIE有効: <code class="language-plaintext highlighter-rouge">shared object</code></li>
+  <li>PIE無効: <code class="language-plaintext highlighter-rouge">executable</code></li>
+</ul>
+
+<h4 id="ssp確認">SSP　確認</h4>
+
+<p><code class="language-plaintext highlighter-rouge">readelf -s &lt;file name&gt;</code> に <code class="language-plaintext highlighter-rouge">__stack_chk_fail</code> か <code class="language-plaintext highlighter-rouge">__intel_security_cookie</code> があれば？</p>
+
+<p>※調査不足。曖昧。</p>
+
+<h4 id="relro確認">RELRO　確認</h4>
+
+<p><code class="language-plaintext highlighter-rouge">readelf -l &lt;file name&gt;</code> に <code class="language-plaintext highlighter-rouge">GNU_RELRO</code> があれば RELRO 有効</p>
+
+<p><code class="language-plaintext highlighter-rouge">readelf -d &lt;file name&gt;</code> に <code class="language-plaintext highlighter-rouge">BIND_NOW</code> があれば Full RELRO 有効</p>
+
+<h3 id="14-実体を見る">1.4 実体を見る</h3>
+
+<h4 id="nxxdビット実体">NX/XDビット　実体</h4>
+
+<p><code class="language-plaintext highlighter-rouge">readelf -S &lt;file name&gt;</code> の <code class="language-plaintext highlighter-rouge">Flag</code> の列が NXビット</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .interp           PROGBITS        08048134 000134 000013 00   A  0   0  1
+  ...
+</code></pre></div></div>
+
+<h4 id="ascii-armor実体">ASCII Armor　実体</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gdb &lt;file name&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(gdb) start</code></li>
+  <li><code class="language-plaintext highlighter-rouge">(gdb) i proc map</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Start Addr   End Addr       Size     Offset objfile
+  ...
+  0x131000   0x2c2000   0x191000          0     /lib/libc-2.12.so
+  0x2c2000   0x2c4000     0x2000   0x191000     /lib/libc-2.12.so
+  0x2c4000   0x2c5000     0x1000   0x193000     /lib/libc-2.12.so
+  ...
+</code></pre></div></div>
+
+<p>共有ライブラリのアドレスが <code class="language-plaintext highlighter-rouge">0x00XXXXXX</code> に配置されていれば ASCII Armor が機能している。</p>
+
+<h4 id="aslr実体">ASLR　実体</h4>
+
+<h4 id="pie実体">PIE　実体</h4>
+
+<h4 id="ssp実体">SSP　実体</h4>
+
+<h4 id="relro実体">RELRO　実体</h4>
+
+<h2 id="2-脆弱性の探索">2. 脆弱性の探索</h2>
+
+<p>データの読み出し・書き換えを意図していない動作として引き起こしてしまう性質（ = 脆弱性）</p>
+
+<ul>
+  <li>BoF(バッファオーバーフロー)
+    <ul>
+      <li>スタックバッファオーバーフロー</li>
+      <li>ヒープバッファオーバーフロー</li>
+    </ul>
+  </li>
+  <li>FSB(Format String Bug)</li>
+  <li>UAF(use-after-free)</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>脆弱性</th>
+      <th>読み</th>
+      <th>書き</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BoF</td>
+      <td>-</td>
+      <td>w</td>
+    </tr>
+    <tr>
+      <td>FSB</td>
+      <td>r</td>
+      <td>w</td>
+    </tr>
+    <tr>
+      <td>UAF</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="bofバッファオーバーフロー">BoF(バッファオーバーフロー)</h3>
+
+<p>用意したバッファサイズよりも大きい入力を受け付けてしまう現象。溢れた部分は値を書き換えてしまう。　</p>
+
+<p>入力値チェックを怠るか、入力幅の制限を指定せずに（or 出来ない）標準関数を利用すると脆弱性を保持していると言える。脆弱性を持つ標準関数をいくつか挙げると、以下。</p>
+
+<ul>
+  <li>get</li>
+  <li>scanf</li>
+  <li>strcpy</li>
+  <li>strcat</li>
+  <li>…</li>
+</ul>
+
+<p>これらが、ローカル変数(stack領域)・malloc等による動的メモリ確保された変数(heap領域)に対して使われた時、（スタック・ヒープ）バッファオーバーフローが発生しうる。</p>
+
+<h3 id="fsbformat-string-bug">FSB(Format String Bug)</h3>
+
+<p>書式指定のある関数でメモリの内容を読み出せたり書き込めたりする現象。</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">hoge</span><span class="p">);</span> <span class="c1">// 脆弱性なし</span>
+<span class="n">printf</span><span class="p">(</span><span class="n">hoge</span><span class="p">);</span>       <span class="c1">// 脆弱性あり</span>
+</code></pre></div></div>
+
+<h4 id="原理">原理</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">printf("A: %d", hoge)</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    +-------+
+    |       |     リターンアドレス
+    | stack |     引数1("A: %d")
+    |       |     引数2(hoge)
+    +-------+ ↓ 0xFFFFFFFF
+</code></pre></div></div>
+
+<p>　引数1で指定された <code class="language-plaintext highlighter-rouge">%d</code> は引数2で指定した <code class="language-plaintext highlighter-rouge">hoge</code> の値を表示しようとする。即ち、スタックフレームで見れば、引数1から見て <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> 側にある値を表示していることになる。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">printf("%x")</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    +-------+
+    |       |     リターンアドレス
+    | stack |     引数1("%x")
+    |       |     ????
+    +-------+ ↓ 0xFFFFFFFF
+</code></pre></div></div>
+
+<p>　従って、引数2を渡さずに printf を呼び出した場合、スタックフレームの情報を表示しようとする。これが、C言語の標準関数printfに関する書式文字列の問題と呼ばれる脆弱性である。</p>
+
+<p>　つまり、これまで積まれたスタック（printfが実行される前までの行）に干渉可能である。</p>
+
+<h4 id="利用">利用</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fgets</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">input</code> が <code class="language-plaintext highlighter-rouge">fgets()</code> 等からの入力を受け付けている変数ならば、<code class="language-plaintext highlighter-rouge">input</code> に書式トークンを含めることで、メモリ内容の読み書きが可能。</p>
+
+<h4 id="利用書き込み">利用（書き込み）</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">%n, %nc, %hhn</code> はこれまでに出力したバイト数を出力する</li>
+  <li><code class="language-plaintext highlighter-rouge">120(0x78), 376(0x178), 632(0x278)</code> の時、下2byteだけで判断するので、全て <code class="language-plaintext highlighter-rouge">120(0x78)</code> 即ち、 <code class="language-plaintext highlighter-rouge">x(120=0x78)</code> の文字を出力する。</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>書式トークン</th>
+      <th>書き込み byte</th>
+      <th>例</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>%n</td>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">%120c%4$n</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%nc</td>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">%120c%4$nc</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>%hhn</td>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">%120c%4$hhn</code></td>
+      <td>4番目の引数(アドレス)に <code class="language-plaintext highlighter-rouge">x(120=0x78)</code> に書き込む</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>先頭に <code class="language-plaintext highlighter-rouge">AAAA</code> を付与する場合、<code class="language-plaintext highlighter-rouge">AAAA</code> の 4byte を減らし、<code class="language-plaintext highlighter-rouge">AAAA%116c%4$hhn</code> とする必要がある。</p>
+
+<p>この時、先頭4バイトを引いた <code class="language-plaintext highlighter-rouge">%116c</code> で <code class="language-plaintext highlighter-rouge">x(120=0x78)</code> という文字を書き込める。</p>
+
+<h4 id="利用読み-infromation-leak">利用（読み）: Infromation Leak</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>書式トークン</th>
+      <th>例</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>%s</td>
+      <td><code class="language-plaintext highlighter-rouge">%s</code></td>
+      <td>文字列として表示</td>
+    </tr>
+    <tr>
+      <td>%x</td>
+      <td><code class="language-plaintext highlighter-rouge">%4$x</code></td>
+      <td>4番目の引数(アドレス)を16進数で表示</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>メモリレイアウトを <code class="language-plaintext highlighter-rouge">%x</code> 等で探ることが出来る。これを <code class="language-plaintext highlighter-rouge">Information Leak</code> と呼ぶ。</p>
+
+<h3 id="uafuse-after-free">UAF(use-after-free)</h3>
+
+<p>dangling pointer</p>
+
+<h2 id="3-攻撃計画の立案実行">3. 攻撃計画の立案・実行</h2>
+
+<h3 id="基本方針">基本方針</h3>
+<ul>
+  <li>実行コード
+    <ul>
+      <li>自作シェルコード</li>
+      <li>既存の関数を利用する system(“/bin/sh”)  : Return-to-libc</li>
+      <li>既存の命令を利用する pop, ret命令 : ROP-gadget</li>
+    </ul>
+  </li>
+  <li>書き込み・上書き領域
+    <ul>
+      <li>stack</li>
+      <li>heap</li>
+      <li>GOT</li>
+    </ul>
+  </li>
+</ul>
+
+<p>セキュリティとの兼ね合いで、どこに何を書きこむかを決める。</p>
+
+<h2 id="付録">付録</h2>
+
+<h3 id="権限関連のコマンド">権限関連のコマンド</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>コマンド</th>
+      <th>option</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sudo</td>
+      <td> </td>
+      <td>スーパーユーザー(root)でコマンドを実行する</td>
+    </tr>
+    <tr>
+      <td>su</td>
+      <td> </td>
+      <td>ユーザーを切り替える(Substitute User)</td>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td> </td>
+      <td>ユーザーの識別情報を表示する</td>
+    </tr>
+    <tr>
+      <td>whoami</td>
+      <td> </td>
+      <td>現在（自分自身）のユーザー名を表示する</td>
+    </tr>
+    <tr>
+      <td>groups</td>
+      <td> </td>
+      <td>所属しているグループを表示する</td>
+    </tr>
+    <tr>
+      <td>passwd</td>
+      <td> </td>
+      <td>パスワードを変更する</td>
+    </tr>
+    <tr>
+      <td>tty</td>
+      <td> </td>
+      <td>標準入出力となっている端末デバイスを表示する</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="etcpasswd">/etc/passwd</h4>
+
+<p><code class="language-plaintext highlighter-rouge">root:x:0:0:root:/root:/bin/bash</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>対象</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>root</td>
+      <td>ユーザー名</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>「x」と言う文字 or 暗号化されたパスワード(shadow)</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>ユーザーID</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>グループID</td>
+    </tr>
+    <tr>
+      <td>root</td>
+      <td>コメント</td>
+    </tr>
+    <tr>
+      <td>/root</td>
+      <td>そのユーザーのホームディレクトリ</td>
+    </tr>
+    <tr>
+      <td>/bin/bash</td>
+      <td>そのユーザーのログインシェル名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="etcshadow">/etc/shadow</h4>
+<p>暗号化されたパスワードが書かれている。 root のリードオンリー</p>
+
+<p><code class="language-plaintext highlighter-rouge">user00:$6$Z4xEy/1KTCW.rz$Yxkc8XkscDusGWKan621H4eaPRjHc1bkXDjyFtcTtgxzlxvuPiE1rnqdQVO1lYgNOzg72FU95RQut93JF6Deo/:15491:0:99999:7:::</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>対象</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>user00</td>
+      <td>ユーザー名</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>ハッシュ方式( <code class="language-plaintext highlighter-rouge">$6</code> )</td>
+    </tr>
+    <tr>
+      <td>Z4xEy/1KTCW.rz</td>
+      <td>salt ( <code class="language-plaintext highlighter-rouge">$Z4xEy/1KTCW.rz$</code> の $ で囲まれた部分)</td>
+    </tr>
+    <tr>
+      <td>Yxkc…</td>
+      <td>パスワード（ハッシュ）</td>
+    </tr>
+    <tr>
+      <td>15491</td>
+      <td>1970/1/1から最後にパスワードが変更された日までの日数</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>パスワードが変更可能となるまでの日数</td>
+    </tr>
+    <tr>
+      <td>99999</td>
+      <td>パスワードを変更しなくてはならなくなる日までの日数</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>パスワード有効期限が来る前に、ユーザが警告を受ける日数</td>
+    </tr>
+    <tr>
+      <td>(null)</td>
+      <td>パスワード有効期限が過ぎてからアカウントが使用不能になるまでの日数</td>
+    </tr>
+    <tr>
+      <td>(null)</td>
+      <td>1970/1/1からアカウントが使用不能になる日までの日数</td>
+    </tr>
+    <tr>
+      <td>(null)</td>
+      <td>予約フィールド</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ハッシュ方式の数字の意味は以下。</p>
+
+<ul>
+  <li>1: md5</li>
+  <li>5: sha-256</li>
+  <li>6: sha-512</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">etc/pam.d/system-auth</code> でハッシュ方式が指定されている。デフォルトでは <code class="language-plaintext highlighter-rouge">sha-512</code></p>
+
+<p>crypt コマンドによる例が以下</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># perl -e 'print crypt("password", "\$6\$Z4xEy/1KTCW.rz");'</span>
+<span class="nv">$6$Z4xEy</span>/1KTCW.rz<span class="nv">$Yxkc8XkscDusGWKan621H4eaPRjHc1bkXDjyFtcTtgxzlxvuPiE1rnqdQVO1lYgNOzg72FU95RQut93JF6Deo</span>/
+</code></pre></div></div>
+
+<h4 id="fd">fd</h4>
+<ul>
+  <li>0: 標準入力</li>
+  <li>1: 標準出力</li>
+  <li>2: 標準エラー出力</li>
+</ul>
+
+<p>ファイルディスクリプタ</p>
+
+<p><code class="language-plaintext highlighter-rouge">/proc/[プロセスID]/fd/</code></p>
+
+<h3 id="解析関連のコマンド">解析関連のコマンド</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>コマンド</th>
+      <th>option</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>file</td>
+      <td> </td>
+      <td>いろいろ分かる</td>
+    </tr>
+    <tr>
+      <td>objdump</td>
+      <td>-d</td>
+      <td>逆アセンブル</td>
+    </tr>
+    <tr>
+      <td>readelf</td>
+      <td>-l, -d, -s, -S</td>
+      <td>ELFファイルの情報表示</td>
+    </tr>
+    <tr>
+      <td>strings</td>
+      <td> </td>
+      <td>ファイルに含まれる文字列を表示</td>
+    </tr>
+    <tr>
+      <td>lld</td>
+      <td> </td>
+      <td>共有ライブラリへの依存関係を表示</td>
+    </tr>
+    <tr>
+      <td>gcc</td>
+      <td>-v</td>
+      <td>gcc情報表示</td>
+    </tr>
+    <tr>
+      <td>uname</td>
+      <td>-a</td>
+      <td>OS情報表示</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="gdb">gdb</h4>
+
+<p><code class="language-plaintext highlighter-rouge">gdb -q &lt;file name&gt;</code> : <code class="language-plaintext highlighter-rouge">-q</code> を付けるとライセンスを表示せず起動する。</p>
+
+<ul>
+  <li>一覧</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>コマンド</th>
+      <th>省略記法</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>help</td>
+      <td>h</td>
+      <td>ヘルプ</td>
+    </tr>
+    <tr>
+      <td>start</td>
+      <td> </td>
+      <td>main関数で実行を止める</td>
+    </tr>
+    <tr>
+      <td>run</td>
+      <td>r</td>
+      <td>ファイル実行</td>
+    </tr>
+    <tr>
+      <td>break</td>
+      <td>b</td>
+      <td>ブレークポイント設置</td>
+    </tr>
+    <tr>
+      <td>info</td>
+      <td>i</td>
+      <td>情報を表示</td>
+    </tr>
+    <tr>
+      <td>delete</td>
+      <td>d</td>
+      <td>ブレークポイント削除</td>
+    </tr>
+    <tr>
+      <td>continue</td>
+      <td>c</td>
+      <td>break終了。プログラム再開</td>
+    </tr>
+    <tr>
+      <td>next</td>
+      <td>n</td>
+      <td>ステップ実行</td>
+    </tr>
+    <tr>
+      <td>step</td>
+      <td>s</td>
+      <td>ステップ実行（関数の中に入る）</td>
+    </tr>
+    <tr>
+      <td>nexti</td>
+      <td>ni</td>
+      <td>機械語をステップ実行</td>
+    </tr>
+    <tr>
+      <td>stepi</td>
+      <td>si</td>
+      <td>機械語をステップ実行（関数の中に入る）</td>
+    </tr>
+    <tr>
+      <td>disassemble</td>
+      <td>disas</td>
+      <td>アセンブラ表示</td>
+    </tr>
+    <tr>
+      <td>layout asm</td>
+      <td>lay asm</td>
+      <td>常時アセンブラ表示</td>
+    </tr>
+    <tr>
+      <td>layout regs</td>
+      <td>lay regs</td>
+      <td>常時レジスタ表示</td>
+    </tr>
+    <tr>
+      <td>Ctrl+X Ctrl+A</td>
+      <td> </td>
+      <td>layout の開閉</td>
+    </tr>
+    <tr>
+      <td>print</td>
+      <td>p</td>
+      <td>式の結果表示</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td> </td>
+      <td>アドレスの中身表示</td>
+    </tr>
+    <tr>
+      <td>set</td>
+      <td> </td>
+      <td>メモリの中身を書き換える</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>例</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># disassemble</span>
+<span class="o">(</span>gdb<span class="o">)</span> disas main
+<span class="o">(</span>gdb<span class="o">)</span> disas 0x80484b4
+
+<span class="c"># break</span>
+<span class="o">(</span>gdb<span class="o">)</span> b main
+<span class="o">(</span>gdb<span class="o">)</span> b <span class="k">*</span>main+10
+<span class="o">(</span>gdb<span class="o">)</span> b <span class="k">*</span>0x80499f0
+
+<span class="c"># print</span>
+<span class="o">(</span>gdb<span class="o">)</span> p <span class="nv">$eflag</span>
+
+<span class="c"># x</span>
+<span class="o">(</span>gdb<span class="o">)</span> x/100x <span class="nv">$esp</span>
+<span class="o">(</span>gdb<span class="o">)</span> x/xw 0x80499f0
+
+<span class="c"># set</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> <span class="nv">$eax</span><span class="o">=</span>10 
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> <span class="nv">$pc</span><span class="o">=</span><span class="k">*</span>main+10
+
+<span class="c"># info</span>
+<span class="o">(</span>gdb<span class="o">)</span> i b
+<span class="o">(</span>gdb<span class="o">)</span> i proc map
+
+<span class="c"># ASLR有効化（GDBでは初期で無効）</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set </span>disable-randomization off
+
+<span class="c"># アセンブリの表示を Intel形式 にする（初期では AT&amp;T形式 ）</span>
+<span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set </span>disassembly-flavor intel
+</code></pre></div></div>
+
+<h3 id="x86-メモリ配置概念">x86 メモリ配置　概念</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>領域名</th>
+      <th> </th>
+      <th>格納対象</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>テキスト領域</td>
+      <td>text</td>
+      <td>機械語に翻訳されたプログラム</td>
+    </tr>
+    <tr>
+      <td>静的領域</td>
+      <td>data, bss</td>
+      <td>グローバル変数などの静的変数</td>
+    </tr>
+    <tr>
+      <td>ヒープ領域</td>
+      <td>heap</td>
+      <td>メモリの動的管理(malloc, new)</td>
+    </tr>
+    <tr>
+      <td>スタック領域</td>
+      <td>stack</td>
+      <td>リターンアドレス<br />ベースポインタ<br />引数<br />ローカル変数</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    +---------------+ ↑ 0x00000000
+    |     text      |
+    +---------------+
+    |   data, bbs   |
+    +---------------+
+    |     heap      |
+    +---------------+     ↓ heap 拡張方向
+    :               :
+    :               :
+    :               :
+    +---------------+     ↑ stack 拡張方向
+    |     stack     |
+    +---------------+ ↓ 0xFFFFFFFF
+</code></pre></div></div>
+
+<p>※この概念を踏まえて、ELFの各セクション・攻撃の対象領域を紐づけると分かりやすい。</p>
+
+<h2 id="参考">参考</h2>
+<h3 id="強力">強力</h3>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Return-oriented_programming">Return-oriented_programming</a>
+    <ul>
+      <li>歴史が良くまとまってる。自分でまとめているこのページより有用。</li>
+    </ul>
+  </li>
+  <li><a href="https://raintrees.net/projects/a-painter-and-a-black-cat/wiki/CTF_Pwn">CTF pwn</a>
+    <ul>
+      <li>欲しい情報がまとまってた。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="歴史基礎">歴史、基礎</h3>
+
+<h3 id="補強">補強</h3>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+<!-- [CDN] mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script></body>
+
+</html>

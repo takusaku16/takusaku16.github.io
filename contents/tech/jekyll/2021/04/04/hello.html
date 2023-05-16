@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>data 導入, where_exp | 逝く道</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="data 導入, where_exp" />
+<meta property="og:locale" content="jp" />
+<meta name="description" content="どこまでも逝こう。" />
+<meta property="og:description" content="どこまでも逝こう。" />
+<link rel="canonical" href="/contents/tech/jekyll/2021/04/04/hello.html" />
+<meta property="og:url" content="/contents/tech/jekyll/2021/04/04/hello.html" />
+<meta property="og:site_name" content="逝く道" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-04T13:38:04+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="data 導入, where_exp" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-04-04T13:38:04+00:00","datePublished":"2021-04-04T13:38:04+00:00","description":"どこまでも逝こう。","headline":"data 導入, where_exp","mainEntityOfPage":{"@type":"WebPage","@id":"/contents/tech/jekyll/2021/04/04/hello.html"},"url":"/contents/tech/jekyll/2021/04/04/hello.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="逝く道" /><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8XBTJHM0K"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y8XBTJHM0K');
+      </script></head> 
+
+  
+
+  <body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/">逝く道</a>
+    
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger"><a class="page-link" href="/diary/">Diary</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/novel/">Novel</a><a class="page-link" href="/memo/">Memo</a><a class="page-link" href="/junk/">Junk</a><a class="page-link" href="/about/">About</a></div>
+
+    </nav>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">data 導入, where_exp</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-04-04T13:38:04+00:00" itemprop="datePublished">Apr 4, 2021
+        
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <details>
+        <summary>目次</summary><ul><li><a href="#_datanavigationyml導入">_data/navigation.yml導入</a><ul><li><a href="#導入前">導入前</a></li><li><a href="#導入後">導入後</a></li><li><a href="#変化">変化</a></li></ul></li><li><a href="#_datatypecategoryyml導入">_data/typeCategory.yml導入</a><ul><li><a href="#導入前-1">導入前</a></li><li><a href="#導入後-1">導入後</a></li><li><a href="#変化-1">変化</a></li></ul></li><li><a href="#終わり">終わり</a></li></ul></details>
+    <h2 id="_datanavigationyml導入">_data/navigation.yml導入</h2>
+<p>　jekyll で生成されたページをいくつか知っていて、github pages だから中身も見れるのだが、どうも <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code> を使ってヘッダーの並び順やリンク先を定義するのが一般的らしい。調べてみると、jekyll のチュートリアルに載っていてなるほどとなった。</p>
+
+<p>　標準テーマである <code class="language-plaintext highlighter-rouge">minima</code> はこの方式ではなく、posts以外のページ全てを対象としている。数回前の記事で、ヘッダーに並べるページを指定できる形にしたのだが、今回はそれをさらに改善するという話だ。</p>
+
+<p>　というわけで、さっそく私のサイトでも導入してみようと思う。</p>
+
+<h3 id="導入前">導入前</h3>
+<p>　現在のヘッダーは各ページに <code class="language-plaintext highlighter-rouge">order</code> , <code class="language-plaintext highlighter-rouge">header</code> という属性を持たせて、それで並び順とヘッダーページを判断して表示している。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">page</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">About</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/about/</span>
+<span class="na">fix</span><span class="pi">:</span> <span class="s">header</span>
+<span class="na">order</span><span class="pi">:</span> <span class="m">5</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">default_paths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">pages</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"fix"</span><span class="p">,</span><span class="w"> </span><span class="s2">"header"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">sort_natural</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">map</span><span class="p">:</span><span class="w"> </span><span class="s2">"path"</span><span class="w"> </span><span class="p">-%}</span>
+</code></pre></div></div>
+
+<h3 id="導入後">導入後</h3>
+<p>　yml で並び順とリンクを管理して、各ページから並び順とヘッダー判断を削除。表示処理では <code class="language-plaintext highlighter-rouge">navigation.yml</code> を呼び出して使う。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: page
+title: About
+permalink: /about/
+---
+</code></pre></div></div>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">site.data.navigation</span><span class="w"> </span><span class="p">%}</span>
+        &lt;a class="page-link" href="<span class="p">{{</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">link</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">relative_url</span><span class="w"> </span><span class="p">}}</span>" <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">link</span><span class="w"> </span><span class="p">%}</span>style="color: red;"<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>&gt;
+            <span class="p">{{</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">name</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">escape</span><span class="w"> </span><span class="p">}}</span>
+        &lt;/a&gt;
+    <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Diary</span>
+  <span class="na">link</span><span class="pi">:</span> <span class="s">/diary/</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Tech</span>
+  <span class="na">link</span><span class="pi">:</span> <span class="s">/tech/</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Novel</span>
+  <span class="na">link</span><span class="pi">:</span> <span class="s">/novel/</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Memo</span>
+  <span class="na">link</span><span class="pi">:</span> <span class="s">/memo/</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">About</span>
+  <span class="na">link</span><span class="pi">:</span> <span class="s">/about/</span>
+</code></pre></div></div>
+
+<h3 id="変化">変化</h3>
+<p>　元々は <code class="language-plaintext highlighter-rouge">site.pages</code> を参照していたのに対し、 <code class="language-plaintext highlighter-rouge">navigation.yml</code> を参照するようになったので、少しばかり速度が上がったんじゃないかと思っている。導入の効果はあると言えそうだ。</p>
+
+<p>　良かった。</p>
+
+<h2 id="_datatypecategoryyml導入">_data/typeCategory.yml導入</h2>
+<p>　私のページは <code class="language-plaintext highlighter-rouge">posts</code> の中でも <code class="language-plaintext highlighter-rouge">diary</code> <code class="language-plaintext highlighter-rouge">tech</code> <code class="language-plaintext highlighter-rouge">novel</code> という風にタイプを分けている。これらもデータで管理してしまおうと思った。</p>
+
+<p>　というのも、前の記事では各ページに持たせた属性との一致によってタイプを判断していたが、今回はディレクトリ構造との連動を密にした実装にしようと思う。 <code class="language-plaintext highlighter-rouge">contains</code> を使って、元々考えていたのがこの方式だったのだが、<code class="language-plaintext highlighter-rouge">contains</code> の使い勝手が良くなくて属性との一致式で対応していたのだ。</p>
+
+<p>　調べていたら、 <code class="language-plaintext highlighter-rouge">where_exp</code> という記法が存在して、試してみたら想定通りだったので、これで行こうと思う。</p>
+
+<h3 id="導入前-1">導入前</h3>
+<p>　各ページには <code class="language-plaintext highlighter-rouge">type</code> と <code class="language-plaintext highlighter-rouge">category</code> を持たせている。</p>
+
+<p>　また、ここでは Diary ページでの一覧表示を見てみる。append を使って行を上下に移動してカテゴリーを簡単に移動できるとかなんとか言ってましたが、ymlにしたら同じ効果を得ながら、簡潔になりますね。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span>   <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span>    <span class="s2">"</span><span class="s">jekyllのhome.html"</span>
+<span class="na">date</span><span class="pi">:</span>     <span class="s">2021-03-31 22:38:04 +0900</span>
+<span class="na">type</span><span class="pi">:</span>     <span class="s">tech</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">jekyll</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: page
+title:  "Diary"
+permalink: /diary/
+---
+
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="s2">", 2021/04"</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="s2">", 2021/03"</span><span class="w"> </span><span class="p">-%}</span>
+
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"diary"</span><span class="w"> </span><span class="p">-%}</span>
+<span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">_str</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="w"> </span><span class="s2">", "</span><span class="w"> </span><span class="p">-%}</span>
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>header/parts.html<span class="w"> </span><span class="na">posts</span><span class="o">=</span><span class="nv">_posts</span><span class="w"> </span><span class="na">categories</span><span class="o">=</span><span class="nv">_categories</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<h3 id="導入後-1">導入後</h3>
+<p>　ymlで <code class="language-plaintext highlighter-rouge">type</code> と <code class="language-plaintext highlighter-rouge">category</code> を管理。各ページからは <code class="language-plaintext highlighter-rouge">type</code> と <code class="language-plaintext highlighter-rouge">category</code> を消去。</p>
+
+<p>　※ <code class="language-plaintext highlighter-rouge">category</code> であるが、ディレクトリ構造に委ねている。ymlの記述はディレクトリ構造と一致させる必要がある。</p>
+
+<p>　ついでに、Diary, Tech, Novel では共通となるので、 <code class="language-plaintext highlighter-rouge">page_postList</code> というレイアウトを作成してそれを使うことにした。これで3つのページがまったく同じ処理になる。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span>   <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span>    <span class="s2">"</span><span class="s">jekyllのhome.html"</span>
+<span class="na">date</span><span class="pi">:</span>     <span class="s">2021-03-31 22:38:04 +0900</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">page_postList</span>
+<span class="na">title</span><span class="pi">:</span>  <span class="s2">"</span><span class="s">Diary"</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/diary/</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: page
+---
+<span class="p">{{</span><span class="w"> </span><span class="nv">content</span><span class="w"> </span><span class="p">}}</span>
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">site.data.typeCategory</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">type</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%-</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">_posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">posts</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where_exp</span><span class="p">:</span><span class="w"> </span><span class="s2">"post"</span><span class="p">,</span><span class="w"> </span><span class="s2">"post.id contains item.type"</span><span class="w"> </span><span class="p">-%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>page/parts.html<span class="w"> </span><span class="na">posts</span><span class="o">=</span><span class="nv">_posts</span><span class="w"> </span><span class="na">categories</span><span class="o">=</span>item.categories<span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">diary</span>
+  <span class="na">categories</span><span class="pi">:</span> 
+    <span class="pi">-</span> <span class="s">2021/04</span>
+    <span class="pi">-</span> <span class="s">2021/03</span>
+  <span class="na">showCategory</span><span class="pi">:</span> <span class="no">false</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">tech</span>
+  <span class="na">categories</span><span class="pi">:</span> 
+    <span class="pi">-</span> <span class="s">jekyll</span>
+    <span class="pi">-</span> <span class="s">麻雀</span>
+  <span class="na">showCategory</span><span class="pi">:</span> <span class="no">true</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">novel</span>
+  <span class="na">categories</span><span class="pi">:</span> 
+    <span class="pi">-</span> <span class="s">test</span>
+  <span class="na">showCategory</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<h3 id="変化-1">変化</h3>
+<p>　元々は属性一致だったのに対して、 <code class="language-plaintext highlighter-rouge">contains</code> での判定に切り替えたので、1記事ずつの判定は遅くなっていると思われる。</p>
+
+<p>　とはいえ、誤差の範囲だろうという思う。記事が増えたら気になるのかもしれない。が、その時がきたらだ。</p>
+
+<p>　マークダウンに <code class="language-plaintext highlighter-rouge">Liquid</code> の記述をしていたのも <code class="language-plaintext highlighter-rouge">layout</code> に移行できたのも気持ちが良い。</p>
+
+<h2 id="終わり">終わり</h2>
+<p>　正直言えば、ヘッダーとかpostの一覧ページとかは殆ど触る必要がないから整えてもそれほど意味はない。</p>
+
+<p>　しかし、記事を書く上で、余計な情報（ <code class="language-plaintext highlighter-rouge">type</code> <code class="language-plaintext highlighter-rouge">category</code> など）を省けるというのは良い。知らず知らずのうちに余計な情報を拾って集中力に影響が出てしまうと良くない。</p>
+
+<p>　快適に執筆が出来るように環境を整えるのは大事なことなのだ。</p>
+
+<p>　ただし、dataを使ってみたかったという思いも今回はあったのだが。</p>
+
+<p>　そういうわけで。この辺で。</p>
+
+
+  </div><a class="u-url" href="/contents/tech/jekyll/2021/04/04/hello.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-text">逝く道 | subscribe <a href="/feed.xml">via RSS</a> |どこまでも逝こう。</div></div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
