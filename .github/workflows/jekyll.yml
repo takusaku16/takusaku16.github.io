@@ -22,6 +22,12 @@ jobs:
           bundler-cache: true
 
       - name: Install dependencies
+        run: bundle update --bundler
+        
+      - name: Install dependencies
+        run: gem install bundler:4.0.5
+
+      - name: Install dependencies
         run: bundle install
 
       - uses: helaili/jekyll-action@2.0.1
