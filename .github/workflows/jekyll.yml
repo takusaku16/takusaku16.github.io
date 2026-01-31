@@ -9,7 +9,9 @@ on:
 
 jobs:
   jekyll:
+    environment: github-pages
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
 
@@ -29,7 +31,11 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: ./_site # Jekyllの出力ディレクトリ
-      
+
+    - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
     # # Use GitHub Actions' cache to shorten build times and decrease load on servers
     # - uses: actions/cache@v4
     #   with:
