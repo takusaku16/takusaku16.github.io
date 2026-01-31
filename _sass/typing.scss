@@ -1,3 +1,4 @@
+@use "minima";
 /**
 * Typing
 */
@@ -12,10 +13,10 @@
             margin: 1em;
           
             .japanese {
-                @include relative-font-size(1.5);
+                @include minima.relative-font-size(1.5);
             }
             .typing {
-                @include relative-font-size(1.5);
+                @include minima.relative-font-size(1.5);
                 font-weight: bold;
             }
         }
