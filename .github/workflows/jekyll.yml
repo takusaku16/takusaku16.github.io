@@ -22,15 +22,23 @@ jobs:
     - name: Install dependencies
       run: bundle install
 
-    # Use GitHub Actions' cache to shorten build times and decrease load on servers
-    - uses: actions/cache@v4
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
+    - name: Build Jekyll site
+      run: bundle exec jekyll build
 
-    # Standard usage
-    - uses:  helaili/jekyll-action@v2
+    - name: Upload static files as artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ./_site # Jekyllの出力ディレクトリ
+      
+    # # Use GitHub Actions' cache to shorten build times and decrease load on servers
+    # - uses: actions/cache@v4
+    #   with:
+    #     path: vendor/bundle
+    #     key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-gems-
+
+    # # Standard usage
+    # - uses:  helaili/jekyll-action@v2
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
