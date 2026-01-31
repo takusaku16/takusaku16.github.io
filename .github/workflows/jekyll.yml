@@ -33,8 +33,8 @@ jobs:
         path: ./_site # Jekyllの出力ディレクトリ
 
     - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      id: deployment
+      uses: actions/deploy-pages@v4
 
     # # Use GitHub Actions' cache to shorten build times and decrease load on servers
     # - uses: actions/cache@v4
