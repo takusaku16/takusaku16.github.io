@@ -1,38 +1,27 @@
-name: Build and Deploy Jekyll
+name: Testing the GitHub Pages publication
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  # schedule:
+  #   - cron:  "0 15 * * *"
 
 jobs:
-  build:
+  jekyll:
     runs-on: ubuntu-latest
     steps:
-      - name: Build with Jekyll
-        uses: noraworld/jekyll-build-pages@main
-        with:
-          use_ruby_version: false
-          use_gemfile: false
-          ref: master
+    - uses: actions/checkout@v2
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    # Use GitHub Actions' cache to shorten build times and decrease load on servers
+    - uses: actions/cache@v4
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    # Standard usage
+    - uses:  helaili/jekyll-action@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
