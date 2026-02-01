@@ -24,7 +24,7 @@ jobs:
         with:
           use_ruby_version: false
           use_gemfile: false
-          ref: main
+          ref: master
 
   deploy:
     needs: build
